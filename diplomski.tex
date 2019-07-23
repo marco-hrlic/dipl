@@ -14,7 +14,7 @@
 % opcija utf8 za unicode (unix, linux, mac)
 % opcija cp1250 za windowse
 \usepackage[utf8]{inputenc}  % ukoliko se koristi XeLaTeX onda je \usepackage{xunicode}\usepackage{xltxtra}
-
+\usepackage{mathrsfs} 
 % Stil za diplomski, unutra je ukljucena podrska za hrvatski jezik
 \usepackage{diplomski}
 % bibliografija na hrvatskom
@@ -82,7 +82,10 @@ Uvedimo potrebnu notaciju. Neka je $[N]$ oznaka za skup $\{1,2,...,N\}$ gdje je 
     $$supp(x):=\{j\in[N]:x_j \neq 0 \}$$
 \end{defn}
 
-\noindent Za vektor $x\in\C^{\N}$ ka\v{z}emo da je $s$-rjedak ako vrijedi $$\|x\|_0 := card(supp(x)) \leq s$$
+\noindent Za vektor $x\in\C^{\N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|x\|_0 := card(supp(x)) \leq s$$
+Primjetimo,
+$$\|x\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\bold{1}_{\{x_j \neq 0\}} = card(\{j \in [N]:x_j \neq 0\}) = \|x\|_0$$
+Gdje smo koristili da je $\bold{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\bold{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|x\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $x$ kada $p$ te\v{z}i k nuli. Tu vrijednost \v{c}esto zovemo $\ell_0$-norma vektora $x$, iako  ona nije niti norma niti kvazinorma.
 
 
 
