@@ -85,8 +85,15 @@ Uvedimo potrebnu notaciju. Neka je $[N]$ oznaka za skup $\{1,2,...,N\}$ gdje je 
 \noindent Za vektor $x\in\C^{\N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|x\|_0 := card(supp(x)) \leq s$$
 Primjetimo,
 $$\|x\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\bold{1}_{\{x_j \neq 0\}} = card(\{j \in [N]:x_j \neq 0\}) = \|x\|_0$$
-Gdje smo koristili da je $\bold{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\bold{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|x\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $x$ kada $p$ te\v{z}i k nuli. Tu vrijednost \v{c}esto zovemo $\ell_0$-norma vektora $x$, iako  ona nije niti norma niti kvazinorma.
-
+Gdje smo koristili da je $\bold{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\bold{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|x\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $x$ kada $p$ te\v{z}i k nuli. Kvazinorma definira se jednako kao standardna $\ell_p$-norma, jedino \v{s}to nejednakost trokuta oslabimo, tj. 
+$$\|x+y\|\leq C(\|x\|+\|y\|)$$ 
+za neku konstantu $C \geq 1$.
+Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona nije niti norma niti kvazinorma. U samoj praksi, te\v{s}ko je tra\v{z}iti rijetkost vektora, pa je stoga prirodno zahtjevati slabiji uvjet kompresibilnosti.  
+\begin{defn}
+    $\ell_p$-gre\v{s}ku najbolje $s$-rijetke aproksimacije vektora $x\in\C^{\N}$ definiramo sa 
+    $$\omega_s(x)_p := \inf\big\{\|x-z\|_p,\ z \in \C^{\N} \ \small{\text{je s-rijedak}}\big\}$$
+\end{defn}
+\indent Primjetimo da se infimum posti\v{z}e za svaki $s$-rijedak vektor $z \in \C^{N}$ koji ima ne-nul elemente jednake $s$ najve\'cim komponenetama vektora x. Iako takav $z \in \C^{\N}$ nije jedinstven, on posti\v{z}e infimum za svaki $p > 0$..
 
 
 

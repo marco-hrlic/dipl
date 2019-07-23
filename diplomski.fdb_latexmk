@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex diplomski"] 1563908136 "diplomski.aux" "diplomski.bbl" "diplomski" 1563911130
+["bibtex diplomski"] 1563914371 "diplomski.aux" "diplomski.bbl" "diplomski" 1563917746
   "/usr/share/texlive/texmf-dist/bibtex/bst/babelbib/babamspl.bst" 1480098433 25151 40676cbcefccd5c15b0204cf2f46b45f ""
-  "diplomski.aux" 1563911130 1370 4888913a57a9782fff7d7659ebf89943 "pdflatex"
+  "diplomski.aux" 1563917746 1370 de25dc67b6064db08fcb71c65f97c217 "pdflatex"
   "diplomski.bib" 1563907899 206 5e992f8228e9bbd0ce89fd865a49c072 ""
   (generated)
   "diplomski.bbl"
   "diplomski.blg"
-["pdflatex"] 1563911130 "diplomski.tex" "diplomski.pdf" "diplomski" 1563911130
+["pdflatex"] 1563917746 "diplomski.tex" "diplomski.pdf" "diplomski" 1563917746
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1553009388 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1530836625 2850648 765161d183c5509465c2744baf096a7a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1480098701 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
@@ -22,7 +22,9 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/rtxptmb.tfm" 1480098718 4572 2c370d27bbb031f7592de9d41dc8cfca ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/rtxptmr.tfm" 1480098718 4452 0fd0a792eaab7113e4d4f1b941ff0367 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/rtxptmri.tfm" 1480098718 4640 ce59980bcbe9e6236fab46d0b5212c7e ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/rtxptmro.tfm" 1480098718 4660 1e82d17cfff3320dd793f61bbdea044f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/rtxr.tfm" 1480098718 1004 c0e991f864f31f017ea4ff9e451b76d4 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/rtxsl.tfm" 1480098718 1068 a3cbfa94482e9d92e16d59fa3e162d2d ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/rtxss.tfm" 1480098718 952 9553fec7f8724dea5f23bcd5d8725907 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txb.tfm" 1480098718 2452 76194099b4f1c022cb59f4564251c4fe ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txbss.tfm" 1480098718 2544 bd28e969bf7e342906cd9526d984c8d7 ""
@@ -32,6 +34,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txmi.tfm" 1480098718 1944 f854e259cb2839e49d4aa2949544a6e1 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txmia.tfm" 1480098718 1180 72784d0ee5a983fba99a0986b31b0493 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txr.tfm" 1480098718 2408 aec793a3c45e495f7ad15b227c91f508 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txsl.tfm" 1480098718 2636 be572693ea9b2a8c538d0e0144b78a72 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txss.tfm" 1480098718 2812 58673a2de05c4f3a942b32b7ff5d1117 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txsy.tfm" 1480098718 1268 1d124f224979493f8fd017a7597ea1cd ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/txfonts/txsya.tfm" 1480098718 972 2c9ffac4bbd20f91c01aaef9bf3f8710 ""
@@ -53,6 +56,7 @@
   "/usr/share/texlive/texmf-dist/fonts/vf/public/txfonts/txi.vf" 1480098769 904 4ff20c038f0c15338aa91e1bb66c7989 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/txfonts/txmi.vf" 1480098769 960 cfcc9d587b40b769f64408b3ca115941 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/txfonts/txr.vf" 1480098769 904 e582cae2d8ae3f48a0a520440ebcdb51 ""
+  "/usr/share/texlive/texmf-dist/fonts/vf/public/txfonts/txsl.vf" 1480098769 904 d4d6bd8f0d0d0b898d7e5bd780161213 ""
   "/usr/share/texlive/texmf-dist/fonts/vf/public/txfonts/txss.vf" 1480098769 900 d505cb2e7d86314b1a2248e147d1eddf ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1553009389 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/babel-croatian/croatian.ldf" 1480098812 3782 a56229fda5a4b74e064321444518e058 ""
@@ -117,15 +121,15 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1553009379 33523 3a2c32bd77384f8f4508d61b4be83582 ""
   "/usr/share/texlive/texmf-var/web2c/pdftex/pdflatex.fmt" 1563906711 2398327 a32d05fde060d276ab2f49ec9f2de5c2 ""
   "croatian.bdf" 1563904501 8722 9fd99406a46c5bd3d4507acd144c2e3c ""
-  "diplomski.aux" 1563911130 1370 4888913a57a9782fff7d7659ebf89943 "pdflatex"
-  "diplomski.bbl" 1563908136 957 c7750791b5ada4cac3db939e37fa4b34 "bibtex diplomski"
-  "diplomski.out" 1563911130 265 a0b4b2d728963567a1db676282431bcf "pdflatex"
+  "diplomski.aux" 1563917746 1370 de25dc67b6064db08fcb71c65f97c217 "pdflatex"
+  "diplomski.bbl" 1563914371 957 c7750791b5ada4cac3db939e37fa4b34 "bibtex diplomski"
+  "diplomski.out" 1563917746 265 a0b4b2d728963567a1db676282431bcf "pdflatex"
   "diplomski.sty" 1563904501 4471 8825156e250ce83e1617dfe9185011ba ""
-  "diplomski.tex" 1563911128 5116 9a11098193dcd9f4c0e1061ce21aa04f ""
-  "diplomski.toc" 1563911130 399 82e5bab3f8055aafe1ce8c8fa3eeeb95 "pdflatex"
+  "diplomski.tex" 1563917744 5890 9110a988cc991bb53914ab549d7fbb1a ""
+  "diplomski.toc" 1563917746 399 82e5bab3f8055aafe1ce8c8fa3eeeb95 "pdflatex"
   (generated)
   "diplomski.pdf"
   "diplomski.log"
   "diplomski.toc"
-  "diplomski.out"
   "diplomski.aux"
+  "diplomski.out"
