@@ -1,11 +1,8 @@
 \babel@toc {croatian}{}
 \contentsline {chapter}{Sadr\v {z}aj}{iv}{section*.1}
 \contentsline {chapter}{Uvod}{1}{chapter*.2}
-\contentsline {chapter}{\chapternumberline {1}Rjetka rje\v {s}enja}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}Naslov sekcije u sadr\IeC {\v z}aju}{3}{section.1.1}
-\contentsline {subsection}{Naslov podsekcije}{3}{section*.3}
-\contentsline {chapter}{Bibliografija}{7}{chapter*.4}
-\babel@toc {croatian}{}
-\babel@toc {croatian}{}
+\contentsline {chapter}{\chapternumberline {1}Rijetka rje\v {s}enja}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Rijetsko i sa\v {z}etost vektora}{3}{section.1.1}
+\contentsline {chapter}{Bibliografija}{5}{chapter*.3}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}
