@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex diplomski"] 1563967857 "diplomski.aux" "diplomski.bbl" "diplomski" 1563968956
+["bibtex diplomski"] 1563967857 "diplomski.aux" "diplomski.bbl" "diplomski" 1563986885
   "/usr/share/texlive/texmf-dist/bibtex/bst/babelbib/babamspl.bst" 1480098433 25151 40676cbcefccd5c15b0204cf2f46b45f ""
-  "diplomski.aux" 1563968956 1487 cdbc9985784d66d74b9ce6009f5f4ac8 "pdflatex"
+  "diplomski.aux" 1563986885 1487 cdbc9985784d66d74b9ce6009f5f4ac8 "pdflatex"
   "diplomski.bib" 1563907899 206 5e992f8228e9bbd0ce89fd865a49c072 ""
   (generated)
   "diplomski.bbl"
   "diplomski.blg"
-["pdflatex"] 1563968956 "diplomski.tex" "diplomski.pdf" "diplomski" 1563968956
+["pdflatex"] 1563986885 "diplomski.tex" "diplomski.pdf" "diplomski" 1563986885
   "/home/marco/.texlive2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1563912899 2395959 73148c3950a4f1e899c0f190dd16db9a ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1480098666 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map" 1530836625 2850648 765161d183c5509465c2744baf096a7a ""
@@ -118,6 +118,8 @@
   "/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd" 1480098831 548 cc4e3557704bfed27c7002773fad6c90 ""
   "/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg" 1480098833 678 4792914a8f45be57bb98413425e4c7af ""
   "/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg" 1480098833 235 6031e5765137be07eed51a510b2b8fb7 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty" 1515449928 53430 0411f0481da6078e76fd7de46531d2e0 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty" 1496786006 5317 cf75154a8a7e6436f05a5be497f0b05e ""
   "/usr/share/texlive/texmf-dist/tex/latex/memoir/mem12.clo" 1522962627 4116 5fe0c2a416d1cb22b81998676a52b199 ""
   "/usr/share/texlive/texmf-dist/tex/latex/memoir/memhfixc.sty" 1522962627 11326 d0078f6d29fb198095ddc2651db4ce20 ""
   "/usr/share/texlive/texmf-dist/tex/latex/memoir/memoir.cls" 1522962627 406368 728988949d4b4d8be56f7c03e63dcafb ""
@@ -126,19 +128,20 @@
   "/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty" 1553009066 7075 2fe3d848bba95f139de11ded085e74aa ""
   "/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty" 1553009066 22417 1d9df1eb66848aa31b18a593099cf45c ""
   "/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty" 1553009066 9581 023642318cef9f4677efe364de1e2a27 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty" 1523050425 10212 357072c1d20578a30d6387d8a22e72ab ""
   "/usr/share/texlive/texmf-dist/tex/latex/url/url.sty" 1480098842 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/share/texlive/texmf-dist/tex/plain/ifetex/ifetex.tex" 1522621847 1178 13842cd1b714a921af7920503db5625a ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1553009075 33523 3a2c32bd77384f8f4508d61b4be83582 ""
   "croatian.bdf" 1563904501 8722 9fd99406a46c5bd3d4507acd144c2e3c ""
-  "diplomski.aux" 1563968956 1487 cdbc9985784d66d74b9ce6009f5f4ac8 "pdflatex"
+  "diplomski.aux" 1563986885 1487 cdbc9985784d66d74b9ce6009f5f4ac8 "pdflatex"
   "diplomski.bbl" 1563967857 957 c7750791b5ada4cac3db939e37fa4b34 "bibtex diplomski"
-  "diplomski.out" 1563968956 265 a0b4b2d728963567a1db676282431bcf "pdflatex"
+  "diplomski.out" 1563986885 265 a0b4b2d728963567a1db676282431bcf "pdflatex"
   "diplomski.sty" 1563904501 4471 8825156e250ce83e1617dfe9185011ba ""
-  "diplomski.tex" 1563968955 9157 c10f8cda816276a7dcda685db010440f ""
-  "diplomski.toc" 1563968956 399 d93f372bf067afa04c653c44fc877838 "pdflatex"
+  "diplomski.tex" 1563986884 10082 9cb4fd390eb55d604172dfddb794ce0e ""
+  "diplomski.toc" 1563986885 399 d93f372bf067afa04c653c44fc877838 "pdflatex"
   (generated)
-  "diplomski.aux"
-  "diplomski.pdf"
   "diplomski.out"
+  "diplomski.aux"
   "diplomski.toc"
   "diplomski.log"
+  "diplomski.pdf"

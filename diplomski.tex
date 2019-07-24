@@ -38,6 +38,7 @@
 %\usepackage{lmodern} % times new roman 
 \usepackage[T1]{fontenc}
 %\usepackage{newtxtext,newtxmath}
+\usepackage{mathtools}
 
 % Paket graphicx sluzi za manipuliranje grafikom 
 \usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
@@ -140,7 +141,23 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
 \end{equation*}
 \begin{proof}
     Neka je $\vect{x}^*$ nerastu\'ci poredak vektora $\vect{x}\in\C^N$ i $\alpha_j := (x_j^*)^p$. Dokazati \'cemo ekvivaltenu tvrdnju
+    $$
+    \begin{rcases}
+{\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_N \geq 0} \\
+{\alpha_1 + \alpha_2 + \cdots + \alpha_N \leq 1} 
+\end{rcases}\implies \alpha_{s+1}^{q/p} + \alpha_{s+2}^{q/p} + \cdots + \alpha_{s+N}^{q/p} \leq \frac{c^q_{q}}{s^{q/p-1}}
+    $$
+    Stoga, za $r:=q/p>1$, problem se svodi na maksimizaciju konveksne funkcije
+    $$
+    f(\alpha_1, \alpha_2, \dots, \alpha_N) := \alpha_{s+1}^r + \alpha_{s+2}^r + \cdots +\alpha_{N}^r
+    $$
+    na konveksnom mnogokutu
+    $$
+    \mathcal{C} := \big\{ (\alpha_1, \cdots, \alpha_N)\in \R^N :  \alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_N \geq 0 i  \alpha_1 + \alpha_2 + \cdots + \alpha_N \leq 1\big\}
+    $$
+    Prema teoremu (todo) $f$ posti\v{z}e maksimum na nekom od vrhova mnogokutu $\mathcal{C}$, a vrhovi od $\mathcal{C}$ su dani kao sjeci\v{s}ta  $N$ hiperplohi koje dobijemo pretvaranjem $N+1$ nejednakosti u jednakosti.
 \end{proof}
+
 
 
 
