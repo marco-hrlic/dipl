@@ -1,7 +1,7 @@
 PWD /home/marco/dipl
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
-INPUT /usr/share/texlive/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /home/marco/.texlive2018/texmf-var/web2c/pdftex/pdflatex.fmt
 INPUT diplomski.tex
 OUTPUT diplomski.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/memoir/memoir.cls
@@ -278,6 +278,7 @@ INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb

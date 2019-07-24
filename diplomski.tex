@@ -21,6 +21,8 @@
 \usepackage[languagenames,fixlanguage,croatian]{babelbib} % zahtijeva datoteku croatian.bdf
 % hiperlinkovi 
 \usepackage[pdftex]{hyperref} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{hyperref}
+%\newcommand{\vect}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\vect}[1]{\mathbf{#1}}
 
 % Odabir familije fontova:
 % koristenjem XeLaTeX-a mogu se koristiti svi fontovi instalirani na racunalu, npr
@@ -50,7 +52,7 @@
 % Podaci koje treba unijeti
 \title{Sa\v{z}eto uzorkovanje}
 \author{Marco Hrli\'c}
-\advisor{Damir Baki\'c}  % obavezno s titulom (prof. dr. sc ili doc. dr. sc.)
+\advisor{Prof. dr. sc. Damir Baki\'c}  % obavezno s titulom (prof. dr. sc ili doc. dr. sc.)
 \date{2019.}  % oblika mjesec, godina
 
 % Moguce je unijeti i posvetu
@@ -70,7 +72,7 @@
 ...
 \end{intro}
 
-\chapter[Rijetka rje\v{s}enja][Rjetka rje\v{s}enja]{Rijetka rje\v{s}enja}	
+\chapter[Rijetka rje\v{s}enja][Rijetka rje\v{s}enja]{Rijetka rje\v{s}enja}	
 % ukoliko naslov nije jako dugacak dovoljno je samo \chapter{Naslov poglavlja} 
 
 \section[Rijetsko i sa\v{z}etost vektora][Rijetsko i sa\v{z}etost vektora]{Rijetsko i sa\v{z}etost vektora}
@@ -78,25 +80,41 @@
 Uvedimo potrebnu notaciju. Neka je $[N]$ oznaka za skup $\{1,2,...,N\}$ gdje je $N\in\N$. Sa $card(S)$ ozna\v{c}ujemo kardinalitet skupa $S$. Nadalje, $\bar{S}$ je komplement od $S$ u $[N]$, tj. $\bar{S}=[N]\backslash S$.
 
 \begin{defn}
-    Nosa\v{c} vektora $x \in \C^{\N}$ je skup indeksa njegovih ne-nul elemenata, tj.
-    $$supp(x):=\{j\in[N]:x_j \neq 0 \}$$
+    Nosa\v{c} vektora $\vect{x} \in \C^{N}$ je skup indeksa njegovih ne-nul elemenata, tj.
+    $$supp(\vect{x}):=\{j\in[N]:x_j \neq 0 \}$$
 \end{defn}
 
-\noindent Za vektor $x\in\C^{\N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|x\|_0 := card(supp(x)) \leq s$$
+\noindent Za vektor $\vect{x}\in\C^{N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|\vect{x}\|_0 := card(supp(\vect{x})) \leq s$$
 Primjetimo,
-$$\|x\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\bold{1}_{\{x_j \neq 0\}} = card(\{j \in [N]:x_j \neq 0\}) = \|x\|_0$$
-Gdje smo koristili da je $\bold{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\bold{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|x\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $x$ kada $p$ te\v{z}i k nuli. Kvazinorma definira se jednako kao standardna $\ell_p$-norma, jedino \v{s}to nejednakost trokuta oslabimo, tj. 
-$$\|x+y\|\leq C(\|x\|+\|y\|)$$ 
+$$\|\vect{x}\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\bold{1}_{\{x_j \neq 0\}} = card(\{j \in [N]:x_j \neq 0\}) = \|\vect{x}\|_0$$
+Gdje smo koristili da je $\bold{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\bold{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|\vect{x}\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $\vect{x}$ kada $p$ te\v{z}i k nuli. Kvazinorma definira se jednako kao standardna $\ell_p$-norma, jedino \v{s}to nejednakost trokuta oslabimo, tj. 
+$$\|\vect{x}+\vect{y}\|\leq C(\|\vect{x}\|+\|\vect{y}\|)$$ 
 za neku konstantu $C \geq 1$.
-Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona nije niti norma niti kvazinorma. U samoj praksi, te\v{s}ko je tra\v{z}iti rijetkost vektora, pa je stoga prirodno zahtjevati slabiji uvjet kompresibilnosti.  
+Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona nije niti norma niti kvazinorma. U samoj praksi, te\v{s}ko je tra\v{z}iti rijetkost vektora, pa je stoga prirodno zahtjevati slabiji uvjet \textit{kompresibilnosti}.  
 \begin{defn}
-    $\ell_p$-gre\v{s}ku najbolje $s$-rijetke aproksimacije vektora $x\in\C^{\N}$ definiramo sa 
-    $$\omega_s(x)_p := \inf\big\{\|x-z\|_p,\ z \in \C^{\N} \ \small{\text{je s-rijedak}}\big\}$$
+    $\ell_p$-gre\v{s}ku najbolje $s$-rijetke aproksimacije vektora $\vect{x}\in\C^{N}$ definiramo sa 
+    $$\sigma_s(\vect{x})_p := \inf\big\{\|\vect{x}-\vect{z}\|_p,\ \vect{z} \in \C^{N} \ \small{\text{je s-rijedak}}\big\}$$
 \end{defn}
-\indent Primjetimo da se infimum posti\v{z}e za svaki $s$-rijedak vektor $z \in \C^{N}$ koji ima ne-nul elemente jednake $s$ najve\'cim komponenetama vektora x. Iako takav $z \in \C^{\N}$ nije jedinstven, on posti\v{z}e infimum za svaki $p > 0$..
+\indent Primjetimo da se infimum posti\v{z}e za svaki $s$-rijedak vektor $\vect{z} \in \C^{N}$ koji ima ne-nul elemente koji su jednaki sa $s$ najve\'cih komponenti vektora $\vect{x}$. Iako takav $\vect{z} \in \C^{N}$ nije jedinstven, on posti\v{z}e infimum za svaki $p > 0$. Neformalno, mogli bi re\'ci da je vektor $\vect{x} \in \C^{N}$ \textit{kompresibilan} ako gre\v{s}ka njegove najbolje $s$-rijetke aproksimacije brzo konvergira u $s$. Da bi to formalno iskazali, od koristi \'ce biti ocjena na $\sigma_s(\cdot)_p$. Po\v{s}to nam za to ne\'ce biti va\v{z}an poredak elemenata vektora $\vect{x}$, uvodimo sljede\'cu definiciju koja \'ce nam olaksati ra\v{c}un.
 
-
-
+\begin{defn}
+    Nerastu\'ci poredak vektora $\vect{x} \in \C^{N}$ je vektor $\vect{x}^* \in \R^{\N}$ takav da
+    $$x^*_1 \geq x^*_2 \geq x^*_3 \geq \dots \geq 0$$
+    te postoji permutacije $\pi : [N]\rightarrow[N]$ takva da $x^*_j=|x_{\pi(j)}|$ za sve $j\in [N]$.
+\end{defn}
+\begin{prop}
+    Za svaki $q > p > 0$ i za svaki $\vect{x}\in \C^{N}$ vrijedi
+    $$\sigma_s(\vect{x})_q \leq \frac{1}{s^{1/p - 1/q}}\|\vect{x}\|_p.$$
+\end{prop}
+\begin{proof}
+    Neka je $\vect{x}^* \in \R^N$ nerastu\'ci poredak vektora $\vect{x}\in\C^N$. Tada slijedi,
+    \begin{equation*}
+    \begin{split} 
+        \sigma_s(\vect{x})_q^q &= \sum_{j=s+1}^{N}(x_j^*)^q=\sum_{j=s+1}^{N}(x_j^*)^p(x_j^*)^{q-p} \leq (x_s^*)^{q-p} \sum_{j=s+1}^{N}(x_j^*)^p \leq \bigg(\frac{1}{s}\sum_{j=1}^{s}(x_j^*)^p\bigg)^{\frac{q-p}{p}}\bigg( \sum_{j=s+1}^N(x_j^*)^p\bigg) \\ &\leq \bigg( \frac{1}{s} \|\vect{x}\|_p^p \bigg)^{\frac{q-p}{p}}\|\vect{x}\|_p^p = \frac{1}{s^{q/p-1}}\|\vect{x}\|_p^q
+    \end{split}
+    \end{equation*}
+    Prva nejednakost slijedi iz \v{c}injenice da je $x_j^* \leq x_s^*$ za svaki $j \geq s+1$. Druga nejednakost je tako\dj er posljedica nerasta komponenti od $\vect{x}^*$. Potenciranjem obje strane s $1/q$ slijedi tvrdnja.
+\end{proof}
 
 
 \nocite{*}
