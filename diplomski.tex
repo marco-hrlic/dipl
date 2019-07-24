@@ -23,6 +23,10 @@
 \usepackage[pdftex]{hyperref} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{hyperref}
 %\newcommand{\vect}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\vect}[1]{\mathbf{#1}}
+\setlength{\abovedisplayskip}{5pt}
+\setlength{\belowdisplayskip}{5pt}
+\setlength{\abovedisplayshortskip}{5pt}
+\setlength{\belowdisplayshortskip}{5pt}
 
 % Odabir familije fontova:
 % koristenjem XeLaTeX-a mogu se koristiti svi fontovi instalirani na racunalu, npr
@@ -31,7 +35,9 @@
 % ili
 % \newcommand{\nas}[1]{\fontspec{Adobe Garamond Pro}\fontsize{24pt}{24pt}\color{Chocolate}\selectfont #1}
 % i onda \nas{Naslov ...}
-\usepackage{txfonts} % times new roman 
+%\usepackage{lmodern} % times new roman 
+\usepackage[T1]{fontenc}
+%\usepackage{newtxtext,newtxmath}
 
 % Paket graphicx sluzi za manipuliranje grafikom 
 \usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
@@ -102,7 +108,7 @@ Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona 
     $$x^*_1 \geq x^*_2 \geq x^*_3 \geq \dots \geq 0$$
     te postoji permutacije $\pi : [N]\rightarrow[N]$ takva da $x^*_j=|x_{\pi(j)}|$ za sve $j\in [N]$.
 \end{defn}
-\begin{prop}
+\begin{prop}\label{osnovna_ocjena_lp_greske}
     Za svaki $q > p > 0$ i za svaki $\vect{x}\in \C^{N}$ vrijedi
     $$\sigma_s(\vect{x})_q \leq \frac{1}{s^{1/p - 1/q}}\|\vect{x}\|_p.$$
 \end{prop}
@@ -115,6 +121,27 @@ Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona 
     \end{equation*}
     Prva nejednakost slijedi iz \v{c}injenice da je $x_j^* \leq x_s^*$ za svaki $j \geq s+1$. Druga nejednakost je tako\dj er posljedica nerasta komponenti od $\vect{x}^*$. Potenciranjem obje strane s $1/q$ slijedi tvrdnja.
 \end{proof}
+Primjetimo da ako je $\vect{x}$ iz jedini\v{c}ne $\ell_p$-kugle za neki mali $p>0$, onda prethodna propozicija garantira kovergenciju od $\sigma_s(\vect{x})_q$ u $s$, gdje $\ell_p$-kuglu definiramo kao
+$$B_p^N := \big\{ \vect{z} \in \C^N : \|\vect{z}\|_p \leq 1\big\}$$
+Vratimo se sada ocjeni iz propozicije \ref{osnovna_ocjena_lp_greske}. Sljede\'ci teorem daje najmanju konstantu $c_{p,q}$ takvu da vrijedi $\sigma_s(\vect{x})_q\leq c_{p,q}s^{-1/p+1/q}\|\vect{x}\|_p$ te zapravo predstavlja ja\v{c}u tvrdnju.
+\begin{thm}
+    Za svaki $q > p > 0$ i za svaki $\vect{x}\in\C^N$ vrijedi
+    \begin{equation*}
+    \sigma_s(\vect{x})_q \leq \frac{c_{p,q}}{s^{1/p - 1/q}}\|\vect{x}\|_p
+    \end{equation*}
+    gdje je
+    $$
+    c_{p,q} := \bigg[ \bigg(\frac{p}{q}\bigg)^{p/q}\bigg( 1-\frac{p}{q}^{1-p/q}\bigg) \bigg]^{1/p}\leq1.
+    $$
+\end{thm}
+Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
+\begin{equation*}
+    \sigma_s(\vect{x})_2 \leq \frac{1}{2\sqrt{s}}\|\vect{x}\|_1
+\end{equation*}
+\begin{proof}
+    Neka je $\vect{x}^*$ nerastu\'ci poredak vektora $\vect{x}\in\C^N$ i $\alpha_j := (x_j^*)^p$. Dokazati \'cemo ekvivaltenu tvrdnju
+\end{proof}
+
 
 
 \nocite{*}
