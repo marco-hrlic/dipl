@@ -174,7 +174,7 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
     \max\limits_{(\alpha_1,\dots,\alpha_N)\in\mathcal{C}} f(\alpha_1, \alpha_2, \dots, \alpha_N) \leq g(k^*) = \frac{1}{r}\bigg( 1- \frac{1}{r}\bigg)^{r-1}\frac{1}{s^r-1}=c^q_{p,q}\frac{1}{s^{q/p}-1}
     $$
 \end{proof}
-\indent Alternativni na\v{c}in na koji je mogu\'ce opisati pojam \textit{kompresibilnosti} za vektor $\vect{x}\in\C^N$ je da zahtjevamo da je broj
+\indent Alternativni na\v{c}in na koji bi mogli definirati pojam \textit{kompresibilnosti} za vektor $\vect{x}\in\C^N$ je da zahtjevamo da je broj
 $$\card(\{j\in[N]:|x_j|\geq t\})$$
 njegovih zna\v{c}ajnih ne-nul komponenti dovoljno mali. Ovaj pristup vodi na definiciju slabih $\ell_p$-prostora.
 \begin{defn}
@@ -184,15 +184,18 @@ Za $p>0$, slabi $\ell_p$-prostor s oznakom $w\ell_p^N$ definiramo kao prostor $\
 \end{equation}
 \end{defn}
 \noindent
-Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam je sljede\'ci rezultat
+Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam je sljede\'ci rezultat.
 \begin{prop}
     Neka su $\vect{x}^1,\dots\vect{x}^k\in\C^N$. Tada za svaki $p>0$ vrijedi 
     \begin{equation*}
-    \|\vect{x}^1+\dots+\vect{x}^k\|_{p,\infty} \leq k^{\max{1, 1/p}}(\|\vect{x}^1\|_{p, \infty} + \cdots + \|\vect{x}^k\|_{p, \infty})
+    \|\vect{x}^1+\dots+\vect{x}^k\|_{p,\infty} \leq k^{\max\{1, 1/p\}}(\|\vect{x}^1\|_{p, \infty} + \cdots + \|\vect{x}^k\|_{p, \infty})
     \end{equation*}
 \end{prop}
 \begin{proof}
-   ... 
+    Neka je $t>0$. Ako je $|x_j^1+\cdots+x_j^k|\geq t$ za neki $j\in [N]$, tada imamo da je $|x_j^i|\geq t/k$ za neki $i \in [k]$. Dakle, vrijedi
+    \begin{equation*}
+        \big\{ j\in [N]:|x_j^1+\cdots+x_j^k| \geq t \big\} \subset \bigcup\limits_{i\in [k]} \big \{ j \in [N] : |x_j^i| \geq t/k \big \}.
+    \end{equation*}
 \end{proof}
 
 
