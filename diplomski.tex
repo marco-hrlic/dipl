@@ -28,6 +28,10 @@
 \setlength{\abovedisplayshortskip}{5pt}
 \setlength{\belowdisplayshortskip}{5pt}
 
+\newcommand{\card}{\text{card}}
+\newcommand{\supp}{\text{supp}}
+
+
 % Odabir familije fontova:
 % koristenjem XeLaTeX-a mogu se koristiti svi fontovi instalirani na racunalu, npr
 % \defaultfontfeatures{Mapping=tex-text}
@@ -84,16 +88,16 @@
 
 \section[Rijetsko i sa\v{z}etost vektora][Rijetsko i sa\v{z}etost vektora]{Rijetsko i sa\v{z}etost vektora}
 %\subsection{Naslov podsekcije}
-Uvedimo potrebnu notaciju. Neka je $[N]$ oznaka za skup $\{1,2,...,N\}$ gdje je $N\in\N$. Sa $card(S)$ ozna\v{c}ujemo kardinalitet skupa $S$. Nadalje, $\bar{S}$ je komplement od $S$ u $[N]$, tj. $\bar{S}=[N]\backslash S$.
+Uvedimo potrebnu notaciju. Neka je $[N]$ oznaka za skup $\{1,2,...,N\}$ gdje je $N\in\N$. Sa $\card(S)$ ozna\v{c}ujemo kardinalitet skupa $S$. Nadalje, $\bar{S}$ je komplement od $S$ u $[N]$, tj. $\bar{S}=[N]\backslash S$.
 
 \begin{defn}
     Nosa\v{c} vektora $\vect{x} \in \C^{N}$ je skup indeksa njegovih ne-nul elemenata, tj.
-    $$supp(\vect{x}):=\{j\in[N]:x_j \neq 0 \}$$
+    $$\supp(\vect{x}):=\{j\in[N]:x_j \neq 0 \}$$
 \end{defn}
 
-\noindent Za vektor $\vect{x}\in\C^{N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|\vect{x}\|_0 := card(supp(\vect{x})) \leq s$$
+\noindent Za vektor $\vect{x}\in\C^{N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|\vect{x}\|_0 := \card(\supp(\vect{x})) \leq s$$
 Primjetimo,
-$$\|\vect{x}\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\bold{1}_{\{x_j \neq 0\}} = card(\{j \in [N]:x_j \neq 0\}) = \|\vect{x}\|_0$$
+$$\|\vect{x}\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\bold{1}_{\{x_j \neq 0\}} = \card(\{j \in [N]:x_j \neq 0\}) = \|\vect{x}\|_0$$
 Gdje smo koristili da je $\bold{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\bold{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|\vect{x}\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $\vect{x}$ kada $p$ te\v{z}i k nuli. Kvazinorma definira se jednako kao standardna $\ell_p$-norma, jedino \v{s}to nejednakost trokuta oslabimo, tj. 
 $$\|\vect{x}+\vect{y}\|\leq C(\|\vect{x}\|+\|\vect{y}\|)$$ 
 za neku konstantu $C \geq 1$.
@@ -141,12 +145,12 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
 \end{equation*}
 \begin{proof}
     Neka je $\vect{x}^*$ nerastu\'ci poredak vektora $\vect{x}\in\C^N$ i $\alpha_j := (x_j^*)^p$. Dokazati \'cemo ekvivaltenu tvrdnju
-    $$
+    \begin{equation}\label{ocjena_ekv_tvrdnja}
     \begin{rcases}
 {\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_N \geq 0} \\
 {\alpha_1 + \alpha_2 + \cdots + \alpha_N \leq 1} 
 \end{rcases}\implies \alpha_{s+1}^{q/p} + \alpha_{s+2}^{q/p} + \cdots + \alpha_{s+N}^{q/p} \leq \frac{c^q_{q}}{s^{q/p-1}}
-    $$
+    \end{equation}
     Stoga, za $r:=q/p>1$, problem se svodi na maksimizaciju konveksne funkcije
     $$
     f(\alpha_1, \alpha_2, \dots, \alpha_N) := \alpha_{s+1}^r + \alpha_{s+2}^r + \cdots +\alpha_{N}^r
@@ -155,8 +159,25 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
     $$
     \mathcal{C} := \big\{ (\alpha_1, \cdots, \alpha_N)\in \R^N :  \alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_N \geq 0 i  \alpha_1 + \alpha_2 + \cdots + \alpha_N \leq 1\big\}
     $$
-    Prema teoremu (todo) $f$ posti\v{z}e maksimum na nekom od vrhova mnogokutu $\mathcal{C}$, a vrhovi od $\mathcal{C}$ su dani kao sjeci\v{s}ta  $N$ hiperplohi koje dobijemo pretvaranjem $N+1$ nejednakosti u jednakosti.
+    Prema teoremu (todo) $f$ posti\v{z}e maksimum na nekom od vrhova mnogokuta $\mathcal{C}$, a vrhovi od $\mathcal{C}$ su dani kao sjeci\v{s}ta  $N$ hiperplohi koje dobijemo tako da u \eqref{ocjena_ekv_tvrdnja} $N$ nejednakost pretvorimo u jednakost. Mogu\v{c}nosti su:
+    \begin{itemize}
+        \item $\alpha_1=\cdots=\alpha_N \quad\implies\quad f(\alpha_1, \alpha_2, \dots, \alpha_N) = 0$.
+        \item $\alpha_1+\cdots+\alpha_N=1$ i $\alpha_1=\cdots=\alpha_k>\alpha_{k+1}=\cdots=\alpha_N=0$ za neki $1\leq k \leq s \quad \implies \quad f(\alpha_1, \alpha_2, \dots, \alpha_N) = 0$
+        \item $\alpha_1+\cdots+\alpha_N=1$ i $\alpha_1=\cdots=\alpha_k>\alpha_{k+1}=\cdots=\alpha_N=0$ za neki $s+1\leq k \leq N \quad \implies \quad \alpha_1=\cdots\alpha_k=1/k$ te $f(\alpha_1, \alpha_2, \dots, \alpha_N) = (k-s)/k^r$
+    \end{itemize}
+    Dakle, slijedi da 
+    $$
+    \max\limits_{(\alpha_1,\dots,\alpha_N)\in\mathcal{C}} f(\alpha_1, \alpha_2, \dots, \alpha_N) = \max\limits_{s+1\leq k \leq N} \frac{k-s}{k^r}
+    $$
+    Shvatimo sada $k$ kao realnu varijablu i zamjetimo da $g(k):=(k-s)/k^r$ raste do kriti\v{c}ne to\v{c}ke $k^*=(r/(r-1))s$ nakon koje opada.
+    $$
+    \max\limits_{(\alpha_1,\dots,\alpha_N)\in\mathcal{C}} f(\alpha_1, \alpha_2, \dots, \alpha_N) \leq g(k^*) = \frac{1}{r}\bigg( 1- \frac{1}{r}\bigg)^{r-1}\frac{1}{s^r-1}=c^q_{p,q}\frac{1}{s^{q/p}-1}
+    $$
 \end{proof}
+\indent Alternativni na\v{c}in na koji je mogu\'ce opisati pojam \textit{kompresibilnosti} za vektor $\vect{x}\in\C^N$ je da zahtjevamo da je broj
+$$\card(\{j\in[N]:|x_j|\geq t\})$$
+njegovih zna\v{c}ajnih ne-nul komponenti dovoljno mali. Ovaj pristup vodi na definiciju slabih $\ell_p$-prostora.
+
 
 
 
