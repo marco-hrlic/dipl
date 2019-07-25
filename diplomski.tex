@@ -28,8 +28,8 @@
 \setlength{\abovedisplayshortskip}{5pt}
 \setlength{\belowdisplayshortskip}{5pt}
 
-\newcommand{\card}{\text{card}}
-\newcommand{\supp}{\text{supp}}
+\newcommand{\card}{\text{\normalfont{card}}}
+\newcommand{\supp}{\text{\normalfont{supp}}}
 
 
 % Odabir familije fontova:
@@ -177,6 +177,23 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
 \indent Alternativni na\v{c}in na koji je mogu\'ce opisati pojam \textit{kompresibilnosti} za vektor $\vect{x}\in\C^N$ je da zahtjevamo da je broj
 $$\card(\{j\in[N]:|x_j|\geq t\})$$
 njegovih zna\v{c}ajnih ne-nul komponenti dovoljno mali. Ovaj pristup vodi na definiciju slabih $\ell_p$-prostora.
+\begin{defn}
+Za $p>0$, slabi $\ell_p$-prostor s oznakom $w\ell_p^N$ definiramo kao prostor $\C^N$ sa kvazinormom
+\begin{equation}\label{slaba_kvazinorma}
+    \|x\|_{p, \infty}:=\inf\bigg\{ M \geq 0: \card (\{j\in [N]: |x_j|\geq t \})\leq \frac{M^P}{t^p},\ \forall t>0    \bigg\}
+\end{equation}
+\end{defn}
+\noindent
+Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam je sljede\'ci rezultat
+\begin{prop}
+    Neka su $\vect{x}^1,\dots\vect{x}^k\in\C^N$. Tada za svaki $p>0$ vrijedi 
+    \begin{equation*}
+    \|\vect{x}^1+\dots+\vect{x}^k\|_{p,\infty} \leq k^{\max{1, 1/p}}(\|\vect{x}^1\|_{p, \infty} + \cdots + \|\vect{x}^k\|_{p, \infty})
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    
+\end{proof}
 
 
 
