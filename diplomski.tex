@@ -23,10 +23,6 @@
 \usepackage[pdftex]{hyperref} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{hyperref}
 %\newcommand{\vect}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\vect}[1]{\mathbf{#1}}
-\setlength{\abovedisplayskip}{5pt}
-\setlength{\belowdisplayskip}{5pt}
-\setlength{\abovedisplayshortskip}{5pt}
-\setlength{\belowdisplayshortskip}{5pt}
 
 \newcommand{\card}{\text{\normalfont{card}}}
 \newcommand{\supp}{\text{\normalfont{supp}}}
@@ -71,6 +67,10 @@
 \dedication{Albini}
 
 \begin{document}
+\setlength\abovedisplayskip{10pt}
+\setlength\belowdisplayskip{10pt}
+\setlength\abovedisplayshortskip{10pt}
+\setlength\belowdisplayshortskip{10pt}
 
 % Naredna frontmatter generira naslovnu stranicu, stranicu za potpise povjerenstva, eventualnu posvetu i sadrzaj
 % Moze se iskomentirati ukoliko nije u pitanju konacna verzija
@@ -194,11 +194,27 @@ Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam j
 \begin{proof}
     Neka je $t>0$. Ako je $|x_j^1+\cdots+x_j^k|\geq t$ za neki $j\in [N]$, tada imamo da je $|x_j^i|\geq t/k$ za neki $i \in [k]$. Dakle, vrijedi
     \begin{equation*}
-        \big\{ j\in [N]:|x_j^1+\cdots+x_j^k| \geq t \big\} \subset \bigcup\limits_{i\in [k]} \big \{ j \in [N] : |x_j^i| \geq t/k \big \}.
+        \big\{ j\in [N]:|x_j^1+\cdots+x_j^k| \geq t \big\} \subset \bigcup\limits_{i\in [k]} \big \{ j \in [N] : |x_j^i| \geq t/k \big \}
     \end{equation*}
+    pa je stoga
+    \begin{align*}
+        \card\big( \big\{ j\in [N] : |x_j^1+\cdots+k_j^k| \geq t \big\}\big)&\leq\sum\limits_{i\in [k]}\frac{\|\vect{x}^i\|^p_{p, \infty}}{(t/k)^p} \\ 
+                                                                            &= \frac{k^p(\|\vect{x}^1\|^p_{p, \infty}+\cdots + \|\vect{x}^k\|^p_{p, \infty})}{t^p}
+    \end{align*}
+    Prema definiciji slabe $\ell_p$-kvazinorme \eqref{slaba_kvazinorma} vektora $\vect{x}^1+\cdots+\vect{x}^k$ dobivamo
+    \begin{equation*}
+        \|\vect{x}^1+\cdots+\vect{x}^k\|_{p, \infty}\leq k\big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big) 
+    \end{equation*}
+    Ako je $p \leq 1$, uspore\dj uju\'ci $\ell_p$ i $\ell_1$ norme na $\R^k$ slijedi
+    \begin{equation*}
+        \big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big)^{1/p} \leq k^{1/p-1}\big(\|\vect{x}^1\|_{p,\infty}+ \cdots +\|\vect{x}^k\|_{p,\infty}\big)
+    \end{equation*}
+    a ako je $p \geq 1$ slijedi
+    \begin{equation*}
+        \big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big)^{1/p} \leq \|\vect{x}^1\|_{p,\infty}+ \cdots +\|\vect{x}^k\|_{p,\infty}.
+    \end{equation*}
+
 \end{proof}
-
-
 
 
 
