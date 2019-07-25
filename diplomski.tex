@@ -38,6 +38,7 @@
 %\usepackage{lmodern} % times new roman 
 \usepackage[T1]{fontenc}
 %\usepackage{newtxtext,newtxmath}
+\usepackage{lmodern}
 \usepackage{mathtools}
 
 % Paket graphicx sluzi za manipuliranje grafikom 
@@ -159,7 +160,7 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
     $$
     \mathcal{C} := \big\{ (\alpha_1, \cdots, \alpha_N)\in \R^N :  \alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_N \geq 0 i  \alpha_1 + \alpha_2 + \cdots + \alpha_N \leq 1\big\}
     $$
-    Prema teoremu (todo) $f$ posti\v{z}e maksimum na nekom od vrhova mnogokuta $\mathcal{C}$, a vrhovi od $\mathcal{C}$ su dani kao sjeci\v{s}ta  $N$ hiperplohi koje dobijemo tako da u \eqref{ocjena_ekv_tvrdnja} $N$ nejednakost pretvorimo u jednakost. Mogu\v{c}nosti su:
+    Prema teoremu (todo) $f$ posti\v{z}e maksimum na nekom od vrhova mnogokuta $\mathcal{C}$, a vrhovi od $\mathcal{C}$ su dani kao sjeci\v{s}ta  $N$ hiperplohi koje dobijemo tako da u \eqref{ocjena_ekv_tvrdnja} $N$ nejednakosti pretvorimo u jednakosti. Mogu\v{c}nosti su:
     \begin{itemize}
         \item $\alpha_1=\cdots=\alpha_N \quad\implies\quad f(\alpha_1, \alpha_2, \dots, \alpha_N) = 0$.
         \item $\alpha_1+\cdots+\alpha_N=1$ i $\alpha_1=\cdots=\alpha_k>\alpha_{k+1}=\cdots=\alpha_N=0$ za neki $1\leq k \leq s \quad \implies \quad f(\alpha_1, \alpha_2, \dots, \alpha_N) = 0$
@@ -176,7 +177,7 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
 \end{proof}
 \indent Alternativni na\v{c}in na koji bi mogli definirati pojam \textit{kompresibilnosti} za vektor $\vect{x}\in\C^N$ je da zahtjevamo da je broj
 $$\card(\{j\in[N]:|x_j|\geq t\})$$
-njegovih zna\v{c}ajnih ne-nul komponenti dovoljno mali. Ovaj pristup vodi na definiciju slabih $\ell_p$-prostora.
+tj. broj njegovih zna\v{c}ajnih ne-nul komponenti dovoljno mali. Ovaj pristup vodi na definiciju slabih $\ell_p$-prostora.
 \begin{defn}
 Za $p>0$, slabi $\ell_p$-prostor s oznakom $w\ell_p^N$ definiramo kao prostor $\C^N$ sa kvazinormom
 \begin{equation}\label{slaba_kvazinorma}
@@ -209,11 +210,34 @@ Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam j
     \begin{equation*}
         \big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big)^{1/p} \leq k^{1/p-1}\big(\|\vect{x}^1\|_{p,\infty}+ \cdots +\|\vect{x}^k\|_{p,\infty}\big)
     \end{equation*}
-    a ako je $p \geq 1$ slijedi
+    te ako je $p \geq 1$ slijedi
     \begin{equation*}
         \big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big)^{1/p} \leq \|\vect{x}^1\|_{p,\infty}+ \cdots +\|\vect{x}^k\|_{p,\infty}.
     \end{equation*}
+    Tvrdnja slijedi iz dobivenih ocjena.
+\end{proof}
 
+%TODO provjeiti da je kvazinorma
+
+\noindent Sljede\'ca propozicija daje alternativni izraz za slabu $\ell_p$-kvazinormu.
+\begin{prop}
+    Za $p>0$, vrijedi
+    \begin{equation*}
+        \|\vect{x}\|_{p, \infty} = \max \limits_{k \in [N]}k^{1/p}x_k^{*}
+    \end{equation*}
+    gdje je $\vect{x}^* \in \R^N$ nerastu\'ci poredak vektora $\vect{x}\in \C^N$.
+\end{prop}
+\begin{proof}
+    Primjetimo prvo da iz \eqref{slaba_kvazinorma} slijedi da je $\|\vect{x}\|_{p, \infty}=\|\vect{x}^*\|_{p, \infty}$, pa zapravo pokazujemo da je $\|\vect{x}\|:= \max_{k \in [N]}k^{1/p}x_k^* = \|\vect{x}^*\|$. Nadalje, za $t>0$ vrijedi da je $\{j \in [N]: x^*_j \geq t\}=[k]$ za neki $k \in [N]$ ili je $\{j \in [N]: x^*_j \geq t\}=\emptyset$. U prvom slu\v{c}aju $t \leq x^*_k \leq \|\vect{x}\|/k^{1/p}$ pa je $\card(\{j \in [N]:x_j^* \geq t \}) = k \leq \|\vect{x}\|/k^{1/p}$. U drugom slu\v{c}aju ista nejednakost vrijedi trivijalno. Iz definicije slabe $\ell_p$-kvazinorme \eqref{slaba_kvazinorma} sada dobivamo $\|\vect{x}^*\|_{p, \infty} \leq \|\vect{x}\|$. Pretpostavimo da je $\|\vect{x}^*\|_{p, \infty} < \|\vect{x}\|$. Tada postoji $\varepsilon > 0$ takav da $(1+ \varepsilon)\|\vect{x}^*\|_{p, \infty} \leq \|\vect{x}\|$. Slijedi da je $(1 + \varepsilon)\|\vect{x}^*\| \leq  k^{1/p}x^*_k$ za neki $k \in [N]$ pa stoga
+    \begin{equation*}
+        [k] \subseteq \big\{ j \in [N] : (1 + \varepsilon)\|\vect{x}^*\|_{p, \infty}/k^{1/p} \leq x_j^* \big\}
+    \end{equation*}
+    Ponovo iz \eqref{slaba_kvazinorma} imamo
+    \begin{equation*}
+        k \leq \frac{\|\vect{x}^*\|^p_{p, \infty}}{\big( (1 + \varepsilon)\|\vect{x}^*\|_{p, \infty}k^{1/p}\big)^p}=\frac{k}{(1 + \varepsilon)^p}
+    \end{equation*}
+    Kontradikcija, dakle mora vrijediti $\|\vect{x}\| = \|\vect{x}^*\|_{p, \infty}$.
+    
 \end{proof}
 
 
