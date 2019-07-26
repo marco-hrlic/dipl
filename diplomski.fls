@@ -207,6 +207,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmro12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmr12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT diplomski.bbl
 INPUT diplomski.bbl
 OUTPUT diplomski.toc
@@ -219,6 +221,7 @@ INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
+INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbx8.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmmi6.pfb

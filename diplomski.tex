@@ -310,6 +310,24 @@ Prethodna propozicija daje da su vektori $\vect{x} \in \C^N$ koji su kompresibil
     \end{equation*}
 \end{proof}
 
+\section[Minimalni broj mijerenja][Minimalni broj mijerenja]{Minimalni broj mijerenja}
+Problem sa\v{z}etog uzorkovanja sastoji se od rekonstrukcije $s$-rijetkog vektora $\vect{x} \in \C^N$ iz sustava
+$$\vect{y} = \vect{A}\vect{x}$$
+Matricu $\vect{A} \in \C^{m\times N}$ nazivamo \textit{matrica mijerenja}. Ako je $m < N$, za ovakav sustav linearnih jednad\v{z}bi ka\v{z}emo da je \textit{neodre\dj en}. Iako iz klasi\v{c}ne teorije linearne algebre ovakvi sustavi imaju beskona\v{c}no mnogo rije\v{s}enja, pokazati \'ce se da je dodatna pretpostavka rijetkosti vektora $x$ dovoljno za jedinstvenost rje\v{s}enja. U ovom poglavlju istra\v{z}iti \'cemo koji je minimalni broj mijerenja, tj. $m$ broj redaka matrice $\vect{A}$, koji garantira rekonstrukciju $s$-rijetkog vektora $\vect{x}$. Zapravo, postoje dva pristupa ovom problemu. Mo\v{z}emo zahtjevati da problem mijerenja rekonstruira sve $s$-rijetke vektore $\vect{x} \in \C^N$ istodobno ili mo\v{z}emo tra\v{z}iti rekonstrukciju specifi\v{c}nog, tj. predodre\dj enog vektora $\vect{x} \in \C^N$. Taj pristup \v{c}ini se neprirodan, no pokazuje se da je on va\v{z}an u prou\v{c}avanju problema gdje matricu $\vect{A}$ biramo nasumi\v{c}no. \\ 
+\indent Poka\v{z}imo da su za danu rijetkost $s$, matricu $\vect{A} \in \C^{m \times N}$ i $s$-rijedak vektor $\vect{x} \in \C^N$, naredne tvrdnje ekvivaltentne: 
+\begin{enumerate}
+    \item Vektor $\vect{x}$ je jedinstveno $s$-rijetko rje\v{s}enje sustava $\vect{A}\vect{z}=\vect{y}$ gdje je $\vect{y} = \vect{Ax}$, tj. $\{\vect{z} \in \C^N : \vect{A}\vect{z}= \vect{A}\vect{x},\ \norm{\vect{z}}_0 \leq s\} = \{\vect{x}\}$
+    \item Vektor $\vect{x}$ je jedinstveno rje\v{s}enje problema minimizacije
+        \begin{equation}
+            \min\limits_{\vect{z} \in \C^N} \norm{\vect{z}}_0\quad \text{uz uvjet}\ \vect{Az} = \vect y \label{problem_minimizacije} 
+        \end{equation}
+\end{enumerate}
+Ako je $\vect{x} \in \C^N$ jedinstveno $s$-rijetko rje\v{s}enje od $\vect{Az} = \vect y$ takvo da je $\vect y = \vect{Ax}$, onda rje\v{s}enje $x^{\sharp}$ od \eqref{problem_minimizacije} je $s$-rijetko i zadovoljava $\vect{Ax} = \vect y$ pa je $\vect x^\sharp = \vect x$. Drugi smjer slijedi trivijalno.
+
+
+\subsection[Rekonstrukcija svih rijetkih vektora][Rekonstrukcija svih rijetkih vektora]{Rekonstrukcija svih rijetkih vektora}
+Neka je $\vect{A} \in \C^{m \times N}$ i $S \subset [N]$, sa $\vect A_S$ ozna\v{c}ujemo matricu formiranu od stupaca od $\vect A$ indeksiranih sa $S$. Analogno, sa kl'w
+
 
 
 
