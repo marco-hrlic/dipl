@@ -26,6 +26,7 @@
 
 \newcommand{\card}{\text{\normalfont{card}}}
 \newcommand{\supp}{\text{\normalfont{supp}}}
+\newcommand{\norm}[1]{\|{#1}\|}
 
 
 % Odabir familije fontova:
@@ -161,11 +162,11 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
     \mathcal{C} := \big\{ (\alpha_1, \cdots, \alpha_N)\in \R^N :  \alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_N \geq 0 i  \alpha_1 + \alpha_2 + \cdots + \alpha_N \leq 1\big\}
     $$
     Prema teoremu (todo) $f$ posti\v{z}e maksimum na nekom od vrhova mnogokuta $\mathcal{C}$, a vrhovi od $\mathcal{C}$ su dani kao sjeci\v{s}ta  $N$ hiperplohi koje dobijemo tako da u \eqref{ocjena_ekv_tvrdnja} $N$ nejednakosti pretvorimo u jednakosti. Mogu\v{c}nosti su:
-    \begin{itemize}
-        \item $\alpha_1=\cdots=\alpha_N \quad\implies\quad f(\alpha_1, \alpha_2, \dots, \alpha_N) = 0$.
-        \item $\alpha_1+\cdots+\alpha_N=1$ i $\alpha_1=\cdots=\alpha_k>\alpha_{k+1}=\cdots=\alpha_N=0$ za neki $1\leq k \leq s \quad \implies \quad f(\alpha_1, \alpha_2, \dots, \alpha_N) = 0$
-        \item $\alpha_1+\cdots+\alpha_N=1$ i $\alpha_1=\cdots=\alpha_k>\alpha_{k+1}=\cdots=\alpha_N=0$ za neki $s+1\leq k \leq N \quad \implies \quad \alpha_1=\cdots\alpha_k=1/k$ te $f(\alpha_1, \alpha_2, \dots, \alpha_N) = (k-s)/k^r$
-    \end{itemize}
+    \begin{enumerate}
+        \item $\alpha_1=\cdots=\alpha_N \ \implies\  f(\alpha_1, \alpha_2, \dots, \alpha_N) = 0$.
+        \item $\alpha_1+\cdots+\alpha_N=1$ i $\alpha_1=\cdots=\alpha_k>\alpha_{k+1}=\cdots=\alpha_N=0$ za neki \\ $1\leq k \leq s \  \implies \  f(\alpha_1, \alpha_2, \dots, \alpha_N) = 0$
+        \item $\alpha_1+\cdots+\alpha_N=1$ i $\alpha_1=\cdots=\alpha_k>\alpha_{k+1}=\cdots=\alpha_N=0$ za neki\\ $s+1\leq k \leq N \  \implies \  \alpha_1=\cdots\alpha_k=1/k$ te $f(\alpha_1, \alpha_2, \dots, \alpha_N) = (k-s)/k^r$
+    \end{enumerate}
     Dakle, slijedi da 
     $$
     \max\limits_{(\alpha_1,\dots,\alpha_N)\in\mathcal{C}} f(\alpha_1, \alpha_2, \dots, \alpha_N) = \max\limits_{s+1\leq k \leq N} \frac{k-s}{k^r}
@@ -181,7 +182,7 @@ tj. broj njegovih zna\v{c}ajnih ne-nul komponenti dovoljno mali. Ovaj pristup vo
 \begin{defn}
 Za $p>0$, slabi $\ell_p$-prostor s oznakom $w\ell_p^N$ definiramo kao prostor $\C^N$ sa kvazinormom
 \begin{equation}\label{slaba_kvazinorma}
-    \|x\|_{p, \infty}:=\inf\bigg\{ M \geq 0: \card (\{j\in [N]: |x_j|\geq t \})\leq \frac{M^P}{t^p},\ \forall t>0    \bigg\}
+    \|\vect{x}\|_{p, \infty}:=\inf\bigg\{ M \geq 0: \card (\{j\in [N]: |x_j|\geq t \})\leq \frac{M^P}{t^p},\ \forall t>0    \bigg\}
 \end{equation}
 \end{defn}
 \noindent
@@ -214,13 +215,21 @@ Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam j
     \begin{equation*}
         \big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big)^{1/p} \leq \|\vect{x}^1\|_{p,\infty}+ \cdots +\|\vect{x}^k\|_{p,\infty}.
     \end{equation*}
-    Tvrdnja slijedi iz dobivenih ocjena.
+    Tvrdnja slijedi kombiniranjem dobivenih ocjena.
 \end{proof}
 
-%TODO provjeiti da je kvazinorma
+\noindent
+Uzmimo $\vect{x}, \vect{y} \in \C^N$ i neka je $\lambda \in \C$ proizvoljan.
+
+\begin{enumerate}
+    \item Neka je $\|\vect{x}\|_{p, \infty}=0$. Iz \eqref{slaba_kvazinorma} slijedi $ \card(\{j \in [N]: |x_j| \geq t\}) = 0$ za svaki $t > 0$ pa je stoga broj ne-nul komponenti on $\vect{x}$ jednak nuli, tj. $\vect{x}=0$ 
+    \item Ako je $\lambda$ nula, $\|\lambda \vect{x}\| = | \lambda | \| \vect{x} \|$ vrijedi trivijalno. Za $\lambda \neq 0$, imamo \\
+        $\card(\{ j \in [N]: |\alpha x_j| \geq t \}) = \card(\{ j \in [N]: |x_j| \geq t/|\alpha| \})\leq (\alpha M)^p/t^p$ za svaki $t>0$. Dakle, opet $\|\lambda \vect{x}\| = | \lambda | \| \vect{x} \|$.
+    \item $\|\vect{x}+\vect{y}\|\leq C(\|\vect{x}\|+\|\vect{y}\|)$ je sada direktna posljedica prethodne propozicije.
+\end{enumerate}
 
 \noindent Sljede\'ca propozicija daje alternativni izraz za slabu $\ell_p$-kvazinormu.
-\begin{prop}
+\begin{prop}\label{slaba_kvazinorma_2}
     Za $p>0$, vrijedi
     \begin{equation*}
         \|\vect{x}\|_{p, \infty} = \max \limits_{k \in [N]}k^{1/p}x_k^{*}
@@ -237,8 +246,71 @@ Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam j
         k \leq \frac{\|\vect{x}^*\|^p_{p, \infty}}{\big( (1 + \varepsilon)\|\vect{x}^*\|_{p, \infty}k^{1/p}\big)^p}=\frac{k}{(1 + \varepsilon)^p}
     \end{equation*}
     Kontradikcija, dakle mora vrijediti $\|\vect{x}\| = \|\vect{x}^*\|_{p, \infty}$.
-    
 \end{proof}
+\noindent Sada lagano mo\v{z}emo usporediti slabi i jaku $\ell_p$ normu,
+\begin{prop}
+    Za svaki $p > 0$ i za svaki $\vect{x} \in \C^N$,
+    \begin{equation*}
+        \|\vect{x}\|_{p, \infty} \leq \|\vect{x}\|_p
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Neka je $k \in [N]$,
+    \begin{equation*}
+        \|\vect{x}\|_p^p = \sum_{j=1}^{N}(x_j^*)^p \geq \sum_{j=1}^{k}(x_j^*)^p \geq k(x_k^*)^p
+    \end{equation*}
+    Tvrdnja slijedi potenciranjem na $1/p$ i uzimaju\'ci maksimum po $k$ i primjenom prethodne propozicije.
+\end{proof}
+Koriste\'ci propoziciju \eqref{slaba_kvazinorma_2} mo\v{z}emo dobiti verziju ocjene iz propozicije \eqref{osnovna_ocjena_lp_greske} sa slabom $\ell_p$ normom.
+\begin{prop}
+    Za svaki $q>p>0$ i $\vect{x} \in \C^N$, vrijedi
+    \begin{equation*}
+        \sigma_s(\vect{x})_q \leq \frac{d_{p,q}}{s^{1/p-1/q}}\|\vect{x}\|_{p, \infty}
+    \end{equation*}
+    gdje je
+    \begin{equation*}
+        d_{p,q} := \big( \frac{p}{q-p} \big)^{1/q}.
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Bez smanjenja op\v{c}enitosti mo\v{z}emo pretpostaviti da je $\norm{\vect{x}}_{p,\infty} \leq 1$, pa je $x_k^* \leq 1/k^{1/p}$ za svaki $k \in [N]$. Tada vrijedi,
+    \begin{equation*}
+    \sigma_s(\vect{x})^q_q = \sum_{k=s+1}^{N} (x_k^*)^q \leq \sum_{k=s+1}^N \frac{1}{k^{q/p}} \leq \int_s^N \frac{1}{t^{q/p}} dt = - \frac{1}{q/p-1} \frac{1}{t^{q/p-1}}\bigg\rvert^{t=N}_{t=s} \leq \frac{p}{q-p} \frac{1}{s^{q/p-1}}.
+    \end{equation*}
+    Potenciranjem sa $1/q$ slijedi tvrdnja.
+\end{proof}
+Prethodna propozicija daje da su vektori $\vect{x} \in \C^N$ koji su kompresibilni u smislu $\norm{\vect{x}}_{p, \infty} \leq 1$ za mali $p>0$, tako\dj er kompresibilni u smislu da gre\v{s}ka njihove najbolje $s$-rijetke aproksimacije brzo konvergira sa $s$. Iska\v{z}imo jo\v{s} jedan tehni\v{c}ki rezultat,
+\begin{lem}
+    Neka su $\vect{x}, \vect{y} \in \C^N$. Tada vrijedi,
+    \begin{equation} \label{nerastuci_poredak_ocjena_1}
+        \norm{\vect{x}^* - \vect{y}^*}_{\infty} \leq \norm{\vect{x} - \vect{y}}_{\infty}
+    \end{equation}
+    Nadalje, za $s \in [N]$,
+    \begin{equation}\label{nerastuci_poredak_ocjena_2}
+        |\sigma_s(\vect{x})_1 - \sigma(\vect{y})_1| \leq \norm{\vect{x} - \vect{y}}_1
+    \end{equation}
+    i za $k>s$,
+    \begin{equation}\label{nerastuci_poredak_ocjena_3}
+        (k-s)x_k^* \leq \norm{\vect{x} - \vect{y}}_1 + \sigma_s(\vect{y})_1
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Za $j \in [N]$, skup indeksa $j$ najve\'cih komponenti vektora $\vect{x}$ ima ne-trivijalni presjek sa skupom od $N-j+1$ najmanjih komponenti vektora $\vect{y}$. Izaberimo indeks $l$ iz tog presjeka. Tada vrijedi, 
+    \begin{equation*}
+        x_j^* \leq |x_l| \leq |y_l| + \norm{\vect{x} - \vect{y}}_{\infty} \leq z_j^* + \norm{\vect{x} - \vect{y}}_{\infty}
+    \end{equation*}
+    Zamjenom uloga od $\vect{x}$ i $\vect{y}$ slijedi \eqref{nerastuci_poredak_ocjena_1}.
+    Neka je $\vect{v} \in \C^N$ najbolja $s$-rijetka aproksimacija vektora $\vect{y}$. Tada
+    \begin{equation*}
+        \sigma_s(\vect{x})_1 \leq \norm{\vect{x} - \vect{v}}_1 \leq \norm{\vect{x} - \vect{y}}_1 + \norm{\vect{y} - \vect{v}}_1 = \norm{\vect{x} - \vect{y}}_1 + \sigma_s(\vect{y})_1 
+    \end{equation*}
+    Ponovno, zbog simetrije slijedi \eqref{nerastuci_poredak_ocjena_2}. Napokon, ocjena \eqref{nerastuci_poredak_ocjena_3} slijedi iz \eqref{nerastuci_poredak_ocjena_2} te iz \v{c}injenice
+    \begin{equation*}
+        (k-s)x_k^* \leq \sum_{j=s+1}^{k}x_j^* \leq \sum_{j \geq s+1} x_j^* = \sigma_s(\vect{x})_1.
+    \end{equation*}
+\end{proof}
+
+
 
 
 

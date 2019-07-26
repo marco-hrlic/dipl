@@ -207,8 +207,6 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmro12.tfm
-INPUT /usr/share/texlive/texmf-dist/tex/latex/lm/omslmr.fd
-INPUT /usr/share/texlive/texmf-dist/tex/latex/lm/omslmr.fd
 INPUT diplomski.bbl
 INPUT diplomski.bbl
 OUTPUT diplomski.toc
