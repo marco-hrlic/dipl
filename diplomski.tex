@@ -21,12 +21,14 @@
 \usepackage[languagenames,fixlanguage,croatian]{babelbib} % zahtijeva datoteku croatian.bdf
 % hiperlinkovi 
 \usepackage[pdftex]{hyperref} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{hyperref}
+\usepackage{enumitem}
 %\newcommand{\vect}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\vect}[1]{\mathbf{#1}}
 
 \newcommand{\card}{\text{\normalfont{card}}}
 \newcommand{\supp}{\text{\normalfont{supp}}}
 \newcommand{\norm}[1]{\|{#1}\|}
+\newcommand{\rank}{\text\normalfont{rank}}
 
 
 % Odabir familije fontova:
@@ -310,10 +312,10 @@ Prethodna propozicija daje da su vektori $\vect{x} \in \C^N$ koji su kompresibil
     \end{equation*}
 \end{proof}
 
-\section[Minimalni broj mijerenja][Minimalni broj mijerenja]{Minimalni broj mijerenja}
+\section[Minimalni broj mjerenja][Minimalni broj mjerenja]{Minimalni broj mjerenja}
 Problem sa\v{z}etog uzorkovanja sastoji se od rekonstrukcije $s$-rijetkog vektora $\vect{x} \in \C^N$ iz sustava
 $$\vect{y} = \vect{A}\vect{x}$$
-Matricu $\vect{A} \in \C^{m\times N}$ nazivamo \textit{matrica mijerenja}. Ako je $m < N$, za ovakav sustav linearnih jednad\v{z}bi ka\v{z}emo da je \textit{neodre\dj en}. Iako iz klasi\v{c}ne teorije linearne algebre ovakvi sustavi imaju beskona\v{c}no mnogo rije\v{s}enja, pokazati \'ce se da je dodatna pretpostavka rijetkosti vektora $x$ dovoljno za jedinstvenost rje\v{s}enja. U ovom poglavlju istra\v{z}iti \'cemo koji je minimalni broj mijerenja, tj. $m$ broj redaka matrice $\vect{A}$, koji garantira rekonstrukciju $s$-rijetkog vektora $\vect{x}$. Zapravo, postoje dva pristupa ovom problemu. Mo\v{z}emo zahtjevati da problem mijerenja rekonstruira sve $s$-rijetke vektore $\vect{x} \in \C^N$ istodobno ili mo\v{z}emo tra\v{z}iti rekonstrukciju specifi\v{c}nog, tj. predodre\dj enog vektora $\vect{x} \in \C^N$. Taj pristup \v{c}ini se neprirodan, no pokazuje se da je on va\v{z}an u prou\v{c}avanju problema gdje matricu $\vect{A}$ biramo nasumi\v{c}no. \\ 
+Matricu $\vect{A} \in \C^{m\times N}$ nazivamo \textit{matrica mjerenja}. Ako je $m < N$, za ovakav sustav linearnih jednad\v{z}bi ka\v{z}emo da je \textit{neodre\dj en}. Iako iz klasi\v{c}ne teorije linearne algebre ovakvi sustavi imaju beskona\v{c}no mnogo rije\v{s}enja, pokazati \'ce se da je dodatna pretpostavka rijetkosti vektora $x$ dovoljno za jedinstvenost rje\v{s}enja. U ovom poglavlju istra\v{z}iti \'cemo koji je minimalni broj mjerenja, tj. $m$ broj redaka matrice $\vect{A}$, koji garantira rekonstrukciju $s$-rijetkog vektora $\vect{x}$. Zapravo, postoje dva pristupa ovom problemu. Mo\v{z}emo zahtjevati da problem mjerenja rekonstruira sve $s$-rijetke vektore $\vect{x} \in \C^N$ istodobno ili mo\v{z}emo tra\v{z}iti rekonstrukciju specifi\v{c}nog, tj. predodre\dj enog vektora $\vect{x} \in \C^N$. Taj pristup \v{c}ini se neprirodan, no pokazuje se da je on va\v{z}an u prou\v{c}avanju problema gdje matricu $\vect{A}$ biramo nasumi\v{c}no. \\ 
 \indent Poka\v{z}imo da su za danu rijetkost $s$, matricu $\vect{A} \in \C^{m \times N}$ i $s$-rijedak vektor $\vect{x} \in \C^N$, naredne tvrdnje ekvivaltentne: 
 \begin{enumerate}
     \item Vektor $\vect{x}$ je jedinstveno $s$-rijetko rje\v{s}enje sustava $\vect{A}\vect{z}=\vect{y}$ gdje je $\vect{y} = \vect{Ax}$, tj. $\{\vect{z} \in \C^N : \vect{A}\vect{z}= \vect{A}\vect{x},\ \norm{\vect{z}}_0 \leq s\} = \{\vect{x}\}$
@@ -326,7 +328,40 @@ Ako je $\vect{x} \in \C^N$ jedinstveno $s$-rijetko rje\v{s}enje od $\vect{Az} = 
 
 
 \subsection[Rekonstrukcija svih rijetkih vektora][Rekonstrukcija svih rijetkih vektora]{Rekonstrukcija svih rijetkih vektora}
-Neka je $\vect{A} \in \C^{m \times N}$ i $S \subset [N]$, sa $\vect A_S$ ozna\v{c}ujemo matricu formiranu od stupaca od $\vect A$ indeksiranih sa $S$. Analogno, sa kl'w
+Neka je $\vect{A} \in \C^{m \times N}$ i $S \subset [N]$, sa $\vect A_S$ ozna\v{c}ujemo matricu formiranu od stupaca od $\vect A$ indeksiranih sa $S$. Sli\v{c}no, sa $\vect x_S$ ozna\v{c}ujemo ili vektor iz $\C^{S}$ koji se sastoji od komponenti vektora $\vect x$ indeksiranih po $S$, tj. $(\vect x_S)_l = x_l$ za sve $l \in S$, ili vektor iz $\C^N$ koji se podudara s $\vect x$ na komponentama indeksiranim u $S$ i jednak je nula na indeksima koji nisu u $S$, tj. $(\vect x_S)_l = x_l$ za $l \in S$ i $(\vect x_S)_l =0$ za $ l \notin S$. Iz konteksta \'ce uvijek biti jasno na koju definiciju se misli.
+
+\begin{thm}
+    Neka je $\vect A \in \C^{m \times N}$. Ekvivalentno je:
+    \begin{enumerate}[label=(\alph*)]
+        \item Svaki $s$-rijedak vektor $\vect x \in \C^N$ je jedinstveno rje\v{s}enje od $\vect{Ax}=\vect{Az}$, tj. ako je $\vect{Ax}=\vect{Az}$ i ako su $\vect x$, $\vect z$ oboje $s$-rijetki tada $\vect x = \vect z$.
+        \item Jezgra od $\vect A$ ne sadr\v{z}i niti jedan $2s$-rijedak vektor osim nul-vektora, tj. $\ker \vect A \cap \{\vect z \in \C^N: \norm{\vect z}_0 \leq 2s\} = \{\vect 0\}$
+        \item Za svaki $S \subset [N]$ takav da $\card(S) \leq 2s$, podmatrica $\vect A_S$ je injektivna kao preslikavanje sa $\C^S$ u $\C^m$.
+        \item Svaki skup od $2s$ stupaca matrice $\vect A$ je linearno nezavisan skup.
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    \begin{itemize}
+        \item[]$(b)\implies(a)$. Neka su $\vect x$ i $\vect z$ $s$-rijetki vektori takvi da $\vect{Ax} = \vect{Az}$. Tada je $\vect x - \vect z$ $2s$-rijedak i $\vect A(\vect x - \vect z) = \vect 0$. Po\v{s}to $\ker \vect A$ ne sadr\v{z}i $2s$-rijetke vektore osim nul-vektora, mora vrijediti $\vect x = \vect z$. \\
+        \item[] $(a)\implies(b)$. Obratno, pretpostavimo da za svaki $s$-rijetki vektor $\vect x \in \C^N$ vrijedi $\{\vect z \in \C^N : \vect{Az} = \vect{Ax}, \norm{\vect z}_0 \leq s\} = \{\vect x\}$. Neka je $\vect v \in \ker \vect A$, $2s$-rijedak. Tada $\vect v$ mo\v{z}emo rastaviti kao $\vect v = \vect x - \vect z$ gdje su $\vect x$ i $\vect z$ $s$-rijetki takvi da $\supp(\vect x)\cap \supp(\vect z) = \emptyset$. Imamo da je $\vect{Ax}=\vect{Az}$ pa prema pretpostavci vrijedi $\vect{x}=\vect{z}$. Po\v{s}to su nosa\v{c}i od $\vect x$ i $\vect z$ disjunktni, mora vrijediti $\vect x = \vect z = \vect 0$ pa je stoga i $\vect v = 0$.\\
+        \item[] $(b)\implies(c)$. Pretpostavimo suprotno, $\ker \vect A \cap \{\vect z \in \C^N: \norm{\vect z}_0 \leq 2s\} = \{\vect 0\}$ i da postoji $S \in [N]$ takav da je $\card(S) \leq 2s$ te da $\vect A_s$ nije injektivna. To zna\v{c}i da postoji vektor $\vect x \in \C^{\card(S)} \backslash \{\vect 0\}$ takav da je $\vect A_S \vect x = \vect 0$. Definiramo vektor $\tilde{\vect{x}}\in \C^N$ sa 
+            \begin{equation*}
+                \tilde{x}_j = 
+                \begin{cases}
+                    x_j \quad & \text{za}\ j \in S \\
+                    0 \quad & \text{za}\  j \in \bar S \\
+                \end{cases}
+            \end{equation*}
+            Dakle, imamo $\vect x \neq \vect 0$, $\norm{\vect x}_0 \leq 2s$ i vrijedi $\vect{Ax}=0$, tj. $\vect x \in \ker \vect A$. Kontradikcija s $(b)$.
+        \item[]$(c)\implies(d)$. Odaberimo $2s$  stupaca od $\vect A$. Skup indeksa tih stupaca ozna\v{c}imo sa $S$. Prema $(c)$, matrica $\vect A_S$ je injektivna, a to zna\v{c}i da su njeni stupci linearno nezavisni, pa su stoga i $2s$ odabranih stupaca matrice $\vect A$ linearno nezavisni.
+        \item[]$(d)\implies(b)$. Pretpostavimo da jezgra od $\vect A$ sadr\v{z}i $2s$-rijedak ne-nul vektor $\vect x \in \C^N$. Neka je $S$ skup indeksa ne-nul elemenata vektora $\vect x$. To zna\v{c}i da je $\vect A_S \vect x_S = 0$, i $\vect x_S \neq \vect 0$. Dakle $\vect A_S$ nije injektivna, pa stoga i skup stupaca od $\vect A$ indeksiranih sa $S$ nije linearno nezavisan, \v{s}to je kontradikcija sa $(d)$.
+\end{itemize}
+\end{proof}
+
+Uo\v{c}imo da ako je mogu\v{c}e rekonstruirati svaki $s$-rijedak vektor $\vect x \in \C^N$ iz vektora mjerenja $\vect y = \vect{Ax} \in \C^m$, tada vrijedi $(a)$. Prema pro\v{s}lom teoremu tada vrijedi i tvrdnja $(d)$ pa je stoga $\rank(\vect A) \geq 2s$. Tako\dj er vrijedi da je $\rank(\vect A) \leq m$ pa imamo 
+\begin{equation*}
+    m \geq 2s.    
+\end{equation*}
+To zna\v{c}i da je potrebno barem $2s$ mjerenja da bi rekonstruirali svaki $s$-rijedak vektor. Pokazati \'cemo da je, makar u teoriji, dovoljno to\v{c}no $2s$ mjerenja.
 
 
 
