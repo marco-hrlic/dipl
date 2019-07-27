@@ -363,6 +363,27 @@ Uo\v{c}imo da ako je mogu\v{c}e rekonstruirati svaki $s$-rijedak vektor $\vect x
 \end{equation*}
 To zna\v{c}i da je potrebno barem $2s$ mjerenja da bi rekonstruirali svaki $s$-rijedak vektor. Pokazati \'cemo da je, makar u teoriji, dovoljno to\v{c}no $2s$ mjerenja.
 
+\begin{thm}
+    Za svaki $N \geq 2s$, postoji matrica mjerenja $\vect A \in \C^{2s \times N}$ takva da se svaki $s$-rijedak vektor $\vect x \in \C^N$ mo\v{z}e rekonstruirati iz vektora mjerenja $\vect y = \vect{Ax} \in \C^m$ kao rje\v{s}enje problema minimizacije \eqref{problem_minimizacije}.
+\end{thm}
+\begin{proof}
+    Fiksirajmo $t_N>\cdots t_2 > t_1 > 0$ i neka je $\vect A \in \C^{2s \times N}$ dana sa
+    \begin{equation}
+        \vect A = 
+        \begin{bmatrix}
+            1 & 1 & \cdots & 1 \\ 
+            t_1 & t_2 & \cdots & t_N \\
+            \vdots & \vdots & \cdots & \vdots \\
+            t_1^{2s-1} & t_2^{2s-1} & \cdots & t_N^{2s-1} \\
+        \end{bmatrix}
+    \end{equation}
+    Nadalje, neka je $S=\{j_1 < \cdots < j_2s\}$ skup indeksa. Matrica $\vect A_S \in \C^{2s \times 2s}$ je transponirana \textit{Vandermontova matrica}. Prema (TODO) slijedi
+    \begin{equation*}
+        \det(\vect{A}_S) = \prod_{k < l} (t_{j_l} - t_{j_k})>0.
+    \end{equation*}
+    To zna\v{c}i da je matrica $\vect A$ invertibilna, pa posebno i injektivna.
+\end{proof}
+
 
 
 
