@@ -44,6 +44,9 @@
 \usepackage{lmodern}
 \usepackage{mathtools}
 
+\usepackage{lineno}
+\linenumbers
+
 % Paket graphicx sluzi za manipuliranje grafikom 
 \usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
 % Paket amsmath je vec ukljucen
@@ -330,7 +333,7 @@ Ako je $\vect{x} \in \C^N$ jedinstveno $s$-rijetko rje\v{s}enje od $\vect{Az} = 
 \subsection[Rekonstrukcija svih rijetkih vektora][Rekonstrukcija svih rijetkih vektora]{Rekonstrukcija svih rijetkih vektora}
 Neka je $\vect{A} \in \C^{m \times N}$ i $S \subset [N]$, sa $\vect A_S$ ozna\v{c}ujemo matricu formiranu od stupaca od $\vect A$ indeksiranih sa $S$. Sli\v{c}no, sa $\vect x_S$ ozna\v{c}ujemo ili vektor iz $\C^{S}$ koji se sastoji od komponenti vektora $\vect x$ indeksiranih po $S$, tj. $(\vect x_S)_l = x_l$ za sve $l \in S$, ili vektor iz $\C^N$ koji se podudara s $\vect x$ na komponentama indeksiranim u $S$ i jednak je nula na indeksima koji nisu u $S$, tj. $(\vect x_S)_l = x_l$ za $l \in S$ i $(\vect x_S)_l =0$ za $ l \notin S$. Iz konteksta \'ce uvijek biti jasno na koju definiciju se misli.
 
-\begin{thm}
+\begin{thm} \label{rekonstrukcija_tm1}
     Neka je $\vect A \in \C^{m \times N}$. Ekvivalentno je:
     \begin{enumerate}[label=(\alph*)]
         \item Svaki $s$-rijedak vektor $\vect x \in \C^N$ je jedinstveno rje\v{s}enje od $\vect{Ax}=\vect{Az}$, tj. ako je $\vect{Ax}=\vect{Az}$ i ako su $\vect x$, $\vect z$ oboje $s$-rijetki tada $\vect x = \vect z$.
@@ -368,7 +371,7 @@ To zna\v{c}i da je potrebno barem $2s$ mjerenja da bi rekonstruirali svaki $s$-r
 \end{thm}
 \begin{proof}
     Fiksirajmo $t_N>\cdots t_2 > t_1 > 0$ i neka je $\vect A \in \C^{2s \times N}$ dana sa
-    \begin{equation}
+    \begin{equation}\label{vandermont_matrica}
         \vect A = 
         \begin{bmatrix}
             1 & 1 & \cdots & 1 \\ 
@@ -377,14 +380,36 @@ To zna\v{c}i da je potrebno barem $2s$ mjerenja da bi rekonstruirali svaki $s$-r
             t_1^{2s-1} & t_2^{2s-1} & \cdots & t_N^{2s-1} \\
         \end{bmatrix}
     \end{equation}
-    Nadalje, neka je $S=\{j_1 < \cdots < j_2s\}$ skup indeksa. Matrica $\vect A_S \in \C^{2s \times 2s}$ je transponirana \textit{Vandermontova matrica}. Prema (TODO) slijedi
+    Nadalje, neka je $S=\{j_1 < \cdots < j_{2s}\}$ skup indeksa. Matrica $\vect A_S \in \C^{2s \times 2s}$ je transponirana \textit{Vandermontova matrica}. Prema (TODO) slijedi
     \begin{equation*}
         \det(\vect{A}_S) = \prod_{k < l} (t_{j_l} - t_{j_k})>0.
     \end{equation*}
-    To zna\v{c}i da je matrica $\vect A$ invertibilna, pa posebno i injektivna.
+    To zna\v{c}i da je matrica $\vect A$ invertibilna, pa posebno i injektivna. Tada je zadovoljena tvrdnja $(c)$ teorema \eqref{rekonstrukcija_tm1}, pa je po istom teoremu zadovoljena i tvrdnja $(a)$, tj. svaki $s$-rijedak vektor $\vect x \in \C^N$ zadovoljava $\vect{Az}=\vect{Ax}$. Stoga je taj vektor mogu\'ce jedinstveno rekonstruirati putem minimizacije \eqref{problem_minimizacije}.
 \end{proof}
+\indent Zapravo, mnogo matrica zadovoljava uvjet $(c)$ iz teorema \eqref{rekonstrukcija_tm1}. Na primjer, potencije od $t_1,\dots,t_N$ u \eqref{vandermont_matrica} ne moraju biti uzastopne. Nadalje, brojevi $t_1,\dots,t_N$ ne moraju biti pozitivni, niti realni sve dok vrijedi $\det(\vect A_S) \neq 0$. Posebno, mo\v{z}emo uzeti $t_l = e^{2\pi i (l-1)/N}$ za $l \in [N]$, teorem (TODO) garantira da parcijalna Fourierova matrica
+\begin{equation*}
+   \vect A = 
+   \begin{bmatrix*}
+       1 & 1 & 1 & \cdots & 1 \\
+       1 & e^{2 \pi i/ N} & e^{2 \pi i2/ N} & \cdots & e^{2 \pi i(N-1)/ N} \\ 
+       \vdots & \vdots & \vdots & \vdots & \vdots \\ 
+       1 & e^{2 \pi i(2s-1)/ N} & e^{2 \pi i(2s-1)2/ N} & \cdots & e^{2 \pi i(2s-1)(N-1)/ N} \\ 
+   \end{bmatrix*}
+\end{equation*}
+rekonstruira svaki $s$-rijedak vektor $\vect x \in \C^N$ iz $\vect y = \vect{Ax} \in \C^{2s}$.
+Zapravo mo\v{z}e se pokazati da skup $(2s) \times N$ matrica takvih da $\det(\vect A_S) = 0$ za neki $S \subset [N]$ i $\card(S) \leq 2s$ ima Lebesgueovu mjeru nula, pa stoga gotovo sve $(2s) \times N$ matrice rekonstruiraju svaki $s$-rijedak vektor $\vect x \in \C^N$ iz $\vect y = \vect{Ax} \in \C^{2s}$. Me\dj utim u praksi nije isplativo rje\v{s}avati problem minimizacije \eqref{problem_minimizacije}, \v{s}to \'cemo kasnije i pokazati.
 
 
+
+
+\subsection[Rekonstrukcija zadanog rijetkog vektora][Rekonstrukcija zadanog rijetkog vektora]{Rekonstrukcija zadanog rijetkog vektora}
+Promatramo problem gdje je $s$-rijedak vektor $\vect x \in \C^N$ unaprijed zadan i poznat, a matricu $\vect A \in \C^{m \times N}$ \v{z}elimo odabrati tako da ona garantira rekonstrukciju vektora $\vect x$ iz mjerenja $\vect y = \vect{Ax} \in \C^m$. Isprva, ovaka pristup izgleda neprirodan zbog \v{c}injenice da je vektor $\vect x$ apriorno poznat. Ideja je da \'ce uvjeti rekonstrukcije vrijediti za gotovo sve $(s+1) \times N$ matrice, \v{s}to podupire \v{c}injenicu da se u praksi matrice mjerenja \v{c}esto odabiru na nasumi\v{c}an na\v{c}in.
+\begin{thm}
+    Za svaki $N \geq s + 1$ i za dani $s$-rijedak vektor $\vect x \in \C^N$, postoji matrica mjerenja $\vect A \in \C^{(s+1) \times N}$, takva da se vektor $\vect x$ mo\v{z}e rekonstruirati iz mjerenja $\vect y = \vect{Ax} \in \C^m$ kao rje\v{s}enje minimizacije \eqref{problem_minimizacije}.
+\end{thm}
+\begin{proof}
+    
+\end{proof}
 
 
 
