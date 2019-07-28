@@ -454,7 +454,7 @@ NP-te\v{z}ak.\\
 Pitanje je li $\mathfrak{P}$ strogo sadr\v{z}ano u  $\mathfrak{NP}$ do dan danas nije odgovoreno. No, vjeruje se da postoje problemi za koje ne postoji algoritam rje\v{s}enja polinomijalnog vremena, ali postoji algoritam koji \'ce provjeriti to\v{c}nost rje\v{s}enja u polinomijalnom vremenu.
 Najpoznatiji $\mathfrak{NP}$-potpun problem je problem putuju\'ceg prodava\v{c}a. No, iskoristiti \'cemo  problem egzaktnog pokriva\v{c}a tro\v{c}lanim skupovima da bi pokazali da je problem \eqref{problem_minimizacije_generalni} $\mathfrak{NP}$-te\v{z}ak.
 
-\subsection[Egazktni pokriva\v{c} tro\v{c}lanim skupovima][Egazktni pokriva\v{c} tro\v{c}lanim skupovima]{Egazktni pokriva\v{c} tro\v{c}lanim skupovima}
+\subsection[Egzaktni pokriva\v{c} tro\v{c}lanim skupovima][Egzaktni pokriva\v{c} tro\v{c}lanim skupovima]{Egzaktni pokriva\v{c} tro\v{c}lanim skupovima}
 Za danu kolekciju $\{\mathcal{C}_i;\ i \in [N]\}$ tro\v{c}lanih podskupova od $[m]$, postoji li egzaktni pokriva\v{c} skupa $[m]$, tj. postoji li $J \subset [N]$ takav da $\cup_{j \in J}\mathcal{C}_j=[m]$, gdje je $\mathcal{C}_j \cap \mathcal{C}_k = \emptyset$ za svaki $j,k \in J$ razli\v{c}iti? Poznato je da je taj problem $\mathfrak{NP}$-potpun (vidi TODO).
 \begin{thm}
     Za svaki $\eta \geq 0,\ \vec A \in \C^{m \times N}$ i $\vec y \in \C^m$, problem minimizacije \eqref{problem_minimizacije_generalni} je $\mathfrak{NP}$-potpun.
@@ -472,8 +472,14 @@ Za danu kolekciju $\{\mathcal{C}_i;\ i \in [N]\}$ tro\v{c}lanih podskupova od $[
     \begin{equation*}
         \vec A = [\vec a_1\ \vec a_2\ \cdots \ \vec a_N], \qquad \vec y = [1,1, \dots, 1]^T.
     \end{equation*}
-    Po\v{s}to je $N \leq {m \choose 3}$, to mo\v{z}emo napraviti u polinomijalnom vremenu. Ako $\vec z \in \C^N$ zadovoljava $\norm{\vec{Az}-y}_2 \leq \eta$, tada su svih $m$ komponenti od $\vec{Az}$ udaljeljene od $1$ za najvi\v{s}e $\eta$, pa su razli\v{c}ito od nula, zbog
+    Po\v{s}to je $N \leq {m \choose 3}$, to mo\v{z}emo napraviti u polinomijalnom vremenu. Ako $\vec z \in \C^N$ zadovoljava $\norm{\vec{Az}-y}_2 \leq \eta$, tada su svih $m$ komponenti od $\vec{Az}$ udaljeljene od $1$ za najvi\v{s}e $\eta$, pa su te komponente razli\v{c}ite od nula, jer smo $\eta$ uzeli manji od $1$. Dakle, vrijedi $\norm{\vec{Az}}_0 = m$. Ali po\v{s}to svaki od vektora $\vec a_i$ imam to\v{c}no tri ne-nul komponente, vektor $\vec{Az}=\sum_{j=1}^N z_j \vec a_j$ ima najvi\v{s}e $r \norm{\vec z}_0$ ne-nul elemenata, tj. $\norm{\vec{Az}}_0 \leq 3 \norm{\vec{z}}_0$. Dakle, za svaki vektor $\vec z \in \C^N$ koji zadovoljava $\norm{\vec{Az}-\vec y}_2 \leq \eta$ vrijedi $\norm{\vec z}_0 \geq m/3$. Neka je sada $\vec x \in \C^N$ rje\v{s}enje $\ell_0$-minimizacije \eqref{problem_minimizacije_generalni}. Imamo dva slu\v{c}aj za normu vektora $\vec x$:
+    \begin{enumerate}
+        \item Ako je $\norm{\vec{x}}_0 = m/3$ tada je $\{\mathcal{C}_j;\ j \in \supp(\vec x)\}$ egzaktni pokriva\v{c} skupa $[m]$ jer ina\v{c}e bi neke od $m$ komponenti od $\vec{Ax}$ bile jednake od nula.
+        \item Ako je $\norm{\vec{x}}_0 > m/3$ tada ne mo\v{z}e postojati egzaktni pokriva\v{c} $\{\mathcal{C}_j;\ j \in J\}$ jer bi u suprotnom vektor $\vec z \in \C^N$ definiran tako da je $z_j = 1$ ako je $j \in J$i $z_j = 0$ ako je $j \not \in J$, zadovoljavao $\vec{Az}=\vec y$ i $\norm{\vec z}_0=m/3$, \v{s}to je kontradikcija s minimalnosti vektora $\vec x$.
+    \end{enumerate}
+    Dakle, rje\v{s}avanjem problem $\ell_0$-minimizacije, mo\v{z}emo rje\v{s}iti problem egzaktnog pokriva\v{c}a tro\v{c}lanim skupovima, pa je stoga i sam problem $\ell_0$-minimizacije $\mathfrak{NP}$-potpun.
 \end{proof}
+\v{C}ini se da prethodni teorem predstavlja ozbiljnu zapreku u prakti\v{c}nom rje\v{s}avanju problema sa\v{z}etog uzorkovanja. No primjetimo da teorem tvrdi da je algoritam koji rje\v{s}ava problem $\ell_0$-minimizacije, za sve mogu\'ce matrie $\vec A$ i vektore $\vec y$ barem klase $\mathfrak{NP}$. Naravno, u samoj praksi nije nu\v{z}no zahtjevati rekonstrukciju za sve takve matrice i vektore. Naime, pokazat \'cemo da postoje algoritmi koji uspje\v{s}no rekonstruiraju $\vec x$ iz $\vec y$ za posebno dizajnirane matrice $\vec A$.
 
 
 
