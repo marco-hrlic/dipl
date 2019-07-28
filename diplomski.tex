@@ -20,11 +20,11 @@
 % bibliografija na hrvatskom
 \usepackage[languagenames,fixlanguage,croatian]{babelbib} % zahtijeva datoteku croatian.bdf
 % hiperlinkovi 
-\usepackage[pdftex]{hyperref} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{hyperref}
+\usepackage[pdftex]{hyperref} 
 \usepackage{enumitem}
 %\newcommand{\vect}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\vect}[1]{\mathbf{#1}}
-
+\renewcommand{\vec}{\vect}
 \newcommand{\card}{\text{\normalfont{card}}}
 \newcommand{\supp}{\text{\normalfont{supp}}}
 \newcommand{\norm}[1]{\|{#1}\|}
@@ -45,7 +45,7 @@
 \usepackage{mathtools}
 
 \usepackage{lineno}
-\linenumbers
+%\linenumbers
 
 % Paket graphicx sluzi za manipuliranje grafikom 
 \usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
@@ -79,6 +79,8 @@
 \setlength\abovedisplayshortskip{10pt}
 \setlength\belowdisplayshortskip{10pt}
 
+\nocite{*}
+
 % Naredna frontmatter generira naslovnu stranicu, stranicu za potpise povjerenstva, eventualnu posvetu i sadrzaj
 % Moze se iskomentirati ukoliko nije u pitanju konacna verzija
 \frontmatter
@@ -98,48 +100,48 @@
 Uvedimo potrebnu notaciju. Neka je $[N]$ oznaka za skup $\{1,2,...,N\}$ gdje je $N\in\N$. Sa $\card(S)$ ozna\v{c}ujemo kardinalitet skupa $S$. Nadalje, $\bar{S}$ je komplement od $S$ u $[N]$, tj. $\bar{S}=[N]\backslash S$.
 
 \begin{defn}
-    Nosa\v{c} vektora $\vect{x} \in \C^{N}$ je skup indeksa njegovih ne-nul elemenata, tj.
-    $$\supp(\vect{x}):=\{j\in[N]:x_j \neq 0 \}$$
+    Nosa\v{c} vektora $\vec{x} \in \C^{N}$ je skup indeksa njegovih ne-nul elemenata, tj.
+    $$\supp(\vec{x}):=\{j\in[N]:x_j \neq 0 \}$$
 \end{defn}
 
-\noindent Za vektor $\vect{x}\in\C^{N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|\vect{x}\|_0 := \card(\supp(\vect{x})) \leq s$$
+\noindent Za vektor $\vec{x}\in\C^{N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|\vec{x}\|_0 := \card(\supp(\vec{x})) \leq s$$
 Primjetimo,
-$$\|\vect{x}\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\bold{1}_{\{x_j \neq 0\}} = \card(\{j \in [N]:x_j \neq 0\}) = \|\vect{x}\|_0$$
-Gdje smo koristili da je $\bold{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\bold{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|\vect{x}\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $\vect{x}$ kada $p$ te\v{z}i k nuli. Kvazinorma definira se jednako kao standardna $\ell_p$-norma, jedino \v{s}to nejednakost trokuta oslabimo, tj. 
-$$\|\vect{x}+\vect{y}\|\leq C(\|\vect{x}\|+\|\vect{y}\|)$$ 
+$$\|\vec{x}\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\mathbf{1}_{\{x_j \neq 0\}} = \card(\{j \in [N]:x_j \neq 0\}) = \|\vec{x}\|_0$$
+Gdje smo koristili da je $\mathbf{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\mathbf{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|\vec{x}\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $\vec{x}$ kada $p$ te\v{z}i k nuli. Kvazinorma definira se jednako kao standardna $\ell_p$-norma, jedino \v{s}to nejednakost trokuta oslabimo, tj. 
+$$\|\vec{x}+\vec{y}\|\leq C(\|\vec{x}\|+\|\vec{y}\|)$$ 
 za neku konstantu $C \geq 1$.
 Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona nije niti norma niti kvazinorma. U samoj praksi, te\v{s}ko je tra\v{z}iti rijetkost vektora, pa je stoga prirodno zahtjevati slabiji uvjet \textit{kompresibilnosti}.  
 \begin{defn}
-    $\ell_p$-gre\v{s}ku najbolje $s$-rijetke aproksimacije vektora $\vect{x}\in\C^{N}$ definiramo sa 
-    $$\sigma_s(\vect{x})_p := \inf\big\{\|\vect{x}-\vect{z}\|_p,\ \vect{z} \in \C^{N} \ \small{\text{je s-rijedak}}\big\}$$
+    $\ell_p$-gre\v{s}ku najbolje $s$-rijetke aproksimacije vektora $\vec{x}\in\C^{N}$ definiramo sa 
+    $$\sigma_s(\vec{x})_p := \inf\big\{\|\vec{x}-\vec{z}\|_p,\ \vec{z} \in \C^{N} \ \text{je s-rijedak}\big\}$$
 \end{defn}
-\indent Primjetimo da se infimum posti\v{z}e za svaki $s$-rijedak vektor $\vect{z} \in \C^{N}$ koji ima ne-nul elemente koji su jednaki sa $s$ najve\'cih komponenti vektora $\vect{x}$. Iako takav $\vect{z} \in \C^{N}$ nije jedinstven, on posti\v{z}e infimum za svaki $p > 0$. Neformalno, mogli bi re\'ci da je vektor $\vect{x} \in \C^{N}$ \textit{kompresibilan} ako gre\v{s}ka njegove najbolje $s$-rijetke aproksimacije brzo konvergira u $s$. Da bi to formalno iskazali, od koristi \'ce biti ocjena na $\sigma_s(\cdot)_p$. Po\v{s}to nam za to ne\'ce biti va\v{z}an poredak elemenata vektora $\vect{x}$, uvodimo sljede\'cu definiciju koja \'ce nam olaksati ra\v{c}un.
+\indent Primjetimo da se infimum posti\v{z}e za svaki $s$-rijedak vektor $\vec{z} \in \C^{N}$ koji ima ne-nul elemente koji su jednaki sa $s$ najve\'cih komponenti vektora $\vec{x}$. Iako takav $\vec{z} \in \C^{N}$ nije jedinstven, on posti\v{z}e infimum za svaki $p > 0$. Neformalno, mogli bi re\'ci da je vektor $\vec{x} \in \C^{N}$ \textit{kompresibilan} ako gre\v{s}ka njegove najbolje $s$-rijetke aproksimacije brzo konvergira u $s$. Da bi to formalno iskazali, od koristi \'ce biti ocjena na $\sigma_s(\cdot)_p$. Po\v{s}to nam za to ne\'ce biti va\v{z}an poredak elemenata vektora $\vec{x}$, uvodimo sljede\'cu definiciju koja \'ce nam olaksati ra\v{c}un.
 
 \begin{defn}
-    Nerastu\'ci poredak vektora $\vect{x} \in \C^{N}$ je vektor $\vect{x}^* \in \R^{\N}$ takav da
+    Nerastu\'ci poredak vektora $\vec{x} \in \C^{N}$ je vektor $\vec{x}^* \in \R^{\N}$ takav da
     $$x^*_1 \geq x^*_2 \geq x^*_3 \geq \dots \geq 0$$
     te postoji permutacije $\pi : [N]\rightarrow[N]$ takva da $x^*_j=|x_{\pi(j)}|$ za sve $j\in [N]$.
 \end{defn}
 \begin{prop}\label{osnovna_ocjena_lp_greske}
-    Za svaki $q > p > 0$ i za svaki $\vect{x}\in \C^{N}$ vrijedi
-    $$\sigma_s(\vect{x})_q \leq \frac{1}{s^{1/p - 1/q}}\|\vect{x}\|_p.$$
+    Za svaki $q > p > 0$ i za svaki $\vec{x}\in \C^{N}$ vrijedi
+    $$\sigma_s(\vec{x})_q \leq \frac{1}{s^{1/p - 1/q}}\|\vec{x}\|_p.$$
 \end{prop}
 \begin{proof}
-    Neka je $\vect{x}^* \in \R^N$ nerastu\'ci poredak vektora $\vect{x}\in\C^N$. Tada slijedi,
+    Neka je $\vec{x}^* \in \R^N$ nerastu\'ci poredak vektora $\vec{x}\in\C^N$. Tada slijedi,
     \begin{equation*}
     \begin{split} 
-        \sigma_s(\vect{x})_q^q &= \sum_{j=s+1}^{N}(x_j^*)^q=\sum_{j=s+1}^{N}(x_j^*)^p(x_j^*)^{q-p} \leq (x_s^*)^{q-p} \sum_{j=s+1}^{N}(x_j^*)^p \leq \bigg(\frac{1}{s}\sum_{j=1}^{s}(x_j^*)^p\bigg)^{\frac{q-p}{p}}\bigg( \sum_{j=s+1}^N(x_j^*)^p\bigg) \\ &\leq \bigg( \frac{1}{s} \|\vect{x}\|_p^p \bigg)^{\frac{q-p}{p}}\|\vect{x}\|_p^p = \frac{1}{s^{q/p-1}}\|\vect{x}\|_p^q
+        \sigma_s(\vec{x})_q^q &= \sum_{j=s+1}^{N}(x_j^*)^q=\sum_{j=s+1}^{N}(x_j^*)^p(x_j^*)^{q-p} \leq (x_s^*)^{q-p} \sum_{j=s+1}^{N}(x_j^*)^p \\ & \leq \bigg(\frac{1}{s}\sum_{j=1}^{s}(x_j^*)^p\bigg)^{\frac{q-p}{p}}\bigg( \sum_{j=s+1}^N(x_j^*)^p\bigg) \leq \bigg( \frac{1}{s} \|\vec{x}\|_p^p \bigg)^{\frac{q-p}{p}}\|\vec{x}\|_p^p \\ & = \frac{1}{s^{q/p-1}}\|\vec{x}\|_p^q
     \end{split}
     \end{equation*}
-    Prva nejednakost slijedi iz \v{c}injenice da je $x_j^* \leq x_s^*$ za svaki $j \geq s+1$. Druga nejednakost je tako\dj er posljedica nerasta komponenti od $\vect{x}^*$. Potenciranjem obje strane s $1/q$ slijedi tvrdnja.
+    Prva nejednakost slijedi iz \v{c}injenice da je $x_j^* \leq x_s^*$ za svaki $j \geq s+1$. Druga nejednakost je tako\dj er posljedica nerasta komponenti od $\vec{x}^*$. Potenciranjem obje strane s $1/q$ slijedi tvrdnja.
 \end{proof}
-Primjetimo da ako je $\vect{x}$ iz jedini\v{c}ne $\ell_p$-kugle za neki mali $p>0$, onda prethodna propozicija garantira kovergenciju od $\sigma_s(\vect{x})_q$ u $s$, gdje $\ell_p$-kuglu definiramo kao
-$$B_p^N := \big\{ \vect{z} \in \C^N : \|\vect{z}\|_p \leq 1\big\}$$
-Vratimo se sada ocjeni iz propozicije \ref{osnovna_ocjena_lp_greske}. Sljede\'ci teorem daje najmanju konstantu $c_{p,q}$ takvu da vrijedi $\sigma_s(\vect{x})_q\leq c_{p,q}s^{-1/p+1/q}\|\vect{x}\|_p$ te zapravo predstavlja ja\v{c}u tvrdnju.
+Primjetimo da ako je $\vec{x}$ iz jedini\v{c}ne $\ell_p$-kugle za neki mali $p>0$, onda prethodna propozicija garantira kovergenciju od $\sigma_s(\vec{x})_q$ u $s$, gdje $\ell_p$-kuglu definiramo kao
+$$B_p^N := \big\{ \vec{z} \in \C^N : \|\vec{z}\|_p \leq 1\big\}$$
+Vratimo se sada ocjeni iz propozicije \ref{osnovna_ocjena_lp_greske}. Sljede\'ci teorem daje najmanju konstantu $c_{p,q}$ takvu da vrijedi $\sigma_s(\vec{x})_q\leq c_{p,q}s^{-1/p+1/q}\|\vec{x}\|_p$ te zapravo predstavlja ja\v{c}u tvrdnju.
 \begin{thm}
-    Za svaki $q > p > 0$ i za svaki $\vect{x}\in\C^N$ vrijedi
+    Za svaki $q > p > 0$ i za svaki $\vec{x}\in\C^N$ vrijedi
     \begin{equation*}
-    \sigma_s(\vect{x})_q \leq \frac{c_{p,q}}{s^{1/p - 1/q}}\|\vect{x}\|_p
+    \sigma_s(\vec{x})_q \leq \frac{c_{p,q}}{s^{1/p - 1/q}}\|\vec{x}\|_p
     \end{equation*}
     gdje je
     $$
@@ -148,10 +150,10 @@ Vratimo se sada ocjeni iz propozicije \ref{osnovna_ocjena_lp_greske}. Sljede\'ci
 \end{thm}
 Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
 \begin{equation*}
-    \sigma_s(\vect{x})_2 \leq \frac{1}{2\sqrt{s}}\|\vect{x}\|_1
+    \sigma_s(\vec{x})_2 \leq \frac{1}{2\sqrt{s}}\|\vec{x}\|_1
 \end{equation*}
 \begin{proof}
-    Neka je $\vect{x}^*$ nerastu\'ci poredak vektora $\vect{x}\in\C^N$ i $\alpha_j := (x_j^*)^p$. Dokazati \'cemo ekvivaltenu tvrdnju
+    Neka je $\vec{x}^*$ nerastu\'ci poredak vektora $\vec{x}\in\C^N$ i $\alpha_j := (x_j^*)^p$. Dokazati \'cemo ekvivaltenu tvrdnju
     \begin{equation}\label{ocjena_ekv_tvrdnja}
     \begin{rcases}
 {\alpha_1 \geq \alpha_2 \geq \cdots \geq \alpha_N \geq 0} \\
@@ -181,21 +183,21 @@ Istaknimo za \v{c}esti odabir $p=1$ i $q=2$
     \max\limits_{(\alpha_1,\dots,\alpha_N)\in\mathcal{C}} f(\alpha_1, \alpha_2, \dots, \alpha_N) \leq g(k^*) = \frac{1}{r}\bigg( 1- \frac{1}{r}\bigg)^{r-1}\frac{1}{s^r-1}=c^q_{p,q}\frac{1}{s^{q/p}-1}
     $$
 \end{proof}
-\indent Alternativni na\v{c}in na koji bi mogli definirati pojam \textit{kompresibilnosti} za vektor $\vect{x}\in\C^N$ je da zahtjevamo da je broj
+\indent Alternativni na\v{c}in na koji bi mogli definirati pojam \textit{kompresibilnosti} za vektor $\vec{x}\in\C^N$ je da zahtjevamo da je broj
 $$\card(\{j\in[N]:|x_j|\geq t\})$$
 tj. broj njegovih zna\v{c}ajnih ne-nul komponenti dovoljno mali. Ovaj pristup vodi na definiciju slabih $\ell_p$-prostora.
 \begin{defn}
 Za $p>0$, slabi $\ell_p$-prostor s oznakom $w\ell_p^N$ definiramo kao prostor $\C^N$ sa kvazinormom
 \begin{equation}\label{slaba_kvazinorma}
-    \|\vect{x}\|_{p, \infty}:=\inf\bigg\{ M \geq 0: \card (\{j\in [N]: |x_j|\geq t \})\leq \frac{M^P}{t^p},\ \forall t>0    \bigg\}
+    \|\vec{x}\|_{p, \infty}:=\inf\bigg\{ M \geq 0: \card (\{j\in [N]: |x_j|\geq t \})\leq \frac{M^P}{t^p},\ \forall t>0    \bigg\}
 \end{equation}
 \end{defn}
 \noindent
 Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam je sljede\'ci rezultat.
 \begin{prop}
-    Neka su $\vect{x}^1,\dots\vect{x}^k\in\C^N$. Tada za svaki $p>0$ vrijedi 
+    Neka su $\vec{x}^1,\dots\vec{x}^k\in\C^N$. Tada za svaki $p>0$ vrijedi 
     \begin{equation*}
-    \|\vect{x}^1+\dots+\vect{x}^k\|_{p,\infty} \leq k^{\max\{1, 1/p\}}(\|\vect{x}^1\|_{p, \infty} + \cdots + \|\vect{x}^k\|_{p, \infty})
+    \|\vec{x}^1+\dots+\vec{x}^k\|_{p,\infty} \leq k^{\max\{1, 1/p\}}(\|\vec{x}^1\|_{p, \infty} + \cdots + \|\vec{x}^k\|_{p, \infty})
     \end{equation*}
 \end{prop}
 \begin{proof}
@@ -205,72 +207,72 @@ Da bi pokazali da je \eqref{slaba_kvazinorma} zapravo kvazinorma, potreban nam j
     \end{equation*}
     pa je stoga
     \begin{align*}
-        \card\big( \big\{ j\in [N] : |x_j^1+\cdots+k_j^k| \geq t \big\}\big)&\leq\sum\limits_{i\in [k]}\frac{\|\vect{x}^i\|^p_{p, \infty}}{(t/k)^p} \\ 
-                                                                            &= \frac{k^p(\|\vect{x}^1\|^p_{p, \infty}+\cdots + \|\vect{x}^k\|^p_{p, \infty})}{t^p}
+        \card\big( \big\{ j\in [N] : |x_j^1+\cdots+k_j^k| \geq t \big\}\big)&\leq\sum\limits_{i\in [k]}\frac{\|\vec{x}^i\|^p_{p, \infty}}{(t/k)^p} \\ 
+                                                                            &= \frac{k^p(\|\vec{x}^1\|^p_{p, \infty}+\cdots + \|\vec{x}^k\|^p_{p, \infty})}{t^p}
     \end{align*}
-    Prema definiciji slabe $\ell_p$-kvazinorme \eqref{slaba_kvazinorma} vektora $\vect{x}^1+\cdots+\vect{x}^k$ dobivamo
+    Prema definiciji slabe $\ell_p$-kvazinorme \eqref{slaba_kvazinorma} vektora $\vec{x}^1+\cdots+\vec{x}^k$ dobivamo
     \begin{equation*}
-        \|\vect{x}^1+\cdots+\vect{x}^k\|_{p, \infty}\leq k\big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big) 
+        \|\vec{x}^1+\cdots+\vec{x}^k\|_{p, \infty}\leq k\big(\|\vec{x}^1\|^p_{p,\infty}+ \cdots +\|\vec{x}^k\|^p_{p,\infty}\big) 
     \end{equation*}
     Ako je $p \leq 1$, uspore\dj uju\'ci $\ell_p$ i $\ell_1$ norme na $\R^k$ slijedi
     \begin{equation*}
-        \big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big)^{1/p} \leq k^{1/p-1}\big(\|\vect{x}^1\|_{p,\infty}+ \cdots +\|\vect{x}^k\|_{p,\infty}\big)
+        \big(\|\vec{x}^1\|^p_{p,\infty}+ \cdots +\|\vec{x}^k\|^p_{p,\infty}\big)^{1/p} \leq k^{1/p-1}\big(\|\vec{x}^1\|_{p,\infty}+ \cdots +\|\vec{x}^k\|_{p,\infty}\big)
     \end{equation*}
     te ako je $p \geq 1$ slijedi
     \begin{equation*}
-        \big(\|\vect{x}^1\|^p_{p,\infty}+ \cdots +\|\vect{x}^k\|^p_{p,\infty}\big)^{1/p} \leq \|\vect{x}^1\|_{p,\infty}+ \cdots +\|\vect{x}^k\|_{p,\infty}.
+        \big(\|\vec{x}^1\|^p_{p,\infty}+ \cdots +\|\vec{x}^k\|^p_{p,\infty}\big)^{1/p} \leq \|\vec{x}^1\|_{p,\infty}+ \cdots +\|\vec{x}^k\|_{p,\infty}.
     \end{equation*}
     Tvrdnja slijedi kombiniranjem dobivenih ocjena.
 \end{proof}
 
 \noindent
-Uzmimo $\vect{x}, \vect{y} \in \C^N$ i neka je $\lambda \in \C$ proizvoljan.
+Uzmimo $\vec{x}, \vec{y} \in \C^N$ i neka je $\lambda \in \C$ proizvoljan.
 
 \begin{enumerate}
-    \item Neka je $\|\vect{x}\|_{p, \infty}=0$. Iz \eqref{slaba_kvazinorma} slijedi $ \card(\{j \in [N]: |x_j| \geq t\}) = 0$ za svaki $t > 0$ pa je stoga broj ne-nul komponenti on $\vect{x}$ jednak nuli, tj. $\vect{x}=0$ 
-    \item Ako je $\lambda$ nula, $\|\lambda \vect{x}\| = | \lambda | \| \vect{x} \|$ vrijedi trivijalno. Za $\lambda \neq 0$, imamo \\
-        $\card(\{ j \in [N]: |\alpha x_j| \geq t \}) = \card(\{ j \in [N]: |x_j| \geq t/|\alpha| \})\leq (\alpha M)^p/t^p$ za svaki $t>0$. Dakle, opet $\|\lambda \vect{x}\| = | \lambda | \| \vect{x} \|$.
-    \item $\|\vect{x}+\vect{y}\|\leq C(\|\vect{x}\|+\|\vect{y}\|)$ je sada direktna posljedica prethodne propozicije.
+    \item Neka je $\|\vec{x}\|_{p, \infty}=0$. Iz \eqref{slaba_kvazinorma} slijedi $ \card(\{j \in [N]: |x_j| \geq t\}) = 0$ za svaki $t > 0$ pa je stoga broj ne-nul komponenti on $\vec{x}$ jednak nuli, tj. $\vec{x}=0$ 
+    \item Ako je $\lambda$ nula, $\|\lambda \vec{x}\| = | \lambda | \| \vec{x} \|$ vrijedi trivijalno. Za $\lambda \neq 0$, imamo \\
+        $\card(\{ j \in [N]: |\alpha x_j| \geq t \}) = \card(\{ j \in [N]: |x_j| \geq t/|\alpha| \})\leq (\alpha M)^p/t^p$ za svaki $t>0$. Dakle, opet $\|\lambda \vec{x}\| = | \lambda | \| \vec{x} \|$.
+    \item $\|\vec{x}+\vec{y}\|\leq C(\|\vec{x}\|+\|\vec{y}\|)$ je sada direktna posljedica prethodne propozicije.
 \end{enumerate}
 
-\noindent Sljede\'ca propozicija daje alternativni izraz za slabu $\ell_p$-kvazinormu.
+\noindent sljede\'ca propozicija daje alternativni izraz za slabu $\ell_p$-kvazinormu.
 \begin{prop}\label{slaba_kvazinorma_2}
     Za $p>0$, vrijedi
     \begin{equation*}
-        \|\vect{x}\|_{p, \infty} = \max \limits_{k \in [N]}k^{1/p}x_k^{*}
+        \|\vec{x}\|_{p, \infty} = \max \limits_{k \in [N]}k^{1/p}x_k^{*}
     \end{equation*}
-    gdje je $\vect{x}^* \in \R^N$ nerastu\'ci poredak vektora $\vect{x}\in \C^N$.
+    gdje je $\vec{x}^* \in \R^N$ nerastu\'ci poredak vektora $\vec{x}\in \C^N$.
 \end{prop}
 \begin{proof}
-    Primjetimo prvo da iz \eqref{slaba_kvazinorma} slijedi da je $\|\vect{x}\|_{p, \infty}=\|\vect{x}^*\|_{p, \infty}$, pa zapravo pokazujemo da je $\|\vect{x}\|:= \max_{k \in [N]}k^{1/p}x_k^* = \|\vect{x}^*\|$. Nadalje, za $t>0$ vrijedi da je $\{j \in [N]: x^*_j \geq t\}=[k]$ za neki $k \in [N]$ ili je $\{j \in [N]: x^*_j \geq t\}=\emptyset$. U prvom slu\v{c}aju $t \leq x^*_k \leq \|\vect{x}\|/k^{1/p}$ pa je $\card(\{j \in [N]:x_j^* \geq t \}) = k \leq \|\vect{x}\|/k^{1/p}$. U drugom slu\v{c}aju ista nejednakost vrijedi trivijalno. Iz definicije slabe $\ell_p$-kvazinorme \eqref{slaba_kvazinorma} sada dobivamo $\|\vect{x}^*\|_{p, \infty} \leq \|\vect{x}\|$. Pretpostavimo da je $\|\vect{x}^*\|_{p, \infty} < \|\vect{x}\|$. Tada postoji $\varepsilon > 0$ takav da $(1+ \varepsilon)\|\vect{x}^*\|_{p, \infty} \leq \|\vect{x}\|$. Slijedi da je $(1 + \varepsilon)\|\vect{x}^*\| \leq  k^{1/p}x^*_k$ za neki $k \in [N]$ pa stoga
+    Primjetimo prvo da iz \eqref{slaba_kvazinorma} slijedi da je $\|\vec{x}\|_{p, \infty}=\|\vec{x}^*\|_{p, \infty}$, pa zapravo pokazujemo da je $\|\vec{x}\|:= \max_{k \in [N]}k^{1/p}x_k^* = \|\vec{x}^*\|$. Nadalje, za $t>0$ vrijedi da je $\{j \in [N]: x^*_j \geq t\}=[k]$ za neki $k \in [N]$ ili je $\{j \in [N]: x^*_j \geq t\}=\emptyset$. U prvom slu\v{c}aju $t \leq x^*_k \leq \|\vec{x}\|/k^{1/p}$ pa je $\card(\{j \in [N]:x_j^* \geq t \}) = k \leq \|\vec{x}\|/k^{1/p}$. U drugom slu\v{c}aju ista nejednakost vrijedi trivijalno. Iz definicije slabe $\ell_p$-kvazinorme \eqref{slaba_kvazinorma} sada dobivamo $\|\vec{x}^*\|_{p, \infty} \leq \|\vec{x}\|$. Pretpostavimo da je $\|\vec{x}^*\|_{p, \infty} < \|\vec{x}\|$. Tada postoji $\varepsilon > 0$ takav da $(1+ \varepsilon)\|\vec{x}^*\|_{p, \infty} \leq \|\vec{x}\|$. Slijedi da je $(1 + \varepsilon)\|\vec{x}^*\| \leq  k^{1/p}x^*_k$ za neki $k \in [N]$ pa stoga
     \begin{equation*}
-        [k] \subseteq \big\{ j \in [N] : (1 + \varepsilon)\|\vect{x}^*\|_{p, \infty}/k^{1/p} \leq x_j^* \big\}
+        [k] \subseteq \big\{ j \in [N] : (1 + \varepsilon)\|\vec{x}^*\|_{p, \infty}/k^{1/p} \leq x_j^* \big\}
     \end{equation*}
     Ponovo iz \eqref{slaba_kvazinorma} imamo
     \begin{equation*}
-        k \leq \frac{\|\vect{x}^*\|^p_{p, \infty}}{\big( (1 + \varepsilon)\|\vect{x}^*\|_{p, \infty}k^{1/p}\big)^p}=\frac{k}{(1 + \varepsilon)^p}
+        k \leq \frac{\|\vec{x}^*\|^p_{p, \infty}}{\big( (1 + \varepsilon)\|\vec{x}^*\|_{p, \infty}k^{1/p}\big)^p}=\frac{k}{(1 + \varepsilon)^p}
     \end{equation*}
-    Kontradikcija, dakle mora vrijediti $\|\vect{x}\| = \|\vect{x}^*\|_{p, \infty}$.
+    Kontradikcija, dakle mora vrijediti $\|\vec{x}\| = \|\vec{x}^*\|_{p, \infty}$.
 \end{proof}
 \noindent Sada lagano mo\v{z}emo usporediti slabi i jaku $\ell_p$ normu,
 \begin{prop}
-    Za svaki $p > 0$ i za svaki $\vect{x} \in \C^N$,
+    Za svaki $p > 0$ i za svaki $\vec{x} \in \C^N$,
     \begin{equation*}
-        \|\vect{x}\|_{p, \infty} \leq \|\vect{x}\|_p
+        \|\vec{x}\|_{p, \infty} \leq \|\vec{x}\|_p
     \end{equation*}
 \end{prop}
 \begin{proof}
     Neka je $k \in [N]$,
     \begin{equation*}
-        \|\vect{x}\|_p^p = \sum_{j=1}^{N}(x_j^*)^p \geq \sum_{j=1}^{k}(x_j^*)^p \geq k(x_k^*)^p
+        \|\vec{x}\|_p^p = \sum_{j=1}^{N}(x_j^*)^p \geq \sum_{j=1}^{k}(x_j^*)^p \geq k(x_k^*)^p
     \end{equation*}
     Tvrdnja slijedi potenciranjem na $1/p$ i uzimaju\'ci maksimum po $k$ i primjenom prethodne propozicije.
 \end{proof}
 Koriste\'ci propoziciju \eqref{slaba_kvazinorma_2} mo\v{z}emo dobiti verziju ocjene iz propozicije \eqref{osnovna_ocjena_lp_greske} sa slabom $\ell_p$ normom.
 \begin{prop}
-    Za svaki $q>p>0$ i $\vect{x} \in \C^N$, vrijedi
+    Za svaki $q>p>0$ i $\vec{x} \in \C^N$, vrijedi
     \begin{equation*}
-        \sigma_s(\vect{x})_q \leq \frac{d_{p,q}}{s^{1/p-1/q}}\|\vect{x}\|_{p, \infty}
+        \sigma_s(\vec{x})_q \leq \frac{d_{p,q}}{s^{1/p-1/q}}\|\vec{x}\|_{p, \infty}
     \end{equation*}
     gdje je
     \begin{equation*}
@@ -278,75 +280,75 @@ Koriste\'ci propoziciju \eqref{slaba_kvazinorma_2} mo\v{z}emo dobiti verziju ocj
     \end{equation*}
 \end{prop}
 \begin{proof}
-    Bez smanjenja op\v{c}enitosti mo\v{z}emo pretpostaviti da je $\norm{\vect{x}}_{p,\infty} \leq 1$, pa je $x_k^* \leq 1/k^{1/p}$ za svaki $k \in [N]$. Tada vrijedi,
+    Bez smanjenja op\v{c}enitosti mo\v{z}emo pretpostaviti da je $\norm{\vec{x}}_{p,\infty} \leq 1$, pa je $x_k^* \leq 1/k^{1/p}$ za svaki $k \in [N]$. Tada vrijedi,
     \begin{equation*}
-    \sigma_s(\vect{x})^q_q = \sum_{k=s+1}^{N} (x_k^*)^q \leq \sum_{k=s+1}^N \frac{1}{k^{q/p}} \leq \int_s^N \frac{1}{t^{q/p}} dt = - \frac{1}{q/p-1} \frac{1}{t^{q/p-1}}\bigg\rvert^{t=N}_{t=s} \leq \frac{p}{q-p} \frac{1}{s^{q/p-1}}.
+    \sigma_s(\vec{x})^q_q = \sum_{k=s+1}^{N} (x_k^*)^q \leq \sum_{k=s+1}^N \frac{1}{k^{q/p}} \leq \int_s^N \frac{1}{t^{q/p}} dt = - \frac{1}{q/p-1} \frac{1}{t^{q/p-1}}\bigg\rvert^{t=N}_{t=s} \leq \frac{p}{q-p} \frac{1}{s^{q/p-1}}.
     \end{equation*}
     Potenciranjem sa $1/q$ slijedi tvrdnja.
 \end{proof}
-Prethodna propozicija daje da su vektori $\vect{x} \in \C^N$ koji su kompresibilni u smislu $\norm{\vect{x}}_{p, \infty} \leq 1$ za mali $p>0$, tako\dj er kompresibilni u smislu da gre\v{s}ka njihove najbolje $s$-rijetke aproksimacije brzo konvergira sa $s$. Iska\v{z}imo jo\v{s} jedan tehni\v{c}ki rezultat,
+Prethodna propozicija daje da su vektori $\vec{x} \in \C^N$ koji su kompresibilni u smislu $\norm{\vec{x}}_{p, \infty} \leq 1$ za mali $p>0$, tako\dj er kompresibilni u smislu da gre\v{s}ka njihove najbolje $s$-rijetke aproksimacije brzo konvergira sa $s$. Iska\v{z}imo jo\v{s} jedan tehni\v{c}ki rezultat,
 \begin{lem}
-    Neka su $\vect{x}, \vect{y} \in \C^N$. Tada vrijedi,
+    Neka su $\vec{x}, \vec{y} \in \C^N$. Tada vrijedi,
     \begin{equation} \label{nerastuci_poredak_ocjena_1}
-        \norm{\vect{x}^* - \vect{y}^*}_{\infty} \leq \norm{\vect{x} - \vect{y}}_{\infty}
+        \norm{\vec{x}^* - \vec{y}^*}_{\infty} \leq \norm{\vec{x} - \vec{y}}_{\infty}
     \end{equation}
     Nadalje, za $s \in [N]$,
     \begin{equation}\label{nerastuci_poredak_ocjena_2}
-        |\sigma_s(\vect{x})_1 - \sigma(\vect{y})_1| \leq \norm{\vect{x} - \vect{y}}_1
+        |\sigma_s(\vec{x})_1 - \sigma(\vec{y})_1| \leq \norm{\vec{x} - \vec{y}}_1
     \end{equation}
     i za $k>s$,
     \begin{equation}\label{nerastuci_poredak_ocjena_3}
-        (k-s)x_k^* \leq \norm{\vect{x} - \vect{y}}_1 + \sigma_s(\vect{y})_1
+        (k-s)x_k^* \leq \norm{\vec{x} - \vec{y}}_1 + \sigma_s(\vec{y})_1
     \end{equation}
 \end{lem}
 \begin{proof}
-    Za $j \in [N]$, skup indeksa $j$ najve\'cih komponenti vektora $\vect{x}$ ima ne-trivijalni presjek sa skupom od $N-j+1$ najmanjih komponenti vektora $\vect{y}$. Izaberimo indeks $l$ iz tog presjeka. Tada vrijedi, 
+    Za $j \in [N]$, skup indeksa $j$ najve\'cih komponenti vektora $\vec{x}$ ima ne-trivijalni presjek sa skupom od $N-j+1$ najmanjih komponenti vektora $\vec{y}$. Izaberimo indeks $l$ iz tog presjeka. Tada vrijedi, 
     \begin{equation*}
-        x_j^* \leq |x_l| \leq |y_l| + \norm{\vect{x} - \vect{y}}_{\infty} \leq z_j^* + \norm{\vect{x} - \vect{y}}_{\infty}
+        x_j^* \leq |x_l| \leq |y_l| + \norm{\vec{x} - \vec{y}}_{\infty} \leq z_j^* + \norm{\vec{x} - \vec{y}}_{\infty}
     \end{equation*}
-    Zamjenom uloga od $\vect{x}$ i $\vect{y}$ slijedi \eqref{nerastuci_poredak_ocjena_1}.
-    Neka je $\vect{v} \in \C^N$ najbolja $s$-rijetka aproksimacija vektora $\vect{y}$. Tada
+    Zamjenom uloga od $\vec{x}$ i $\vec{y}$ slijedi \eqref{nerastuci_poredak_ocjena_1}.
+    Neka je $\vec{v} \in \C^N$ najbolja $s$-rijetka aproksimacija vektora $\vec{y}$. Tada
     \begin{equation*}
-        \sigma_s(\vect{x})_1 \leq \norm{\vect{x} - \vect{v}}_1 \leq \norm{\vect{x} - \vect{y}}_1 + \norm{\vect{y} - \vect{v}}_1 = \norm{\vect{x} - \vect{y}}_1 + \sigma_s(\vect{y})_1 
+        \sigma_s(\vec{x})_1 \leq \norm{\vec{x} - \vec{v}}_1 \leq \norm{\vec{x} - \vec{y}}_1 + \norm{\vec{y} - \vec{v}}_1 = \norm{\vec{x} - \vec{y}}_1 + \sigma_s(\vec{y})_1 
     \end{equation*}
     Ponovno, zbog simetrije slijedi \eqref{nerastuci_poredak_ocjena_2}. Napokon, ocjena \eqref{nerastuci_poredak_ocjena_3} slijedi iz \eqref{nerastuci_poredak_ocjena_2} te iz \v{c}injenice
     \begin{equation*}
-        (k-s)x_k^* \leq \sum_{j=s+1}^{k}x_j^* \leq \sum_{j \geq s+1} x_j^* = \sigma_s(\vect{x})_1.
+        (k-s)x_k^* \leq \sum_{j=s+1}^{k}x_j^* \leq \sum_{j \geq s+1} x_j^* = \sigma_s(\vec{x})_1.
     \end{equation*}
 \end{proof}
 
 \section[Minimalni broj mjerenja][Minimalni broj mjerenja]{Minimalni broj mjerenja}
-Problem sa\v{z}etog uzorkovanja sastoji se od rekonstrukcije $s$-rijetkog vektora $\vect{x} \in \C^N$ iz sustava
-$$\vect{y} = \vect{A}\vect{x}$$
-Matricu $\vect{A} \in \C^{m\times N}$ nazivamo \textit{matrica mjerenja}. Ako je $m < N$, za ovakav sustav linearnih jednad\v{z}bi ka\v{z}emo da je \textit{neodre\dj en}. Iako iz klasi\v{c}ne teorije linearne algebre ovakvi sustavi imaju beskona\v{c}no mnogo rije\v{s}enja, pokazati \'ce se da je dodatna pretpostavka rijetkosti vektora $x$ dovoljno za jedinstvenost rje\v{s}enja. U ovom poglavlju istra\v{z}iti \'cemo koji je minimalni broj mjerenja, tj. $m$ broj redaka matrice $\vect{A}$, koji garantira rekonstrukciju $s$-rijetkog vektora $\vect{x}$. Zapravo, postoje dva pristupa ovom problemu. Mo\v{z}emo zahtjevati da problem mjerenja rekonstruira sve $s$-rijetke vektore $\vect{x} \in \C^N$ istodobno ili mo\v{z}emo tra\v{z}iti rekonstrukciju specifi\v{c}nog, tj. predodre\dj enog vektora $\vect{x} \in \C^N$. Taj pristup \v{c}ini se neprirodan, no pokazuje se da je on va\v{z}an u prou\v{c}avanju problema gdje matricu $\vect{A}$ biramo nasumi\v{c}no. \\ 
-\indent Poka\v{z}imo da su za danu rijetkost $s$, matricu $\vect{A} \in \C^{m \times N}$ i $s$-rijedak vektor $\vect{x} \in \C^N$, naredne tvrdnje ekvivaltentne: 
+Problem sa\v{z}etog uzorkovanja sastoji se od rekonstrukcije $s$-rijetkog vektora $\vec{x} \in \C^N$ iz sustava
+$$\vec{y} = \vec{A}\vec{x}$$
+Matricu $\vec{A} \in \C^{m\times N}$ nazivamo \textit{matrica mjerenja}. Ako je $m < N$, za ovakav sustav linearnih jednad\v{z}bi ka\v{z}emo da je \textit{neodre\dj en}. Iako iz klasi\v{c}ne teorije linearne algebre ovakvi sustavi imaju beskona\v{c}no mnogo rije\v{s}enja, pokazati \'ce se da je dodatna pretpostavka rijetkosti vektora $x$ dovoljno za jedinstvenost rje\v{s}enja. U ovom poglavlju istra\v{z}iti \'cemo koji je minimalni broj mjerenja, tj. $m$ broj redaka matrice $\vec{A}$, koji garantira rekonstrukciju $s$-rijetkog vektora $\vec{x}$. Zapravo, postoje dva pristupa ovom problemu. Mo\v{z}emo zahtjevati da problem mjerenja rekonstruira sve $s$-rijetke vektore $\vec{x} \in \C^N$ istodobno ili mo\v{z}emo tra\v{z}iti rekonstrukciju specifi\v{c}nog, tj. predodre\dj enog vektora $\vec{x} \in \C^N$. Taj pristup \v{c}ini se neprirodan, no pokazuje se da je on va\v{z}an u prou\v{c}avanju problema gdje matricu $\vec{A}$ biramo nasumi\v{c}no. \\ 
+\indent Poka\v{z}imo da su za danu rijetkost $s$, matricu $\vec{A} \in \C^{m \times N}$ i $s$-rijedak vektor $\vec{x} \in \C^N$, naredne tvrdnje ekvivaltentne: 
 \begin{enumerate}
-    \item Vektor $\vect{x}$ je jedinstveno $s$-rijetko rje\v{s}enje sustava $\vect{A}\vect{z}=\vect{y}$ gdje je $\vect{y} = \vect{Ax}$, tj. $\{\vect{z} \in \C^N : \vect{A}\vect{z}= \vect{A}\vect{x},\ \norm{\vect{z}}_0 \leq s\} = \{\vect{x}\}$
-    \item Vektor $\vect{x}$ je jedinstveno rje\v{s}enje problema minimizacije
+    \item Vektor $\vec{x}$ je jedinstveno $s$-rijetko rje\v{s}enje sustava $\vec{A}\vec{z}=\vec{y}$ gdje je $\vec{y} = \vec{Ax}$, tj. $\{\vec{z} \in \C^N : \vec{A}\vec{z}= \vec{A}\vec{x},\ \norm{\vec{z}}_0 \leq s\} = \{\vec{x}\}$
+    \item Vektor $\vec{x}$ je jedinstveno rje\v{s}enje problema minimizacije
         \begin{equation}
-            \min\limits_{\vect{z} \in \C^N} \norm{\vect{z}}_0\quad \text{uz uvjet}\ \vect{Az} = \vect y \label{problem_minimizacije} 
+            \min\limits_{\vec{z} \in \C^N} \norm{\vec{z}}_0\quad \text{uz uvjet}\ \vec{Az} = \vec y \tag{$P_{0}$}\label{problem_minimizacije} 
         \end{equation}
 \end{enumerate}
-Ako je $\vect{x} \in \C^N$ jedinstveno $s$-rijetko rje\v{s}enje od $\vect{Az} = \vect y$ takvo da je $\vect y = \vect{Ax}$, onda rje\v{s}enje $x^{\sharp}$ od \eqref{problem_minimizacije} je $s$-rijetko i zadovoljava $\vect{Ax} = \vect y$ pa je $\vect x^\sharp = \vect x$. Drugi smjer slijedi trivijalno.
+Ako je $\vec{x} \in \C^N$ jedinstveno $s$-rijetko rje\v{s}enje od $\vec{Az} = \vec y$ takvo da je $\vec y = \vec{Ax}$, onda rje\v{s}enje $x^{\sharp}$ od \eqref{problem_minimizacije} je $s$-rijetko i zadovoljava $\vec{Ax} = \vec y$ pa je $\vec x^\sharp = \vec x$. Drugi smjer slijedi trivijalno.
 
 
 \subsection[Rekonstrukcija svih rijetkih vektora][Rekonstrukcija svih rijetkih vektora]{Rekonstrukcija svih rijetkih vektora}
-Neka je $\vect{A} \in \C^{m \times N}$ i $S \subset [N]$, sa $\vect A_S$ ozna\v{c}ujemo matricu formiranu od stupaca od $\vect A$ indeksiranih sa $S$. Sli\v{c}no, sa $\vect x_S$ ozna\v{c}ujemo ili vektor iz $\C^{S}$ koji se sastoji od komponenti vektora $\vect x$ indeksiranih po $S$, tj. $(\vect x_S)_l = x_l$ za sve $l \in S$, ili vektor iz $\C^N$ koji se podudara s $\vect x$ na komponentama indeksiranim u $S$ i jednak je nula na indeksima koji nisu u $S$, tj. $(\vect x_S)_l = x_l$ za $l \in S$ i $(\vect x_S)_l =0$ za $ l \notin S$. Iz konteksta \'ce uvijek biti jasno na koju definiciju se misli.
+Neka je $\vec{A} \in \C^{m \times N}$ i $S \subset [N]$, sa $\vec A_S$ ozna\v{c}ujemo matricu formiranu od stupaca od $\vec A$ indeksiranih sa $S$. Sli\v{c}no, sa $\vec x_S$ ozna\v{c}ujemo ili vektor iz $\C^{S}$ koji se sastoji od komponenti vektora $\vec x$ indeksiranih po $S$, tj. $(\vec x_S)_l = x_l$ za sve $l \in S$, ili vektor iz $\C^N$ koji se podudara s $\vec x$ na komponentama indeksiranim u $S$ i jednak je nula na indeksima koji nisu u $S$, tj. $(\vec x_S)_l = x_l$ za $l \in S$ i $(\vec x_S)_l =0$ za $ l \notin S$. Iz konteksta \'ce uvijek biti jasno na koju definiciju se misli.
 
 \begin{thm} \label{rekonstrukcija_tm1}
-    Neka je $\vect A \in \C^{m \times N}$. Ekvivalentno je:
+    Neka je $\vec A \in \C^{m \times N}$. Ekvivalentno je:
     \begin{enumerate}[label=(\alph*)]
-        \item Svaki $s$-rijedak vektor $\vect x \in \C^N$ je jedinstveno rje\v{s}enje od $\vect{Ax}=\vect{Az}$, tj. ako je $\vect{Ax}=\vect{Az}$ i ako su $\vect x$, $\vect z$ oboje $s$-rijetki tada $\vect x = \vect z$.
-        \item Jezgra od $\vect A$ ne sadr\v{z}i niti jedan $2s$-rijedak vektor osim nul-vektora, tj. $\ker \vect A \cap \{\vect z \in \C^N: \norm{\vect z}_0 \leq 2s\} = \{\vect 0\}$
-        \item Za svaki $S \subset [N]$ takav da $\card(S) \leq 2s$, podmatrica $\vect A_S$ je injektivna kao preslikavanje sa $\C^S$ u $\C^m$.
-        \item Svaki skup od $2s$ stupaca matrice $\vect A$ je linearno nezavisan skup.
+        \item Svaki $s$-rijedak vektor $\vec x \in \C^N$ je jedinstveno rje\v{s}enje od $\vec{Ax}=\vec{Az}$, tj. ako je $\vec{Ax}=\vec{Az}$ i ako su $\vec x$, $\vec z$ oboje $s$-rijetki tada $\vec x = \vec z$.
+        \item Jezgra od $\vec A$ ne sadr\v{z}i niti jedan $2s$-rijedak vektor osim nul-vektora, tj. $\ker \vec A \cap \{\vec z \in \C^N: \norm{\vec z}_0 \leq 2s\} = \{\vec 0\}$
+        \item Za svaki $S \subset [N]$ takav da $\card(S) \leq 2s$, podmatrica $\vec A_S$ je injektivna kao preslikavanje sa $\C^S$ u $\C^m$.
+        \item Svaki skup od $2s$ stupaca matrice $\vec A$ je linearno nezavisan skup.
     \end{enumerate}
 \end{thm}
 \begin{proof}
     \begin{itemize}
-        \item[]$(b)\implies(a)$. Neka su $\vect x$ i $\vect z$ $s$-rijetki vektori takvi da $\vect{Ax} = \vect{Az}$. Tada je $\vect x - \vect z$ $2s$-rijedak i $\vect A(\vect x - \vect z) = \vect 0$. Po\v{s}to $\ker \vect A$ ne sadr\v{z}i $2s$-rijetke vektore osim nul-vektora, mora vrijediti $\vect x = \vect z$. \\
-        \item[] $(a)\implies(b)$. Obratno, pretpostavimo da za svaki $s$-rijetki vektor $\vect x \in \C^N$ vrijedi $\{\vect z \in \C^N : \vect{Az} = \vect{Ax}, \norm{\vect z}_0 \leq s\} = \{\vect x\}$. Neka je $\vect v \in \ker \vect A$, $2s$-rijedak. Tada $\vect v$ mo\v{z}emo rastaviti kao $\vect v = \vect x - \vect z$ gdje su $\vect x$ i $\vect z$ $s$-rijetki takvi da $\supp(\vect x)\cap \supp(\vect z) = \emptyset$. Imamo da je $\vect{Ax}=\vect{Az}$ pa prema pretpostavci vrijedi $\vect{x}=\vect{z}$. Po\v{s}to su nosa\v{c}i od $\vect x$ i $\vect z$ disjunktni, mora vrijediti $\vect x = \vect z = \vect 0$ pa je stoga i $\vect v = 0$.\\
-        \item[] $(b)\implies(c)$. Pretpostavimo suprotno, $\ker \vect A \cap \{\vect z \in \C^N: \norm{\vect z}_0 \leq 2s\} = \{\vect 0\}$ i da postoji $S \in [N]$ takav da je $\card(S) \leq 2s$ te da $\vect A_s$ nije injektivna. To zna\v{c}i da postoji vektor $\vect x \in \C^{\card(S)} \backslash \{\vect 0\}$ takav da je $\vect A_S \vect x = \vect 0$. Definiramo vektor $\tilde{\vect{x}}\in \C^N$ sa 
+        \item[]$(b)\implies(a)$. Neka su $\vec x$ i $\vec z$ $s$-rijetki vektori takvi da $\vec{Ax} = \vec{Az}$. Tada je $\vec x - \vec z$ $2s$-rijedak i $\vec A(\vec x - \vec z) = \vec 0$. Po\v{s}to $\ker \vec A$ ne sadr\v{z}i $2s$-rijetke vektore osim nul-vektora, mora vrijediti $\vec x = \vec z$.
+        \item[] $(a)\implies(b)$. Obratno, pretpostavimo da za svaki $s$-rijetki vektor $\vec x \in \C^N$ vrijedi $\{\vec z \in \C^N : \vec{Az} = \vec{Ax}, \norm{\vec z}_0 \leq s\} = \{\vec x\}$. Neka je $\vec v \in \ker \vec A$, $2s$-rijedak. Tada $\vec v$ mo\v{z}emo rastaviti kao $\vec v = \vec x - \vec z$ gdje su $\vec x$ i $\vec z$ $s$-rijetki takvi da $\supp(\vec x)\cap \supp(\vec z) = \emptyset$. Imamo da je $\vec{Ax}=\vec{Az}$ pa prema pretpostavci vrijedi $\vec{x}=\vec{z}$. Po\v{s}to su nosa\v{c}i od $\vec x$ i $\vec z$ disjunktni, mora vrijediti $\vec x = \vec z = \vec 0$ pa je stoga i $\vec v = 0$.
+        \item[] $(b)\implies(c)$. Pretpostavimo suprotno, $\ker \vec A \cap \{\vec z \in \C^N: \norm{\vec z}_0 \leq 2s\} = \{\vec 0\}$ i da postoji $S \in [N]$ takav da je $\card(S) \leq 2s$ te da $\vec A_s$ nije injektivna. To zna\v{c}i da postoji vektor $\vec x \in \C^{\card(S)} \backslash \{\vec 0\}$ takav da je $\vec A_S \vec x = \vec 0$. Definiramo vektor $\tilde{\vec{x}}\in \C^N$ sa 
             \begin{equation*}
                 \tilde{x}_j = 
                 \begin{cases}
@@ -354,25 +356,25 @@ Neka je $\vect{A} \in \C^{m \times N}$ i $S \subset [N]$, sa $\vect A_S$ ozna\v{
                     0 \quad & \text{za}\  j \in \bar S \\
                 \end{cases}
             \end{equation*}
-            Dakle, imamo $\vect x \neq \vect 0$, $\norm{\vect x}_0 \leq 2s$ i vrijedi $\vect{Ax}=0$, tj. $\vect x \in \ker \vect A$. Kontradikcija s $(b)$.
-        \item[]$(c)\implies(d)$. Odaberimo $2s$  stupaca od $\vect A$. Skup indeksa tih stupaca ozna\v{c}imo sa $S$. Prema $(c)$, matrica $\vect A_S$ je injektivna, a to zna\v{c}i da su njeni stupci linearno nezavisni, pa su stoga i $2s$ odabranih stupaca matrice $\vect A$ linearno nezavisni.
-        \item[]$(d)\implies(b)$. Pretpostavimo da jezgra od $\vect A$ sadr\v{z}i $2s$-rijedak ne-nul vektor $\vect x \in \C^N$. Neka je $S$ skup indeksa ne-nul elemenata vektora $\vect x$. To zna\v{c}i da je $\vect A_S \vect x_S = 0$, i $\vect x_S \neq \vect 0$. Dakle $\vect A_S$ nije injektivna, pa stoga i skup stupaca od $\vect A$ indeksiranih sa $S$ nije linearno nezavisan, \v{s}to je kontradikcija sa $(d)$.
+            Dakle, imamo $\vec x \neq \vec 0$, $\norm{\vec x}_0 \leq 2s$ i vrijedi $\vec{Ax}=0$, tj. $\vec x \in \ker \vec A$. Kontradikcija s $(b)$.
+        \item[]$(c)\implies(d)$. Odaberimo $2s$  stupaca od $\vec A$. Skup indeksa tih stupaca ozna\v{c}imo sa $S$. Prema $(c)$, matrica $\vec A_S$ je injektivna, a to zna\v{c}i da su njeni stupci linearno nezavisni, pa su stoga i $2s$ odabranih stupaca matrice $\vec A$ linearno nezavisni.
+        \item[]$(d)\implies(b)$. Pretpostavimo da jezgra od $\vec A$ sadr\v{z}i $2s$-rijedak ne-nul vektor $\vec x \in \C^N$. Neka je $S$ skup indeksa ne-nul elemenata vektora $\vec x$. To zna\v{c}i da je $\vec A_S \vec x_S = 0$, i $\vec x_S \neq \vec 0$. Dakle $\vec A_S$ nije injektivna, pa stoga i skup stupaca od $\vec A$ indeksiranih sa $S$ nije linearno nezavisan, \v{s}to je kontradikcija sa $(d)$.
 \end{itemize}
 \end{proof}
 
-Uo\v{c}imo da ako je mogu\v{c}e rekonstruirati svaki $s$-rijedak vektor $\vect x \in \C^N$ iz vektora mjerenja $\vect y = \vect{Ax} \in \C^m$, tada vrijedi $(a)$. Prema pro\v{s}lom teoremu tada vrijedi i tvrdnja $(d)$ pa je stoga $\rank(\vect A) \geq 2s$. Tako\dj er vrijedi da je $\rank(\vect A) \leq m$ pa imamo 
+Uo\v{c}imo da ako je mogu\v{c}e rekonstruirati svaki $s$-rijedak vektor $\vec x \in \C^N$ iz vektora mjerenja $\vec y = \vec{Ax} \in \C^m$, tada vrijedi $(a)$. Prema pro\v{s}lom teoremu tada vrijedi i tvrdnja $(d)$ pa je stoga $\rank(\vec A) \geq 2s$. Tako\dj er vrijedi da je $\rank(\vec A) \leq m$ pa imamo 
 \begin{equation*}
     m \geq 2s.    
 \end{equation*}
 To zna\v{c}i da je potrebno barem $2s$ mjerenja da bi rekonstruirali svaki $s$-rijedak vektor. Pokazati \'cemo da je, makar u teoriji, dovoljno to\v{c}no $2s$ mjerenja.
 
 \begin{thm}
-    Za svaki $N \geq 2s$, postoji matrica mjerenja $\vect A \in \C^{2s \times N}$ takva da se svaki $s$-rijedak vektor $\vect x \in \C^N$ mo\v{z}e rekonstruirati iz vektora mjerenja $\vect y = \vect{Ax} \in \C^m$ kao rje\v{s}enje problema minimizacije \eqref{problem_minimizacije}.
+    Za svaki $N \geq 2s$, postoji matrica mjerenja $\vec A \in \C^{2s \times N}$ takva da se svaki $s$-rijedak vektor $\vec x \in \C^N$ mo\v{z}e rekonstruirati iz vektora mjerenja $\vec y = \vec{Ax} \in \C^m$ kao rje\v{s}enje problema minimizacije \eqref{problem_minimizacije}.
 \end{thm}
 \begin{proof}
-    Fiksirajmo $t_N>\cdots t_2 > t_1 > 0$ i neka je $\vect A \in \C^{2s \times N}$ dana sa
+    Fiksirajmo $t_N>\cdots t_2 > t_1 > 0$ i neka je $\vec A \in \C^{2s \times N}$ dana sa
     \begin{equation}\label{vandermont_matrica}
-        \vect A = 
+        \vec A = 
         \begin{bmatrix}
             1 & 1 & \cdots & 1 \\ 
             t_1 & t_2 & \cdots & t_N \\
@@ -380,15 +382,15 @@ To zna\v{c}i da je potrebno barem $2s$ mjerenja da bi rekonstruirali svaki $s$-r
             t_1^{2s-1} & t_2^{2s-1} & \cdots & t_N^{2s-1} \\
         \end{bmatrix}
     \end{equation}
-    Nadalje, neka je $S=\{j_1 < \cdots < j_{2s}\}$ skup indeksa. Matrica $\vect A_S \in \C^{2s \times 2s}$ je transponirana \textit{Vandermontova matrica}. Prema (TODO) slijedi
+    Nadalje, neka je $S=\{j_1 < \cdots < j_{2s}\}$ skup indeksa. Matrica $\vec A_S \in \C^{2s \times 2s}$ je transponirana \textit{Vandermontova matrica}. Prema (TODO) slijedi
     \begin{equation*}
-        \det(\vect{A}_S) = \prod_{k < l} (t_{j_l} - t_{j_k})>0.
+        \det(\vec{A}_S) = \prod_{k < l} (t_{j_l} - t_{j_k})>0.
     \end{equation*}
-    To zna\v{c}i da je matrica $\vect A$ invertibilna, pa posebno i injektivna. Tada je zadovoljena tvrdnja $(c)$ teorema \eqref{rekonstrukcija_tm1}, pa je po istom teoremu zadovoljena i tvrdnja $(a)$, tj. svaki $s$-rijedak vektor $\vect x \in \C^N$ zadovoljava $\vect{Az}=\vect{Ax}$. Stoga je taj vektor mogu\'ce jedinstveno rekonstruirati putem minimizacije \eqref{problem_minimizacije}.
+    To zna\v{c}i da je matrica $\vec A$ invertibilna, pa posebno i injektivna. Tada je zadovoljena tvrdnja $(c)$ teorema \eqref{rekonstrukcija_tm1}, pa je po istom teoremu zadovoljena i tvrdnja $(a)$, tj. svaki $s$-rijedak vektor $\vec x \in \C^N$ zadovoljava $\vec{Az}=\vec{Ax}$. Stoga je taj vektor mogu\'ce jedinstveno rekonstruirati putem minimizacije \eqref{problem_minimizacije}.
 \end{proof}
-\indent Zapravo, mnogo matrica zadovoljava uvjet $(c)$ iz teorema \eqref{rekonstrukcija_tm1}. Na primjer, potencije od $t_1,\dots,t_N$ u \eqref{vandermont_matrica} ne moraju biti uzastopne. Nadalje, brojevi $t_1,\dots,t_N$ ne moraju biti pozitivni, niti realni sve dok vrijedi $\det(\vect A_S) \neq 0$. Posebno, mo\v{z}emo uzeti $t_l = e^{2\pi i (l-1)/N}$ za $l \in [N]$, teorem (TODO) garantira da parcijalna Fourierova matrica
+\indent Zapravo, mnogo matrica zadovoljava uvjet $(c)$ iz teorema \eqref{rekonstrukcija_tm1}. Na primjer, potencije od $t_1,\dots,t_N$ u \eqref{vandermont_matrica} ne moraju biti uzastopne. Nadalje, brojevi $t_1,\dots,t_N$ ne moraju biti pozitivni, niti realni sve dok vrijedi $\det(\vec A_S) \neq 0$. Posebno, mo\v{z}emo uzeti $t_l = e^{2\pi i (l-1)/N}$ za $l \in [N]$, teorem (TODO) garantira da parcijalna Fourierova matrica
 \begin{equation*}
-   \vect A = 
+   \vec A = 
    \begin{bmatrix*}
        1 & 1 & 1 & \cdots & 1 \\
        1 & e^{2 \pi i/ N} & e^{2 \pi i2/ N} & \cdots & e^{2 \pi i(N-1)/ N} \\ 
@@ -396,24 +398,88 @@ To zna\v{c}i da je potrebno barem $2s$ mjerenja da bi rekonstruirali svaki $s$-r
        1 & e^{2 \pi i(2s-1)/ N} & e^{2 \pi i(2s-1)2/ N} & \cdots & e^{2 \pi i(2s-1)(N-1)/ N} \\ 
    \end{bmatrix*}
 \end{equation*}
-rekonstruira svaki $s$-rijedak vektor $\vect x \in \C^N$ iz $\vect y = \vect{Ax} \in \C^{2s}$.
-Zapravo mo\v{z}e se pokazati da skup $(2s) \times N$ matrica takvih da $\det(\vect A_S) = 0$ za neki $S \subset [N]$ i $\card(S) \leq 2s$ ima Lebesgueovu mjeru nula, pa stoga gotovo sve $(2s) \times N$ matrice rekonstruiraju svaki $s$-rijedak vektor $\vect x \in \C^N$ iz $\vect y = \vect{Ax} \in \C^{2s}$. Me\dj utim u praksi nije isplativo rje\v{s}avati problem minimizacije \eqref{problem_minimizacije}, \v{s}to \'cemo kasnije i pokazati.
+rekonstruira svaki $s$-rijedak vektor $\vec x \in \C^N$ iz $\vec y = \vec{Ax} \in \C^{2s}$.
+Zapravo mo\v{z}e se pokazati da skup $(2s) \times N$ matrica takvih da $\det(\vec A_S) = 0$ za neki $S \subset [N]$ i $\card(S) \leq 2s$ ima Lebesgueovu mjeru nula, pa stoga gotovo sve $(2s) \times N$ matrice rekonstruiraju svaki $s$-rijedak vektor $\vec x \in \C^N$ iz $\vec y = \vec{Ax} \in \C^{2s}$. Me\dj utim u praksi nije isplativo rje\v{s}avati problem minimizacije \eqref{problem_minimizacije}, \v{s}to \'cemo kasnije i pokazati.
 
 
 
 
 \subsection[Rekonstrukcija zadanog rijetkog vektora][Rekonstrukcija zadanog rijetkog vektora]{Rekonstrukcija zadanog rijetkog vektora}
-Promatramo problem gdje je $s$-rijedak vektor $\vect x \in \C^N$ unaprijed zadan i poznat, a matricu $\vect A \in \C^{m \times N}$ \v{z}elimo odabrati tako da ona garantira rekonstrukciju vektora $\vect x$ iz mjerenja $\vect y = \vect{Ax} \in \C^m$. Isprva, ovaka pristup izgleda neprirodan zbog \v{c}injenice da je vektor $\vect x$ apriorno poznat. Ideja je da \'ce uvjeti rekonstrukcije vrijediti za gotovo sve $(s+1) \times N$ matrice, \v{s}to podupire \v{c}injenicu da se u praksi matrice mjerenja \v{c}esto odabiru na nasumi\v{c}an na\v{c}in.
+Promatramo problem gdje je $s$-rijedak vektor $\vec x \in \C^N$ unaprijed zadan i poznat, a matricu $\vec A \in \C^{m \times N}$ \v{z}elimo odabrati tako da ona garantira rekonstrukciju vektora $\vec x$ iz mjerenja $\vec y = \vec{Ax} \in \C^m$. Isprva, ovaka pristup izgleda neprirodan zbog \v{c}injenice da je vektor $\vec x$ apriorno poznat. Ideja je da \'ce uvjeti rekonstrukcije vrijediti za gotovo sve $(s+1) \times N$ matrice, \v{s}to podupire \v{c}injenicu da se u praksi matrice mjerenja \v{c}esto odabiru na nasumi\v{c}an na\v{c}in.
 \begin{thm}
-    Za svaki $N \geq s + 1$ i za dani $s$-rijedak vektor $\vect x \in \C^N$, postoji matrica mjerenja $\vect A \in \C^{(s+1) \times N}$, takva da se vektor $\vect x$ mo\v{z}e rekonstruirati iz mjerenja $\vect y = \vect{Ax} \in \C^m$ kao rje\v{s}enje minimizacije \eqref{problem_minimizacije}.
+Za svaki $N \geq s + 1$ i za dani $s$-rijedak vektor $\vec x \in \C^N$, postoji matrica mjerenja $\vec A \in \C^{(s+1) \times N}$, takva da se vektor $\vec x$ mo\v{z}e rekonstruirati iz mjerenja $\vec y = \vec{Ax} \in \C^m$ kao rje\v{s}enje minimizacije \eqref{problem_minimizacije}.
 \end{thm}
 \begin{proof}
-    
+    Neka je $\vec A \in \C^{(s+1) \times N}$ matrica za koju se $s$-rijedak vektor $\vec x$ ne mo\v{z}e rekonstruirati iz $\vec y = \vec{Ax}$ putem minimizacije \eqref{problem_minimizacije}. To zna\v{c}i da postoji vektor $\vec z \in \C^N$ razli\v{c}it od $\vec x$, takav da $S=\supp(\vec z)=\{j_1, \dots, j_s\}$, $\card(S) \leq s$ (ako je $\norm{\vec z}_0 < s$, u $S$ dodamo proizvoljne elemente $j_l \in [N]$) i $\vec{Az}=\vec{Ax}$. Ako je $\supp(\vec x) \subset S$, tada iz $\big( \vec A (\vec z - \vec x)  \big)_{[s]}=0$ slijedi da $\vec A_{[s], S}$ nije invertibilna, tj.
+    \begin{equation*}
+        f(a_{1,1}, \dots a_{1,N}, \dots, a_{m,1}, \dots, a_{m,N}) := \det(\vec A_{[s], S}) = 0.
+    \end{equation*}
+    Ako $\supp(\vec x) \not\subset S$ tada je dimenzija prostora $V:=\{ \vec u \in \C^N: \supp(\vec u ) \subset S \} + \C \vec x$ jednaka $s+1$, i linearno preslikavanje $G:V \rightarrow \C^{s+1}$, $\vec v \mapsto \vec{Av}$ nije invertibilno, po\v{s}to je $G(\vec z - \vec x)=0$. Matrica linearnog preslikavanja $G$ u bazi $(\vec e_{j_1}, \dots, \vec e_{j_s}, \vec x)$ prostora V, je oblika
+    \begin{equation*}
+        B_{\vec x, S}:=
+        \begin{bmatrix*}
+            a_{1, j_1} & \cdots & a_{1,j_s} & \sum_{j \in \supp(\vec x)}x_j a_{1,j} \\
+            \vdots & \ddots & \vdots & \vdots \\
+            a_{s+1, j_1} & \cdots & a_{s+1,j_s} & \sum_{j \in \supp(\vec x)}x_j a_{s+1,j}
+        \end{bmatrix*}
+    \end{equation*}
+    i imamo
+    \begin{equation*}
+        g_S(a_{1,1}, \dots a_{1,N}, \dots, a_{m,1}, \dots, a_{m,N}) := \det (B_{\vec x, S})=0.
+    \end{equation*}
+    Dakle, vrijedi
+    \begin{equation*}
+        (a_{1,1}, \dots a_{1,N}, \dots, a_{m,1}, \dots, a_{m,N}) \in f^{-1}(\{0\}) \cup \bigcup \limits_{\card(S)=s}g_S^{-1}(\{0\}).
+    \end{equation*}
+    Primjetimo da su skupovi $f^{-1}(\{0\})$ i $g^{-1}_S(\{0\})$ Lebesgueove mjere nula iz razloga \v{s}to su $f$ i $g_S$ polinomi u varijablama $(a_{1,1}, \dots a_{1,N}, \dots, a_{m,1}, \dots, a_{m,N})$. Dakle, elemente matrice $\vec A$ moramo izabrati izvan skupa mjere nula, da bi osigurali rekonstrukciju vekotora $\vec x$ iz $\vec y = \vec{Ax}$.
+\end{proof}
+
+\section[NP-slo\v{z}enost $\mathbf{\ell_0}$-minimizacije][NP-slo\v{z}enost $\ell_0$-minimizacije]{NP-slo\v{z}enost $\ell_0$-minimizacije}
+Kao \v{s}to smo najavili, pokazati \'cemo da je u praksi neisplativno rje\v{s}avati problem $\ell_0$-minimizacije u svrhu rekonstrukcije vektora $\vec x$ iz mjerenja $\vec y = \vec{Ax}$. Prisjetimo se, problem koji rje\v{s}avamo je oblika, 
+\begin{equation*}
+    \min_{\vec z \in \C^N} \norm{\vec z}_0 \quad \text{uz uvjet } \vec{Az}=\vec y. 
+\end{equation*}
+Po\v{s}to je minimizator najvise $s$-rijedak, najjednostavniji algoritam za rje\v{s}avanje ovog problema je rje\v{s}iti sve pravokutne sustave $\vec A_S \vec u = \vec y$ ili sve kvadratne sustave oblika $\vec A_S^* \vec A_S \vec u = \vec A_S^* \vec y$ za svaki $\vec u \in \C^S$ gdje S ide po svim poskupovima od [N], veli\v{c}ine $s$. No ispada da broj podskupova $N \choose s$, \v{s}to za male probleme sa $N = 1000$ i $s=10$, iznosi ${1000 \choose 10} \geq (\frac{1000}{10})^{10}=10^{20}$. Kada bi jedan $10 \times 10$ sustav mogli rje\v{s}iti u $10^{-10}$ sekundi, trebalo bi nam vi\v{s}e od 300 godina da sve rje\v{s}imo. Sada \'cemo pokazati za\v{s}to je zapravo op\'cenitiji problem
+\begin{equation}
+\min_{\vec z in \C^N}\ \norm{\vec z}_0 \quad \text{uz uvjet }\norm{\vec{Az}- \vec{y}}_2 \leq \eta \tag{$P_{0, \eta}$}\label{problem_minimizacije_generalni}
+\end{equation}
+NP-te\v{z}ak.\\
+\indent Uvedimo prvo potrebne pojmove iz kompleksnosti algoritama. Za algoritam ka\v{z}emo da je \textit{polinomijalnog-vremena} ako je broj koraka do rje\v{s}enja ograni\v{c}en polinomom u varijabli veli\v{c}ine ulaza. Nadalje, uvedimo neformalne definicije klasa problema odlu\v{c}ivanja:
+\begin{itemize}
+    \item $\mathfrak{P}$: Svi problemi odlu\v{c}ivanja za koje postoji algoritam polinomijalnog vremena koji daje rje\v{s}enje.
+    \item $\mathfrak{NP}$: Svi problemi odlu\v{c}ivanja za koje postoji algoritam polinomijalnog vremena koji provjerava to\v{c}nost rje\v{s}enja.
+    \item $\mathfrak{NP}$-te\v{s}ki: Svi problemi (ne nu\v{z}no problemi odre\dj ivanja) za koje se algoritam za rje\v{s}enje mo\v{z}e u polinomijalnom vremenu transformirati u algoritam rje\v{s}enja za bilo koji $\mathfrak{NP}$ problem.
+    \item $\mathfrak{NP}$-potpuni: Svi problemi koji su istovremeno $\mathfrak{NP}$ i $\mathfrak{NP}$-te\v{s}ki.
+\end{itemize}
+Pitanje je li $\mathfrak{P}$ strogo sadr\v{z}ano u  $\mathfrak{NP}$ do dan danas nije odgovoreno. No, vjeruje se da postoje problemi za koje ne postoji algoritam rje\v{s}enja polinomijalnog vremena, ali postoji algoritam koji \'ce provjeriti to\v{c}nost rje\v{s}enja u polinomijalnom vremenu.
+Najpoznatiji $\mathfrak{NP}$-potpun problem je problem putuju\'ceg prodava\v{c}a. No, iskoristiti \'cemo  problem egzaktnog pokriva\v{c}a tro\v{c}lanim skupovima da bi pokazali da je problem \eqref{problem_minimizacije_generalni} $\mathfrak{NP}$-te\v{z}ak.
+
+\subsection[Egazktni pokriva\v{c} tro\v{c}lanim skupovima][Egazktni pokriva\v{c} tro\v{c}lanim skupovima]{Egazktni pokriva\v{c} tro\v{c}lanim skupovima}
+Za danu kolekciju $\{\mathcal{C}_i;\ i \in [N]\}$ tro\v{c}lanih podskupova od $[m]$, postoji li egzaktni pokriva\v{c} skupa $[m]$, tj. postoji li $J \subset [N]$ takav da $\cup_{j \in J}\mathcal{C}_j=[m]$, gdje je $\mathcal{C}_j \cap \mathcal{C}_k = \emptyset$ za svaki $j,k \in J$ razli\v{c}iti? Poznato je da je taj problem $\mathfrak{NP}$-potpun (vidi TODO).
+\begin{thm}
+    Za svaki $\eta \geq 0,\ \vec A \in \C^{m \times N}$ i $\vec y \in \C^m$, problem minimizacije \eqref{problem_minimizacije_generalni} je $\mathfrak{NP}$-potpun.
+\end{thm}
+\begin{proof}
+    Zbog linearnosti problema \eqref{problem_minimizacije_generalni}, mo\v{z}emo uzeti da je $\eta < 1$. Pokazati \'cemo da se problem egzaktnog pokriva\v{c} mo\v{z}e u polinomijalnom vremenu reducirati na problem $\ell_0$-minimizacije. Neka je $\{\mathcal{C}_i;\ i \in [N]\}$ kolekcija tro\v{c}anih podskupova $[m]$. Definirajmo vektora $\vec a_1, \vec a_2,\dots \vec a_N \in \C^m$
+    \begin{equation*}
+        (\vec a_i)_j = 
+        \begin{cases*}
+            1\ \text{za } j \in \mathcal{C}_i,\\
+            0\ \text{za } j \not\in \mathcal{C}_i
+        \end{cases*}
+    \end{equation*}
+    Definiramo matricu $\vec A \in \C^{m \times N}$ i vektor $\vec y \in \C^m$ sa
+    \begin{equation*}
+        \vec A = [\vec a_1\ \vec a_2\ \cdots \ \vec a_N], \qquad \vec y = [1,1, \dots, 1]^T.
+    \end{equation*}
+    Po\v{s}to je $N \leq {m \choose 3}$, to mo\v{z}emo napraviti u polinomijalnom vremenu. Ako $\vec z \in \C^N$ zadovoljava $\norm{\vec{Az}-y}_2 \leq \eta$, tada su svih $m$ komponenti od $\vec{Az}$ udaljeljene od $1$ za najvi\v{s}e $\eta$, pa su razli\v{c}ito od nula, zbog
 \end{proof}
 
 
 
-\nocite{*}
+
+
+
 % Na kraju diplomkog rada stavlja se  bibliografija
 % Najprije definiramo nacin prikazivanja bibliografije, u ovom slucaju verzija amsplain stila
 \bibliographystyle{babamspl} % babamspl ili babplain
@@ -427,17 +493,14 @@ Promatramo problem gdje je $s$-rijedak vektor $\vect x \in \C^N$ unaprijed zadan
 % I na koncu idu sazeci na hrvatskom i engleskom
 
 \begin{sazetak}
-Ukratko ...
 \end{sazetak}
 
 \begin{summary}
-In this ...
 \end{summary}
 
 % te zivotopis
 
 \begin{cv}
-Dana ...
 \end{cv}
 
 \end{document}
