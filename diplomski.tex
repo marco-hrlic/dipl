@@ -29,6 +29,19 @@
 \newcommand{\supp}{\text{\normalfont{supp}}}
 \newcommand{\norm}[1]{\|{#1}\|}
 \newcommand{\rank}{\text\normalfont{rank}}
+\newcommand{\argmin}{\text{\normalfont{arg min\ }}}
+\renewcommand{\min}{\text{\normalfont{min\ }}}
+
+\newenvironment{alg}[1]
+{
+    \bigskip
+    \begin{tcolorbox}[arc=0mm,boxrule=1pt,colframe=black,colback=white,detach title, before upper={\begin{center}{\bigskip\textbf{#1}\bigskip\hline\medskip}\end{center}},frame hidden]
+}
+{
+    \medskip
+\end{tcolorbox}
+    \bigskip
+}
 
 
 % Odabir familije fontova:
@@ -46,6 +59,7 @@
 
 \usepackage{lineno}
 %\linenumbers
+\usepackage[most]{tcolorbox}
 
 % Paket graphicx sluzi za manipuliranje grafikom 
 \usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
@@ -479,10 +493,50 @@ Za danu kolekciju $\{\mathcal{C}_i;\ i \in [N]\}$ tro\v{c}lanih podskupova od $[
     \end{enumerate}
     Dakle, rje\v{s}avanjem problem $\ell_0$-minimizacije, mo\v{z}emo rje\v{s}iti problem egzaktnog pokriva\v{c}a tro\v{c}lanim skupovima, pa je stoga i sam problem $\ell_0$-minimizacije $\mathfrak{NP}$-potpun.
 \end{proof}
-\v{C}ini se da prethodni teorem predstavlja ozbiljnu zapreku u prakti\v{c}nom rje\v{s}avanju problema sa\v{z}etog uzorkovanja. No primjetimo da teorem tvrdi da je algoritam koji rje\v{s}ava problem $\ell_0$-minimizacije, za sve mogu\'ce matrie $\vec A$ i vektore $\vec y$ barem klase $\mathfrak{NP}$. Naravno, u samoj praksi nije nu\v{z}no zahtjevati rekonstrukciju za sve takve matrice i vektore. Naime, pokazat \'cemo da postoje algoritmi koji uspje\v{s}no rekonstruiraju $\vec x$ iz $\vec y$ za posebno dizajnirane matrice $\vec A$.
+\v{C}ini se da prethodni teorem predstavlja ozbiljnu zapreku u prakti\v{c}nom rje\v{s}avanju problema sa\v{z}etog uzorkovanja. No primjetimo, teorem tvrdi da je algoritam koji rje\v{s}ava problem $\ell_0$-minimizacije, za sve mogu\'ce matrie $\vec A$ i vektore $\vec y$ barem klase $\mathfrak{NP}$. Naravno, u samoj praksi nije nu\v{z}no zahtjevati rekonstrukciju za sve takve matrice i vektore. Naime, pokazat \'cemo da postoje algoritmi koji uspje\v{s}no rekonstruiraju $\vec x$ iz $\vec y$ za posebno dizajnirane matrice $\vec A$.
 
 
 
+
+\chapter[Osnovni algoritmi sa\v{z}etog uzorkovanja][Osnovni algoritmi sa\v{z}etog uzorkovanja]{Osnovni algoritmi sa\v{z}etog uzorkovanja}
+Algoritmi za rje\v{s}avanje problema sa\v{z}etog uzorkovanja, koje \'cemo predstaviti, podijeljeni su u tri kategorije: optimizacije, greedy metode i grani\v{c}ne metode. U ovom poglavlju dati \'cemo samo pregled najpopularnijih algoritama, dok \'cemo formalnu analizu nekih od njih ostaviti za kasnije, nakon \v{s}to razvijemo potrebne teorijske alate.
+\section[Optimizacijske metode][Optimizacijske metode]{Optimizacijske metode}
+Op\v{c}eniti problem optimizacije je oblika
+\begin{equation*}
+    \min_{\vec x \in \R^N} F_0(\vec x)\quad\text{uz uvjet }F_i(\vec x) \leq b_i,\ i \in [n]
+\end{equation*}
+gdje $F_0:\R^N \rightarrow \R$ zovemo \textit{funkcija cilja}, a funkcije $F_1, \dots, F_n: \R^N \rightarrow \R$ zovemo \textit{funkcije ograni\v{c}enja}. Ako su $F_0, F_1, \dots, F_n$ konveksne funkcije, tada ovaj problem zovem \textit{problem konveksne optimizacije}. Ako su te funkcije linearne, tada je to \textit{problem linearnog programiranja}. Primjetimo da je problem rekonstrukcije rijetkog vektora \eqref{problem_minimizacije}, zapravo problem minimizacije. No, na\v{z}alost taj problem nije konveksan i kao \v{s}to smo u prethodnom poglavlju pokazali, op\v{c}enito je $\mathfrak{NP}$-te\v{z}ak. Prisjetimo se da $\norm{\vec z}_q^q$ konvergira k $\norm{\vec z}_0$ za $q \rightarrow 0^+$, pa je prirodno  \eqref{problem_minimizacije} aproksimirati problemom
+\begin{equation}
+    \min \norm{\vec z}_q\quad\text{uz uvjet }\vec{Az}=\vec y\tag{$P_{q}$}\label{problem_minimizacije_aprox}
+\end{equation}
+Poka\v{z}e se da za $q > 1$, \v{c}ak $1$-rijetki vektori nisu rje\v{s}enja od \eqref{problem_minimizacije_aprox}. Dok za $0 < q < 1$, \eqref{problem_minimizacije_aprox} ponovno nije konveksan i dalje je op\v{c}enito $\mathfrak{NP}$-te\v{z}ak. Za $q=1$, problem postaje konveksan
+\begin{equation}
+    \min \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y.\tag{$P_{1}$}\label{problem_minimizacije_l1}
+\end{equation}
+To je zapravo konveksna relaksacija problema \eqref{problem_minimizacije} i zovemo ga $\ell_1$\textit{-minimizacija}.
+
+\begin{alg}{$\ell_1$-minimizacija}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$. \\
+    \textit{Problem:}
+        \begin{equation}
+            \vec x^{\sharp} = \argmin \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y\tag{$\ell_1$-min}\label{algoritam_l1_minimizacija}
+        \end{equation} \\
+        \textit{Izlaz:} vektor $\vec x^{\sharp}$
+\end{alg}
+\noindent Poka\v{z}imo sada da su $\ell_1$-minimizatori rijetki vektori u realnom slu\v{c}aju
+\begin{thm}
+    Neka je $\vec A \in \R^{m \times N}$ matrica mjerenja sa stupcima $\vec a_1, \dots, \vec a_N$. Ako je $\vec x^{\sharp}$ minimizator od
+    \begin{equation*}
+        \min_{\vec z \in \R^N} \norm{\vec z}_1\quad \text{uz uvjet } \vec{Az}=\vec y,
+    \end{equation*}
+    tada je skup $\{\vec a_j,\ j \in \supp(\vec x^{\sharp})\}$ linearno nezavisan i vrijedi
+    \begin{equation*}
+        \norm{\vec{x}^{sharp}}_0 = \card(\supp(\vec x^{\sharp})) \leq m. 
+    \end{equation*}
+\end{thm}
+\begin{proof}
+    Pretpostavimo suprotno, tj. da je skup $\{\vec a_j,\ j \in \supp(\vec x^{\sharp})\}$ linearno zavisan. Neka je $S= \supp(\vec x^{\sharp})$. To zna\v{c}i da postoji ne-nul vektor $\vec v \in \R^N$ sa nosa\v{c}em $S$.
+\end{proof}
 
 
 
