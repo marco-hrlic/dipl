@@ -40,7 +40,8 @@
 \newenvironment{alg}[1]
 {
     \bigskip
-    \begin{tcolorbox}[arc=0mm,boxrule=1pt,colframe=black,colback=white,detach title, before upper={\begin{center}{\bigskip\textbf{#1}\bigskip\hline\medskip}\end{center}},frame hidden]
+    \begin{tcolorbox}[arc=0mm,boxrule=1.2pt,colframe=black,colback=white,detach title, before upper={\medskip\begin{center}\textbf{#1}\end{center}\hline\newline\medskip},frame hidden]
+    \medskip
 }
 {
     \medskip
@@ -344,8 +345,8 @@ Matricu $\vec{A} \in \C^{m\times N}$ nazivamo \textit{matrica mjerenja}. Ako je 
 \begin{enumerate}
     \item Vektor $\vec{x}$ je jedinstveno $s$-rijetko rje\v{s}enje sustava $\vec{A}\vec{z}=\vec{y}$ gdje je $\vec{y} = \vec{Ax}$, tj. $\{\vec{z} \in \C^N : \vec{A}\vec{z}= \vec{A}\vec{x},\ \norm{\vec{z}}_0 \leq s\} = \{\vec{x}\}$
     \item Vektor $\vec{x}$ je jedinstveno rje\v{s}enje problema minimizacije
-        \begin{equation}
-            \min\limits_{\vec{z} \in \C^N} \norm{\vec{z}}_0\quad \text{uz uvjet}\ \vec{Az} = \vec y \tag{$P_{0}$}\label{problem_minimizacije} 
+        \begin{equation}\label{problem_minimizacije}
+            \min\limits_{\vec{z} \in \C^N} \norm{\vec{z}}_0\quad \text{uz uvjet}\ \vec{Az} = \vec y \tag{$P_{0}$}
         \end{equation}
 \end{enumerate}
 Ako je $\vec{x} \in \C^N$ jedinstveno $s$-rijetko rje\v{s}enje od $\vec{Az} = \vec y$ takvo da je $\vec y = \vec{Ax}$, onda rje\v{s}enje $x^{\sharp}$ od \eqref{problem_minimizacije} je $s$-rijetko i zadovoljava $\vec{Ax} = \vec y$ pa je $\vec x^\sharp = \vec x$. Drugi smjer slijedi trivijalno.
@@ -619,10 +620,19 @@ Za dani vektor $\vec z \in \C^N$, neka su $\vec u,\ \vec v \in \R^N$ njegovi rea
         \begin{bmatrix*}
             \Re(\vec y) \\ \Im(\vec y) 
     \end{bmatrix*} }_2 \leq \eta \\
-    &\sqrt{u_j^2 + v_j^2} \leq c_j,\quad \forall j \in [N] 
+    &\sqrt{u_j^2 + v_j^2} \leq c_j,\quad \forall j \in [N].
 \end{split}\tag{$P_{1, \eta}'$}\label{problem_minimizacije_l1_kvadraticni_drugi_oblik}
 \end{equation}
-
+Ovo je \textit{problem konike drugog reda}. Primjetimo da za $\eta=0$ dobivamo formulaciju problema \eqref{problem_minimizacije_l1} za kompleksni slu\v{c}aj u takvom obliku.
+\\\indent Princip rje\v{s}avanja \eqref{problem_minimizacije_l1_kvadraticni} zove se \textit{kvadrati\v{c}no ograni\v{c}ena $\ell_1$-minimizacija} ili \textit{$\ell$-minimizacija osjetljiva na \v{s}um}.
+\begin{alg}{Kvadrati\v{c}no ograni\v{c}ena $\ell_1$-minimizacija}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, razina \v{s}uma $\eta$. \\
+    \textit{Problem:}
+        \begin{equation}
+            \vec x^{\sharp} = \argmin \norm{\vec z}_1 \quad \text{uz uvjet }\norm{\vec{Az}-y}_2 \leq \eta\tag{$\ell_1-min_{\eta}$}\label{algoritam_l1_minimizacija_kvadraticna}
+        \end{equation} \\
+        \textit{Izlaz:} vektor $\vec x^{\sharp}$
+\end{alg}
 
 
 
