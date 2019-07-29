@@ -22,15 +22,20 @@
 % hiperlinkovi 
 \usepackage[pdftex]{hyperref} 
 \usepackage{enumitem}
+\usepackage{multicol}
+
 %\newcommand{\vect}[1]{\boldsymbol{\mathrm{#1}}}
 \newcommand{\vect}[1]{\mathbf{#1}}
 \renewcommand{\vec}{\vect}
 \newcommand{\card}{\text{\normalfont{card}}}
 \newcommand{\supp}{\text{\normalfont{supp}}}
 \newcommand{\norm}[1]{\|{#1}\|}
+\newcommand{\norms}[1]{\left\lVert#1\right\rVert}
 \newcommand{\rank}{\text\normalfont{rank}}
 \newcommand{\argmin}{\text{\normalfont{arg min\ }}}
-\renewcommand{\min}{\text{\normalfont{min\ }}}
+\newcommand{\sgn}{\text{\normalfont{sgn}}}
+\renewcommand{\Re}{\text{\normalfont{Re}}}
+\renewcommand{\Im}{\text{\normalfont{Im}}}
 
 \newenvironment{alg}[1]
 {
@@ -59,10 +64,10 @@
 
 \usepackage{lineno}
 %\linenumbers
-\usepackage[most]{tcolorbox}
 
 % Paket graphicx sluzi za manipuliranje grafikom 
 \usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
+\usepackage[most]{tcolorbox}
 % Paket amsmath je vec ukljucen
 % Dodatno definirane matematicke okoline:
 % teorem (okolina: thm), lema (okolina: lem), korolar (okolina: cor),
@@ -333,7 +338,7 @@ Prethodna propozicija daje da su vektori $\vec{x} \in \C^N$ koji su kompresibiln
 
 \section[Minimalni broj mjerenja][Minimalni broj mjerenja]{Minimalni broj mjerenja}
 Problem sa\v{z}etog uzorkovanja sastoji se od rekonstrukcije $s$-rijetkog vektora $\vec{x} \in \C^N$ iz sustava
-$$\vec{y} = \vec{A}\vec{x}$$
+\[\vec{y} = \vec{A}\vec{x}\]
 Matricu $\vec{A} \in \C^{m\times N}$ nazivamo \textit{matrica mjerenja}. Ako je $m < N$, za ovakav sustav linearnih jednad\v{z}bi ka\v{z}emo da je \textit{neodre\dj en}. Iako iz klasi\v{c}ne teorije linearne algebre ovakvi sustavi imaju beskona\v{c}no mnogo rije\v{s}enja, pokazati \'ce se da je dodatna pretpostavka rijetkosti vektora $x$ dovoljno za jedinstvenost rje\v{s}enja. U ovom poglavlju istra\v{z}iti \'cemo koji je minimalni broj mjerenja, tj. $m$ broj redaka matrice $\vec{A}$, koji garantira rekonstrukciju $s$-rijetkog vektora $\vec{x}$. Zapravo, postoje dva pristupa ovom problemu. Mo\v{z}emo zahtjevati da problem mjerenja rekonstruira sve $s$-rijetke vektore $\vec{x} \in \C^N$ istodobno ili mo\v{z}emo tra\v{z}iti rekonstrukciju specifi\v{c}nog, tj. predodre\dj enog vektora $\vec{x} \in \C^N$. Taj pristup \v{c}ini se neprirodan, no pokazuje se da je on va\v{z}an u prou\v{c}avanju problema gdje matricu $\vec{A}$ biramo nasumi\v{c}no. \\ 
 \indent Poka\v{z}imo da su za danu rijetkost $s$, matricu $\vec{A} \in \C^{m \times N}$ i $s$-rijedak vektor $\vec{x} \in \C^N$, naredne tvrdnje ekvivaltentne: 
 \begin{enumerate}
@@ -455,7 +460,7 @@ Kao \v{s}to smo najavili, pokazati \'cemo da je u praksi neisplativno rje\v{s}av
 \end{equation*}
 Po\v{s}to je minimizator najvise $s$-rijedak, najjednostavniji algoritam za rje\v{s}avanje ovog problema je rje\v{s}iti sve pravokutne sustave $\vec A_S \vec u = \vec y$ ili sve kvadratne sustave oblika $\vec A_S^* \vec A_S \vec u = \vec A_S^* \vec y$ za svaki $\vec u \in \C^S$ gdje S ide po svim poskupovima od [N], veli\v{c}ine $s$. No ispada da broj podskupova $N \choose s$, \v{s}to za male probleme sa $N = 1000$ i $s=10$, iznosi ${1000 \choose 10} \geq (\frac{1000}{10})^{10}=10^{20}$. Kada bi jedan $10 \times 10$ sustav mogli rje\v{s}iti u $10^{-10}$ sekundi, trebalo bi nam vi\v{s}e od 300 godina da sve rje\v{s}imo. Sada \'cemo pokazati za\v{s}to je zapravo op\'cenitiji problem
 \begin{equation}
-\min_{\vec z in \C^N}\ \norm{\vec z}_0 \quad \text{uz uvjet }\norm{\vec{Az}- \vec{y}}_2 \leq \eta \tag{$P_{0, \eta}$}\label{problem_minimizacije_generalni}
+\min_{\vec z \in \C^N}\ \norm{\vec z}_0 \quad \text{uz uvjet }\norm{\vec{Az}- \vec{y}}_2 \leq \eta \tag{$P_{0, \eta}$}\label{problem_minimizacije_generalni}
 \end{equation}
 NP-te\v{z}ak.\\
 \indent Uvedimo prvo potrebne pojmove iz kompleksnosti algoritama. Za algoritam ka\v{z}emo da je \textit{polinomijalnog-vremena} ako je broj koraka do rje\v{s}enja ograni\v{c}en polinomom u varijabli veli\v{c}ine ulaza. Nadalje, uvedimo neformalne definicije klasa problema odlu\v{c}ivanja:
@@ -519,11 +524,11 @@ To je zapravo konveksna relaksacija problema \eqref{problem_minimizacije} i zove
     \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$. \\
     \textit{Problem:}
         \begin{equation}
-            \vec x^{\sharp} = \argmin \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y\tag{$\ell_1$-min}\label{algoritam_l1_minimizacija}
+            \vec x^{\sharp} = \argmin \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y\tag{$\ell_1-min$}\label{algoritam_l1_minimizacija}
         \end{equation} \\
         \textit{Izlaz:} vektor $\vec x^{\sharp}$
 \end{alg}
-\noindent Poka\v{z}imo sada da su $\ell_1$-minimizatori rijetki vektori u realnom slu\v{c}aju
+\noindent Poka\v{z}imo sada da su $\ell_1$-minimizatori rijetki vektori u realnom slu\v{c}aju.
 \begin{thm}
     Neka je $\vec A \in \R^{m \times N}$ matrica mjerenja sa stupcima $\vec a_1, \dots, \vec a_N$. Ako je $\vec x^{\sharp}$ minimizator od
     \begin{equation*}
@@ -531,12 +536,94 @@ To je zapravo konveksna relaksacija problema \eqref{problem_minimizacije} i zove
     \end{equation*}
     tada je skup $\{\vec a_j,\ j \in \supp(\vec x^{\sharp})\}$ linearno nezavisan i vrijedi
     \begin{equation*}
-        \norm{\vec{x}^{sharp}}_0 = \card(\supp(\vec x^{\sharp})) \leq m. 
+        \norm{\vec{x}^{\sharp}}_0 = \card(\supp(\vec x^{\sharp})) \leq m. 
     \end{equation*}
 \end{thm}
 \begin{proof}
-    Pretpostavimo suprotno, tj. da je skup $\{\vec a_j,\ j \in \supp(\vec x^{\sharp})\}$ linearno zavisan. Neka je $S= \supp(\vec x^{\sharp})$. To zna\v{c}i da postoji ne-nul vektor $\vec v \in \R^N$ sa nosa\v{c}em $S$.
+    Pretpostavimo suprotno, tj. da je skup $\{\vec a_j,\ j \in \supp(\vec x^{\sharp})\}$ linearno zavisan. Neka je $S= \supp(\vec x^{\sharp})$. To zna\v{c}i da postoji ne-nul vektor $\vec v \in \R^N$ sa nosa\v{c}em na $S$ takav da $\vec{Av} = \vec 0$. Tada za svaki $t \not= 0$
+    \begin{equation*}
+        \norm{\vec x^{\sharp}}_1 < \norm{\vec x^{\sharp} + t \vec v}_1 = \sum_{j \in S}|x_j^{\sharp} + tv_j| = \sum_{j \in S}\sgn(x_j^{\sharp}+tv_j)(x_j^{\sharp}+tv_j)
+    \end{equation*}
+    Ako je $|t|$ dovoljno mali, tj. $|t| < \min_{j \in S}|x_j^{\sharp}|/ \norm{\vec v}_{\infty}$ onda vrijedi
+    \begin{equation*}
+        \sgn(x_j^{\sharp}+tv_j) = \sgn(x_j^{\sharp})\quad \text{za svaki }j \in S.
+    \end{equation*}
+    Dakle, za $0<|t|<\min_{j \in S}|x_j^{\sharp}|/ \norm{\vec v}_{\infty}$ slijedi
+    \begin{equation*}
+    \begin{split}
+        \norm{\vec x^{\sharp}}_1 & <  \sum_{j \in S} \sgn(x_j^{\sharp})(x_j^{\sharp}+tv_j)=\sum_{j \in S} \sgn(x_j^{\sharp})(x_j^{\sharp})+t \sum_{j \in S}\sgn(x_j^{\sharp})v_j \\ &= \norm{\vec x^{\sharp}}_1 + t \sum_{j \in S}\sgn(x_j^{\sharp})v_j.
+    \end{split}
+    \end{equation*}
+    No, to je kontradikcija jer $t \not = 0$ mo\v{z}emo odabrati dovoljno mali tako da je \\ $t \sum_{j \in S}\sgn(x_j^{\sharp})v_j \leq 0$.
 \end{proof}
+
+\indent
+U realnom slu\v{c}aju, \eqref{problem_minimizacije_l1} mo\v{z}emo reinterpretirati kao problem linearnog programiranja, tako da uvedemo pomo\v{c}ne varijable $\vec z^+,\ \vec z^- \in \R^N$ definirane sa
+\begin{multicols}{2}
+    \noindent
+    \begin{equation*} 
+        z_j^+ = 
+        \begin{cases}
+            z_j\ & \text{za } z_j > 0, \\
+            0\ & \text{za } z_j \leq 0
+        \end{cases}
+    \end{equation*}
+    \begin{equation*} 
+        z_j^- = 
+        \begin{cases}
+            0\ & \text{za } z_j > 0, \\
+            -z_j\ & \text{za } z_j \leq 0
+        \end{cases}
+    \end{equation*}
+\end{multicols}
+za svaki $j \in [N]$. Tada je problem \eqref{problem_minimizacije_l1} ekvivaltan problemu
+\begin{equation}
+    \min_{\vec z^+,\vec z^- \\ \in \R^N} \sum_{j=1}^{N}(z_j^+ + z_j^-) \quad \text{uz uvjet }
+    \begin{bmatrix*}
+        \vec A & -\vec A
+    \end{bmatrix*}
+    \begin{bmatrix*}
+        \vec z^+ \\ \vec z^-
+    \end{bmatrix*}
+    = \vec y, \quad
+    \begin{bmatrix*}
+        \vec z^+ \\ \vec z^-
+    \end{bmatrix*}
+    \geq 0.\tag{$P_1'$}
+\end{equation}
+Isto ne vrijedi za kompleksni slu\v{c}aj. Tu \v{c}injenicu pokazati \'cemo na op\'{c}enitijim problemu,
+\begin{equation}\label{problem_minimizacije_l1_kvadraticni}
+    \min \norm{\vec z}_1 \quad \text{uz uvjet } \norm{\vec{Az}-y}_2 \leq \eta.\tag{$P_{1,\eta}$}
+\end{equation}
+Taj problem je zapravo pogodniji za praksu, po\v{s}to vektor $\vec y \in \C^m$ ne mo\v{z}emo izmjeriti s beskona\v{c}nom to\v{c}no\v{s}\'cu, ve\'c uz neku gre\v{s}ku $\vec e \in \C^m$ pa je stoga
+\begin{equation*}
+    \vec y = \vec{Ax} + \vec e. 
+\end{equation*}
+Takvoj gre\v{s}ki \v{c}esto mo\v{z}emo ocjeniti $\ell_2$-normu, po\v{s}to ona ima interpretaciju energije,
+\begin{equation*}
+    \norm{\vec e}_2 \leq \eta, \quad \text{za neki } \eta > 0.
+\end{equation*}
+Za dani vektor $\vec z \in \C^N$, neka su $\vec u,\ \vec v \in \R^N$ njegovi realni i imaginarni djelovi te neka je $\vec c \in \R^N$ takav d je $c_j \geq |z_j| = \sqrt{u_j^2+v_j^2}$ za sve $j \in [N]$. Problem \eqref{problem_minimizacije_l1_kvadraticni} je tada ekvivaltan problemu
+\begin{equation}
+\begin{split}
+    \min_{\vec c, \vec u, \vec v \in \R^N}\sum_{j=1}^N c_j\quad \text{uz uvjete }& 
+    \norms{
+        \begin{bmatrix*}
+            \Re(\vec A) & -\Im(\vec A) \\
+            \Im(\vec A) & \Re(\vec A)
+        \end{bmatrix*}
+        \begin{bmatrix*}
+           \vec u \\ \vec v 
+        \end{bmatrix*}
+        -
+        \begin{bmatrix*}
+            \Re(\vec y) \\ \Im(\vec y) 
+    \end{bmatrix*} }_2 \leq \eta \\
+    &\sqrt{u_j^2 + v_j^2} \leq c_j,\quad \forall j \in [N] 
+\end{split}\tag{$P_{1, \eta}'$}\label{problem_minimizacije_l1_kvadraticni_drugi_oblik}
+\end{equation}
+
+
 
 
 

@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex diplomski"] 1564401968 "diplomski.aux" "diplomski.bbl" "diplomski" 1564407569
+["bibtex diplomski"] 1564425617 "diplomski.aux" "diplomski.bbl" "diplomski" 1564425617
   "/usr/share/texlive/texmf-dist/bibtex/bst/babelbib/babamspl.bst" 1480098433 25151 40676cbcefccd5c15b0204cf2f46b45f ""
-  "diplomski.aux" 1564406427 3476 91d8c727aa6f69543b98f95bc2807e15 "pdflatex"
+  "diplomski.aux" 1564425617 3696 e1054d405e17cee4a898a755bb6a7f60 "pdflatex"
   "diplomski.bib" 1563907899 206 5e992f8228e9bbd0ce89fd865a49c072 ""
   (generated)
   "diplomski.blg"
   "diplomski.bbl"
-["pdflatex"] 1564406427 "diplomski.tex" "diplomski.pdf" "diplomski" 1564407569
+["pdflatex"] 1564425617 "diplomski.tex" "diplomski.pdf" "diplomski" 1564425617
   "/home/marco/.texlive2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1563912899 2395959 73148c3950a4f1e899c0f190dd16db9a ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1480098668 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1480098668 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -230,6 +230,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbxparse.code.tex" 1532641668 9627 14f4c9965c1eb104f7420cf02c8958b5 ""
   "/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty" 1532641668 83058 0f220f442a3670c43c4513fd2622e091 ""
   "/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty" 1523050425 10212 357072c1d20578a30d6387d8a22e72ab ""
+  "/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty" 1525044788 30656 7d3c6c59eec44690b003639abb1d8a90 ""
   "/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty" 1523050425 3268 77605a04b5525f60d58f55c47c0771c5 ""
   "/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty" 1480098841 1380 971a51b00a14503ddf754cab24c3f209 ""
   "/usr/share/texlive/texmf-dist/tex/latex/url/url.sty" 1480098842 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
@@ -237,15 +238,15 @@
   "/usr/share/texlive/texmf-dist/tex/plain/ifetex/ifetex.tex" 1522621847 1178 13842cd1b714a921af7920503db5625a ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1553009075 33523 3a2c32bd77384f8f4508d61b4be83582 ""
   "croatian.bdf" 1563904501 8722 9fd99406a46c5bd3d4507acd144c2e3c ""
-  "diplomski.aux" 1564406427 3476 91d8c727aa6f69543b98f95bc2807e15 "pdflatex"
-  "diplomski.bbl" 1564401968 957 c7750791b5ada4cac3db939e37fa4b34 "bibtex diplomski"
-  "diplomski.out" 1564406427 553 8ab1c197cde240a80b3610d89005bd4f "pdflatex"
+  "diplomski.aux" 1564425617 3696 e1054d405e17cee4a898a755bb6a7f60 "pdflatex"
+  "diplomski.bbl" 1564425617 957 c7750791b5ada4cac3db939e37fa4b34 "bibtex diplomski"
+  "diplomski.out" 1564425617 553 430cf12816c3f70238d37432ce95f507 "pdflatex"
   "diplomski.sty" 1563904501 4471 8825156e250ce83e1617dfe9185011ba ""
-  "diplomski.tex" 1564407569 43099 a425d25f57db4676a8320c3681e7a36b ""
-  "diplomski.toc" 1564406427 1037 99ead14fc4ea0e91ea55dd5d5cdbe7dd "pdflatex"
+  "diplomski.tex" 1564425616 47035 43527e6cfbc926a44c0189ee314fad3c ""
+  "diplomski.toc" 1564425617 1037 f4b3c9f2d4e04803d0c0c9df70d26794 "pdflatex"
   (generated)
+  "diplomski.aux"
+  "diplomski.log"
   "diplomski.toc"
   "diplomski.pdf"
-  "diplomski.log"
   "diplomski.out"
-  "diplomski.aux"

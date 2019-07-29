@@ -10,6 +10,6 @@
 \contentsline {subsection}{Egzaktni pokriva\v {c} tro\v {c}lanim skupovima}{15}{section*.7}
 \contentsline {chapter}{\chapternumberline {2}Osnovni algoritmi sa\v {z}etog uzorkovanja}{17}{chapter.2}
 \contentsline {section}{\numberline {2.1}Optimizacijske metode}{17}{section.2.1}
-\contentsline {chapter}{Bibliografija}{19}{chapter*.11}
+\contentsline {chapter}{Bibliografija}{21}{chapter*.14}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}
