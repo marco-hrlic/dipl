@@ -32,7 +32,10 @@
 \newcommand{\norm}[1]{\|{#1}\|}
 \newcommand{\norms}[1]{\left\lVert#1\right\rVert}
 \newcommand{\rank}{\text\normalfont{rank}}
-\newcommand{\argmin}{\text{\normalfont{arg min\ }}}
+%\newcommand{\argmin}{\text{\normalfont{arg}}\min}
+%\newcommand{\argmax}{\text{\normalfont{arg}}\max}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 \newcommand{\sgn}{\text{\normalfont{sgn}}}
 \renewcommand{\Re}{\text{\normalfont{Re}}}
 \renewcommand{\Im}{\text{\normalfont{Im}}}
@@ -519,7 +522,7 @@ Poka\v{z}e se da za $q > 1$, \v{c}ak $1$-rijetki vektori nisu rje\v{s}enja od \e
 \begin{equation}
     \min \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y.\tag{$P_{1}$}\label{problem_minimizacije_l1}
 \end{equation}
-To je zapravo konveksna relaksacija problema \eqref{problem_minimizacije} i zovemo ga $\ell_1$\textit{-minimizacija}.
+To je zapravo konveksna relaksacija problema \eqref{problem_minimizacije} i zovemo ga $\ell_1$\textit{-minimizacija} (eng. \textit{basis pursuit}).
 
 \begin{alg}{$\ell_1$-minimizacija}
     \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$. \\
@@ -529,6 +532,7 @@ To je zapravo konveksna relaksacija problema \eqref{problem_minimizacije} i zove
         \end{equation} \\
         \textit{Izlaz:} vektor $\vec x^{\sharp}$
 \end{alg}
+
 \noindent Poka\v{z}imo sada da su $\ell_1$-minimizatori rijetki vektori u realnom slu\v{c}aju.
 \begin{thm}
     Neka je $\vec A \in \R^{m \times N}$ matrica mjerenja sa stupcima $\vec a_1, \dots, \vec a_N$. Ako je $\vec x^{\sharp}$ minimizator od
@@ -624,7 +628,7 @@ Za dani vektor $\vec z \in \C^N$, neka su $\vec u,\ \vec v \in \R^N$ njegovi rea
 \end{split}\tag{$P_{1, \eta}'$}\label{problem_minimizacije_l1_kvadraticni_drugi_oblik}
 \end{equation}
 Ovo je \textit{problem konike drugog reda}. Primjetimo da za $\eta=0$ dobivamo formulaciju problema \eqref{problem_minimizacije_l1} za kompleksni slu\v{c}aj u takvom obliku.
-\\\indent Princip rje\v{s}avanja \eqref{problem_minimizacije_l1_kvadraticni} zove se \textit{kvadrati\v{c}no ograni\v{c}ena $\ell_1$-minimizacija} ili \textit{$\ell$-minimizacija osjetljiva na \v{s}um}.
+\\\indent Princip rje\v{s}avanja \eqref{problem_minimizacije_l1_kvadraticni} zove se \textit{kvadrati\v{c}no ograni\v{c}ena $\ell_1$-minimizacija} ili \textit{$\ell$-minimizacija osjetljiva na \v{s}um} (eng. \textit{quadratically constrainted basis pursuit}).
 \begin{alg}{Kvadrati\v{c}no ograni\v{c}ena $\ell_1$-minimizacija}
     \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, razina \v{s}uma $\eta$. \\
     \textit{Problem:}
@@ -633,10 +637,101 @@ Ovo je \textit{problem konike drugog reda}. Primjetimo da za $\eta=0$ dobivamo f
         \end{equation} \\
         \textit{Izlaz:} vektor $\vec x^{\sharp}$
 \end{alg}
+Rje\v{s}enje $\vec x^{\sharp}$ povezano je s rje\v{s}enjem problema $\ell_1$-minimizacije sa ugra\dj enim uklanjanjem \v{s}uma
+\begin{equation}\label{problem_minimizacije_l1_sum}
+    \min_{\vec z \in \C^N} \lambda\norm{\vec z}_1 + \norm{\vec{Az}-\vec y}_2^2
+\end{equation}
+za neki $\lambda \geq 0$. Tako\dj er povezano je s rje\v{s}enjem \textit{LASSO} problema, za neki $\tau \geq 0$,
+\begin{equation}\label{lasso}
+    \min_{\vec z \in \C^N} \norm{\vec{Az}-\vec y}_2\quad \text{uz uvjet } \norm{\vec z}_1\leq \tau
+\end{equation}
+To upravo tvrdi naredna propozicija.
+\begin{prop}
+    \begin{enumerate}[label=(\alph*)]
+        \item Ako je $\vec x$ minimizator problema \eqref{problem_minimizacije_l1_sum} sa $\lambda > 0$, onda postoji $\eta = \eta_{\vec x} \geq 0$ takva da je $\vec x$ minizator kvadrati\v{c}no ograni\v{c}ene $\ell_1$-minimizacije \eqref{problem_minimizacije_l1_kvadraticni}.
+        \item Ako je $\vec x$ jedinstveni minimizator problema \eqref{problem_minimizacije_l1_kvadraticni} sa $\eta \geq 0$, onda postoji $\tau = \tau_{\vec x} \geq 0$ takav da je $\vec x$ minimizator LASSO problema \eqref{lasso}.
+        \item Ako je $\vec x$ minimizator LASSO problema \eqref{lasso}, onda postoji $\lambda = \lambda_{\vec x} \geq  0$ takva da je $\vec x$ minimizator problema \eqref{problem_minimizacije_l1_sum}.
+    \end{enumerate}
+\end{prop}
+\begin{proof}
+    \begin{enumerate}[label=(\alph*)]
+        \item Neka je $\eta := \norm{\vec{Ax}- \vec y}_2$ i $\vec z \in \C^N$ takav da je $\norm{\vec{Az-y}}_2 \leq \eta$. Po\v{s}to je prema pretpostavci $\vec x$ minimizator od \eqref{problem_minimizacije_l1_sum} slijedi,
+            \begin{equation*}
+                \lambda \norm{\vec x}_1 + \norm{\vec{Ax} -\vec{y}}_2^2 \leq \lambda \norm{\vec z}_1 + \norm{\vec{Az} - \vec{y}}_2^2 \leq \lambda \norm{\vec z}_1 + \norm{\vec{Ax}-\vec y}_2^2.
+            \end{equation*}
+            Dakle slijedi da je $\norm{\vec x}_1 \leq \norm{\vec{y}}_1$, pa je $\vec x$ minimizator problema \eqref{problem_minimizacije_l1_kvadraticni}
 
+        \item Neka je $\eta := \norm{\vec x}_1$ i neka je $\vec z \in \C^N\backslash\{\vec x\}$ takav da je $\norm{\vec z}_1 \leq \tau$. Po\v{s}to je $\vec x$ jedinstveni minimizator od \eqref{problem_minimizacije_l1_kvadraticni} to zna\v{c}i da $\vec z$ ne mo\v{z}e zadovoljavati uvjet iz \eqref{problem_minimizacije_l1_kvadraticni}, pa stoga $\norm{\vec{Az}- \vec{y}}_2 > \eta \geq \norm{\vec{Ax}-\vec y}_2$. Dakle, $\vec x$ je jedinstveni minimizator \textit{LASSO} problema.
+        \item Za dokaz ove tvrdnje potrebni su alati konveksne analize, vidi (TODO).
+    \end{enumerate}
+\end{proof}
 
+\section[Greedy metode][Greedy metode]{Greedy metode}
+Upoznati \'cemo se sa dva iterativna greedy algoritma koji se \v{c}esto koriste u kontekstu sa\v{z}etog uzorkovanja. Prvo algoritam koji \'cemo prou\v{c}iti zove se \textit{OMP} (skra\v{c}enica od eng. \textit{orthogonal matching pursuit}).
+\begin{alg}{OMP}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$. \\
+    \textit{Inicijalizacija:} $S^0 = \emptyset$, $\vec x^0 = \vec 0$ \\
+    \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
+        \begin{align}
+            &S^{n+1} = S^n \cup \{j_{n+1}\},\quad j_{n+1} := \argmax\limits_{j \in [N]}\{|(\vec A^*(\vec y - \vec{Ax}^n))|\},\tag{$OMP_1$}\label{omp_1}
+        \\
+            &\vec x^{n+1} = \argmin\limits_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{n+1}\}.\tag{$OMP_2$}\label{omp_2}
+        \end{align} \\
+        \textit{Izlaz:} vektor $\bar{n}$-rijedak vektor $\vec x^{\sharp}=\vec{x}^{\bar{n}}$.
+\end{alg}
 
+Numeri\v{c}ki najskuplja operacija ovog algoritma je \eqref{omp_2}. Situacije se mo\v{z}e popraviti kori\v{s}tenjem $QR$ dekompozicije matrice $\vec{A}_{S_n}$. Tada se mogu iskoristiti efikasni algoritmi za a\v{z}uriranje $QR$ dekompozicije kada se u matricu doda novi stupac. Nadalje, za dodatna ubrzanja mogu se iskoristiti i algoritmi za brzo matrica-vektor mno\v{z}enje bazirani na brzoj Fourierovoj transformaciji (vidi TODO).
+\newline\indent
+Indeks $j_{n+1}$ bira se tako da se reducira $\ell_2$-norma reziduala $\vec{y} - \vec{Ax}^n$ \v{s}to je vi\v{s}e mogu\'ce. Sljede\'ca lema opravdava za\v{s}to je smisleno $j$ odabrati takav da maksimizira vrijednost $|{(\vec{A}^*(\vec{y}-\vec A \vec x^n))_j}|$.
+\begin{lem}
+    Neka je $\vec A \in \C^{m \times N}$ sa $\ell_2$-normaliziranim stupcima. Ako su $S \subset [N]$, $\vec v \in \C^N$ sa nosa\v{c}em na $S$, $j \in [N]$, te ako vrijedi
+    \begin{equation*}
+        \vec w := \argmin_{\vec z \in \C^N} \{ \norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S \cup \{j\} \},
+    \end{equation*}
+    tada
+    \begin{equation*}
+        \norm{\vec y - \vec{Aw}}_2^2 \leq \norm{\vec y - \vec{Av}}_2^2 - |{(\vec{A}^*(\vec y - \vec{Av}))_j|^2.
+    \end{equation*}
+\end{lem}
+\begin{proof}
+    Po\v{s}to svaki vektor oblika $\vec v + t \vec e_j,\ t \in \C$ ima nosa\v{c} u $S \cup \{j\}$ vrijedi,
+    \begin{equation*}
+        \norm{\vec y - \vec{Aw}}_2^2 \leq \min_{t \in \C} \norm{\vec y - \vec{A}(\vec v + t \vec e_j)}_2^2
+    \end{equation*}
+    Stavimo da je $t = \rho e^{i \theta}$, gdje je $\rho \geq 0$ i $\theta \in [0,2 \pi)$. Imamo,
+    \begin{align*}
+        \norm{\vec y - \vec{A}(\vec v + t \vec e_j)}_2^2 &= \norm{\vec y - \vec{Av} - t \vec{A}\vec{e}_j}_2^2\\
+        &= \norm{\vec y - \vec{Av}}_2^2 + |t|^2 \norm{\vec{Ae}_j}_2^2 - 2 \Re(\bar{t}\langle \vec{y} - \vec{Av}, \vec{Ae}_j \rangle)\\
+        &= \norm{\vec y - \vec{Av}}_2^2 + \rho^2 - 2 \Re(\rho e^{-i \theta}(\vec{A}^*(\vec y - \vec{Av}))_j)\\
+        & \geq \norm{\vec y - \vec{Av}}_2^2 + \rho^2 - 2 \rho |{(\vec{A}^*(\vec y - \vec{Av}))_j}|^2
+    \end{align*}
+    gdje jednakost vrijedi za pogodno odabrani $\theta$. Kao kvadratni polinom u varijabli $\rho$, zadnji izraz poprima minimum za $\rho = |{(\vec{A}^*(\vec y - \vec{Av}))_j}|$.
+\end{proof}
 
+Korak \eqref{omp_2} mo\v{s}e se prikazati u obliku
+\begin{equation*}
+    \vec{x}_{S^{n+1}}^{n+1} = \vec{A}_{S^{n+1}}^{\dagger}\vec y,
+\end{equation*}
+gdje je $\vec{x}_{S^{n+1}}^{n+1}$ restrikcija od $\vec x^{n+1}$ na svoj nosa\v{c} $S^{n+1}$ i gdje je $\vec A^{\dagger}_{S^{n+1}}$ pseudo-inverz od $\vec{A}_{S^{n+1}}$ (vidi TODO). Drugim rje\v{c}ima to zna\v{c}i da je $\vec z = \vec x ^{n+1}_{S^{n+1}}$ rje\v{s}enje sustava $\vec A^*_{S^{n+1}} \vec A_{S^{n+1}} \vec z = \vec A^*_{S^{n+1}} \vec y$. Ta \v{c}injenica je korisna i u drugim algoritmima koji imaju korak sli\v{c}an \eqref{omp_2}.
+\begin{lem}
+    Neka je $S \subset [N]$ i
+    \begin{equation*}
+        \vec v := \argmin_{\vec z \in \C^N} \{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S\},
+    \end{equation*}
+    tada je
+    \begin{equation}\label{omp_ortogonalnost}
+        (\vec A^*(\vec y - \vec{Av}))_S = \vec 0.
+    \end{equation}
+\end{lem}
+\begin{proof}
+    Prema definiciji vektora $\vec v$, vektor $\vec{Av}$ je orthogonalna projekcija vektora $\vec y$ na prostor $\{\vec{Az},\ \supp(\vec{z} \subset S)\}$, pa je karakteriziran relacijom ortogonalnosti
+    \begin{equation*}
+        \langle \vec y - \vec{Av}, \vec{Az} \rangle = 0 \quad \text{za sve }\vec z \in \C^N \ \text{takve da } \supp(\vec z) \subset S.
+    \end{equation*}
+    Dakle, imamo da vrijedi $\langle \vec A^*( \vec y - \vec{Av}), \vec{z} \rangle = 0$ za sve $\vec z \in \C^N,\ \supp(\vec z) \subset S$, \v{s}to vrijedi ako i samo ako vrijedi \eqref{omp_ortogonalnost}.
+\end{proof}
+
+% KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
 % Najprije definiramo nacin prikazivanja bibliografije, u ovom slucaju verzija amsplain stila
 \bibliographystyle{babamspl} % babamspl ili babplain
