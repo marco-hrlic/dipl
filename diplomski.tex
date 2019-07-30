@@ -673,7 +673,7 @@ Upoznati \'cemo se sa dva iterativna greedy algoritma koji se \v{c}esto koriste 
     \textit{Inicijalizacija:} $S^0 = \emptyset$, $\vec x^0 = \vec 0$ \\
     \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
         \begin{align}
-            &S^{n+1} = S^n \cup \{j_{n+1}\},\quad j_{n+1} := \argmax\limits_{j \in [N]}\{|(\vec A^*(\vec y - \vec{Ax}^n))|\},\tag{$OMP_1$}\label{omp_1}
+            &S^{n+1} = S^n \cup \{j_{n+1}\},\quad j_{n+1} := \argmax\limits_{j \in [N]}\{|(\vec A^*(\vec y - \vec{Ax}^n))_j|\},\tag{$OMP_1$}\label{omp_1}
         \\
             &\vec x^{n+1} = \argmin\limits_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{n+1}\}.\tag{$OMP_2$}\label{omp_2}
         \end{align} \\
@@ -731,7 +731,21 @@ gdje je $\vec{x}_{S^{n+1}}^{n+1}$ restrikcija od $\vec x^{n+1}$ na svoj nosa\v{c
     Dakle, imamo da vrijedi $\langle \vec A^*( \vec y - \vec{Av}), \vec{z} \rangle = 0$ za sve $\vec z \in \C^N,\ \supp(\vec z) \subset S$, \v{s}to vrijedi ako i samo ako vrijedi \eqref{omp_ortogonalnost}.
 \end{proof}
 
-Prirodan uvjet zaustavljanja OMP-a je kada se postigne $\norm{\vec{y} - \vec{Ax}^{\bar{n}}} \leq \varepsilon$ ili $\norm{\vec A^*(\vec y - \vec{Ax}^{\bar{n}})_{\infty}} \leq \varepsilon$ za neku toleranciju $\varepsilon > 0$. Ako nam je dostupna estimacija rijetkosti $s$ rje\v{s}enja $\vec x$, tada je razumno stati kada je $\bar{n} = s$.
+Prirodan uvjet zaustavljanja OMP-a je kada se postigne $\norm{\vec{y} - \vec{Ax}^{\bar{n}}} \leq \varepsilon$ ili $\norm{\vec A^*(\vec y - \vec{Ax}^{\bar{n}})_{\infty}} \leq \varepsilon$ za neku toleranciju $\varepsilon > 0$. Ako nam je dostupna estimacija rijetkosti $s$ rje\v{s}enja $\vec x$, tada je razumno stati kada je $\bar{n} = s$. Sljede\'ci rezultat govori o uvjetim za uspje\v{s}nu rekonstrukciju $s$-rijetkog vektora u $s$ iteracija OMP algoritma.
+
+\begin{prop}
+    Neka je $\vec A \in \C^{m \times N}$, svaki ne-nul vektor $\vec x \in \C^N$ sa nosa\v{c}emo na skupu $S$, kardinaliteta $s$ mo\v{z}e se rekonstruirati iz $\vec y = \vec{Ax}$ u najvi\v{s}e $s$ iteracija OMP algoritma ako i samo ako je matrica $\vec A_S$ injektivna i 
+    \begin{equation}\label{uvjet_rekon_omp}
+        \max_{j \in S}|(\vec A^* \vec r)_j| > \max_{l \in \bar{S}}|(\vec A^* \vec r)_l|
+    \end{equation}
+    za sve ne-nul $\vec r \in \{\vec{Az},\ \supp(\vec z) \subset S\}$.
+\end{prop}
+% TODO nije mi bas jasno ovo
+\begin{proof}
+    Pretpostavimo da OMP algoritam rekonstruira sve vektore sa nosa\v{c}emo na skupu $S$ u najvi\v{s}e $s = \card(S)$ iteracija. Neka su $\vec v, \vec w$ sa nosa\v{c}em na $S$, takvi da je $\vec{Av}=\vec{Aw}$. Zbog pretpostavke, $\vec v$ i $\vec w$ moraju biti jednaki, a to zna\v{c}i da je matrica $\vec A_S$ injektivna. Nadalje, ako je $\vec y = \vec{Ax}$ za neki $\vec x \in \C^N$ sa $\supp(\vec x)=S$, indeks $l \in \bar S$ ne mo\v{z}e biti izabran u prvoj iteraciji, po\v{s}to indeks izabran u prvoj iteraciji ostaje uvijek u nosa\v{c}u, a po pretpostavci OMP rekonstruira $\vec x$ iz $\vec y = \vec{Ax}$. Dakle za $n=0$ iz \eqref{omp_1} imamo da je $\max_{j \in S}|(\vec A^*y)_j| > |(\vec A^*y)_l|$ za svaki $l \in \bar{S}$, pa stoga vrijedi $\max_{j \in S}|(\vec A^*y)_j| > \max_{l \in \bar{S}}|(\vec A^*y)_l|$ za sve ne-nul $\vec y \in \{\vec{Az},\ \supp(\vec z) \subset S\}$. \\
+    \indent
+    Obratno, pretpostavimo da je $\vec{Ax}^1 \neq y,\dots,\vec{Ax}^{s-1} \neq y$ jer u suprotnom nemamo \v{s}to dokazivati.
+\end{proof}
 
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
