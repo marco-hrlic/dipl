@@ -21,6 +21,12 @@
 \usepackage[languagenames,fixlanguage,croatian]{babelbib} % zahtijeva datoteku croatian.bdf
 % hiperlinkovi 
 \usepackage[pdftex]{hyperref} 
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
 \usepackage{enumitem}
 \usepackage{multicol}
 
@@ -677,7 +683,7 @@ Upoznati \'cemo se sa dva iterativna greedy algoritma koji se \v{c}esto koriste 
         \\
             &\vec x^{n+1} = \argmin\limits_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{n+1}\}.\tag{$OMP_2$}\label{omp_2}
         \end{align} \\
-        \textit{Izlaz:} vektor $\bar{n}$-rijedak vektor $\vec x^{\sharp}=\vec{x}^{\bar{n}}$.
+        \textit{Izlaz:} $\bar{n}$-rijedak vektor $\vec x^{\sharp}=\vec{x}^{\bar{n}}$.
 \end{alg}
 
 Numeri\v{c}ki najskuplja operacija ovog algoritma je \eqref{omp_2}. Situacije se mo\v{z}e popraviti kori\v{s}tenjem $QR$ dekompozicije matrice $\vec{A}_{S_n}$. Tada se mogu iskoristiti efikasni algoritmi za a\v{z}uriranje $QR$ dekompozicije kada se u matricu doda novi stupac. Nadalje, za dodatna ubrzanja mogu se iskoristiti i algoritmi za brzo matrica-vektor mno\v{z}enje bazirani na brzoj Fourierovoj transformaciji (vidi TODO).
@@ -713,7 +719,7 @@ Korak \eqref{omp_2} mo\v{s}e se prikazati u obliku
     \vec{x}_{S^{n+1}}^{n+1} = \vec{A}_{S^{n+1}}^{\dagger}\vec y,
 \end{equation*}
 gdje je $\vec{x}_{S^{n+1}}^{n+1}$ restrikcija od $\vec x^{n+1}$ na svoj nosa\v{c} $S^{n+1}$ i gdje je $\vec A^{\dagger}_{S^{n+1}}$ pseudo-inverz od $\vec{A}_{S^{n+1}}$ (vidi TODO). Drugim rje\v{c}ima to zna\v{c}i da je $\vec z = \vec x ^{n+1}_{S^{n+1}}$ rje\v{s}enje sustava $\vec A^*_{S^{n+1}} \vec A_{S^{n+1}} \vec z = \vec A^*_{S^{n+1}} \vec y$. Ta \v{c}injenica je korisna i u drugim algoritmima koji imaju korak sli\v{c}an \eqref{omp_2}.
-\begin{lem}
+\begin{lem}\label{omp_lema_1}
     Neka je $S \subset [N]$ i
     \begin{equation*}
         \vec v := \argmin_{\vec z \in \C^N} \{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S\},
@@ -742,9 +748,52 @@ Prirodan uvjet zaustavljanja OMP-a je kada se postigne $\norm{\vec{y} - \vec{Ax}
 \end{prop}
 % TODO nije mi bas jasno ovo
 \begin{proof}
-    Pretpostavimo da OMP algoritam rekonstruira sve vektore sa nosa\v{c}emo na skupu $S$ u najvi\v{s}e $s = \card(S)$ iteracija. Neka su $\vec v, \vec w$ sa nosa\v{c}em na $S$, takvi da je $\vec{Av}=\vec{Aw}$. Zbog pretpostavke, $\vec v$ i $\vec w$ moraju biti jednaki, a to zna\v{c}i da je matrica $\vec A_S$ injektivna. Nadalje, ako je $\vec y = \vec{Ax}$ za neki $\vec x \in \C^N$ sa $\supp(\vec x)=S$, indeks $l \in \bar S$ ne mo\v{z}e biti izabran u prvoj iteraciji, po\v{s}to indeks izabran u prvoj iteraciji ostaje uvijek u nosa\v{c}u, a po pretpostavci OMP rekonstruira $\vec x$ iz $\vec y = \vec{Ax}$. Dakle za $n=0$ iz \eqref{omp_1} imamo da je $\max_{j \in S}|(\vec A^*y)_j| > |(\vec A^*y)_l|$ za svaki $l \in \bar{S}$, pa stoga vrijedi $\max_{j \in S}|(\vec A^*y)_j| > \max_{l \in \bar{S}}|(\vec A^*y)_l|$ za sve ne-nul $\vec y \in \{\vec{Az},\ \supp(\vec z) \subset S\}$. \\
+    Pretpostavimo da OMP algoritam rekonstruira sve vektore sa nosa\v{c}emo na skupu $S$ u najvi\v{s}e $s = \card(S)$ iteracija. Neka su $\vec v, \vec w$ sa nosa\v{c}em na $S$, takvi da je $\vec{Av}=\vec{Aw}$. Zbog pretpostavke, $\vec v$ i $\vec w$ moraju biti jednaki, a to zna\v{c}i da je matrica $\vec A_S$ injektivna. Nadalje, ako je $\vec y = \vec{Ax}$ za neki $\vec x \in \C^N$ sa $\supp(\vec x)=S$, indeks $l \in \bar S$ ne mo\v{z}e biti izabran u prvoj iteraciji, po\v{s}to indeks izabran u prvoj iteraciji ostaje uvijek u nosa\v{c}u, a po pretpostavci OMP rekonstruira $\vec x$ iz $\vec y = \vec{Ax}$ u to\v{c}no $s$ iteracija. Dakle za $n=0$ iz \eqref{omp_1} imamo da je $\max_{j \in S}|(\vec A^*y)_j| > |(\vec A^*y)_l|$ za svaki $l \in \bar{S}$, pa stoga vrijedi $\max_{j \in S}|(\vec A^*y)_j| > \max_{l \in \bar{S}}|(\vec A^*y)_l|$ za sve ne-nul $\vec y \in \{\vec{Az},\ \supp(\vec z) \subset S\}$. \\
     \indent
-    Obratno, pretpostavimo da je $\vec{Ax}^1 \neq y,\dots,\vec{Ax}^{s-1} \neq y$ jer u suprotnom nemamo \v{s}to dokazivati.
+    Obratno, pretpostavimo da je $\vec{Ax}^1 \neq y,\dots,\vec{Ax}^{s-1} \neq y$ jer u suprotnom nemamo \v{s}to dokazivati. Pokazati \'cemo da $S^n \subset S,\ \card(S^n)=n$ za $0 \leq n \leq s$. To \'ce implicirati $S^s = S$. Nadalje, \eqref{omp_2} daje $\vec{Ax}^s = \vec y$ a iz injektivnosti od $\vec{A}_S$ slijedi $\vec x_s = \vec{x}$. Dakle, neka je $0 \leq n \leq s-1$. Ako je $S^n \subset S$, to povla\v{c}i da je $\vec r^n := \vec y - \vec{Ax}^n \in \{\vec{Az},\ \supp(\vec z) \subset S\}$, pa prema \eqref{uvjet_rekon_omp} indeks $j_{n+1}$ le\v{z}i u S, pa $S^{n+1} = S \cup \{j_{n+1}\} \subset S$. Ovo induktivno pokazuje da je $S^n$ podskup od $S$ za svaki $0 \leq n \leq s$. Nadalje, neka je $1 \leq n \leq s-1$. Lema \eqref{omp_lema_1} daje $(\vec{A}^* \vec r^n)_{S^n} = \vec 0$. Stoga, iz \eqref{omp_1} vidimo da indeks $j_{n+1}$ ne le\v{z}i u $S^{n}$, jer bi u protivnom $\vec A^* \vec r^n = \vec 0$, a po \eqref{uvjet_rekon_omp} $\vec r^n = \vec 0$. Dakle, $\card(S^n)=n$.
+\end{proof}
+\indent
+Slabost OMP algoritma le\v{z}i u \v{c}injenici da ako krivi indeks u\dj e u nosa\v{c}, on ostaje u nosa\v{c}u u svim sljede\'cim iteracijama. Stoga $s$ iteracija algoritma nije dovoljno za rekonstrukciju vektora koji je $s$-rijedak. Mogu\'ce rje\v{s}enje je pove\'cati broj iteracija. Naredni algoritam, CoSaMP (eng. \textit{compressive sampling matching pursuit algorithm}), koristi druga\v{c}iju strategiju kada nam je dostupna estimacija rijetkosti $s$. Uvedimo oznake $H_s(\vec z)$ za najbolju $s$-rijetku aproksimaciju vekotra $\vec z \in \C^N$ i $L_s(\vec z)$ za nosa\v{c} od $H_s(\vec z)$, tj.
+\begin{align}
+    &L_s(\vec z) := \text{skup indeksa $s$ najve\'cih komponeneti vekora } \vec z \in \C^N \\
+    &H_s(\vec z) := \vec z_{L_s(\vec z)}.
+\end{align}
+Nelinearni operator $H_s$ zovemo \textit{hard thresholding} operator reda $s$. Za dani vektor $\vec z \in \C^N$ on pu\v{s}ta $s$ apsolutno najve\'cih komponeneti a ostale postavi na nulu. Primjetimo da to nije nu\v{z}no jedinstveno definiramo. Da bi zaobi\v{s}li taj problem, skup indeksa $L_s(\vec z)$ biramo iz svih mogu\'cih kandidata leksikografskim poredkom.
+
+\begin{alg}{CoSaMP}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
+    \textit{Inicijalizacija:} $s$-rijedak vektor $\vec x^0$ (npr. $\vec x^0 = \vec 0$).\\
+    \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
+        \begin{align*}
+            U^{n+1} & = \supp(\vec x^n)\cup L_{2s}(\vec A^*(\vec y - \vec{Ax}^n))  \tag{$CoSaMP_1$}\label{cosamp_1}\\
+            \vec u^{n+1} & = \argmin_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset U^{n+1}\}  \tag{$CoSaMP_2$}\label{cosamp_2}\\
+            \vec x^{n+1} & = H_s(\vec u^{n+1})  \tag{$CoSaMP_3$}\label{cosamp_3}
+        \end{align*}
+        \textit{Izlaz:} $\bar{n}$-rijedak vektor $\vec x^{\sharp}=\vec{x}^{\bar{n}}$.
+\end{alg}
+
+
+
+\section[Grani\v{c}ne metode][Grani\v{c}ne metode]{Grani\v{c}ne metode}
+Algoritmi predstavljeni u ovom poglavlju tako\dj er koriste \textit{hard thresholding} operator $H_s$. Prvi algoritam, BT (eng. \textit{basic thresholding}), sastoji se od odre\dj ivanja nosa\v{c}a $s$-rijetkog vektora $\vec x \in \C^N$, koji se rekonstruira iz $\vec y = \vec{Ax} \in \C^m$, kao indeksi $s$ najve\'cih komponenti vektora $\vec A^* \vec y$, te tra\v{z}enja vektora koji najbolje aproksimira mjerenje $\vec y$
+
+\begin{alg}{BT}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
+    \textit{Problem:}
+        \begin{align*}
+            S^{\sharp} &= L_s(\vec A^* \vec y),\tag{$BT_1$}\label{bt_1}\\
+            \vec x^{\sharp} &= \argmin_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{sharp}\}.\tag{$BT_2$}\label{bt_2}\\
+        \end{align*}
+        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}$.
+\end{alg}
+
+\begin{prop}
+    BT algoritam rekonstruira vektor $\vec x \in \C^N$ sa nosa\v{c}em na $S$, iz $\vec y = \vec{Ax}$ ako i samo ako
+    \begin{equation}\label{bt_uvjet}
+        \min_{j \in S}|(\vec A^* \vec y)_j| > \max_{l \in \bar{S}} |(\vec A^* \vec y)_l| .
+    \end{equation}
+\end{prop}
+\begin{proof}
 \end{proof}
 
 % KRAJ

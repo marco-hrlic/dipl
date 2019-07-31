@@ -11,6 +11,7 @@
 \contentsline {chapter}{\chapternumberline {2}Osnovni algoritmi sa\v {z}etog uzorkovanja}{17}{chapter.2}
 \contentsline {section}{\numberline {2.1}Optimizacijske metode}{17}{section.2.1}
 \contentsline {section}{\numberline {2.2}Greedy metode}{21}{section.2.2}
-\contentsline {chapter}{Bibliografija}{25}{chapter*.19}
+\contentsline {section}{\numberline {2.3}Grani\v {c}ne metode}{24}{section.2.3}
+\contentsline {chapter}{Bibliografija}{27}{chapter*.29}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}
