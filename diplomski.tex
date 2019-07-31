@@ -121,7 +121,7 @@
 ...
 \end{intro}
 
-\chapter[Rijetka rje\v{s}enja][Rijetka rje\v{s}enja]{Rijetka rje\v{s}enja}	
+\chapter[Rijetka rje\v{s}enja][Rijetka rje\v{s}enja]{Rijetka rje\v{s}enja}\label{chapter_rijetka_rijesenja}	
 % ukoliko naslov nije jako dugacak dovoljno je samo \chapter{Naslov poglavlja} 
 
 \section[Rijetsko i sa\v{z}etost vektora][Rijetsko i sa\v{z}etost vektora]{Rijetsko i sa\v{z}etost vektora}
@@ -513,7 +513,7 @@ Za danu kolekciju $\{\mathcal{C}_i;\ i \in [N]\}$ tro\v{c}lanih podskupova od $[
 
 
 
-\chapter[Osnovni algoritmi sa\v{z}etog uzorkovanja][Osnovni algoritmi sa\v{z}etog uzorkovanja]{Osnovni algoritmi sa\v{z}etog uzorkovanja}
+\chapter[Osnovni algoritmi sa\v{z}etog uzorkovanja][Osnovni algoritmi sa\v{z}etog uzorkovanja]{Osnovni algoritmi sa\v{z}etog uzorkovanja}\label{chapter_algoritmi}
 Algoritmi za rje\v{s}avanje problema sa\v{z}etog uzorkovanja, koje \'cemo predstaviti, podijeljeni su u tri kategorije: optimizacije, greedy metode i grani\v{c}ne metode. U ovom poglavlju dati \'cemo samo pregled najpopularnijih algoritama, dok \'cemo formalnu analizu nekih od njih ostaviti za kasnije, nakon \v{s}to razvijemo potrebne teorijske alate.
 \section[Optimizacijske metode][Optimizacijske metode]{Optimizacijske metode}
 Op\v{c}eniti problem optimizacije je oblika
@@ -528,9 +528,9 @@ Poka\v{z}e se da za $q > 1$, \v{c}ak $1$-rijetki vektori nisu rje\v{s}enja od \e
 \begin{equation}
     \min \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y.\tag{$P_{1}$}\label{problem_minimizacije_l1}
 \end{equation}
-To je zapravo konveksna relaksacija problema \eqref{problem_minimizacije} i zovemo ga $\ell_1$\textit{-minimizacija} (eng. \textit{basis pursuit}).
+To je zapravo konveksna relaksacija problema \eqref{problem_minimizacije} i zovemo ga $\ell_1$\textit{-minimizacija} ili \textit{BP} algoritam (eng. \textit{basis pursuit}).
 
-\begin{alg}{$\ell_1$-minimizacija}
+\begin{alg}{$\ell_1$-minimizacija (BP)}
     \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$. \\
     \textit{Problem:}
         \begin{equation}
@@ -782,11 +782,12 @@ Algoritmi predstavljeni u ovom poglavlju tako\dj er koriste \textit{hard thresho
     \textit{Problem:}
         \begin{align*}
             S^{\sharp} &= L_s(\vec A^* \vec y),\tag{$BT_1$}\label{bt_1}\\
-            \vec x^{\sharp} &= \argmin_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{sharp}\}.\tag{$BT_2$}\label{bt_2}\\
+            \vec x^{\sharp} &= \argmin_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{\sharp}\}.\tag{$BT_2$}\label{bt_2}\\
         \end{align*}
         \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}$.
 \end{alg}
 
+\noindent Dovoljni i nu\v{z}i uvjeti rekonstrukcije jednostavnim BT algoritmom, sli\v{c}ni su uvjetu \eqref{uvjet_rekon_omp}.
 \begin{prop}
     BT algoritam rekonstruira vektor $\vec x \in \C^N$ sa nosa\v{c}em na $S$, iz $\vec y = \vec{Ax}$ ako i samo ako
     \begin{equation}\label{bt_uvjet}
@@ -794,7 +795,50 @@ Algoritmi predstavljeni u ovom poglavlju tako\dj er koriste \textit{hard thresho
     \end{equation}
 \end{prop}
 \begin{proof}
+    Vektor $\vec x$ mo\v{z}e se rekonstruirati ako i samo ako skup indeksa $S^{\sharp}$ u \eqref{bt_1} jednak skupu $S$. A to vrijedi ako i samo ako je element vektora $\vec A^* \vec y$ s indeksom iz $S$, ve\'ci od svakog elementa vektora $\vec A^& \vec y$ s indeksom u $\bar{S}$.
 \end{proof}
+\indent
+IHT (eng. \textit{iterative hard thresholding}) algoritam rje\v{s}ava kvadratni sustav $\vec A^* \vec A \vec z= \vec A^* \vec y$ umjesto $\vec{Az}=\vec y$. To mo\v{z}emo interpretirati kao rje\v{s}avanje problema fiksne to\v{c}ke $\vec z = (\vec{I}- \vec A^* \vec A) \vec z + \vec A^* \vec y$. Prirodno je gledati iteracije oblika $\vec x^{n+1} = (\vec{I}- \vec A^* \vec A) \vec x^n + \vec A^* \vec y$. Po\v{s}to tra\v{z}imo $s$-rijetko rje\v{s}enje u svakoj iteraciji uzimamo samo $s$ apsolutno najve\'cih komponenti od $(\vec{I} - \vec A^* \vec A) \vec x^n _ \vec A^* \vec y$.
+
+\begin{alg}{IHT}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
+    \textit{Inicijalizacija:} $s$-rijedak vektor $\vec x^0$ (npr. $\vec x^0 = \vec 0$).\\
+    \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
+        \begin{equation}
+            x^{n+1} = H_s(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n).\tag{$IHT$}\label{iht}\\
+        \end{equation}
+        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}=\vec x^{\barn}$.
+\end{alg}
+
+Primjetimo da IHT algoritam ne koristi orthogonalne projekcije, \v{s}to je njegova prednost. No, ako smo spremi platiti cjenu projekcija, ima smisla gledati vektor koji ima isti nosa\v{c} kao $\vec x^{n+1}$ koji najbolje aproksimira mjerenje. Upravo je to strategija HTP (eng. \textit{hard thresholding pursuit}) algoritma.
+
+\begin{alg}{HTP}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
+    \textit{Inicijalizacija:} $s$-rijedak vektor $\vec x^0$ (npr. $\vec x^0 = \vec 0$).\\
+    \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
+        \begin{align*}
+            S^{n+1} &= L_s(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n),\tag{$HTP_1$}\label{htp_1}\\
+            \vec x^{n+1} &= \argmin_{\vec z \in \C^N}\{ \norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{n+1} \}.\tag{$HTP_2$}\label{htp_2}
+        \end{align*}
+        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}=\vec x^{\barn}$.
+\end{alg}
+
+
+
+
+
+\chapter[BP algoritam][BP algoritam]{BP algoritam}
+Prisjetimo se, problem sa\v{z}etog uzorkovanja sastoji se od rekonstrukcije $s$-rijetkog vektora $\vec x \in \C^N$ iz mjerenja $\vec y = \vec{Ax} \in \C^m$, gdje je $m < N$. Prirodno se name\'ce problem $\ell_0$-minimizacije,
+\noindent
+\begin{equation}
+\min_{\vec z \in \C^N} \norm{\vec z}_0\quad \text{uz uvjet }\vec{Az} = \vec{y}\tag{$P_0$}
+\end{equation}
+U poglavlju \eqref{chapter_rijetka_rijesenja} vidjeli smo da je taj problem op\'cenito $\mathfrak{NP}$-te\v{z}ak. U poglavlju \eqref{chapter_algoritmi} pokazali smo nekoliko u\v{c}inkovitih strategija za rje\v{s}avanje problema sa\v{z}etog uzorkovanja. U ovom poglavlju fokusirati \'cemo se na strategiju $\ell_1$-minimizacije
+\begin{equation}
+    \min_{\vec z \in \C^N} \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y.\tag{$P_1$}
+\end{equation}
+Prou\v{c}iti \'{c}emo uvjete na matricu $\vec A$ koji osiguravaju egzaktnu ili aproksimativnu rekonstrukciju vektora $\vec x$.
+
 
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
