@@ -12,7 +12,8 @@
 \contentsline {section}{\numberline {2.1}Optimizacijske metode}{17}{section.2.1}
 \contentsline {section}{\numberline {2.2}Greedy metode}{21}{section.2.2}
 \contentsline {section}{\numberline {2.3}Grani\v {c}ne metode}{24}{section.2.3}
-\contentsline {chapter}{\chapternumberline {3}BP algoritam}{27}{chapter.3}
-\contentsline {chapter}{Bibliografija}{29}{chapter*.36}
+\contentsline {chapter}{\chapternumberline {3}$\ell _1$-minimizacija}{27}{chapter.3}
+\contentsline {section}{\numberline {3.1}Svojstvo nul-prostora}{27}{section.3.1}
+\contentsline {chapter}{Bibliografija}{31}{chapter*.36}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  31 JUL 2019 15:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  31 JUL 2019 22:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1840,44 +1840,6 @@ or  <return>  to continue without it.
 Underfull \vbox (badness 2726) has occurred while \output is active []
 
  [24]
-! Missing { inserted.
-<to be read again> 
-                   &
-l.798 ...\'ci od svakog elementa vektora $\vec A^&
-                                                   \vec y$ s indeksom u $\ba...
-A left brace was mandatory here, so I've put one in.
-You might want to delete and/or insert some corrections
-so that I will find a matching right brace soon.
-(If you're confused by all this, try typing `I}' now.)
-
-! Misplaced alignment tab character &.
-<recently read> &
-                 
-l.798 ...\'ci od svakog elementa vektora $\vec A^&
-                                                   \vec y$ s indeksom u $\ba...
-I can't figure out why you would want to use a tab mark
-here. If you just want an ampersand, the remedy is
-simple: Just type `I\&' now. But if some right brace
-up above has ended a previous alignment prematurely,
-you're probably due for more error messages, and you
-might try typing `S' now just to see what is salvageable.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.798 ...svakog elementa vektora $\vec A^& \vec y$
-                                                   s indeksom u $\bar{S}$.
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Double superscript.
-l.801 ...{I} - \vec A^* \vec A) \vec x^n _ \vec A^
-                                                  * \vec y$.
-I treat `x^1^2' essentially like `x^1{}^2'.
-
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
@@ -1898,15 +1860,6 @@ l.803 \begin{alg}{IHT}
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
-
-! Undefined control sequence.
-l.810 ...dak vektor $\vec x^{\sharp}=\vec x^{\barn
-                                                  }$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1933,24 +1886,47 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-! Undefined control sequence.
-l.823 ...dak vektor $\vec x^{\sharp}=\vec x^{\barn
-                                                  }$.
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+[26]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <24.88> on input line 830.
 
-[26] (./diplomski.bbl [27
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 830.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\ell' on input line 830.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 830.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 830.
+
+
+Overfull \hbox (1.14764pt too wide) in paragraph at lines 846--847
+[][]\T1/lmr/bx/n/12 Definicija 3.1.1. []\T1/lmr/m/it/12 Za ma-tricu $\OT1/lmr/b
+x/n/12 A \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 K[]$ \T1/lmr/m/it/12 ka-ºemo da za-do
+-vo-ljava svoj-stvo nul-prostora
+ []
+
+[27
 
 pdfTeX warning (ext4): destination with the same identifier (name{equation.3.0.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1 \begin{thebibliography}{}
-                             ] [28
+l.855 \begin{equation}
+                      \label{svojstvo_nul_prostora_form_1}] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 897--903
+
+ []
+
+(./diplomski.bbl [29] [30
 
 ]
 babelbib: Using the BibTeX style's default font for `name'.
@@ -1967,42 +1943,42 @@ babelbib: Using the BibTeX style's default font for `numeral'.
 
 LaTeX Warning: Empty `thebibliography' environment on input line 23.
 
-) [29] [30
-
-] [31] [32
+) [31] [32
 
 ] [33] [34
+
+] [35] [36
 
 ]
 
 Class memoir Warning: The material used in the headers is too large
 (14.89201pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 867.
+(in both cases you will find help in the memoir manual). on input line 947.
 
-[35]
+[37]
 \tf@toc=\write8
 \openout8 = `diplomski.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 867.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 867.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 947.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 947.
  (./diplomski.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 867.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 867.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 947.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 947.
 Package rerunfilecheck Info: File `diplomski.out' has not changed.
-(rerunfilecheck)             Checksum: 96489FDAB4E724FE8C19D04AEFEDCAD9;723.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 867.
+(rerunfilecheck)             Checksum: 291D0D171970C1A4239C8C870114EFBA;793.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 947.
  ) 
 Here is how much of TeX's memory you used:
- 37421 strings out of 494021
- 715630 string characters out of 6162400
- 854444 words of memory out of 5000000
- 40446 multiletter control sequences out of 15000+600000
- 645921 words of font info for 105 fonts, out of 8000000 for 9000
+ 37453 strings out of 494021
+ 716147 string characters out of 6162400
+ 854808 words of memory out of 5000000
+ 40466 multiletter control sequences out of 15000+600000
+ 656718 words of font info for 116 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  67i,24n,101p,1024b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texli
-ve/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texli
+ve/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts
 /enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/l
 m-mathit.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</
 usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr
@@ -2021,10 +1997,10 @@ m/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on diplomski.pdf (39 pages, 365776 bytes).
+Output written on diplomski.pdf (41 pages, 382387 bytes).
 PDF statistics:
- 536 PDF objects out of 1000 (max. 8388607)
- 447 compressed objects within 5 object streams
- 135 named destinations out of 1000 (max. 500000)
- 253 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 572 PDF objects out of 1000 (max. 8388607)
+ 481 compressed objects within 5 object streams
+ 147 named destinations out of 1000 (max. 500000)
+ 261 words of extra memory for PDF output out of 10000 (max. 10000000)
 

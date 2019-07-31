@@ -140,7 +140,7 @@ Gdje smo koristili da je $\mathbf{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ 
 $$\|\vec{x}+\vec{y}\|\leq C(\|\vec{x}\|+\|\vec{y}\|)$$ 
 za neku konstantu $C \geq 1$.
 Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona nije niti norma niti kvazinorma. U samoj praksi, te\v{s}ko je tra\v{z}iti rijetkost vektora, pa je stoga prirodno zahtjevati slabiji uvjet \textit{kompresibilnosti}.  
-\begin{defn}
+\begin{defn}\label{greska_naj_s_aprox}
     $\ell_p$-gre\v{s}ku najbolje $s$-rijetke aproksimacije vektora $\vec{x}\in\C^{N}$ definiramo sa 
     $$\sigma_s(\vec{x})_p := \inf\big\{\|\vec{x}-\vec{z}\|_p,\ \vec{z} \in \C^{N} \ \text{je s-rijedak}\big\}$$
 \end{defn}
@@ -795,10 +795,10 @@ Algoritmi predstavljeni u ovom poglavlju tako\dj er koriste \textit{hard thresho
     \end{equation}
 \end{prop}
 \begin{proof}
-    Vektor $\vec x$ mo\v{z}e se rekonstruirati ako i samo ako skup indeksa $S^{\sharp}$ u \eqref{bt_1} jednak skupu $S$. A to vrijedi ako i samo ako je element vektora $\vec A^* \vec y$ s indeksom iz $S$, ve\'ci od svakog elementa vektora $\vec A^& \vec y$ s indeksom u $\bar{S}$.
+    Vektor $\vec x$ mo\v{z}e se rekonstruirati ako i samo ako skup indeksa $S^{\sharp}$ u \eqref{bt_1} jednak skupu $S$. A to vrijedi ako i samo ako je element vektora $\vec A^* \vec y$ s indeksom iz $S$, ve\'ci od svakog elementa vektora $\vec A^* \vec y$ s indeksom u $\bar{S}$.
 \end{proof}
 \indent
-IHT (eng. \textit{iterative hard thresholding}) algoritam rje\v{s}ava kvadratni sustav $\vec A^* \vec A \vec z= \vec A^* \vec y$ umjesto $\vec{Az}=\vec y$. To mo\v{z}emo interpretirati kao rje\v{s}avanje problema fiksne to\v{c}ke $\vec z = (\vec{I}- \vec A^* \vec A) \vec z + \vec A^* \vec y$. Prirodno je gledati iteracije oblika $\vec x^{n+1} = (\vec{I}- \vec A^* \vec A) \vec x^n + \vec A^* \vec y$. Po\v{s}to tra\v{z}imo $s$-rijetko rje\v{s}enje u svakoj iteraciji uzimamo samo $s$ apsolutno najve\'cih komponenti od $(\vec{I} - \vec A^* \vec A) \vec x^n _ \vec A^* \vec y$.
+IHT (eng. \textit{iterative hard thresholding}) algoritam rje\v{s}ava kvadratni sustav $\vec A^* \vec A \vec z= \vec A^* \vec y$ umjesto $\vec{Az}=\vec y$. To mo\v{z}emo interpretirati kao rje\v{s}avanje problema fiksne to\v{c}ke $\vec z = (\vec{I}- \vec A^* \vec A ) \vec z + \vec A^* \vec y$. Prirodno je gledati iteracije oblika $\vec x^{n+1} = (\vec{I}- \vec A^* \vec A) \vec x^n + \vec A^* \vec y$. Po\v{s}to tra\v{z}imo $s$-rijetko rje\v{s}enje u svakoj iteraciji uzimamo samo $s$ apsolutno najve\'cih komponenti od $(\vec{I} - \vec A^* \vec A ) \vec x^n + \vec A^* \vec y$.
 
 \begin{alg}{IHT}
     \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
@@ -807,7 +807,7 @@ IHT (eng. \textit{iterative hard thresholding}) algoritam rje\v{s}ava kvadratni 
         \begin{equation}
             x^{n+1} = H_s(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n).\tag{$IHT$}\label{iht}\\
         \end{equation}
-        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}=\vec x^{\barn}$.
+        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}=\vec x^{\bar n}$.
 \end{alg}
 
 Primjetimo da IHT algoritam ne koristi orthogonalne projekcije, \v{s}to je njegova prednost. No, ako smo spremi platiti cjenu projekcija, ima smisla gledati vektor koji ima isti nosa\v{c} kao $\vec x^{n+1}$ koji najbolje aproksimira mjerenje. Upravo je to strategija HTP (eng. \textit{hard thresholding pursuit}) algoritma.
@@ -820,14 +820,14 @@ Primjetimo da IHT algoritam ne koristi orthogonalne projekcije, \v{s}to je njego
             S^{n+1} &= L_s(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n),\tag{$HTP_1$}\label{htp_1}\\
             \vec x^{n+1} &= \argmin_{\vec z \in \C^N}\{ \norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{n+1} \}.\tag{$HTP_2$}\label{htp_2}
         \end{align*}
-        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}=\vec x^{\barn}$.
+        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}=\vec x^{\bar n}$.
 \end{alg}
 
 
 
 
 
-\chapter[BP algoritam][BP algoritam]{BP algoritam}
+\chapter[$\ell_1$-minimizacija][$\ell_1$-minimizacija]{$\ell_1$-minimizacija}
 Prisjetimo se, problem sa\v{z}etog uzorkovanja sastoji se od rekonstrukcije $s$-rijetkog vektora $\vec x \in \C^N$ iz mjerenja $\vec y = \vec{Ax} \in \C^m$, gdje je $m < N$. Prirodno se name\'ce problem $\ell_0$-minimizacije,
 \noindent
 \begin{equation}
@@ -838,6 +838,86 @@ U poglavlju \eqref{chapter_rijetka_rijesenja} vidjeli smo da je taj problem op\'
     \min_{\vec z \in \C^N} \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y.\tag{$P_1$}
 \end{equation}
 Prou\v{c}iti \'{c}emo uvjete na matricu $\vec A$ koji osiguravaju egzaktnu ili aproksimativnu rekonstrukciju vektora $\vec x$.
+
+\section[Svojstvo nul-prostora][Svojstvo nul-prostora]{Svojstvo nul-prostora}
+Argumenti u ovom potpoglavlje vrijede u oba kontekstu realnih i u konteksu kompleksnih prostora. Stoga \'cemo rezultate prvo iznjeti za polje $\K$, koje mo\v{z}e $\R$ ili $\C$. Nakon toga uspostaviti \'cemo ekvivalentnost realnog i kompleksnog svojstva nul-prostora.
+
+\begin{defn}
+    Za matricu $\vec A \in \K^{m \times N}$ ka\v{z}emo da zadovoljava \textit{svojstvo nul-prostora} za skup $S \subset [N]$ ako
+    \begin{equation}\label{svojstvo_nul_prostora}
+        \norm{\vec v_S}_1 < \norm{\vec v_{\bar{S}}}_1  \quad \text{za svaki }\vec v \in \ker \vec A \backslash \{\vec 0\}.
+    \end{equation}
+    Nadalje, ka\v{z}emo da $\vec A$ zadovoljava svojstvo nul-prostora reda $s$ ako zadovoljava gornju nejednakost za svaki $S \subset [N]$ takav da $\card(S) \leq s$.
+\end{defn}
+
+Primjetimo da za vektor $\vec v \in \ker \vec A \backslash \{ \vec 0\}$ svojstvo nul-prostora vrijedi za svaki $S \subset [N]$ takav da $\card(S) \leq s$, \v{c}im vrijedi za skup indeksa $s$ apsolutno najve\'cih komponenti vektora $\vec v$. \\
+\indent Postoje dvije dodatne formulaciju svojsta nul-prostora. Prvu dobijemo tako da gornjoj nejednakosti dodamo $\norm{\vec v_s}_1$ s obje strane. Tada imamo
+\begin{equation}\label{svojstvo_nul_prostora_form_1}
+    2 \norm{\vec v_S}_1 < \norm{\vec v}_1 \quad \text{za svaki } \vec v \in \ker \vec A \backslash \{\vec 0\}.
+\end{equation}
+Drugu dobijemo tako da u skup $S$ stavimo $s$ apsolutno najve\'cih  komponenti vektora $\vec v$ i ovaj put nejednakosti dodamo $\norm{\vec v_{\bar S}}_1$ s obje strane. Tada imamo
+\begin{equation}\label{svojstvo_nul_prostora_form_2}
+    \norm{\vec v}_1 < 2 \sigma_s(\vec v)_1 \quad \text{za sve } \vec v \in \ker \vec A \backslash \{\vec 0\}.
+\end{equation}
+Prisjetimo se definicije \ref{greska_naj_s_aprox} $\ell_p$-gre\v{s}ke najbolje $s$-rijetke aproksimacija vektora $\vec x \in \K^N$,
+\begin{equation*}
+    \sigma_s(\vec x)_p = \inf_{\norm{\vec z} \leq s} \norm{\vec x - \vec z}_p.
+\end{equation*}
+Sljede\'ci teorem govori o veci svojstva nul-prostora i egzaktne rekonstrukcije rijetkog vektora putem $\ell_1$-minimizacije.
+\begin{thm}\label{bp_tm1}
+    Za $\vec A \in \K^{m \times N}$, svaki vektor $\vec x \in \K^N$ sa nosa\v{c}em na $S$ je jedinstveno rje\v{s}enje od \eqref{problem_minimizacije_l1} sa $\vec y = \vec {Ax}$ ako i samo ako $\vec A$ zadovoljava svojstvo nul-prostora za skup $S$.
+\end{thm}
+\begin{proof}
+    Neka je skup indeksa $S$ fiksan. Pretpostavimo da je svaki vektor $\vec x \in \K^N$ s nosa\v{c}em na $S$ jedinstveni minimizator od $\norm{\vec z}_1$ takav da $\vec {Az} = \vec {Ax}$. Stoga za svaki $\vec v \in \ker \vec A \backslash \{\vec 0\}$, vektor $\vec v_S$ je jedinstveni minimizator od $\norm{\vec z}_1$ takav da $\vec{Az} = \vec{Av}_S$. Ali imamo $\vec A (-\vec v_{\bar S}) = \vec A \vec v_S$ i $-\vec v_{\bar S} \neq \vec v_S$ jer je $\vec v \neq \vec 0$ i $ \vec 0 = \vec{Av} = \vec A (\vec v_S + \vec v_{\bar S})$. Dakle, mora vrijediti $\norm{\vec v_S}_1 < \norm{\vec v_{\bar S}}_1$.
+\indent
+Obratno, pretpostavimo da $\vec A$ zadovoljava svojstvo nul-prostora za skup $S$. Tada za vektor $\vec x \in \K^N$ sa nosa\v{c}em na $S$ i za $\vec z \in \K^N$, $\vec z \neq \vec x$ takvi da $\vec{Az}=\vec{Ax}$, ozna\v{c}imo vektor $\vec v := \vec x - \vec z \in \ker \vec A \backslash \{\vec 0\}$. Imamo,
+\begin{equation*}
+    \norm{\vec x} \leq \norm{\vec x - \vec z_S}_1 + \norm{\vec z_S}_1 = \norm{\vec v_S}_1 + \norm{\vec z_S}_1 < \norm{\vec v_{\bar S}}_1 + \norm{\vec z_S}_1 = \norm{- \vec z_{\bar S}}_1 + \norm{\vec z_S}_1 = \norm{\vec z}_1
+\end{equation*}
+Dakle, vektor $\vec x$ je minimizator od \eqref{problem_minimizacije_l1}.
+\end{proof}
+
+\indent
+Variranjem skupa $S$, sljede\'ci rezultat sljedi direktno iz prethodnog teorema. 
+
+\begin{thm}
+    Za matricu $\vec A \in \K^{m \times N}$, svaki $s$-rijedak vektor $\vec x \in \K^N$ je jedinstveno rje\v{s}enje problema \eqref{problem_minimizacije_l1} uz $\vec y = \vec{Ax}$ ako i samo ako $\vec A$ zadovoljava svojstvo nul-prostora reda $s$.
+\end{thm}
+
+Primjetimo da prethodni teorem tvrdi da za svaki $\vec y = \vec{Ax}$, gdje je $\vec x$ $s$-rijedak, $\ell_1$-minimizacija \eqref{problem_minimizacije_l1} zapravo rje\v{s}ava problem $\ell_0$-minimizacije \eqref{problem_minimizacije} kada vrijedi svojstvo nul-prostora reda $s$. Zaista, pretpostavimo da se svaki $s$-rijedak vektor $\vec{x}$ mo\v{z}e rekonstruirati $\ell_1$-minimizacijom iz $\vec y = \vec{Ax}$. Neka je $\vec z$ minimizator $\ell_0$ problema \eqref{problem_minimizacije} sa $\vec y = \vec{Ax}$, tada je $\norm{\vec z}_0 \leq \norm{\vec x}_0$ pa je $\vec z$ tako\dj er $s$-rijedak. No, svaki $s$-rijedak vektor je jedinstveni $\ell_1$-minimizator, slijedi da je $\vec x = \vec z$.
+\newline \indent
+Za algoritam rekonstrukcije po\v{z}eljno je da zadr\v{z}i mogu\v{c}nost rekonstrukcije ako su neka od mjerenja reskaliraju, ispermutiraju ili dodaju nova. $\ell_1$-minimizacija ima takvo svojstvo. Formalno, gore opisane promijene zapravo predstavljaju zamjenu matrice $\vec A$ matricama $\vec{\hat A}$ i $\vec{\tilde A}$
+\begin{align*}
+    & \vec{\hat A} := \vec{GA}, \quad \text{gdje je }\vec{G}\text{ neka invertibilna }m \times m \text{ matrica},\\
+    & \vec{\tilde A} := 
+    \begin{bmatrix*}
+        \vec A \\ \vec B
+    \end{bmatrix*}
+    , \quad \text{gdje je }\vec{B}\text{ neka }m' \times N \text{ matrica}.
+\end{align*}
+Primjetimo da je $\ker \vec{\hat A} = \ker \vec A$ i $\ker \tilde A \subset \ker \vec A$, pa svojstvo nul-prostora vrijedi i za matrice $\vec{\hat A}$ i $\vec{\tilde A}$.
+\newline
+\newline
+\indent
+Za kraj prou\v{c}iti \'cemo utjecaj polja $\K$. Razlika izme\dj u $\ker_{\R}\vec A$ i\\ $\ker_{\C} \vec A = \ker_{\R} \vec A + i \ker_{\R} \vec A$ vodi u slu\v{c}aju da je $\K=\R$ na realno svojstvo nul-prostora, 
+\begin{equation}\label{svojstvo_nul_prostora_realno}
+    \sum_{j \in S}|v_j| < \sum_{l \in \bar{S}}|v_l| \quad \text{za svaki } \vec v \in \ker_{\R} \vec A,\ \vec v \neq \vec 0,  
+\end{equation}
+a u slu\v{c}aju da je $\K = \C$, na kompleksno svojsto nul-prostora,
+\begin{equation}\label{svojstvo_nul_prostora_kompleksno}
+    \sum_{j in S}\sqrt{v_j^2 + w_j^2} < \sum_{l \in \bar{S}}\sqrt{v_j^2 + w_j^2}\quad \text{za svaki } \vec v, \vec w \in \ker_{\R} \vec A,\ \ ( \vec v, \vec w ) \neq \vec (\vec 0,\vec 0).  
+\end{equation}
+
+\noindent
+Zapravo, pokazati \'cemo da su svojstva nul-prostora me\dj usobno ekvivalentna u realnom i kompleksnom slu\v{c}aju. Zato mo\v{z}emo re\'ci da realna matrica mjerenja egzaktno rekonstruira sve rijetke vektore $\ell_1$-minimizacijom. 
+\begin{thm}
+    Neka je $\vec A \in \R^{m \times N}$, tada je realno svojstvo nul-prostora \eqref{svojstvo_nul_prostora_realno} za skup $S$ ekvivalentno je kompleksnom svojstvu nul-prostora \eqref{svojstvo_nul_prostora_kompleksno} za isti skup $S$.
+\end{thm}
+\begin{proof}
+    
+
+\end{proof}
+
 
 
 % KRAJ
