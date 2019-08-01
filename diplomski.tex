@@ -880,7 +880,7 @@ Dakle, vektor $\vec x$ je minimizator od \eqref{problem_minimizacije_l1}.
 \indent
 Variranjem skupa $S$, sljede\'ci rezultat sljedi direktno iz prethodnog teorema. 
 
-\begin{thm}
+\begin{thm}\label{svojstvo_nul_prostora_tm}
     Za matricu $\vec A \in \K^{m \times N}$, svaki $s$-rijedak vektor $\vec x \in \K^N$ je jedinstveno rje\v{s}enje problema \eqref{problem_minimizacije_l1} uz $\vec y = \vec{Ax}$ ako i samo ako $\vec A$ zadovoljava svojstvo nul-prostora reda $s$.
 \end{thm}
 
@@ -914,9 +914,153 @@ Zapravo, pokazati \'cemo da su svojstva nul-prostora me\dj usobno ekvivalentna u
     Neka je $\vec A \in \R^{m \times N}$, tada je realno svojstvo nul-prostora \eqref{svojstvo_nul_prostora_realno} za skup $S$ ekvivalentno je kompleksnom svojstvu nul-prostora \eqref{svojstvo_nul_prostora_kompleksno} za isti skup $S$.
 \end{thm}
 \begin{proof}
-    
-
+    Primjetimo \eqref{svojstvo_nul_prostora_realno} slijedi direktno iz \eqref{svojstvo_nul_prostora_kompleksno} za $\vec w = \vec 0$. Uzmimo sada $\vec v, \vec w \in \ker_{\R}\vec A$, takvi da $(\vec v, \vec w) \neq (\vec 0, \vec 0)$. Ako su $\vec v$ i $\vec w$ linearno zavisni. tj. $\vec v = \alpha \vec w$ za neki $\alpha \in \R \backslash \{ \vec 0 \}$ onda je 
+   \begin{align*}
+       \sum_{j \in S} \sqrt{v_j^2+w_j^2} &=  \sum_{j \in S} \sqrt{(1+\alpha^2)w_j^2}=\sqrt{1+\alpha^2}\sum_{j \in S} \sqrt{w_j^2}\\
+       &< \sqrt{1+\alpha^2}\sum_{j \in \bar S} \sqrt{w_j^2} = \sum_{j \in \bar S} \sqrt{(1+\alpha^2)w_j^2} = \sum_{j \in \bar S} \sqrt{v_j^2+w_j^2}
+   \end{align*} 
+   Pretpostavimo sada da su $\vec v$ i $\vec w$ linearno nezavisni i definirajmo $\vec u := \cos \theta \vec v + \cos \theta \vec v \in \ker_{\R} \vec A \backslash \{\vec 0\}$. Tada za svaki $\theta \in \R$,
+   \begin{equation}\label{svojstvo_nul_prostora_r_c_nejed1}
+       \sum_{j \in S} |\cos \theta v_j + \sin \theta w_j| < \sum_{l \in \bar S} |\cos \theta v_l + \sin \theta w_l|.
+   \end{equation}
+   Za svaki $k \in [N]$, neka je $\theta_k \in [-\pi, \pi]$ takav da
+   \begin{equation*}
+       v_k = \sqrt{v_k^2 + w_k^2}\cos{\theta_k}, \quad w_k = \sqrt{v_k^2 + w_k^2}\sin{\theta_k}
+   \end{equation*}
+   Iz \eqref{svojstvo_nul_prostora_r_c_nejed1} slijedi,
+   \begin{equation*}
+       \sum_{j \in S}\sqrt{v_j^2+w_j^2}|\cos(\theta - \theta_j)|<\sum_{l \in \bar S}\sqrt{v_l^2+w_l^2}|\cos(\theta - \theta_l)|
+   \end{equation*}
+   Integriranjem po $\theta \in [-\pi,\pi]$ dobijemo
+   \begin{equation*}
+       \sum_{j \in S}\sqrt{v_j^2+w_j^2}\int_{-\pi}^{\pi}  |\cos(\theta - \theta_j)| d \theta<\sum_{l \in \bar S}\sqrt{v_l^2+w_l^2}\int_{-\pi}^{\pi}  |\cos(\theta - \theta_l)|
+   \end{equation*}
+    No lako se provjeri da je
+    \begin{equation*}
+         \int_{-\pi}^{\pi}  |\cos(\theta - \theta_j)| d \theta = 4
+    \end{equation*}
+    tj. da je pozitivan i neovisan o $\theta' \in [-\pi, \pi]$.
 \end{proof}
+
+\subsection[Nekonveksna minimizacija][Nekonveksna minimizacija]{Nekonveksna minimizacija}
+Prisjetimo se, $\ell_0$ norma vektora $\vec z \in \C^N$ aproksimirana je $q$-tom potencijom svoje $\ell_q$-kvazinorme,
+\begin{equation*}
+\|\vec{z}\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}^N\mathbf{1}_{\{z_j \neq 0\}} = \|\vec{z}\|_0
+\end{equation*}
+To sugestira da $\ell_0$-minimizaciju \eqref{problem_minimizacije} zamjenimo sa
+\begin{equation}
+    \min_{\vec z \in \C^N} \norm{\vec z}_q \quad \text{uz uvjet }\vec{Az} = \vec{y}.\tag{$P_q$}
+\end{equation}
+Za $0 < q < 1$ taj je problem nekonveksan i $\mathfrak{NP}$-te\v{z}ak. No, \v{z}elimo teoretski potvrditi ideju da \eqref{problem_minimizacije_aprox} dobro aproksimira \eqref{problem_minimizacije} za male $q$.
+Sljede\'ci teorem daje analogon svojstva nul-prostora za $0<q<1$. Dokaz je tako\dj er analogan dokazu teorema \ref{svojstvo_nul_prostora_tm} te se koristi \v{c}injenica da za $\ell_q$-kvazinorma zadovoljava nejednakost trokuta.  
+\begin{thm}\label{svojstvo_nul_prostora_tm_2}
+    Za matricu $\vec A \in \C^{m \times N}$ i $0<q<1$, svaki $s$-rijedak vektor $\vec x \in \C^N$ je jedinstveno rje\v{s}enje problema \eqref{problem_minimizacije_aprox} uz $\vec y = \vec{Ax}$ ako i samo ako 
+    \begin{equation*}
+        \norm{\vec v_S}_q < \norm{\vec v_{\bar{S}}}_q  \quad \text{za svaki }\vec v \in \ker \vec A \backslash \{\vec 0\}.
+    \end{equation*}
+\end{thm}
+Sada mo\v{z}emo dokazivati da rekonstrukcija $\ell_q$-minimizacijom implicira rekonstrukciju $\ell_p$-minimizacijom za $o<p<q<1$.
+\begin{thm}
+    Za matricu $\vec A \in \C^{m \times N}$ i $0<p<q<1$, ako je svaki $s$-rijedak vektor $\vec x \in \C^N$ jedinstveno rje\v{s}enje problema \eqref{problem_minimizacije_aprox} uz $\vec y = \vec{Ax}$  onda je $\vec x$ tako\dj er i rje\v{s}enje problema $(P_p)$ za $\vec y = \vec{Ax}$.
+\end{thm}
+\begin{proof}
+    Prema teoremu \ref{svojstvo_nul_prostora_tm_2} dovoljno je pokazati da vrijedi
+    \begin{equation}\label{svojstvo_nul_prostora_tm_3_nejed}
+        \sum_{j \in S} |v_j|^p < \sum_{l \in \bar S}|v_l|^p,
+    \end{equation}
+    ako je $\vec v \in \ker \vec A \backslash \{\vec 0\}$, $S$ skup indeksa od $s$ apsolutno najve\'cih komponeneti od $\vec v$ i ako ista nejednakost vrijedi za $q$.
+    Dakle, pretpostavimo da \eqref{svojstvo_nul_prostora_tm_3_nejed} vrijedi za q. Tada je nu\v{z}no $\vec v_{\bar S} \neq \vec 0$ po\v{s}to je $S$ skup indeksa od $s$ apsolutno najve\'cih komponeneti ne-nul vektora $\vec v$. Stoga \eqref{svojstvo_nul_prostora_tm_3_nejed} mo\v{z}emo napisati u obliku
+    \begin{equation}\label{svojstvo_nul_prostora_tm_3_nejed_2}
+        \sum_{j \in S} \frac{1}{\sum_{l \in \bar S}(|v_l|/|v_j|)^p} < 1.  
+    \end{equation}
+    Primjetimo da $|v_l|/|v_j| \leq 1$ za $l \in \bar S$ i $j \in S$. Stoga je lijeva strana \eqref{svojstvo_nul_prostora_tm_3_nejed_2} nepadaju\'ca funkcija u varijabli $0<p \leq 1$. Pa stoga njena vrijednost u $p < q$ ne prelazi njezinu vrijednost u $q$, koji je manji od 1 po pretpostavci.
+\end{proof}
+
+\section[Stabilnost][Stabilnost]{Stabilnost}
+Signali u praksi gotovo nikad nisu idealno rijetki. U najboljem slu\'caju blizu su rijetkim vektorima. Stoga, \v{z}elimo da metode sa\v{z}etog uzorkovanja rekonstruiraju vektor $\vec x \in \C^N$ sa gre\v{s}kom koja je kontrolirana udaljenosti vektora $\vec x$ do $s$-rijetkih vektora. Za algoritme koji imaju to svojsto ka\v{z}emo da su \textit{stabilni} s obzirom na defekte rijetkosti. Pokazati \'cemo da je $\ell_1$-minimizacija \eqref{problem_minimizacije_l1} stabilna pod ja\v{c}im svojstvom nul-prostora.
+
+\begin{defn}
+    Matrica $\vec A \in \C^{m \times N}$ zadovoljava \textit{svojstvo stabilnog nul-prostora} sa konstantom $0<\rho<1$ za skup $S \subset [N]$ ako
+    \begin{equation*}
+        \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 \quad \text{za svaki }\vec v \in \ker \vec A.
+    \end{equation*}
+    Nadalje, ka\v{z}emo da $\vec A$ zadovoljava \textit{svojstvo stabilnog nul-prostora reda} $s$ sa konstantom $0<\rho<1$ ako zadovoljava zadovoljava gornju nejednakost za svaki $S \subset [N]$ takav da $\card(S)=s$.
+\end{defn}
+
+\begin{thm}\label{stabilnost_tm_1}
+    Ako matrica $\vec A \in \C^{m \times N}$ zadovoljava svojstvo stabilnog nul-prostora reda $s$ sa konstantom $0<\rho<1$, tada za svaki $\vec x \in \C^N$, rje\v{s}enje $\vec x^{\sharp}$ problema \eqref{problem_minimizacije_l1} sa $\vec y = \vec{Ax}$ aproksimira vektor $\vec x$ s $\ell_1$-gre\v{s}kom
+    \begin{equation}\label{stabilnost_tm_1_nejed}
+        \norm{\vec x - \vec x ^{\sharp}} \leq \frac{2(1+\rho)}{(1-\rho)}\sigma_s(\vec x)_1.
+    \end{equation}
+\end{thm}
+\noindent
+Sada vi\v{s}e nemamo jedinstvenost $\ell_1$-minimizatora. Prethodni teorem biti \'ce direktna posljedica ja\v{c}e tvrdnje,
+\begin{thm}\label{stabilnost_tm_2}
+    Ako matrica $\vec A \in \C^{m \times N}$ zadovoljava svojstvo stabilnog nul-prostora sa konstantom $0<\rho<1$ za skup $S$ ako i samo ako
+    \begin{equation}\label{stabilnost_tm_2_nejed}
+        \norm{\vec z - \vec x}_1  \leq \frac{1+\rho}{1-\rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1) 
+    \end{equation}
+    za sve vektore $\vec x, \vec z \in \C^N$ za $\vec{Az} = \vec{Ax}$.
+\end{thm}
+
+Poka\v{z}imo kako teorem \ref{stabilnost_tm_1} slijedi iz \ref{stabilnost_tm_2}:
+Neka je $S$ skup $s$ apsolutno najve\'cih komponeneti vekotora $\vec x$, tako da $\norm{\vec x_{\bar S}}=\sigma_s(\vec x)_1$. Ako je $\vec x^{\sharp}$ minimizator problema \eqref{problem_minimizacije_l1}, tada vrijedi $\norm{\vec x^{\sharp}}_1 \leq \norm{\vec x}_1$ i $\vec{Ax}^{\sharp}= \vec{Ax}$. Dakle, desnu strana \eqref{stabilnost_tm_2_nejed} za $\vec z = \vec x^{\sharp}$ mo\v{z}emo ocjeniti desnom stranom \eqref{stabilnost_tm_1_nejed}.\\
+\indent
+Prije dokaza teorema \ref{stabilnost_tm_2} poka\v{z}imo jo\v{s} jedan koristan rezultat.
+\begin{lem}\label{stabilnost_lema_1}
+    Za $S \subset [N]$ i vektore $\vec x, \vec z \in \C^N$ vrijedi,
+    \begin{equation*}
+        \norm{(\vec x - \vec z)_{\bar S}}_1 \leq \norm{\vec z}_1 - \norm{\vec x}_1 + \norm{(\vec x - \vec z)_S}_1 + 2 \norm{\vec x_{\bar S}}_1
+    \end{equation*}
+\end{lem}
+\begin{proof}
+    Imamo,
+    \begin{align*}
+        \norm{\vec x}_1 &= \norm{\vec x_{\bar S}}_1 + \norm{\vec{x}_S}_1 \leq \norm{\vec x_{\bar S}}_1 + \norm{(\vec x - \vec z)_S}_1 + \norm{\vec z_{S}}_1\\
+        \norm{(\vec x - \vec z)_{\bar S}}_1 &\leq \norm{\vec x_{\bar S}}_1 + \norm{\vec z_{\bar S}}_1.
+    \end{align*}
+    Sumiranjem ove dvije nejednakosti, slijedi
+    \begin{equation*}
+        \norm{\vec x}_1 + \norm{(\vec x - \vec z)_{\bar S}}_1 \leq 2 \norm{\vec x_{\bar S}}_1 +  \norm{(\vec x - \vec z)_S}_1 + \norm{\vec z}_1.
+    \end{equation*}
+\end{proof}
+
+\begin{proof}[Dokaz (Teorem \ref{stabilnost_tm_2})]
+    Pretpostavimo da matrica $\vec A$ zadovoljava \eqref{stabilnost_tm_2_nejed} za sve vektore $\vec x, \vec z \in \C^N$ uz $\vec{Az} = \vec{Ax}$. Za dani vektor $\vec{v} \in \ker \vec A$, po\v{s}to je $\vec{Av}_{\bar S} = \vec A(-\vec v_S)$ mo\v{z}emo primjeniti \eqref{stabilnost_tm_2_nejed} sa $\vec x = - \vec v_S$ i $\vec z = \vec v_{\bar S}$. Slijedi,
+    \begin{equation*}
+        \norm{\vec v}_1 \leq \frac{1+\rho}{1-\rho}(\norm{\vec v_{\bar S}}_1 - \norm{\vec v_S}_1). 
+    \end{equation*}
+    To mo\v{z}emo zapisati kao 
+    \begin{equation*}
+        (1-\rho)(\norm{\vec v_S}_1 + \norm{\vec v_{\bar S}}_1)  \leq  (1+\rho)(\norm{\vec v_{\bar S}}_1 + \norm{\vec v_S}_1).
+    \end{equation*}
+    Jednostavnom manipulacijom slijedi
+    \begin{equation*}
+        \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 
+    \end{equation*}
+    \indent
+    Obratno, neka matrica $\vec A$ zadovoljava svojstvo stabilnog nul-prostora s konstantom $0<\rho<1$ za skup $S$. Neka su $\vec x, \vec z \in \C^N$ takvi da $\vec{Az} = \vec{Ax}$, po\v{s}to je $\vec v := \vec z - \vec x \in \ker \vec A$, svojstvo stabilnog nul-prostora daje
+    \begin{equation}\label{stabilnost_tm_3_nejed_1}
+        \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1.
+    \end{equation}
+    Nadalje, iz lema \ref{stabilnost_lema_1} slijedi
+    \begin{equation}\label{stabilnost_tm_3_nejed_2}
+        \norm{\vec v_{\bar S}}_1  \leq \norm{\vec z}_1 - \norm{\vec x}_1 + \norm{\vec v_S}_1 + 2 \norm{\vec x_{\bar S}}_1.
+    \end{equation}
+    Substituiramo \eqref{stabilnost_tm_3_nejed_1} u \eqref{stabilnost_tm_3_nejed_2},
+    \begin{equation*}
+        \norm{\vec v_{\bar S}}_1  \leq \norm{\vec z}_1 - \norm{\vec x}_1 + \rho\norm{\vec v_{\bar S}}_1 + 2 \norm{\vec x_{\bar S}}_1.
+    \end{equation*}
+    Po\v{s}to je $\rho < 1$,
+    \begin{equation*}
+        \norm{\vec v_{\bar S}}_1 \leq \frac{1}{1 - \rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2\norm{\vec x_{\bar S}}_1).  
+    \end{equation*}
+    Ponovno iskoristimo \eqref{stabilnost_tm_3_nejed_1},
+    \begin{equation*}
+        \norm{\vec v}_1 = \norm{\vec v_{\bar S}}_1 +  \norm{\vec v_{S}}_1  \leq (1 + \rho) \norm{\vec v_{\bar S}}_1 \leq \frac{1+\rho}{1-\rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1).
+    \end{equation*}
+\end{proof}
+
 
 
 
