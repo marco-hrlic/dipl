@@ -16,6 +16,7 @@
 \contentsline {section}{\numberline {3.1}Svojstvo nul-prostora}{27}{section.3.1}
 \contentsline {subsection}{Nekonveksna minimizacija}{30}{section*.36}
 \contentsline {section}{\numberline {3.2}Stabilnost}{31}{section.3.2}
-\contentsline {chapter}{Bibliografija}{35}{chapter*.38}
+\contentsline {section}{\numberline {3.3}Robusnost}{34}{section.3.3}
+\contentsline {chapter}{Bibliografija}{37}{chapter*.39}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}

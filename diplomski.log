@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  1 AUG 2019 19:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  2 AUG 2019 09:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1943,7 +1943,76 @@ l.981
 Underfull \vbox (badness 2903) has occurred while \output is active []
 
  [33]
-(./diplomski.bbl [34]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1072 \end{equation}
+                     
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+\maketag@@@ #1->\hbox {\m@th \normalfont #1}
+                                            
+l.1072 \end{equation}
+                     
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1072 \end{equation}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.1072 \end{equation}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.1072 \end{equation}
+                     
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Display math should end with $$.
+<to be read again> 
+                   \endgroup 
+l.1072 \end{equation}
+                     
+The `$' that I just saw supposedly matches a previous `$$'.
+So I shall assume that you typed `$$' both times.
+
+[34pdfTeX warning (ext4): destination with the same identifier (name{equation.3
+.3.13}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1092     M
+            atrica $\vec A \in \C^{m \times N}$ zadovoljava robusno svojstvo...
+] (./diplomski.bbl [35] [36
+
+]
 babelbib: Using the BibTeX style's default font for `name'.
 babelbib: Using the BibTeX style's default font for `lastname'.
 babelbib: Using the BibTeX style's default font for `title'.
@@ -1958,40 +2027,38 @@ babelbib: Using the BibTeX style's default font for `numeral'.
 
 LaTeX Warning: Empty `thebibliography' environment on input line 23.
 
-) [35
-
-] [36
-
-] [37] [38
+) [37] [38
 
 ] [39] [40
+
+] [41] [42
 
 ]
 
 Class memoir Warning: The material used in the headers is too large
 (14.89201pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 1091.
+(in both cases you will find help in the memoir manual). on input line 1155.
 
-[41]
+[43]
 \tf@toc=\write8
 \openout8 = `diplomski.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1091.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1091.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1155.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1155.
  (./diplomski.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1091.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1091.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1155.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1155.
 
 Package rerunfilecheck Info: File `diplomski.out' has not changed.
-(rerunfilecheck)             Checksum: B18BCF9D8E6063EE36ED9C9AEB8391BB;850.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1091.
+(rerunfilecheck)             Checksum: 05FEE050B3D3291B7AB55DBB3066DB32;906.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1155.
  ) 
 Here is how much of TeX's memory you used:
- 37486 strings out of 494021
- 716678 string characters out of 6162400
- 855360 words of memory out of 5000000
- 40479 multiletter control sequences out of 15000+600000
+ 37499 strings out of 494021
+ 716827 string characters out of 6162400
+ 855426 words of memory out of 5000000
+ 40483 multiletter control sequences out of 15000+600000
  656718 words of font info for 116 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  67i,24n,101p,1024b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2015,10 +2082,10 @@ m/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on diplomski.pdf (45 pages, 397507 bytes).
+Output written on diplomski.pdf (47 pages, 403198 bytes).
 PDF statistics:
- 641 PDF objects out of 1000 (max. 8388607)
- 545 compressed objects within 6 object streams
- 167 named destinations out of 1000 (max. 500000)
- 269 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 666 PDF objects out of 1000 (max. 8388607)
+ 568 compressed objects within 6 object streams
+ 176 named destinations out of 1000 (max. 500000)
+ 277 words of extra memory for PDF output out of 10000 (max. 10000000)
 

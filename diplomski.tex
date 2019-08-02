@@ -980,15 +980,15 @@ Sada mo\v{z}emo dokazivati da rekonstrukcija $\ell_q$-minimizacijom implicira re
 Signali u praksi gotovo nikad nisu idealno rijetki. U najboljem slu\'caju blizu su rijetkim vektorima. Stoga, \v{z}elimo da metode sa\v{z}etog uzorkovanja rekonstruiraju vektor $\vec x \in \C^N$ sa gre\v{s}kom koja je kontrolirana udaljenosti vektora $\vec x$ do $s$-rijetkih vektora. Za algoritme koji imaju to svojsto ka\v{z}emo da su \textit{stabilni} s obzirom na defekte rijetkosti. Pokazati \'cemo da je $\ell_1$-minimizacija \eqref{problem_minimizacije_l1} stabilna pod ja\v{c}im svojstvom nul-prostora.
 
 \begin{defn}
-    Matrica $\vec A \in \C^{m \times N}$ zadovoljava \textit{svojstvo stabilnog nul-prostora} sa konstantom $0<\rho<1$ za skup $S \subset [N]$ ako
+    Matrica $\vec A \in \C^{m \times N}$ zadovoljava \textit{stabilno svojstvo nul-prostora} sa konstantom $0<\rho<1$ za skup $S \subset [N]$ ako
     \begin{equation*}
         \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 \quad \text{za svaki }\vec v \in \ker \vec A.
     \end{equation*}
-    Nadalje, ka\v{z}emo da $\vec A$ zadovoljava \textit{svojstvo stabilnog nul-prostora reda} $s$ sa konstantom $0<\rho<1$ ako zadovoljava zadovoljava gornju nejednakost za svaki $S \subset [N]$ takav da $\card(S)=s$.
+    Nadalje, ka\v{z}emo da $\vec A$ zadovoljava \textit{stabilno svojstvo nul-prostora reda} $s$ sa konstantom $0<\rho<1$ ako zadovoljava zadovoljava gornju nejednakost za svaki $S \subset [N]$ takav da $\card(S)=s$.
 \end{defn}
 
 \begin{thm}\label{stabilnost_tm_1}
-    Ako matrica $\vec A \in \C^{m \times N}$ zadovoljava svojstvo stabilnog nul-prostora reda $s$ sa konstantom $0<\rho<1$, tada za svaki $\vec x \in \C^N$, rje\v{s}enje $\vec x^{\sharp}$ problema \eqref{problem_minimizacije_l1} sa $\vec y = \vec{Ax}$ aproksimira vektor $\vec x$ s $\ell_1$-gre\v{s}kom
+    Ako matrica $\vec A \in \C^{m \times N}$ zadovoljava stabilno svojstvo nul-prostora reda $s$ sa konstantom $0<\rho<1$, tada za svaki $\vec x \in \C^N$, rje\v{s}enje $\vec x^{\sharp}$ problema \eqref{problem_minimizacije_l1} sa $\vec y = \vec{Ax}$ aproksimira vektor $\vec x$ s $\ell_1$-gre\v{s}kom
     \begin{equation}\label{stabilnost_tm_1_nejed}
         \norm{\vec x - \vec x ^{\sharp}} \leq \frac{2(1+\rho)}{(1-\rho)}\sigma_s(\vec x)_1.
     \end{equation}
@@ -996,7 +996,7 @@ Signali u praksi gotovo nikad nisu idealno rijetki. U najboljem slu\'caju blizu 
 \noindent
 Sada vi\v{s}e nemamo jedinstvenost $\ell_1$-minimizatora. Prethodni teorem biti \'ce direktna posljedica ja\v{c}e tvrdnje,
 \begin{thm}\label{stabilnost_tm_2}
-    Ako matrica $\vec A \in \C^{m \times N}$ zadovoljava svojstvo stabilnog nul-prostora sa konstantom $0<\rho<1$ za skup $S$ ako i samo ako
+    Ako matrica $\vec A \in \C^{m \times N}$ zadovoljava stabilno svojstvo nul-prostora sa konstantom $0<\rho<1$ za skup $S$ ako i samo ako
     \begin{equation}\label{stabilnost_tm_2_nejed}
         \norm{\vec z - \vec x}_1  \leq \frac{1+\rho}{1-\rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1) 
     \end{equation}
@@ -1039,7 +1039,7 @@ Prije dokaza teorema \ref{stabilnost_tm_2} poka\v{z}imo jo\v{s} jedan koristan r
         \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 
     \end{equation*}
     \indent
-    Obratno, neka matrica $\vec A$ zadovoljava svojstvo stabilnog nul-prostora s konstantom $0<\rho<1$ za skup $S$. Neka su $\vec x, \vec z \in \C^N$ takvi da $\vec{Az} = \vec{Ax}$, po\v{s}to je $\vec v := \vec z - \vec x \in \ker \vec A$, svojstvo stabilnog nul-prostora daje
+    Obratno, neka matrica $\vec A$ zadovoljava stabilno svojstvo nul-prostora s konstantom $0<\rho<1$ za skup $S$. Neka su $\vec x, \vec z \in \C^N$ takvi da $\vec{Az} = \vec{Ax}$, po\v{s}to je $\vec v := \vec z - \vec x \in \ker \vec A$, stabilno svojstvo nul-prostora daje
     \begin{equation}\label{stabilnost_tm_3_nejed_1}
         \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1.
     \end{equation}
@@ -1059,6 +1059,70 @@ Prije dokaza teorema \ref{stabilnost_tm_2} poka\v{z}imo jo\v{s} jedan koristan r
     \begin{equation*}
         \norm{\vec v}_1 = \norm{\vec v_{\bar S}}_1 +  \norm{\vec v_{S}}_1  \leq (1 + \rho) \norm{\vec v_{\bar S}}_1 \leq \frac{1+\rho}{1-\rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1).
     \end{equation*}
+\end{proof}
+
+\section[Robusnost][Robusnost]{Robusnost}
+Jasno je da u realnosti signal nikad ne mo\v{z}emo mjeriti sa beskona\v{c}nom to\v{c}no\v{s}\'cu. U na\v{s}em kontekstu to zna\v{c}i da je vektor mjerenja $\vec y \in \C^m$ aproksimacija vektora $\vec{Ax} \in \C^m$, tj. formalno
+\begin{equation*}
+    \norm{\vec{Ax} - \vec{y}} \leq \eta
+\end{equation*}
+za neki $\eta \leq 0$ i neku normu na $\C^m$. Od metode rekonstrukcije tra\v{z}imo da udaljenost rekonstruiranog vektora $\vec x^{\sharp}$ i orginalnog vektora $\vec x$ bude kontrolirana preciznosti mjerenja $\eta$. Ako metoda zadovoljava to svojstvo ka\v{z}emo da je \textit{robusna} ili \textit{otporna} na gre\v{s}ke mjerenja. Pokazati \'cemo da BP algoritam ($\ell_1$-minimizacija) robusna ako \eqref{problem_minimizacije_l1} zamjenimo konveksni problemom
+\begin{equation}
+    \min_{\vec z in \C^N} \norm{\vec z}_1 \quad \text{uz uvjet } \norm{\vec{Az} - \vec y} \leq \eta \tag{P_{1, \eta}}
+\end{equation}
+te ako vrijedi sljede\v{c}a ja\v{c}a varijanta svojstva nul-prostora.
+\begin{defn}
+    Za matricu $\vec A \in \C^{m \times N}$ ka\v{z}emo da zadovoljava \textit{robusno svojstvo nul-prostora} s konstantama $0<\rho<1$ i $\tau > 0$ za skup $S \subset [N]$ ako 
+    \begin{equation}\label{robusnost_defn_nejed}
+        \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 + \tau \norm{\vec{Av}} \quad \text{za sve } \vec v \in \C^N.
+    \end{equation}
+    Nadalje, ka\v{z}emo da $\vec A$ zadovoljava robusno svojstvo nul-prostora s konstantama $0<\rho<1$ i $\tau > 0$ reda $s$ ako zadovoljava gornje svojstvo za svaki $S \subset [N]$ takav da $\card(S) \leq s$.
+\end{defn}
+
+\noindent
+Primjetimo da definicija ne tra\v{z}i da je $\vec v \in \ker \vec A$. Kada bi to vrijedilo propao bi \v{c}lan $\norm{\vec{Ax}}$ i time bi dobili stabilno svojstvo nul-prostora. 
+\begin{thm}
+    Neka matrica $\vec A \in \C^{m \times N}$ zadovoljava robusno svojstvo nul-prostora reda $s$ sa konstantama $0<\rho<1$ i $\tau > 0$. Tada za svaki vektor $\vec x \in \C^N$, rje\v{s}enje problema \eqref{problem_minimizacije_l1_kvadraticni} za $\vec y = \vec{Ax}+\vec{e}$ i $\norm{\vec e} \leq \eta$ aproksimira vektor $\vec x$ sa gre\v{s}kom
+    \begin{equation*}
+        \norm{\vec x - \vec x^{\sharp}}_1 \leq \frac{2(1+\rho)}{(1-\rho)} \sigma_s(\vec x)_1 + \frac{4 \tau}{1-\rho}\eta 
+    \end{equation*}
+\end{thm}
+Dokazati \'cemo ja\c{u} tvrdnju,
+\begin{thm}
+    Matrica $\vec A \in \C^{m \times N}$ zadovoljava robusno svojstvo nul-prostora sa konstantama $0<\rho<1$ i $\tau > 0$ za skup $S$ ako i samo ako
+    \begin{equation}\label{robusno_tm2_nejed}
+        \norm{\vec z - \vec x}_1 \leq \frac{1+\rho}{1-\rho} (\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1) + \frac{2 \tau}{1 - \rho} \norm{\vec A (\vec z - \vec x)}  
+    \end{equation}
+    za sve vektore $\vec x, \vec z \in \C^N$.
+\end{thm}
+\begin{proof}
+    Pretpostavimo da $\vec A$ zadovoljava \eqref{robusno_tm2_nejed}. Za $\vec v \in \C^N$, uzmimo $\vec x = - \vec v_S$ i $\vec z = \vec v_{\bar S}$. Slijedi,
+    \begin{equation*}
+        \norm{\vec v}_1 \leq \frac{1+\rho}{1- \rho}(\norm{\vec v_{\bar S}}_1 - \norm{\vec v_S}_1) + \frac{2 \tau}{1 - \rho} \norm{\vec{Av}}.
+    \end{equation*}
+    Preslagivanjem \v{c}lanova dobivamo,
+    \begin{equation*}
+        (1-\rho)(\norm{\vec v_S}_1 + \norm{\vec v_{\bar S}}_1) \leq (1 + \rho)(\norm{\vec v_{\bar S}}_1 - \norm{\vec v_S}_1) + 2 \tau \norm{Av}\
+    \end{equation*}
+    tj. imamo
+    \begin{equation*}
+        \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 + \tau \norm{\vec{Av}}.
+    \end{equation*} 
+
+    \indent Obratno, neka $\vec A$ zadovoljava robusno svojstvo nul-prostora sa konstantama $0<\rho<1$ i $\tau > 0$ za skup $S$. Za $\vec x, \vec z \in \C^N$, neka je $\vec v := \vec z - \vec x$. Iz robusnog svojstvo nul-prostora i leme \ref{stabilnost_lema_1} slijedi,
+   \begin{align*}
+       &\norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 + \tau \norm{\vec{Av}},\\
+       &\norm{\vec v_{\bar S}}_1 \leq \norm{\vec z}_1 - \norm{\vec x}_1 + \norm{\vec v_S}_1 + 2 \norm{\vec x_{\bar S}}_1.
+   \end{align*} 
+   Kombiniranjem te dvije nejednakosti slijedi,
+   \begin{equation*}
+       \norm{\vec v_{\bar S}}_1 \leq \frac{1}{1-\rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1 + \tau \norm{Av}). 
+   \end{equation*}
+   Ponovno iskoristimo robusno svojstvo nul-prostoram
+   \begin{align*}
+       \norm{\vec v}_1 &= \norm{\vec v_{\bar S}}_1 + \norm{\vec v_S}_1 \leq (1 + \rho)\norm{\vec v_{\bar S}}_1 + \tau \norm{\vec{Av}}\\
+       & \leq \frac{1+\rho}{1-\rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1) + \frac{2 \tau}{1-\rho}  \norm{Av} 
+   \end{align*}
 \end{proof}
 
 
