@@ -45,6 +45,8 @@
 \newcommand{\sgn}{\text{\normalfont{sgn}}}
 \renewcommand{\Re}{\text{\normalfont{Re}}}
 \renewcommand{\Im}{\text{\normalfont{Im}}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\cone}{cone}
 
 \newenvironment{alg}[1]
 {
@@ -167,7 +169,7 @@ Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona 
 Primjetimo da ako je $\vec{x}$ iz jedini\v{c}ne $\ell_p$-kugle za neki mali $p>0$, onda prethodna propozicija garantira kovergenciju od $\sigma_s(\vec{x})_q$ u $s$, gdje $\ell_p$-kuglu definiramo kao
 $$B_p^N := \big\{ \vec{z} \in \C^N : \|\vec{z}\|_p \leq 1\big\}$$
 Vratimo se sada ocjeni iz propozicije \ref{osnovna_ocjena_lp_greske}. Sljede\'ci teorem daje najmanju konstantu $c_{p,q}$ takvu da vrijedi $\sigma_s(\vec{x})_q\leq c_{p,q}s^{-1/p+1/q}\|\vec{x}\|_p$ te zapravo predstavlja ja\v{c}u tvrdnju.
-\begin{thm}
+\begin{thm}\label{tm:2:5}
     Za svaki $q > p > 0$ i za svaki $\vec{x}\in\C^N$ vrijedi
     \begin{equation*}
     \sigma_s(\vec{x})_q \leq \frac{c_{p,q}}{s^{1/p - 1/q}}\|\vec{x}\|_p
@@ -1088,7 +1090,7 @@ Primjetimo da definicija ne tra\v{z}i da je $\vec v \in \ker \vec A$. Kada bi to
     \end{equation*}
 \end{thm}
 Dokazati \'cemo ja\c{u} tvrdnju,
-\begin{thm}
+\begin{thm}\label{tm:4:20}
     Matrica $\vec A \in \C^{m \times N}$ zadovoljava robusno svojstvo nul-prostora sa konstantama $0<\rho<1$ i $\tau > 0$ za skup $S$ ako i samo ako
     \begin{equation}\label{robusno_tm2_nejed}
         \norm{\vec z - \vec x}_1 \leq \frac{1+\rho}{1-\rho} (\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1) + \frac{2 \tau}{1 - \rho} \norm{\vec A (\vec z - \vec x)}  
@@ -1121,10 +1123,162 @@ Dokazati \'cemo ja\c{u} tvrdnju,
    Ponovno iskoristimo robusno svojstvo nul-prostoram
    \begin{align*}
        \norm{\vec v}_1 &= \norm{\vec v_{\bar S}}_1 + \norm{\vec v_S}_1 \leq (1 + \rho)\norm{\vec v_{\bar S}}_1 + \tau \norm{\vec{Av}}\\
-       & \leq \frac{1+\rho}{1-\rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1) + \frac{2 \tau}{1-\rho}  \norm{Av} 
+       & \leq \frac{1+\rho}{1-\rho}(\norm{\vec z}_1 - \norm{\vec x}_1 + 2 \norm{\vec x_{\bar S}}_1) + \frac{2 \tau}{1-\rho}  \norm{\vec{Av}}
    \end{align*}
 \end{proof}
 
+Sada \'cemo pobolj\v{s}ati prethodni rezultat robusnosti, dati \'cemo $\ell_p$ ocjenu gre\v{s}ke za $p \geq 1$. Za to potrebna nam je jo\v{s} jedna varijantna svojstva nul-prostora,
+\begin{defn}
+    Za $q \geq 1$, matrica $\vec A \in \C^{m \times N}$ zadovoljava $\ell_q$-robusno svojstvo nul-prostora reda $s$ sa konstantama $0 < \rho < 1$ i $\tau > 0$, ako za svaki $S \subset [N]$, takav da $\card(S) \leq s$,
+    \begin{equation*}
+        \norm{\vec v_S}_q \leq \frac{\rho}{s^{1-1/q}}\norm{\vec v_{\bar S}}_1 + \tau \norm{\vec{Av}}\quad \text{za svaki }\vec{v} \in \C^N.
+    \end{equation*}
+\end{defn}
+\noindent Iz $\norm{\vec v_S}_p \leq s^{1/p - 1/q}\norm{\vec v_S}_q$ za $1 \leq p \leq q$, $\ell_1$-robusno svojstvo nul-prostora implicira
+\begin{equation*}
+    \norm{\vec v_S}_p \leq \frac{\rho}{s^{1-1/p}}\norm{\vec v_{\bar S}}_1 + \tau s^{1/p-1/q}\norm{\vec{Av}} \quad \text{za sve } \vec v \in \C^N.
+\end{equation*}
+Stoga, za $1 \leq p \leq q$, $\ell_q$-robusno svojstvo nul-prostora implicira $\ell_p$-robusno svojstvo nul-prostora s jednakim konstanama, do na promjenu norme. Sljede\'ci teorem daje robusnost kvadrati\v{c}no ograni\v{c}ene $\ell_1$-minimizacije.
+\begin{thm}\label{robusnost_l1_min_kvad_ogr}
+    Neka matrica $\vec A \in \C^{m \times N}$  zadovoljava $\ell_2$-robusno svojstvo nul-prostora reda $s$ sa konstanama $0<\rho<1$ i $\tau >0$. Tada za svaki $\vec x \in \C^N$, rje\v{s}enje $\vec x^{\sharp}$ problema \eqref{problem_minimizacije_l1_kvadraticni} aproksimira $\vec x$ s $\ell_p$-gre\v{s}kom
+    \begin{equation}
+        \norm{\vec x - \vec x^{\sharp}}_p \leq \frac{C}{s^{1-1/p}} \sigma_s(\vec x)_1 + D s^{1/p - 1/2} \eta, \quad 1 \leq p \leq 2,
+    \end{equation}
+    za neke konstane $C,D > 0$ koje ovise samo o $\rho$ i $\tau$.
+\end{thm}
+Ovaj teorem je direktna posljedica narednog op\v{c}enitijeg teorema za $q = 2$ i $\vec z = \vec x^{\sharp}$.
+\begin{thm}
+    Neka je $1 \leq p \leq q$ i neka matrica $\vec A \in \C^{m \times N}$ zadovoljava $\ell_q$-robusno svojstvo nul-prostora reda $s$ sa konstantama $0 < \rho < 1$ i $\tau > 0$. Tada za svaki $\vec x, \vec z \in \C^N$,
+    \begin{equation*}
+        \norm{\vec z - \vec x}_p \leq \frac{C}{s^{1-1/p}}(\norm{z}_1 - \norm{\vec x}_1 + 2 \sigma_s(\vec x)_1) + D s^{1/p-1/q} \norm{\vec A (\vec z - \vec x)},
+    \end{equation*}
+    gdje su $C:=(1+\rho)^2/(1-\rho)$ i $D:=(3+\rho)\tau/(1-\rho)$.
+\end{thm}
+\begin{proof}
+    Iskoristimo prvo da $\ell_q$-robusno svojstvo nul-prostora implicira $\ell_1$-robusno i $\ell_p$-robusno svojstvo nul-prostora, tj.
+    \begin{equation}\label{4:18}
+        \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 + \tau s^{1-1/q} \norm{\vec{Av}},
+    \end{equation}
+    \begin{equation}\label{4:19}
+        \norm{\vec v_S}_1 \leq \frac{\rho}{s^{1-1/p}} \norm{\vec v_{\bar S}}_1 + \tau s^{1/p - 1/q} \norm{\vec{Av}},
+    \end{equation}
+    za svaki $\vec v \in \C^N$ i za sve $S \subset [N]$, takve da $\card(S) \leq s$. Uva\v{z}avaju\'ci \eqref{4:19} i primjenom teorema \ref{tm:4:20} s skupom $S$ koji je jednak skupu $s$ apsolutno najve\'cih komponenti vektora $\vec x$, imamo
+    \begin{equation}\label{4:20}
+        \norm{\vec z - \vec x}_1 \leq \frac{1+\rho}{1-\rho}(\norm{\vec z }_1 - \norm{\vec x}_1 + 2 \sigma_s(\vec x)_1)+ \frac{2 \tau}{1 - \rho}s^{1-1/q} \norm{\vec A (\vec z - \vec x)}.
+    \end{equation}
+    Nadalje, odabirom skupa S kao skupa $s$ apsolutno najve\v{c}ih komponenti vektora $\vec z - \vec x$, iz teorema \ref{tm:2:5} slijedi
+    \begin{equation*}
+        \norm{\vec z - \vec x}_p \leq \norm{(\vec z - \vec x)_{\bar S}}_p + \norm{(\vec z - \vec x)_S}_p \leq \frac{1}{s^{1-1/p}}\norm{\vec z - \vec x}_1 + \norm{(\vec z - \vec x)_S}_p.
+    \end{equation*}
+    Iz \eqref{4:19} imamo,
+    \begin{align}\label{4:21}
+        \norm{\vec z - \vec x}_p &\leq \frac{1}{s^{1-1/p}} \norm{\vec z - \vec x}_1 + \frac{2}{s^{1-1/p}} \norm{(\vec z - \vec x)_{\bar S}}_1 + \tau s^{1/p - 1/q} \norm{\vec A (\vec z - \vec x)}\nonumber \\
+        &\leq  \frac{1+\rho}{s^{1-1/p}}  \norm{\vec z - \vec x}_1 + \tau s^{1/p - 1/q} \norm{ \vec A (\vec z - \vec x)}.
+    \end{align}
+    Preostaje \eqref{4:20} u \eqref{4:21}.
+\end{proof}
+
+\section[Rekonstrukcija predodre\dj enog vektora][Rekonstrukcija predodre\dj enog vektora]{Rekonstrukcija predodre\dj enog vektora}
+Ukoliko \v{z}elimo rekonstruirati predore\dj eni rijetki vektor $\vec x$ umjesto sve rijetke vektore s nosa\v{c}emo u nekom skupu $S$, potrebno nam je finije svojstvo rekonstrukcije od svojstva nul-prostora. Naglasimo da se \'ce ovdje biti sitna razlika izme\dj u realnog i kompleksnog slu\v{c}aja, \v{s}to je posljedica definija predznaka broja $z$,
+\begin{equation*}
+    \sgn(z):= 
+    \begin{cases}
+        \frac{z}{|z|} \quad &\text{ako } z \neq 0,\\
+        0 &\text{ako } z = 0
+    \end{cases}
+\end{equation*}
+i \v{c}injenice da je u realnom slu\v{c}aju to diskretna vrijednost, dok u kompleksnom nije. Za vektor $\vec x \in C^N$, $\sgn(\vec x)\in \C^N$ definiramo kao vektor s komponentama $\sgn(x_),\ j \in [N]$.
+\begin{thm}
+    Za danu matricu $\vec A \in \C^{m \times N}$, vektor $\vec x \in \C^N$ sa nosa\v{c}em $S$ je jedinstveni minimizator od $\norm{\vec z}_1$ uz uvjet $\vec{Az} = \vec{Ax}$ ako je jedna od narednih, ekvivalentnih tvrdnji zadovoljena:
+    \begin{enumerate}[label=(\alph*)]
+        \item $|\sum_{j \in S} \overline{\sgn(x_j)}v_j| < \norm{\vec v_{\bar S}}$ za sve $\vec v \in \ker \vec A \backslash \{ \vec 0 \}$, 
+            \newpage
+        \item $\vec A_S$ je injektivna i postoji vektor $\vec h \in \C^m$ takav da
+            \begin{multicols}{2}
+                \noindent
+                \begin{equation*}
+                    (\vec A^* \vec h)_j = \sgn(x_j),\ j \in S,
+                \end{equation*}
+                \begin{equation*}
+                    |(\vec A^* \vec h)_l| < 1,\ l \in \bar S.
+                \end{equation*}
+            \end{multicols}
+    \end{enumerate}
+\end{thm}
+\begin{proof}
+    Doka\v{z}imo prvo da $(a)$ implicira da je $\vec x$ jedinstveni minimizator od $\norm{\vec z}_1$ takav da $\vec{Az} = \vec{Ax}$. Za $\vec z \neq \vec x$ takav da $\vec{Az} = \vec {Ax}$ uzmimo $\vec v := \vec x - \vec z \in \ker \vec A \backslash \{\vec 0\}$
+    \begin{align*}
+        \norm{\vec z}_1 &= \norm{\vec z_S}_1 + \norm{\vec z_{\bar S} }_1 = \norm{(\vec x - \vec z)_S}_1 + \norm{\vec v_{\bar S}}_1  \\
+        &> |\langle \vec x - \vec z, \sgn(\vec x)_S \rangle | + |\langle \vec v, \sgn(\vec x)_S \rangle| \geq |\langle \vec x, \sgn(\vec x)_S  \rangle| = \norm{\vec x}_1.
+    \end{align*}
+    \indent Poka\v{z}imo sada $(b) \implies (a)$. Koriste\'ci \v{c}injenicu da $\vec{Av}_S = - \vec {Av}_{\bar S}$ za $\vec v \in \ker \vec A \backslash \{\vec 0\}$ slijedi,
+    \begin{align*}
+        |\sum_{j \in S} \overline{\sgn(x_j)v_j}| &= |\langle \vec v_S, \vec A^* \vec h \rangle|  = |\langle \vec{Av}_S, \vec h \rangle| = |\langle \vec{Av}_{\bar S}, \vec h\rangle| \\ 
+        &= |\langle \vec v_{\bar S}, \vec{A}^*\vec h \rangle| \leq \max_{l \in \bar S} |(\vec A^* \vec h)_l| \norm{\vec v_{\bar S}}_1 < \norm{\vec v_{\bar S}}_1.
+    \end{align*}
+    Striktna nejednakost vrijedi jer $\norm{\vec v_{\bar S}} > 0$. U suprotnom bi ne-nul vektor $\vec v \in \ker \vec A$ imao nosa\v{c} u $S$, \v{s}to je kontradikcija s injektivnosti od $\vec A_S$.\\
+    \indent Preostaje pokazati $(a) \implies (b)$. Primjetimo da $(a)$ povla\v{c}i $\norm{\vec v_{\bar S}}_1 > 0$ za sve $\vec v \in \ker \vec A \backslash \{\vec 0\}$. Poka\v{z}imo da je $\vec A_S$ injektivna. Pretpostavimo $\vec A_S \vec v_S = \vec 0$ za neki $\vec v_S \neq \vec 0$. Nadopunimo $\vec v_S$ do vektora $\vec v \in \C^N$ tako da stavimo $\vec v_{\bar S} = \vec 0$. Tada je $\vec v \in \ker \vec A \backslash \{\vec 0\}$, \v{s}to je kontradikcija s $\norm{\vec v_{\bar S}}_1 > 0$ za svaki $\vec v \in \ker \vec A \backslash \{\vec 0\}$. Nadalje, primjetimo da je funkcija $\vec v \mapsto |\langle \vec v, \sgn(\vec x)_S \rangle|/ \norm{\vec v_{\bar S}}_1$ neprekidna i da poprima vrijednosti manje od jedan na jedini\v{c}noj kugli u $\ker A$, koja je kompaktan skup. Dakle maksimum $\eta$ zadovoljava $\eta < 1$ i vrijedi 
+    \begin{equation*}
+        |\langle \vec v, \sgn(\vec x)_S \rangle|  \leq \norm{\vec v_{\bar S}}_1 \quad \text{za sve } \vec v \in \ker \vec A.
+    \end{equation*}
+    Za $\eta < \nu < 1$ definiramo konveksni skup $\mathcal{C}$ i afin skup $\mathcal{D}$,
+    \begin{align*}
+        \mathcal{C} &:= \{ \vec z \in \C^N : \norm{\vec z_S}_1 + \nu \norm{\vec z_{\bar S}}_1 \leq \norm{\vec x}_1 \},\\
+        \mathcal{D} &:= \{ \vec z \in \C^N : \vec{Az} = \vec{Ax} \}.
+    \end{align*}
+    Poka\v{z}imo da je $\mathcal{C} \cap \mathcal{D} = \{\vec x\}$. Uzmimo $\vec x \in \mathcal{C} \cap \mathcal{D}$. Za $ \vec z \neq \vec x \in \ker \vec A \backslash \{\vec 0\}$ kontradikcija slijedi iz
+    \begin{align*}
+        \norm{\vec x}_1 &\geq \norm{\vec z_S}_1 + \nu \norm{\vec z_{\bar S}}_1 = \norm{(\vec x - \vec z)_S}_1 + \nu \norm{\vec v_{\bar S}}_1\\
+        &> \norm{(\vec x - \vec v)_S}_1 + \mu \norm{\vec v_{\bar S}}_1 \geq |\langle \vec x - \vec v, \sgn(\vec x)_S \rangle| + |\langle \vec v, \sgn(\vec x)_S \rangle|\\
+        &\geq |\langle \vec x, \sgn(\vec x)_S \rangle| = \norm{\vec x}_1.
+    \end{align*}
+    Dakle, prema teoremu o separaciji konveksnih skupova hiperplohama (vidi TODO), postoji vektor $\vec w \in \C^N$ takav da
+    \begin{align}
+        \mathcal{C} \subset \{ \vec z \in \C^N: \Re \langle \vec z, \vec w \rangle \leq \norm{\vec x}_1 \}\label{4:22},\\
+        \mathcal{D} \subset \{ \vec z \in \C^N: \Re \langle \vec z, \vec w \rangle = \norm{\vec x}_1 \}\label{4:23}.
+    \end{align}
+    Iz \eqref{4:22} slijedi, 
+    \begin{align*}
+        \norm{\vec x}_1 &\geq \max_{\norm{\vec z_S + \nu \vec z_{\bar S}}_1 \leq \norm{\vec x}_1} \Re \langle \vec z, \vec x\rangle \\
+        &=\max_{\norm{\vec z_S + \nu \vec z_{\bar S}}_1 \leq \norm{\vec x}_1} \Re \bigg( \sum_{j \in S} z_j \overline{w_j} + \sum_{j \in \bar S} \nu z_j \overline{w_j}/ \nu \bigg)\\
+        &= \max_{\norm{\vec z_S + \nu \vec z_{\bar S}}_1 \leq \norm{\vec x}_1} \Re \langle \vec z_S + \nu \vec z_{\bar S}, \vec w_{\bar S} + (1/\nu) \vec w_{\bar S} \rangle \\
+        &= \norm{\vec x}_1 \norm{\vec w_S + (1/\nu)\vec w_{\bar S}}_{\infty} = \norm{\vec x}_1 \max\{ \norm{\vec w_S}_{\infty}, (1/\nu) \norm{\vec w_{\bar S}}_{\infty} \}.
+    \end{align*}
+    U slu\v{c}aju $\vec x = \vec 0$, dovoljno je uzeti vektor $\vec h = \vec 0$, stoga neka je $\vec x \neq \vec 0$. Gornja nejednakost daje $\norm{\vec w_S}_{\infty} \leq 1$ i $\norm{\vec w_{\bar S}}_{infty} \leq \nu < 1$. Iz \eqref{4:23} slijedi $\Re \langle \vec x, \vec w\rangle = \norm{\vec x}_1$, tj. $w_j = \sgn(x_j)$ za sve $j \in S$, te $\Re \langle \vec v, \vec w \rangle = 0$ za sve $\vec v \in \ker \vec A$, tj. $\vec w \in (\ker \vec A)^{\perp}$. Po\v{s}to je $(\ker \vec A)^{\perp} = \im \vec A^*$, imamo $\vec w = \vec A^* \vec h$ za neki $\vec h \in \C^m$.
+\end{proof}
+U realnom slu\v{c}aju obratna tvrdnja tako\dj er vrijedi, dok op\v{c}enito to nije istina. Dati \'cemo jo\v{s} jednu karakteriziciju egzaktne rekonstrukcije $\ell_1$-minimizacijom u realnom slu\v{c}aju. Za vektor $\vec x \in \R^N$, \textit{konveksni konus} definiramo kao
+\begin{equation}\label{4:34}
+    T(\vec x) = \cone \{ \vec z - \vec x : \vec z \in \R^N,\ \norm{\vec z}_1 \leq \norm{\vec x}\} 
+\end{equation}
+gdje $\cone$ predstavlja konusnu ljusku (vidi TODO).
+\begin{thm}
+    Za matricu $\vec A \in \R^{m \times N}$, vektor $\vec x \in \R^N$ je jedinstveni minimizator od $\norm{\vec z}_1$ takav da $\vec{Az} = \vec{Ax}$ ako i samo ako $\ker \vec A \cap T(\vec x) = \{\vec 0\}$.
+\end{thm}
+
+\begin{proof}
+    Pretpostavimo da je $\ker \vec A \cap T(x) = \{\vec 0\}$. Neka je $\vec x^{\sharp}$ $\ell_1$-minimizator. Imamo, $\norm{\vec x^{\sharp}}_1 \leq \norm{\vec x}_1$ i $\vec A \vec x^{\sharp} = \vec{Ax}$, pa je $\vec v := \vec x^{\sharp} - \vec x \in T(\vec x) \cap \ker \vec A = \{\vec 0\}$. Stoga je $\vec x^{\sharp} = \vec x$. Dakle, $\vec x$ je jedinstveni $\ell_1$-minimizator.\\
+    \indent
+    Obratno, neka je $\vec x$ jedinstveni $\ell_1$-minimizator. Vektor $\vec v \in T(\vec x) \backslash \{\vec 0\}$ mo\v{z}emo zapisati kao $\vec v = \sum t_j (\vec z_j - \vec x)$ gdje je $t_j \geq 0$ i $\norm{\vec z_j} \leq \norm{\vec x}_1$. Da je $\vec v \in \ker \vec A$, vrijedilo bi $\vec A (\sum t_j^{'} \vec z_j) = \vec{Ax}$ i $\norm{\sum t_j^{'} \vec z_j}_1 \leq \sum t_j^{'} \norm{\vec z_j}_1 \leq \norm{\vec x}_1$. Zbog jedinstvenosti, to bi zna\v{c}ilo da $\sum t_j^{'} \vec z_j = \vec x$ pa bi $\vec v = \vec 0$, \v{s}to je kontradikcija. Dakle, vrijedi $(T(\vec x) \backslash \{\vec 0\}) \cap \ker \vec A = \emptyset$. 
+\end{proof}
+Ovaj rezultat mo\v{z}emo pro\v{s}iriti i na robusnu rekonstrukciju,
+\begin{thm}
+    Za $\vec A \in \R^{m \times N}$, neka je $\vec x \in \R^N$ i $\vec y = \vec{Ax} + \vec e \in \R^m$ i $\norm{\vec e}_2 \leq \eta$. Ako je
+    \begin{equation*}
+        \inf_{\vec v \in T(x),\ \norm{\vec v}_2 = 1} \norm{\vec{Av}}_2 \geq \tau
+    \end{equation*}
+    za neki $\tau > 0$, tada minimizator $\vec x^{\sharp}$ od $\norm{\vec z}_1$ takav da $\norm{\vec{Az} - \vec y}_2 \leq \eta$ zadovoljava
+    \begin{equation}\label{4:35}
+        \norm{\vec x - \vec x^{\sharp}}_2 \leq \frac{2 \eta}{\tau}. 
+    \end{equation}
+\end{thm}
+\begin{proof}
+    Bez smanjenja op\v{c}enitosti mo\v{z}emo uzeti da je $\vec x^{sharp} = \vec x$. Iz $\norm{ \vec x^{\sharp}}_1 \leq \norm{\vec x}_1$ slijedi da je $\vec v := (\vec x^{\sharp} - \vec x)/ \norm{\vec x^{\sharp} - \vec x}_2 \in T(x)$. Po\v{s}to je $\norm{v}_2 = 1$ imamo da je $\norm{\vec{Av}}_2 \geq \tau$, tj. $\norm{\vec A (\vec x^{\sharp} - \vec x)}_2 \geq \tau \norm{\vec x^{\sharp} - \vec x}_2$. Nadalje, vrijedi
+    
+    \begin{equation*}
+        \norm{\vec A (\vec x^{\sharp} - \vec x)}_2 \leq \norm{\vec{Ax}^{sharp} - y}_2 + \norm{\vec{Ax} - \vec y}_2 \leq 2 \eta
+    \end{equation*}
+    Tvrdnja slijedi kombiniranjem prethodne dvije nejednakosti.
+\end{proof}
 
 
 
