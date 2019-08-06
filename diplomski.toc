@@ -18,6 +18,9 @@
 \contentsline {section}{\numberline {3.2}Stabilnost}{31}{section.3.2}
 \contentsline {section}{\numberline {3.3}Robusnost}{34}{section.3.3}
 \contentsline {section}{\numberline {3.4}Rekonstrukcija predodre\dj enog vektora}{37}{section.3.4}
-\contentsline {chapter}{Bibliografija}{41}{chapter*.39}
+\contentsline {chapter}{\chapternumberline {4}Koherencija}{41}{chapter.4}
+\contentsline {section}{\numberline {4.1}Definicija i svojstva}{41}{section.4.1}
+\contentsline {section}{\numberline {4.2}Matrice male koherencije}{43}{section.4.2}
+\contentsline {chapter}{Bibliografija}{47}{chapter*.39}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}

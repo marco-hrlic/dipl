@@ -47,6 +47,7 @@
 \renewcommand{\Im}{\text{\normalfont{Im}}}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\tr}{tr}
 
 \newenvironment{alg}[1]
 {
@@ -1272,15 +1273,183 @@ Ovaj rezultat mo\v{z}emo pro\v{s}iriti i na robusnu rekonstrukciju,
     \end{equation}
 \end{thm}
 \begin{proof}
-    Bez smanjenja op\v{c}enitosti mo\v{z}emo uzeti da je $\vec x^{sharp} = \vec x$. Iz $\norm{ \vec x^{\sharp}}_1 \leq \norm{\vec x}_1$ slijedi da je $\vec v := (\vec x^{\sharp} - \vec x)/ \norm{\vec x^{\sharp} - \vec x}_2 \in T(x)$. Po\v{s}to je $\norm{v}_2 = 1$ imamo da je $\norm{\vec{Av}}_2 \geq \tau$, tj. $\norm{\vec A (\vec x^{\sharp} - \vec x)}_2 \geq \tau \norm{\vec x^{\sharp} - \vec x}_2$. Nadalje, vrijedi
+    Bez smanjenja op\v{c}enitosti mo\v{z}emo uzeti da je $\vec x^{\sharp} = \vec x$. Iz $\norm{ \vec x^{\sharp}}_1 \leq \norm{\vec x}_1$ slijedi da je $\vec v := (\vec x^{\sharp} - \vec x)/ \norm{\vec x^{\sharp} - \vec x}_2 \in T(x)$. Po\v{s}to je $\norm{v}_2 = 1$ imamo da je $\norm{\vec{Av}}_2 \geq \tau$, tj. $\norm{\vec A (\vec x^{\sharp} - \vec x)}_2 \geq \tau \norm{\vec x^{\sharp} - \vec x}_2$. Nadalje, vrijedi
     
     \begin{equation*}
-        \norm{\vec A (\vec x^{\sharp} - \vec x)}_2 \leq \norm{\vec{Ax}^{sharp} - y}_2 + \norm{\vec{Ax} - \vec y}_2 \leq 2 \eta
+        \norm{\vec A (\vec x^{\sharp} - \vec x)}_2 \leq \norm{\vec{Ax}^{\sharp} - y}_2 + \norm{\vec{Ax} - \vec y}_2 \leq 2 \eta
     \end{equation*}
     Tvrdnja slijedi kombiniranjem prethodne dvije nejednakosti.
 \end{proof}
 
+\chapter[Koherencija][Koherencija]{Koherencija}
+Kao \v{s}to smo vidjeli, uspje\v{s}nost rekonstrukcije rijetkog vektora u kontekstu sa\v{z}etog uzorkovanja ovisi o odre\dj enim kvalitetama matrice mjerenja. Jedna od takvih mjera kvalitete je koherencija. Neformalno, \v{s}to je koherencija matrice mjerenja manja, to je rekonstrukcija uspje\v{s}nija.  
 
+\section[Definicija i svojstva][Definicija i svojstva]{Definicija i svojstva}
+U cjelom poglavlju podrazumjevamo da su stupci matrice mjerenje $\ell_2$-normalizirani.
+\begin{defn}
+    Neka je $\vec A \in \C^{m \times N}$ matrica sa $\ell_2$-normaliziranim stupcima $\vec a_1, \vec a_2, \dots, \vec a_N$, tj. $\norm{\vec a_i}_2 = 1$ za sve $i \in [N]$. Koherencija $\mu = \mu(\vec A)$ matrice $\vec A$ definiramo kao
+    \begin{equation}\label{5:1}
+        \mu := \max_{1 \leq i \neq j \leq N} |\langle \vec a_i, \vec a_j \rangle| .
+    \end{equation}
+\end{defn}
+
+Nadalje, uvodimo op\v{c}enitiji pojam funckije $\ell_1$-koherencije. Gornja definicija je poseban slu\v{c}aj za $s = 1$.
+\begin{defn}
+    Neka je matrica $\vec A \in \C^{m \times N}$ sa $\ell_2$-normaliziranim stupcima  $\vec a_1, \vec a_2, \dots, \vec a_N$. Za $s \in [N-1]$, funkcija $\ell_1$-koherencije $\mu_1$ matrice $\vec A$ je definirana kao
+    \begin{equation*}
+        \mu_1(s) := \max_{i \in [N]} \max \big\{ \sum_{j \in S} |\langle \vec a_i, \vec a_j \rangle|,\ S \subset [N],\ \card(S) = s,\ i \not \in S   \big\} .
+    \end{equation*}
+\end{defn}
+Jasno je da za $1 \leq s \leq N-1$ vrijedi
+\begin{equation}\label{5:2}
+    \mu \leq \mu_1(s) \leq s \mu
+\end{equation}
+i op\v{c}enitije za $1 \leq s,\ t \leq N-1$ takve da $s+t \leq N-1$
+\begin{equation}\label{5:3}
+    \max \{\mu_1(s), \mu_1(t)\}  \leq \mu_1(s+t) \leq \mu_1(s) + \mu_1(t).
+\end{equation}
+Primjetimo da je $\ell_1$-koherencija pa stoga i koherencija invarijanta na mno\v{z}enje s lijeva unitarnom matricom $\vec U$. Zaista, stupci od $\vec{UA}$ su $\ell_2$-normalizirani vektori $\vec{Ua}_1, \dots, \vec{Ua}_N$ te zadovoljavaju $\langle \vec{Ua}_i, \vec{Ua}_j \rangle = \langle \vec a_i , \vec a_j \rangle$. Nadalje zbog Cauchy-Schwarzove nejednakosti imamo da vrijedi
+\begin{equation*}
+   \mu \leq 1. 
+\end{equation*}
+Neka je na matrica $\vec A \in \C^{m \times N}$ takva da $m \geq N$. Tada je $\mu = 0$ ako i samo ako stupci matrice $\vec A$ formiraju ortonormirani sustav. U slu\v{c}aju da je matrica kvadratna, $\mu = 0$ ako i samo ako je $\vec A$ unitarna. U nastavu \'cemo prou\v{c}avati samo matrice kojima je $m < N$. U tom slu\v{c}aju vrijednost koherencije je odozdo ograni\v{c}ena, \v{s}to \'cemo kasnije i pokazati. 
+
+\begin{thm}
+    Neka je $\vec A \in \C^{m \times N}$ matrica sa $\ell_2$-normaliziranim stupcima i neka je $s \in [N]$. Za sve $s$-rijetke vektore $\vec x \in \C^N$ vrijedi,
+    \begin{equation*}
+        \big(1-\mu_1(s-1)\big) \norm{\vec x}_2^2 \leq \norm{\vec{Ax}}_2^2 \leq \big(1+\mu_1(s-1)\big) \norm{\vec x}_2^2
+    \end{equation*}
+    ili ekvivalentno, za svaki skup $S \subset [N]$ takav da $\card(S) \leq s$, svojstvene vrijednosti matrice $\vec A^*_S \vec A_S$ le\v{z}e u segmentu $[1-\mu_1(s-1),\ 1+\mu(s-1)]$. Posebno, ako je $\mu_1(s-1) < 1$ tada je $\vec A^*_S \vec A_S$ invertibilna.
+\end{thm}
+\begin{proof}
+    Neka je $S \subset [N]$. Po\v{s}to je matrica $\vec A^*_S \vec A_S$ pozitivno semidefinitna, svojstveni vektori koji odgovaraju realnim pozitivnim svojstvenim vrijednostima \v{c}ine ortonormiranu bazu. Ozna\v{c}imo s $\lambda_{min}$ najmanju i s $\lambda_{max}$ najve\v{c}u svojstvenu vrijednost. Po\v{s}to je $\vec{Ax} = \vec A_S \vec x_S$ za svaki $\vec x \in \C^N$ sa nosa\v{c}em na skupu $S$, slijedi da je maksimum od
+    \begin{equation*}
+        \norm{\vec{Ax}}_2^2 = \langle \vec A_S \vec x_S, \vec A_S \vec x_S  \rangle = \langle \vec A^*_S \vec A_S \vec x_S, \vec x_S \rangle
+    \end{equation*}
+    po skupu ${\vec x \in \C^N,\ \supp \vec x \subset S,\ \norm{\vec x}_2 = 1}$, jednak $\lambda_{max}$ i minimum jednak $\lambda_{min}$. Ovo pokazuje ekvivalenciju dvije tvrdnje u teoremu. Nadalje, po\v{s}to imamo da je $\norm{\ve a_j}_2 = 1$ za sve $j \in [N]$, svi dijagonalni elementi matrice $\vec A^*_S \vec A_S$ jednaki su jedan. Prema Gershgorinom teoremu (vidi TODO), svojstvene vrijednost od $\vec A^*_S \vec A_S$ sadr\v{z}ane su u uniji diskova s centrom u 1 radijusa
+    \begin{equation*}
+        r_j := \sum_{l \in S,\ l \neq j} |(\vec A^*_S \vec A_S)_{j,l}| = \sum_{l \in S,\ l \neq j} |\langle \vec a_l, \vec a_j \rangle| \leq \mu_1 (s-1),\quad j \in S.
+    \end{equation*}
+    \newpage
+    Po\v{s}to su svojstvene vrijednost realno, moraju le\v{z}ati u segmentu $[1-\mu_1(s-1, 1+ \mu_1(s-1))]$.
+\end{proof}
+\begin{cor}
+    Neka je $\vec A \in \C^{m \times N}$ s $\ell_2$-normaliziranim stupcima i neka je $s \geq 1$. Ako  
+    \begin{equation*}
+        \mu_1(s) + \mu_1(s-1) < 1, 
+    \end{equation*}
+    onda je, za svaki $S \subset [N]$ takav da $\card(S) \leq 2s$, matrica $\vec A^*_S \vec A_S$ invertibilna i matrica $\vec A_S$ injektivna. Posebno, isti zaklju\v{c}ak vrijedi ako
+    \begin{equation*}
+        \mu < \frac{1}{2s - 1}  
+    \end{equation*}
+\end{cor}
+\begin{proof}
+    Iz \eqref{5:3}, $\mu_1(s) + \mu_1(s-1) < 1$ povla\v{c}i $\mu_1(2s-1) < 1$. Prema prethodnom teoremu, za $S \subset [N]$ takav da $\card(S) = 2s$, najmanja svojstvena vrijednost matrice $\vec A^*_S \vec A_S$ zadovoljava $\lambda_{min} \geq 1 - \mu_1(2s-1)>0$. Dakle, $\vec A^*_S \vec A_S$ je invertibilna. Ako je $\vec A_S \vec z = \vec 0$ tada je i $\vec A^*_S \vec A_S \vec z = \vec 0$ no to implicira $\vec z = \vec 0$. Dakle, $\vec A_S$ je injektivna. Isti zaklju\v{c}ci slijedi iz $\mu_1(s) + \mu_1(s-1) \leq (2s-1)\mu < 1$ ako je $\mu < 1/(2s-1)$
+\end{proof}
+
+\section[Matrice male koherencije][Matrice male koherencije]{Matrice male koherencije}
+Sada \'cemo prou\v{c}iti ocjene odozdo na koherenciju i na $\ell_1$-koherenciju matrice $\vec A \in \K^{m \times N}$ takve da $m < N$ i gdje je $\K = \R$ ili $\K = \C$.
+\begin{defn}
+    Sustav $\ell_2$-normaliziranih vektora $(\vec a_1, \dots, \vec a_N)$ iz $\K^m$ nazivamo ekviangularan ako postoji konstana $c \leq 0$ takva da
+    \begin{equation*}
+        |\langle \vec a_i, \vec a_j \rangle|  = c \quad \text{za sve } i,j \in [N],\ i \neq j.
+    \end{equation*}
+\end{defn}
+\begin{defn}
+    Sustav  vektora $(\vec a_1, \dots, \vec a_N)$ iz $\K^m$ zovemo napeti bazni okvir ako postoji konstanta $\lambda > 0$ takva da vrijedi jedan od ekvivalentnih uvjeta:
+    \begin{enumerate}[label=(\alph*)]
+        \item $\norm{\vec x}_2^2 = \lambda \sum_{j=1}^N |\langle \vec x, \vec a_j \rangle|^2$ za sve $\vec x \in \K^m$,
+        \item $\vec{x} = \lambda \sum_{j=1}^N \langle \vec x, \vec a_j\rangle \vec a_j$  za sve $\vec x \in \K^m$,
+        \item $\vec{AA}^* = (1/\lambda) \vec I_m$, gdje je $\vec A$ matrica sa stupcima $\vec a_1, \dots \vec a_N$.
+    \end{enumerate}
+\end{defn}
+Sustav $\ell_2$-normaliziranih vektora zove se ekviangularni napeti bazni okvir ako je bazni okvir ujedno ekviangularni sustav vektora i napeti bazni okvir. Takve sustavi vektora posti\v{z}u takozvanu \textit{Welchovu ocjenu}.
+\begin{thm}\label{tm:5:7}
+    Koherencija matrice $\vec A \in \K^{m \times N}$ s $\ell_2$-normaliziranim stupcima zadovoljava 
+    \begin{equation}\label{5:4}
+        \mu \geq \sqrt{\frac{N-m}{m(N-1)}}. 
+    \end{equation}
+    Jednakost vrijedi ako i samo ako stupci $\vec a_1, \dots \vec a_N$ matrice $\vec A$ \v{c}ine ekviangularni napeti bazni okvir.
+\end{thm}
+\begin{proof}
+    $\vec G := \vec A^* \vec A \in \K^{N \times N}$ zovemo \textit{Gramova matrica} sustava vektora $(\vec a_1, \dots, \vec a_N)$. Elementi od $G$ su obika
+    \begin{equation*}
+        G_{i,j} = \overline{ \langle \vec a_i, \vec a_j \rangle}  =  \langle \vec a_j, \vec a_i \rangle, \quad i,j \in [N].
+    \end{equation*}
+    Nadalje, definirajmo matricu $\vec H := \vec{AA}^* \in \K^{m \times m}$. Po\v{s}to su stupci od $\vec A$ $\ell_2$-normalizirani, imamo
+    \begin{equation}\label{5:5}
+        \tr(\vec G) = \sum_{i = 1}^{N} \norm{\vec a_i}_2^2 = N.
+    \end{equation}
+    Po\v{s}to skalarni produkt
+    \begin{equation*}
+        \langle \vec U, \vec V \rangle_F := \tr(\vec{UV}^*) = \sum_{i,j = 1}^{n} U_{i,j}\overline{V_{i,j}}
+    \end{equation*}
+    inducira \textit{Froebeniusovu normu} $\norm{ \cdot }_F$ na $\K^{n \times n}$ (vidi TODO), Cauchy-Schwarzova nejednakost daje
+    \begin{equation}\label{5:6}
+        \tr(\vec H) = \langle \vec H, \vec I_m \rangle_F \leq \norm{\vec H}_F \norm{\vec I_m}_F = \sqrt{m} \sqrt{\tr(\vec{HH}^*)}.
+    \end{equation}
+    Nadalje,
+    \begin{align}\label{5:7}
+        \tr(\vec{HH}^*) &= \tr(\vec{AA}^* \vec{AA}^*) = \tr(\vec A^* \vec{AA}^* \vec A) = tr(\vec{GG}^*) = \sum_{i,j = 1}^N |\langle \vec a_i, \vec a_j \rangle|^2\nonumber\\ 
+        &= \sum_{i=1}^N \norm{\vec a_i}_2^2 + \sum_{i,j = 1,\ i \neq j}^N |\langle \vec a_i, \vec a_j \rangle|^2 = N + \sum_{i,j = 1,\ i \neq j}^N |\langle \vec a_i, \vec a_j \rangle|^2.
+    \end{align}
+    Iz \v{c}injenice da $\tr(\vec G) = \tr(\vec H)$, te kombiniranjem \eqref{5:5}, \eqref{5:6} i \eqref{5:7} imamo
+    \begin{equation}\label{5:8}
+        N^2 \leq m \big( N + \sum_{i,j = 1,\ i \neq j}^N |\langle \vec a_i, \vec a_j \rangle|^2 \big)
+    \end{equation}
+    Napokon, uva\v{z}imo da 
+    \begin{equation}\label{5:9}
+        |\langle \vec a_i, \vec a_j \rangle| \leq \mu \quad \text{za sve }i,j \in [N],\ i \neq j,
+    \end{equation}
+    pa slijedi,
+    \begin{equation*}
+        N^2 \leq m \big( N + (N^2 - N)\mu^2 \big), 
+    \end{equation*}
+    od kuda lako slijedi ocjena iz tvrdnje teorema.
+    Nadalje, jednakost u \eqref{5:4} ako vrijede jednakosti u \eqref{5:6} i \eqref{5:9}. Jednakost u \eqref{5:6} daje $\vec H = \lambda \vec I_m$ za neku nenegativnu konstantu $\lambda$, tj. sustav $(\vec a_1, \dots, \vec a_N)$ je napeti bazni okvir. Iz jednakost u \eqref{5:9} slijedi da je taj sustav ekviangularan.
+\end{proof}
+
+Welchovu ocjenu mo\v{z}emo pro\v{s}iriti i na funkciju $\ell_1$-koherencije.
+\begin{thm}\label{tm:5:8}
+    Funkcija $\ell_1$-koherencije matrice $\vec A \in \K^{m \times N}$ s $\ell_2$-normaliziranim stupcima zadovoljava 
+    \begin{equation}\label{5:10}
+        \mu_1(s) \geq s \sqrt{\frac{N-m}{m(N-1)}}\quad \text{za } s < \sqrt{N - 1}.
+    \end{equation}
+    Jednakost se posti\v{z}e ako i samo stupci matrice $\vec A$ formiraju ekviangularni napeti bazni okvir.
+\end{thm}
+Za dokaz biti \'ce nam potrebna sljede\'ca lema,
+\begin{lem}\label{lem:5:9}
+    Za $k < \sqrt{n}$, ako kona\v{c}ni niz brojeva $(\alpha_1, \alpha_2, \dots, \alpha_n)$ zadovoljava
+    \begin{equation*}
+        \alpha_1 \geq \alpha_2 \geq \cdots \alpha_n \geq 0 \quad \text{i} \quad \alpha_1^2,\alpha_2^2, \cdots,\alpha_n^2 \geq \frac{n}{k^2} 
+    \end{equation*}
+    tada
+    \begin{equation*}
+        \alpha_1 + \alpha_2 + \cdots + \alpha_k \geq 1, 
+    \end{equation*}
+    gdje se jednakost posti\v{z}e ako i samo ako $\alpha_1 = \cdots = \alpha_n = 1/k$.
+\end{lem}
+Ideja dokaza je analogna dokazu teorema \ref{tm:2:5}, tj. problem se svodi na maksimizaciju konveksne funkcije (vidi TODO).
+
+\begin{proof}[Dokaz (Teorem \ref{tm:5:8})]
+    Iz \eqref{5:8} imamo 
+    \begin{equation*}
+        \sum_{i,j=1,i \neq j}^N |\langle \vec a_i, \vec a_j \rangle|^2 \geq \frac{N^2}{m} - N = \frac{N(N-m)}{m},
+    \end{equation*}
+    odakle slijedi
+    \begin{equation*}
+        \max_{i \in [N]} \sum_{i,j=1,i \neq j}^N |\langle \vec a_i, \vec a_j \rangle|^2 \geq \frac{1}{N} \sum_{i,j=1,i \neq j}^N |\langle \vec a_i, \vec a_j \rangle|^2 \geq \frac{N-m}{m} .
+    \end{equation*}
+    Neka je $i^* \in [N]$ indeks za koji se posti\v{z}e maksimum. Sortirajmo niz $(|\langle \vec a_{i^*}, \vec a_j \rangle|)_{j=1}^{N}$ kao $\beta_1 \geq \beta_2 \geq \cdots \beta_{N-1} \geq 0$, tako da
+    \begin{equation*}
+        \beta_1^2 + \beta_2^2 + \cdots + \beta_{N-1}^2 \geq \frac{N-m}{m} .
+    \end{equation*}
+    Primjenom prethodne lemu s $n = N-1,\ k = s$, i $\alpha_l := (\sqrt{m(N-1)/(N-m)}/s)\beta_l$ dobivamo $\alpha_1 + \cdots \alpha_s \geq 1$. Dakle,
+    \begin{equation*}
+        \mu_1(s) \geq \beta_1 + \beta_2 + \cdots + \beta_s \geq s \sqrt{\frac{N-m}{m(N-1)}}.
+    \end{equation*}
+    Pretpostavimo sada da u \eqref{5:10} vrijedi jednakost, pa su sve nejednakosti zapravo jednakosti. Jednakost u \eqref{5:8} implicira da su stupci matrice a napeti bazni okvir. Jednakost u prethodnoj lemi implicira da $|\langle \vec a_{i^*}, \vec a_j \rangle| = \sqrt{(N-m)/(m(N-1))}$ za sve $j \in [N]$, takve da $j \neq i^*$. Po\v{s}to indeks $i^*$ mo\v{z}emo proizvoljno odabrati iz $[N]$, slijedi da je sustav stupaca matrice $\vec A$ ekviangularan. Obrat lako slijedi iz teorema \ref{tm:5:7} i \eqref{5:2}.
+\end{proof}
 
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
