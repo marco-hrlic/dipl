@@ -1451,6 +1451,74 @@ Ideja dokaza je analogna dokazu teorema \ref{tm:2:5}, tj. problem se svodi na ma
     Pretpostavimo sada da u \eqref{5:10} vrijedi jednakost, pa su sve nejednakosti zapravo jednakosti. Jednakost u \eqref{5:8} implicira da su stupci matrice a napeti bazni okvir. Jednakost u prethodnoj lemi implicira da $|\langle \vec a_{i^*}, \vec a_j \rangle| = \sqrt{(N-m)/(m(N-1))}$ za sve $j \in [N]$, takve da $j \neq i^*$. Po\v{s}to indeks $i^*$ mo\v{z}emo proizvoljno odabrati iz $[N]$, slijedi da je sustav stupaca matrice $\vec A$ ekviangularan. Obrat lako slijedi iz teorema \ref{tm:5:7} i \eqref{5:2}.
 \end{proof}
 
+U kontekstu sa\v{z}etog uzorkovanja zanimaju $m \times N$ matrice gdje je $N$ puno ve\'ci od $m$. No, pokazati \'cemo da u tom slu\v{c}aju ne mo\v{z}emo posti\'ci Welchovu ocjenu.
+\begin{thm}\label{5:10}
+    Kardinalitet $N$ ekviangularnog sustava $(\vec a_1, \dots, \vec a_N)$ $\ell_2$-normaliziranih vektora u $\K^m$ zadovoljava
+    \begin{equation*}
+        N \leq \frac{m(m+1)}{2} \quad \quad \text{za } \K = \R, 
+    \end{equation*}
+    \begin{equation*}
+        N \leq m^2 \quad \quad \text{za } \K = \C.
+    \end{equation*}
+    Ako vrijedi jednakost onda je sustav $(\vec a_1, \dots, \vec a_N)$ tako\dj er i napeti bazni okvir.
+\end{thm}
+
+Za dokaz teorema potrebna nam je sljede\v{c}a tvrdnja,
+\begin{lem}\label{lem:5:11}
+    Neka je $z \in \C$, matrica 
+    \begin{equation*}
+        \begin{bmatrix*}
+            1 & z & z & \cdots & z \\
+            z & 1 & z & \cdots & z \\
+            \vdots & \ddots & \ddots & \ddots & \vdots \\ 
+            z & \cdots & z & 1 & z \\
+            z & \cdots & z & z & 1 
+        \end{bmatrix*}
+    \end{equation*}
+    ima jednostruku svojstvenu vrijednost $1+(n-1)z$ te svojstvenu vrijednost $1-z$ geometrijske kratnosti $n-1$.
+\end{lem}
+\noindentj Za dokaz leme vidi TODO.
+
+\begin{proof}[Dokaz (Teorem \ref{5:10})]
+    Ideja je razmatranja sa prostora $\K^m$ prebaciti na potprostor $\mathcal{S}_m$ operatora na $\K^m$. U slu\v{c}aju $\K = \R$, $\mathcal{S}_m$ je prostor simetri\v{c}nih operatora na $\R^m$, a u slu\v{c}aju $\K = \C$, $\mathcal{S}_m$ je cjeli prostor operatora na $\C^m$. Ti su prostori opremljeni Froebeniusovim skalarnim produktom
+    \begin{equation}
+        \langle \vec P, \vec Q \rangle_F = \tr(\vec{PQ}^*) 
+    \end{equation}
+    za $\vec P$, $\vec Q \in \mathcal{S}_m$.
+    Ozna\v{c}imo sa $\vec P_1, \dots, \vec P_N \in \mathcal{S}_m$ orthogonalne projektore na potprostore razapete sa $\{\vec a_i\}$ za $i=1,2,\dots,N$, definirane sa
+    \begin{equation*}
+        \vec P_i(\vec v) = \langle \vec v, \vec a_i \rangle \vec a_i
+    \end{equation*}
+    za $\vec v \in \K^m$. Nadalje, neka je $c:=|\langle \vec a_i, \vec a_j \rangle|$ za $i \neq j$ te neka je $(\vec e_1, \dots, \vec e_N)$ kanonska baza za $\K^m$. Koriste\v{c}i \v{c}injenicu da je $\vec P_i^2 = \vec P_i = \vec P^*$, za $i,j \in [N],\ i \neq j$ ra\v{c}unamo
+    \begin{align*}
+        \langle \vec P_i, \vec P_i \rangle_F &= \tr(\vec P_i \vec P_i^*) = \tr(\vec P_i) = \sum_{k=1}^{m} \langle \vec P_i(\vec e_k), \vec e_k \rangle_F = \sum_{k=1}^{m} \langle \vec e_k, \vec a_i \rangle \langle \vec a_i, \vec e_k \rangle \\
+    &= \sum_{k=1}^m |\langle \vec a_i, \vec e_k \rangle|^2 = \norm{\vec a_i}_2^2 = 1, \\
+        \langle \vec P_i, \vec P_j \rangle_F &= \tr(\vec P_i \vec P_j^*) = \tr(\vec P_i \vec P_j) = \sum_{k=1}^m \langle \vec P_i \vec P_j (\vec e_k), \vec e_k \rangle = \sum_{k=1}^m \langle \vec P_j(\vec e_k), \vec P_i(\vec e_k) \rangle \\
+        &= \sum_{k=1}^m \langle \vec e_k, \vec a_j \rangle \overline{\langle \vec e_k, \vec a_i \rangle}\langle \vec a_j, \vec a_i \rangle = \overline{\langle \vec a_i, \vec a_j \rangle} \big \langle \sum_{k=1}^m \langle \vec a_i, \vec e_k \rangle \vec e_k, \vec a_j  \big \rangle\\
+        &= \overline{\langle \vec a_i, \vec a_j \rangle} \langle \vec a_i, \vec a_j \rangle = |\langle \vec a_i, \vec a_j \rangle|^2 = c^2.
+    \end{align*}
+    Dakle, Gramova matrica sustava $(\vec P_1, \dots, \vec P_N)$ je $N \times N$ matrica oblika
+    \begin{equation*}
+        \begin{bmatrix*}
+            1 & c^2 & c^2 & \cdots & c^2 \\
+            c^2 & 1 & c^2 & \cdots & c^2 \\
+            \vdots & \ddots & \ddots & \ddots & \vdots \\ 
+            c^2 & \cdots & c^2 & 1 & c^2 \\
+            c^2 & \cdots & c^2 & c^2 & 1 
+        \end{bmatrix*}
+    \end{equation*}
+    Iz \v{c}injenice $0 \leq c^2 < 1$ i leme \ref{lem:5:11} slijedi da je ova Gramova matrica invertibilna, \v{s}to zna\v{c}i da je sustav $(\vec P_1, \dots, \vec P_N)$ linearno nezavisan. Taj sustav le\v{z}i u prostoru $\mathcal{S}_m$ koji je dimenzije $m(m+1)/2$ za $\K = \R$ te dimenzije $m^2$ za $\K = \C$. Stoga vrijedi,
+
+    \begin{equation*}
+        N \leq \frac{m(m+1)}{2} \quad \quad \text{za } \K = \R, 
+    \end{equation*}
+    \begin{equation*}
+        N \leq m^2 \quad \quad \text{za } \K = \C.
+    \end{equation*}
+    
+\end{proof}
+
+
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
 % Najprije definiramo nacin prikazivanja bibliografije, u ovom slucaju verzija amsplain stila
