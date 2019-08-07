@@ -742,7 +742,7 @@ gdje je $\vec{x}_{S^{n+1}}^{n+1}$ restrikcija od $\vec x^{n+1}$ na svoj nosa\v{c
 
 Prirodan uvjet zaustavljanja OMP-a je kada se postigne $\norm{\vec{y} - \vec{Ax}^{\bar{n}}} \leq \varepsilon$ ili $\norm{\vec A^*(\vec y - \vec{Ax}^{\bar{n}})_{\infty}} \leq \varepsilon$ za neku toleranciju $\varepsilon > 0$. Ako nam je dostupna estimacija rijetkosti $s$ rje\v{s}enja $\vec x$, tada je razumno stati kada je $\bar{n} = s$. Sljede\'ci rezultat govori o uvjetim za uspje\v{s}nu rekonstrukciju $s$-rijetkog vektora u $s$ iteracija OMP algoritma.
 
-\begin{prop}
+\begin{prop}\label{prop:3:5}
     Neka je $\vec A \in \C^{m \times N}$, svaki ne-nul vektor $\vec x \in \C^N$ sa nosa\v{c}emo na skupu $S$, kardinaliteta $s$ mo\v{z}e se rekonstruirati iz $\vec y = \vec{Ax}$ u najvi\v{s}e $s$ iteracija OMP algoritma ako i samo ako je matrica $\vec A_S$ injektivna i 
     \begin{equation}\label{uvjet_rekon_omp}
         \max_{j \in S}|(\vec A^* \vec r)_j| > \max_{l \in \bar{S}}|(\vec A^* \vec r)_l|
@@ -1333,7 +1333,7 @@ Neka je na matrica $\vec A \in \C^{m \times N}$ takva da $m \geq N$. Tada je $\m
     \newpage
     Po\v{s}to su svojstvene vrijednost realno, moraju le\v{z}ati u segmentu $[1-\mu_1(s-1, 1+ \mu_1(s-1))]$.
 \end{proof}
-\begin{cor}
+\begin{cor}\label{kor:5:4}
     Neka je $\vec A \in \C^{m \times N}$ s $\ell_2$-normaliziranim stupcima i neka je $s \geq 1$. Ako  
     \begin{equation*}
         \mu_1(s) + \mu_1(s-1) < 1, 
@@ -1452,7 +1452,7 @@ Ideja dokaza je analogna dokazu teorema \ref{tm:2:5}, tj. problem se svodi na ma
 \end{proof}
 
 U kontekstu sa\v{z}etog uzorkovanja zanimaju $m \times N$ matrice gdje je $N$ puno ve\'ci od $m$. No, pokazati \'cemo da u tom slu\v{c}aju ne mo\v{z}emo posti\'ci Welchovu ocjenu.
-\begin{thm}\label{5:10}
+\begin{thm}\label{tm:5:10}
     Kardinalitet $N$ ekviangularnog sustava $(\vec a_1, \dots, \vec a_N)$ $\ell_2$-normaliziranih vektora u $\K^m$ zadovoljava
     \begin{equation*}
         N \leq \frac{m(m+1)}{2} \quad \quad \text{za } \K = \R, 
@@ -1475,11 +1475,11 @@ Za dokaz teorema potrebna nam je sljede\v{c}a tvrdnja,
             z & \cdots & z & z & 1 
         \end{bmatrix*}
     \end{equation*}
-    ima jednostruku svojstvenu vrijednost $1+(n-1)z$ te svojstvenu vrijednost $1-z$ geometrijske kratnosti $n-1$.
+    ima jednostruku svojstvenu vrijednost $1+(n-1)z$ te svojstvenu vrijednost $1-z$ algebarske kratnosti $n-1$.
 \end{lem}
 \noindentj Za dokaz leme vidi TODO.
 
-\begin{proof}[Dokaz (Teorem \ref{5:10})]
+\begin{proof}[Dokaz (Teorem \ref{tm:5:10})]
     Ideja je razmatranja sa prostora $\K^m$ prebaciti na potprostor $\mathcal{S}_m$ operatora na $\K^m$. U slu\v{c}aju $\K = \R$, $\mathcal{S}_m$ je prostor simetri\v{c}nih operatora na $\R^m$, a u slu\v{c}aju $\K = \C$, $\mathcal{S}_m$ je cjeli prostor operatora na $\C^m$. Ti su prostori opremljeni Froebeniusovim skalarnim produktom
     \begin{equation}
         \langle \vec P, \vec Q \rangle_F = \tr(\vec{PQ}^*) 
@@ -1510,14 +1510,141 @@ Za dokaz teorema potrebna nam je sljede\v{c}a tvrdnja,
     Iz \v{c}injenice $0 \leq c^2 < 1$ i leme \ref{lem:5:11} slijedi da je ova Gramova matrica invertibilna, \v{s}to zna\v{c}i da je sustav $(\vec P_1, \dots, \vec P_N)$ linearno nezavisan. Taj sustav le\v{z}i u prostoru $\mathcal{S}_m$ koji je dimenzije $m(m+1)/2$ za $\K = \R$ te dimenzije $m^2$ za $\K = \C$. Stoga vrijedi,
 
     \begin{equation*}
-        N \leq \frac{m(m+1)}{2} \quad \quad \text{za } \K = \R, 
+        N \leq \frac{m(m+1)}{2} \quad \quad \text{za } \K = \R,\quad \quad \quad \quad  N \leq m^2 \quad \quad \text{za } \K = \C.
     \end{equation*}
+    Pretpostavimo sada da vrijedi jednakost. Tada je sustav $(\vec I_m, \vec P_1, \dots, \vec P_N)$ linearno zavisan, pa je stoga
     \begin{equation*}
-        N \leq m^2 \quad \quad \text{za } \K = \C.
+        \begin{vmatrix*}
+            1 & b & b & \cdots & b \\
+            b & 1 & b & \cdots & b \\
+            \vdots & \ddots & \ddots & \ddots & \vdots \\ 
+            b & \cdots & b & 1 & b \\
+            b & \cdots & b & b & 1 
+        \end{vmatrix*} = 0, \quad \quad \text{gdje je } b:= \frac{mc^2 - 1}{m - 1}. 
     \end{equation*}
-    
+    Po\v{s}to $1-b = m(1-c^2)/(m-1) \neq 0$, lema \ref{lem:5:11} implicira da je $1+(N-1)b = 0$.Slijedi, 
+    \begin{equation*}
+        c^2 = \frac{N-m}{m(N-1)}.  
+    \end{equation*}
+    Dakle, pokazali smo da $\ell_2$-normalizirani sustav $(\vec a_1, \dots, \vec a_N)$ posti\v{z}e Welchovu ocjenu a teorem \ref{tm:5:7} implicira da je taj sustav onda ekviangularan napeti okvir.
 \end{proof}
 
+Zanimljvo je da u kontekstu prostora $\C^m$ postoje sustavi od $m^2$ ekviangularnih vektora za sve $m$, dok u $\R^m$ sustavi od $m(m+1)/2$ ekviangularnih vektora ne postoje za sve $m$. Poznato je da postoje u slu\v{c}ajevima gdje je $m$ jednak $2,3,7$ i $23$. Pitanje ostalih slu\v{c}ajeva je i dalje otvoreno.
+ 
+\begin{thm}
+    Za $m \geq 3$, ako postoji ekviangularni sustav od $m(m+1)/2$ vektora u $\R^m$, tada je $m+2$ nu\v{z}no kvadrat nekog neparnog prirodnog broja.
+\end{thm}
+\begin{proof}
+    Neka je $(\vec a_1, \dots \vec a_N)$ sustav od $N = m(m+1)/2$ ekviangularnih $\ell_2$-normaliziranih vektora. Prema teoremu \ref{tm:5:10} taj je sustav napeti bazni okvir, pa stoga matrica $\vec A$ sa stupcima $\vec a_1, \dots, \vec a_N$ zadovoljava $\vec{AA}^* = \lambda \vec I_m$ za neki $\lambda > 0$. Matrica $\vec G := \vec A^* \vec A$ ima iste ne-nul svojstvene vrijednosti kao i $\vec{AA}^*$, tj. svojstvenu vrijednost $\lambda$ algebarske kratnosti $m$. i svojstvenu vrijednost nula kratnosti $N-m$. Nadalje, po\v{s}to je $\vec G$ Gramova matrica sustava $(\vec a_1, \dots, \vec a_N)$, njezini dijagonalni elementi jednaki su jedinici, dok su svi vandijagonalni elementi jednaki po apsolutnoj vrijednosti nekom broju $c$. Dakle, matrica $\vec B := (\vec G - \vec I_N)/c$ je oblika
+    \begin{equation*}
+        \begin{bmatrix*}
+            0 & b_{1,2} & b_{1,3} & \cdots & b_{1,N} \\
+            b_{2,1} & 0 & b_{2,2} & \cdots & b_{2,N} \\
+            \vdots & \ddots & \ddots & \ddots & \vdots \\ 
+            b_{N-1,1} & \cdots & b_{N-1, N-2} & 0 & b_{N-1,N} \\
+            b_{N,1} & \cdots & b_{N,N-2} & b_{N,N-1} & 0 
+        \end{bmatrix*} = 0, \quad \quad \text{gdje je } b_{i,j}:= \pm 1,
+    \end{equation*}
+    i ima $-1/c$ kao svojstvenu kratnosti $N-m$. Stoga je njezin karaktersti\v{c}ni polinom $p_{\vec B}(x) := \sum_{k = 0}^N \beta_k (-x)^k, \beta_N = 1$, s cjelobrojnim koeficijentima $\beta_k$ i poni\v{s}tava se za $-1/c$. Uva\v{z}e\'ci da je
+    \begin{equation*}
+        c = \sqrt{\frac{N-m}{m(N-1)}} = \sqrt{\frac{(m+1)/2-1}{m(m+1)/2 -1}} = \sqrt{\frac{m-1}{m^2 + m - 2}} = \frac{1}{\sqrt{m+2}}
+    \end{equation*}
+    imamo $p_{\vec B}(-\sqrt{m+2}) = 0$, tj.
+    \begin{equation*}
+        \bigg( \sum_{0 \leq k \leq N/2}b_{2k} (m+2)^k \bigg) + \sqrt{m+2} \bigg( \sum_{0 \leq k \leq (N-1)/2} b_{2k+1}(m+2)^k\bigg)  = 0.
+    \end{equation*}
+    Ozna\v{c}imo gornje cjelobrojne sume sa $\Sigma_1$ i $\Sigma_2$. Dakle, imamo $\Sigma_1^2 = (m+2) \Sigma_2^2$, \v{s}to implicira da je $(m+2)$ kvadrat. Preostaje pokazati da je $n := \sqrt{m+2}$ neparan. Definiramo $N \times N$ matricu $\vec J_N$ kojoj su svi elementi jednaki jedinici. Dimenzija njezine jezgre je $N-1$ pa je stoga u presjeku s $N-m$ dimenzijonalnim svojstvenim potprostorom od $\vec B$ koji odgovara svojstvenoj vrijednosti $-1/c = -n$, po\v{s}to $N-1 + N - m > N$ za $m \geq 3$, tj. $N = m(m+1)/2 > m + 1$. Matrica $\vec C := (\vec B - \vec I_n + \vec J_N)/2$ ima $-(n+1)/2$ kao svojstvenu vrijednost. Dijagonalni elementi su joj nula, a vandijagonalni jednaki su ili nuli ili jedinici. Stoga je $p_{\vec C}(x) := \sum_{k=0}^{N} \gamma (-x)^k, \gamma_N = 1$ s cjelobrojnim koeficijentima i $p_{\vec C}(x)$ poni\v{s}tava se za $x = -(n+1)/2$. Tu zadnju \v{c}injenicu mo\v{z}emo zapisati u obliku
+    \begin{equation*}
+        (n+1)^N = - \sum_{k=0}^{N-1}2^{N-k}\gamma_k(n+1)^k.
+    \end{equation*}
+    \newpage \noindent Slijedi da je $(n+1)^N$ paran pa je stoga i $n+1$. Kona\v{c}no imamo da je $n=\sqrt{m+2}$ neparan.
+\end{proof}
+Naredni teorem daje eksplicitnu konstrukciju $m \times m^2$ kompleksnih matrica s koherencijom $1/\sqrt{m}$, \v{s}to je ujedno i limes Welchove ocjene kada $N$ ide u beskona\v{c}nost.
+
+\begin{thm}
+    Za svaki prosti broj $m \geq 5$, postoji eksplicitna $m \times m^2$ kompleksna matrica s koherencijom $\mu = 1/\sqrt{m}$.
+\end{thm}
+\begin{proof}
+    Kroz dokaz $[m]$ identificiramo sa skupom $\Z / m \Z =: \Z_m$. Za $k,l \in \Z_m$ uvodimo operator \textit{translacije} $\vec T_k$ i operator \textit{modulacije} $\vec M_l$ definirane sa
+    \begin{equation*}
+        (\vec T_k \vec z)_j  = z_{j-k}, \quad \quad (\vec M_l \vec z)_j = e^{2 \pi i l j / m}z_j 
+    \end{equation*}
+    za $\vec z \in \C^{\Z_m}$ i $j \in \Z_m$. Ti operatori su izometrije prostora $\ell_2(\Z_m)$. Uvedimo takovani \textit{Alltop} $\ell_2$-normalizirani vektor $\vec x \in \C^{\Z_m}$ definiran sa
+    \begin{equation*}
+        x_j := \frac{1}{\sqrt{m}}e^{2\pi i j^3/m}, \quad j \in \Z_m .
+    \end{equation*}
+    Eksplicitna $m \times m^2$ matrica iz tvrdnje teorema dana je kao matrica sa stupcima $\vec M_l \vec T_k \vec x$ za $k,l \in \Z_m$, tj. matrica oblika
+    \begin{equation*}
+        \begin{bmatrix*}
+            \vec M_1 \vec T_1 \vec x & \cdots & \vec M_1 \vec T_m \vec x & \vec M_2 \vec T_1 \vec x & \cdots & \vec M_m \vec T_m \vec x 
+        \end{bmatrix*} 
+    \end{equation*}
+    Ra\v{c}unamo skalarni produkt dva stupca indeksirana sa $(k,l)$ i $(k', l')$
+    \begin{align*}
+        \langle \vec M_l \vec T_k \vec x, \vec M_{l'} \vec T_{k'} \vec x \rangle &= \sum_{j \in \Z_m} (\vec M_{l} \vec T_{k} \vec x)_j \overline{(\vec M_{l'} \vec T_{k'} \vec x)_j} \\
+        &= \sum_{j \in \Z_m} e^{2 \pi ilj/m}x_{j-k} e^{-2 \pi il'j/m}\overline{x_{j-k'}}\\ 
+        &= \frac{1}{m} \sum_{j \in \Z_m} e^{2 \pi i(l-l')j/m} e^{2 \pi i((j-k)^3 - (j - k')^3)/m}.
+    \end{align*}
+    Ozna\v{c}imo $a := l - l'$ i $b := k - k'$, $(a,b) \neq (0,0)$ i promijenimo indeks sumacije za $h = j - k'$
+    \begin{align*}
+        |\langle \vec M_l \vec T_k \vec x, \vec M_{l'} \vec T_{k'} \vec x \rangle| &= \frac{1}{m} \big |   e^{2 \pi iak'/m}  \sum_{h \in \Z_m} e^{2 \pi iah/m}e^{2 \pi i ((h-b)^3 - h^3)/m}  \big | \\
+        &= \frac{1}{m} \big |   \sum_{h \in \Z_m} e^{2 \pi iah/m}e^{2 \pi i (-3bh^2 + 3b^2h - b^3)/m}  \big | \\
+        &= \frac{1}{m} \big |   \sum_{h \in \Z_m} e^{2 \pi i (-3bh^2 + (a+3b^2)h)/m}  \big |
+    \end{align*}
+    Neka je $c := -3b$ i $d := a + 3b^2$,
+    \begin{align*}
+        |\langle \vec M_l \vec T_k \vec x, \vec M_{l'} \vec T_{k'} \vec x \rangle|^2 &= \frac{1}{m^2} \sum_{h \in \Z_m} e^{2 \pi i (ch^2 + dh)/m} \sum_{h' \in \Z_m} e^{-2 \pi i (ch'^2 + dh')/m}\\
+        &= \frac{1}{m^2} \sum_{h,h'} e^{2 \pi i (h-h')(c(h+h') + d)/m} \\ 
+        &= \frac{1}{m^2} \sum_{h',h'' \in \Z_m} e^{2 \pi i h''(c(h''+2h') + d)/m} \\
+        &= \frac{1}{m^2} \sum_{h'' \in \Z_m} e^{2 \pi i h''(ch''+d)/m} \big ( \sum_{h' \in \Z_m} e^{4 \pi ich''h'/m} \big).
+    \end{align*}
+    Primjetimo, za svaki $h'' \in \Z_m$ imamo
+    \begin{equation*}
+          \sum_{h' \in \Z_m} e^{4 \pi ich''h'/m} =  
+          \begin{cases}
+              m \quad &\text{ako } 2ch'' = 0 \mod m, \\
+              0 \quad &\text{ako } 2ch'' \neq 0 \mod m.
+          \end{cases}
+    \end{equation*}
+    Pogledajmo dva slu\v{c}aja:
+    \begin{enumerate}
+        \item $c = 0 \mod m$: \\
+            Po\v{s}to je $c = -3b$ i $3 \neq 0 \mod m$, imamo $b = 0$, pa stoga $d = a +3b^2 \neq 0 \mod m$ i 
+            \begin{equation*}
+                |\langle \vec M_l \vec T_k \vec x, \vec M_{l'} \vec T_{k'} \vec x \rangle|^2 = \frac{1}{m} \sum_{h'' \in \Z_m} e^{2 \pi idh''/m} = 0.
+            \end{equation*}
+
+        \item $c \neq 0 \mod m$: \\
+            Po\v{s}to $2 \neq 0 \mod m$, jednakost $2ch'' = 0$ vrijedi samo kada je $h'' = 0 \mod m$, pa stoga
+            \begin{equation*}
+                |\langle \vec M_l \vec T_k \vec x, \vec M_{l'} \vec T_{k'} \vec x \rangle|^2 = \frac{1}{m} 
+            \end{equation*}
+    \end{enumerate}
+    Dakle, koherencija matrice je $1/\sqrt{m}$.
+\end{proof}
+
+\section[Analiza OMP algoritma][Analiza OMP algoritma]{Analiza OMP algoritma}
+Pokazati \'cemo da mala koherencija osigurava rekonstrukciju rijetkih vektora OMP algortmom.
+\begin{thm}
+    Neka je $\vec A \in \C^{m \times N}$ matrica sa $\ell_2$-normaliziranim stupcima. Ako je 
+    \begin{equation}\label{5:11}
+        \mu_1(s) + \mu_1(s-1) < 1, 
+    \end{equation}
+    onda se svaki $s$-rijedak vektor $\vec x \in \C^N$ mo\v{z}e rekonstruirati iz vektora mjerenja $\vec y = \vec{Ax}$ u najvi\v{s}e $s$ iteracija OMP algoritma.
+\end{thm}
+\begin{proof}
+    Neka su $\vec a_1, \dots \vec a_N$ $\ell_2$-normalizirani stupci matrice $\vec A$. Prema propoziciji \ref{prop:3:5} dovoljno je dokazati da je za svaki $S \subset [N]$ takav da $\card(S) = s$ matrica $\vec A_S$ injektivna te da vrijedi
+    \begin{equation}\label{5:12}
+        \max_{j \in S} |\langle \vec r,\vec a_j \rangle|  > \max_{l \in \bar S} |\langle \vec r, \vec a_l \rangle|
+    \end{equation}
+    za sve ne-nul vektore $\vec r \in \{\vec{Az},\ \supp(\vec z) \subset S\}$. Neka je $\vec r := \sum_{i \in S}r_i \vec a_i$ i neka je $k \in S$ takav da $|r_k| = \max_{i \in S} |r_i| > 0$. Za $l \in \bar S$ imamo,
+    \begin{align*}
+        |\langle \vec r, \vec a_l \rangle| &= \big | \sum_{i \in S}r_i \langle \vec a_i, \vec a_l \rangle \big | \leq \sum_{i \in S}|r_i||\langle \vec a_i, \vec a_l \rangle| \leq |r_k| \mu_1(s) \\
+        |\langle \vec r, \vec a_k \rangle| &= \big | \sum_{i \in S}r_i \langle \vec a_i, \vec a_k \rangle \big |  \geq |r_k| |\langle \vec a_k, \vec a_k \rangle| - \sum_{i \in S, i \neq k}|r_i||\langle \vec a_i, \vec a_k \rangle| \\
+        &\geq |r_k| - |r_k|\mu_1(s-1).
+    \end{align*}
+    Dakle, \eqref{5:12} vrijedi jer \eqref{5:11} implicira $1-\mu_1(s-1) > \mu_1(s)$. Injektivnost od $\vec A_S$ slijedi iz korolara \ref{kor:5:4}.
+\end{proof}
 
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija

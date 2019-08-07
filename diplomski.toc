@@ -21,6 +21,7 @@
 \contentsline {chapter}{\chapternumberline {4}Koherencija}{41}{chapter.4}
 \contentsline {section}{\numberline {4.1}Definicija i svojstva}{41}{section.4.1}
 \contentsline {section}{\numberline {4.2}Matrice male koherencije}{43}{section.4.2}
-\contentsline {chapter}{Bibliografija}{49}{chapter*.39}
+\contentsline {section}{\numberline {4.3}Analiza OMP algoritma}{51}{section.4.3}
+\contentsline {chapter}{Bibliografija}{53}{chapter*.39}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}
