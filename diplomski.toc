@@ -21,7 +21,11 @@
 \contentsline {chapter}{\chapternumberline {4}Koherencija}{41}{chapter.4}
 \contentsline {section}{\numberline {4.1}Definicija i svojstva}{41}{section.4.1}
 \contentsline {section}{\numberline {4.2}Matrice male koherencije}{43}{section.4.2}
-\contentsline {section}{\numberline {4.3}Analiza OMP algoritma}{51}{section.4.3}
-\contentsline {chapter}{Bibliografija}{53}{chapter*.39}
+\contentsline {section}{\numberline {4.3}Analiza OMP algoritma}{52}{section.4.3}
+\contentsline {section}{\numberline {4.4}Analiza $\ell _1$-minimizacije}{52}{section.4.4}
+\contentsline {section}{\numberline {4.5}Analiza grani\v {c}nih metoda}{54}{section.4.5}
+\contentsline {chapter}{\chapternumberline {5}Svojstvo ograni\v {c}ene izometrije}{57}{chapter.5}
+\contentsline {section}{\numberline {5.1}Definicija i osnovna svojstva}{57}{section.5.1}
+\contentsline {chapter}{Bibliografija}{59}{chapter*.39}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}

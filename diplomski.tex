@@ -722,7 +722,7 @@ Korak \eqref{omp_2} mo\v{s}e se prikazati u obliku
     \vec{x}_{S^{n+1}}^{n+1} = \vec{A}_{S^{n+1}}^{\dagger}\vec y,
 \end{equation*}
 gdje je $\vec{x}_{S^{n+1}}^{n+1}$ restrikcija od $\vec x^{n+1}$ na svoj nosa\v{c} $S^{n+1}$ i gdje je $\vec A^{\dagger}_{S^{n+1}}$ pseudo-inverz od $\vec{A}_{S^{n+1}}$ (vidi TODO). Drugim rje\v{c}ima to zna\v{c}i da je $\vec z = \vec x ^{n+1}_{S^{n+1}}$ rje\v{s}enje sustava $\vec A^*_{S^{n+1}} \vec A_{S^{n+1}} \vec z = \vec A^*_{S^{n+1}} \vec y$. Ta \v{c}injenica je korisna i u drugim algoritmima koji imaju korak sli\v{c}an \eqref{omp_2}.
-\begin{lem}\label{omp_lema_1}
+\begin{lem}\label{lem:3:4}
     Neka je $S \subset [N]$ i
     \begin{equation*}
         \vec v := \argmin_{\vec z \in \C^N} \{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S\},
@@ -753,7 +753,7 @@ Prirodan uvjet zaustavljanja OMP-a je kada se postigne $\norm{\vec{y} - \vec{Ax}
 \begin{proof}
     Pretpostavimo da OMP algoritam rekonstruira sve vektore sa nosa\v{c}emo na skupu $S$ u najvi\v{s}e $s = \card(S)$ iteracija. Neka su $\vec v, \vec w$ sa nosa\v{c}em na $S$, takvi da je $\vec{Av}=\vec{Aw}$. Zbog pretpostavke, $\vec v$ i $\vec w$ moraju biti jednaki, a to zna\v{c}i da je matrica $\vec A_S$ injektivna. Nadalje, ako je $\vec y = \vec{Ax}$ za neki $\vec x \in \C^N$ sa $\supp(\vec x)=S$, indeks $l \in \bar S$ ne mo\v{z}e biti izabran u prvoj iteraciji, po\v{s}to indeks izabran u prvoj iteraciji ostaje uvijek u nosa\v{c}u, a po pretpostavci OMP rekonstruira $\vec x$ iz $\vec y = \vec{Ax}$ u to\v{c}no $s$ iteracija. Dakle za $n=0$ iz \eqref{omp_1} imamo da je $\max_{j \in S}|(\vec A^*y)_j| > |(\vec A^*y)_l|$ za svaki $l \in \bar{S}$, pa stoga vrijedi $\max_{j \in S}|(\vec A^*y)_j| > \max_{l \in \bar{S}}|(\vec A^*y)_l|$ za sve ne-nul $\vec y \in \{\vec{Az},\ \supp(\vec z) \subset S\}$. \\
     \indent
-    Obratno, pretpostavimo da je $\vec{Ax}^1 \neq y,\dots,\vec{Ax}^{s-1} \neq y$ jer u suprotnom nemamo \v{s}to dokazivati. Pokazati \'cemo da $S^n \subset S,\ \card(S^n)=n$ za $0 \leq n \leq s$. To \'ce implicirati $S^s = S$. Nadalje, \eqref{omp_2} daje $\vec{Ax}^s = \vec y$ a iz injektivnosti od $\vec{A}_S$ slijedi $\vec x_s = \vec{x}$. Dakle, neka je $0 \leq n \leq s-1$. Ako je $S^n \subset S$, to povla\v{c}i da je $\vec r^n := \vec y - \vec{Ax}^n \in \{\vec{Az},\ \supp(\vec z) \subset S\}$, pa prema \eqref{uvjet_rekon_omp} indeks $j_{n+1}$ le\v{z}i u S, pa $S^{n+1} = S \cup \{j_{n+1}\} \subset S$. Ovo induktivno pokazuje da je $S^n$ podskup od $S$ za svaki $0 \leq n \leq s$. Nadalje, neka je $1 \leq n \leq s-1$. Lema \eqref{omp_lema_1} daje $(\vec{A}^* \vec r^n)_{S^n} = \vec 0$. Stoga, iz \eqref{omp_1} vidimo da indeks $j_{n+1}$ ne le\v{z}i u $S^{n}$, jer bi u protivnom $\vec A^* \vec r^n = \vec 0$, a po \eqref{uvjet_rekon_omp} $\vec r^n = \vec 0$. Dakle, $\card(S^n)=n$.
+    Obratno, pretpostavimo da je $\vec{Ax}^1 \neq y,\dots,\vec{Ax}^{s-1} \neq y$ jer u suprotnom nemamo \v{s}to dokazivati. Pokazati \'cemo da $S^n \subset S,\ \card(S^n)=n$ za $0 \leq n \leq s$. To \'ce implicirati $S^s = S$. Nadalje, \eqref{omp_2} daje $\vec{Ax}^s = \vec y$ a iz injektivnosti od $\vec{A}_S$ slijedi $\vec x_s = \vec{x}$. Dakle, neka je $0 \leq n \leq s-1$. Ako je $S^n \subset S$, to povla\v{c}i da je $\vec r^n := \vec y - \vec{Ax}^n \in \{\vec{Az},\ \supp(\vec z) \subset S\}$, pa prema \eqref{uvjet_rekon_omp} indeks $j_{n+1}$ le\v{z}i u S, pa $S^{n+1} = S \cup \{j_{n+1}\} \subset S$. Ovo induktivno pokazuje da je $S^n$ podskup od $S$ za svaki $0 \leq n \leq s$. Nadalje, neka je $1 \leq n \leq s-1$. Lema \eqref{lem:3:4} daje $(\vec{A}^* \vec r^n)_{S^n} = \vec 0$. Stoga, iz \eqref{omp_1} vidimo da indeks $j_{n+1}$ ne le\v{z}i u $S^{n}$, jer bi u protivnom $\vec A^* \vec r^n = \vec 0$, a po \eqref{uvjet_rekon_omp} $\vec r^n = \vec 0$. Dakle, $\card(S^n)=n$.
 \end{proof}
 \indent
 Slabost OMP algoritma le\v{z}i u \v{c}injenici da ako krivi indeks u\dj e u nosa\v{c}, on ostaje u nosa\v{c}u u svim sljede\'cim iteracijama. Stoga $s$ iteracija algoritma nije dovoljno za rekonstrukciju vektora koji je $s$-rijedak. Mogu\'ce rje\v{s}enje je pove\'cati broj iteracija. Naredni algoritam, CoSaMP (eng. \textit{compressive sampling matching pursuit algorithm}), koristi druga\v{c}iju strategiju kada nam je dostupna estimacija rijetkosti $s$. Uvedimo oznake $H_s(\vec z)$ za najbolju $s$-rijetku aproksimaciju vekotra $\vec z \in \C^N$ i $L_s(\vec z)$ za nosa\v{c} od $H_s(\vec z)$, tj.
@@ -791,7 +791,7 @@ Algoritmi predstavljeni u ovom poglavlju tako\dj er koriste \textit{hard thresho
 \end{alg}
 
 \noindent Dovoljni i nu\v{z}i uvjeti rekonstrukcije jednostavnim BT algoritmom, sli\v{c}ni su uvjetu \eqref{uvjet_rekon_omp}.
-\begin{prop}
+\begin{prop}\label{prop:3:7}
     BT algoritam rekonstruira vektor $\vec x \in \C^N$ sa nosa\v{c}em na $S$, iz $\vec y = \vec{Ax}$ ako i samo ako
     \begin{equation}\label{bt_uvjet}
         \min_{j \in S}|(\vec A^* \vec y)_j| > \max_{l \in \bar{S}} |(\vec A^* \vec y)_l| .
@@ -1561,7 +1561,7 @@ Zanimljvo je da u kontekstu prostora $\C^m$ postoje sustavi od $m^2$ ekviangular
 \end{proof}
 Naredni teorem daje eksplicitnu konstrukciju $m \times m^2$ kompleksnih matrica s koherencijom $1/\sqrt{m}$, \v{s}to je ujedno i limes Welchove ocjene kada $N$ ide u beskona\v{c}nost.
 
-\begin{thm}
+\begin{thm}\label{tm:5:13}
     Za svaki prosti broj $m \geq 5$, postoji eksplicitna $m \times m^2$ kompleksna matrica s koherencijom $\mu = 1/\sqrt{m}$.
 \end{thm}
 \begin{proof}
@@ -1623,9 +1623,10 @@ Naredni teorem daje eksplicitnu konstrukciju $m \times m^2$ kompleksnih matrica 
     Dakle, koherencija matrice je $1/\sqrt{m}$.
 \end{proof}
 
+\newpage
 \section[Analiza OMP algoritma][Analiza OMP algoritma]{Analiza OMP algoritma}
 Pokazati \'cemo da mala koherencija osigurava rekonstrukciju rijetkih vektora OMP algortmom.
-\begin{thm}
+\begin{thm}\label{tm:5:14}
     Neka je $\vec A \in \C^{m \times N}$ matrica sa $\ell_2$-normaliziranim stupcima. Ako je 
     \begin{equation}\label{5:11}
         \mu_1(s) + \mu_1(s-1) < 1, 
@@ -1645,6 +1646,148 @@ Pokazati \'cemo da mala koherencija osigurava rekonstrukciju rijetkih vektora OM
     \end{align*}
     Dakle, \eqref{5:12} vrijedi jer \eqref{5:11} implicira $1-\mu_1(s-1) > \mu_1(s)$. Injektivnost od $\vec A_S$ slijedi iz korolara \ref{kor:5:4}.
 \end{proof}
+
+\section[Analiza $\ell_1$-minimizacije][Analiza $\ell_1$-minimizacije]{Analiza $\ell_1$-minimizacije}
+Pokazati \'cemo da mala koherencija matrice mjerenja tako\dj er garantira i rekonstrukciju vektora $\ell_1$-minimizacijom tj, BT algortmom.
+\begin{thm}\label{tm:5:15}
+    Neka je $\vec A \in \C^{m \times N}$ sa $\ell_2$-normaliziranim stupcima. Ako je 
+    \begin{equation}\label{5:13}
+        \mu_1(s) + \mu_1(s-1) < 1, 
+    \end{equation}
+    onda se svaki $s$-rijedak vektor $\vec x \in \C^N$ mo\v{z}e rekonstruirati iz vektora mjerenja $\vec y = \vec{Ax}$ putem $\ell_1$-minimizacije.
+\end{thm}
+\begin{proof}
+    Prema teoremu \ref{svojstvo_nul_prostora_tm} dovoljno i nu\v{z}no je dokazati da matrica $\vec A$ zadovoljava svojstvo nul-prostora te da vrijedi
+    \begin{equation}\label{5:14}
+        \norm{\vec v_S}_1 < \norm{\vec v_{\bar S}}_1 
+    \end{equation}
+    za svaki ne-nul vektor $\vec v \in \ker \vec A$ i za svaki skup indeksa $S \subset [N]$ takav da $\card(S) = s$. Neka su $\vec a_1, \dots, \vec a_N$ stupci od $\vec A$. Uvjet $\vec v \in \ker \vec A$ interpretiramo kao $\sum_{j=1}^N v_j \vec a_j = 0$. Dakle, imamo
+    \begin{equation*}
+        v_i = v_i \langle \vec a_i, \vec a_i \rangle = - \sum_{j=1,j \neq i}^N v_j \langle \vec a_j, \vec a_i \rangle = - \sum_{l \in \bar S}v_l \langle \vec a_l, \vec a_i \rangle - \sum_{j \in S,j \neq i} v_j \langle \vec a_j, \vec a_i \rangle.
+    \end{equation*}
+    Slijedi,
+    \begin{equation*}
+        |v_i| \leq \sum_{l \in \bar S}|v_l||\langle \vec a_l, \vec a_i\rangle| + \sum_{j \in S, j \neq i} |v_j||\langle \vec a_j, \vec a_i \rangle|.
+    \end{equation*}
+    Sumiranjem po $i \in S$ i poretkom reda sumacije imamo,
+    \begin{align*}
+        \norm{\vec v_S}_1 &= \sum_{l \in \bar S}|v_l|\sum_{i \in S} |\langle \vec a_l, \vec a_i \rangle| + \sum_{j \in S}|v_j| \sum_{i \in S,i \neq j}|\langle \vec a_j, \vec a_i \rangle| \\
+        &\leq \sum_{l \in \bar S} |v_l| \mu_1(s) + \sum_{j \in S}|v_j| \mu_1(s-1) = \mu_1(s) \norm{\vec v_{\bar S}}_1 + \mu_1(s-1) \norm{\vec v_S}_1.
+    \end{align*}
+    Od tuda lako slijedi tvrdnja.
+\end{proof}
+
+Prema teoremu \ref{tm:5:13} mo\v{z}emo odabrati matricu $\vec A \in \C^{m \times N}$ s koherencijom $\mu \leq c/\sqrt{m}$. Vidimo da je uvjet $(2s - 1)\mu < 1$, koji garantira rekonstrukciju OMP algoritmom i $\ell_1$-minimizacijom, zadovoljen ako
+\begin{equation}\label{5:15}
+    m \geq Cs^2.
+\end{equation}
+Dakle imamo ocjenu na minimalni broj mjerenja za specifi\v{c}nu matricu $\vec A$ i rijetkost $s$. No, primjetimo da ova ocjena nije prakti\v{c}na za $s$ razumne veli\v{c}ine po\v{s}to ulazi u ocjenu s kvadratom. Uvjerimo se da nije mogu\'ce pobolj\v{s}ati ovu ocjenu u kontekstu teorema \ref{tm:5:14} i \ref{tm:5:15}. Pretpostavimo da vrijedi dovoljan uvjet $\mu_1(s) + \mu_1(s-1) < 1$ sa $m  \leq (2s-1)^2/2$ i $s < \sqrt{N-1}$ na primjer.Nadalje za $N \geq m$ iz teorema \ref{tm:5:8} slijedi
+\begin{equation*}
+    1 > \mu_1(s) + \mu_1(s-1) \geq (2s-1) \sqrt{\frac{N-m}{m(N-1)}} \geq \sqrt{\frac{2(N-m)}{N-1}} \geq \sqrt{\frac{N}{N-1}}.
+\end{equation*}
+\v{s}to je kontradikcija.
+
+\section[Analiza grani\v{c}nih metoda][Analiza grani\v{c}nih metoda]{Analiza grani\v{c}nih metoda}
+Uz sli\v{c}ne uvjete kao u prethodna dva teorema \v{c}ak i BT algoritam garantira rekonstrukciju.
+\begin{thm}\label{tm:5:16}
+    Neka je $\vec A \in \C^{m \times N}$ sa $\ell_2$-normaliziranim stupcima i neka je $\vec x \in \C^N$ sa nosa\v{c}em $S,\ \card(S) = s$. Ako je 
+    \begin{equation}\label{5:16}
+        \mu_1(s) + \mu_1(s-1) < \frac{\min_{i \in S}|x_i|}{\max_{i \in S}|x_i|}, 
+    \end{equation}
+    onda se vektor $\vec x$ mo\v{z}e rekonstruirati iz vektora mjerenja $\vec y = \vec{Ax}$ putem BT algoritma.
+\end{thm}
+\begin{proof}
+    Neka su $\vec a_1, \dots \vec a_N$ $\ell_2$-normalizirani stupci matrice $\vec A$. Prema propoziciji \ref{prop:3:7} dovoljno je dokazati da za svaki $j \in S$ i $l \in \bar S$,
+    \begin{equation}\label{5:17}
+        |\langle \vec{Ax}, \vec a_j \rangle| >  |\langle \vec{Ax}, \vec a_l \rangle|.
+    \end{equation}
+    Primjetimo,
+    \begin{align*}
+        |\langle \vec{Ax}, \vec a_l \rangle| &= |\sum_{i \in S} x_i \langle \vec a_i, \vec a_l\rangle| \leq \sum_{i \in S} |x_i||\langle \vec a_i, \vec a_l \rangl| \leq \mu_1(s) \max_{i \in S} |x_i|,\\
+        |\langle \vec{Ax}, \vec a_j \rangle| &=|\sum_{i \in S} x_i \langle \vec a_i, \vec a_j\rangle| \geq |x_j| - \sum_{i \in S, i \neq j}|x_i||\langle \vec a_i, \vec a_j \rangle| \\
+        &\geq \min_{i \in S} |x_i| - \mu_1(s-1)\max_{i \in S}|x_i|.
+    \end{align*}
+    Iz \eqref{5:16} slijedi,
+    \begin{equation*}
+        |\langle \vec{Ax}, \vec{a}_j \rangle| - |\langle \vec{Ax}, \vec{a}_l \rangle| \geq \min_{i \in S}|x_i| - (\mu_1(s) - \mu_1(s-1))\max_{i \in S} |x_i| > 0.
+    \end{equation*}
+\end{proof}
+
+Uz iste uvjete, analogno se poka\v{z}e da IHT algoritam garantira rekonstrukciju. Sada \'cemo pokazati da HTP algoritam uz odre\dj ene uvjete, isto kao u OMP u $s$ iteracija rekonstruira $s$-rijedak vektor.
+\begin{thm}\label{tm:5:17}
+    Neka je $\vec A \in \C^{m \times N}$ sa $\ell_2$-normaliziranim stupcima. Ako je
+    \begin{equation*}
+        2 \mu_1(s) + \mu_1(s-1) < 1, 
+    \end{equation*}
+    tada se svaki $s$-rijedak vektor $\vec x \in \C^N$ mo\v{z}e rekonstruirati iz vektora mjerenja $ \vec y = \vec{Ax}$ u najvi\v{s}e $s$ iteracija HTP algoritma.
+\end{thm}
+\begin{proof}
+    Neka su $j_1, j_2, \dots, j_N$ takvi da
+    \begin{equation*}
+        |x_{j_1}| \geq |x_{j_2}| \geq \cdots \geq |x_{j_s}| > |x_{j_{s+1}}| = \cdots = |x_{j_N}| = 0.
+    \end{equation*}
+    Pokazati \'cemo da je za $0 \leq n \leq s - 1$, skup $\{j_1, \dots, j_{n+1}\}$ sadr\v{z}an u $S^{n+1}$ iz \eqref{htp_1}, koji je definiran kao skup $s$ apsolutno najve\v{c}ih komponenti od 
+    \begin{equation}\label{5:18}
+        \vec z^{n+1} := \vec x^n + \vec A^* \vec A(\vec x - \vec x^n). 
+    \end{equation}
+    To \'ce implicirati $S^s = S = \supp(\vec x)$ pa prema \eqref{htp_2} $\vec x^s = \vec x$. Primjetimo dovoljno je dokazati
+    \begin{equation}\label{5:19}
+        \min_{1 \leq k \leq n+1} |z_{j_k}^{n+1}| > \max_{l \in \bar S}|z_{l}^{n+1}|.
+    \end{equation}
+    Dokazujemo indukcijom. Vrijedi
+    \begin{equation*}
+        z_j^{n+1} = x_j^n + \sum_{i = 1}^N (x_i - x_i^n) \langle \vec a_i, \vec a_j \rangle = x_j + \sum_{i \neq j}(x_i - x_i^n) \langle \vec a_i, \vec a_j \rangle.
+    \end{equation*}
+    Stoga,
+    \begin{equation}\label{5:20}
+        |z_j^{n+1} - x_j| \leq \sum_{i \in S^n, i \neq j} |x_i - x_i^n|| \langle \vec a_i, \vec a_j \rangle| + \sum_{i \in S \backslash S^n, i \neq j} |x_i||\langle \vec a_i, \vec a_j \rangle|.
+    \end{equation}
+    Za $1 \leq k \leq n + 1$ i $l \in \bar S$ imamo
+    \begin{align} 
+        &|z_{j_k}^{n+1}| \geq |x_{j_k}| - \mu_1(s)\norm{ ( \vec x - \vec x^n )_{S^n} }_{\infty } - \mu_1(s) \norm{\vec x_{S \backslash S^n}}_{\infty} \label{5:21} \\[1em]
+        &|z_l^{n+1}| \leq \mu_1(s) \norm{(\vec x - \vec x^n)_{S^n}}_{\infty} - \mu_1(s)\norm{\vec x_{S \backslash S^n}}_{\infty}. \label{5:22}
+    \end{align}
+    Posebno, za $n = 0$ je $\norm{(\vec x - \vec x^n)_{S^n}}_{\infty} = 0$ pa iz \eqref{5:21}, \eqref{5:22} i \v{c}injenice da $2\mu_1(s) < 1$ slijedi
+    \begin{equation*}
+        |z_{j_1}^1| \geq (1-\mu_1(s))\norm{\vec x}_{\infty} > \mu_1(s) \norm{\vec x}_{\infty} \geq |z_l^1| \quad \text{za sve } l \in \bar S.
+    \end{equation*}
+    Dakle tvrnja \eqref{5:19} vrijedi za $n = 0$. Pretpostavimo da tvrdnja vrijedi za $n-1$ za $n \geq 1$. To implicira $\{j_1, \dots j_n\} \subset S^n$. Iz \eqref{htp_2} i leme \ref{lem:3:4} slijedi
+    \begin{equation*}
+        (\vec A^* \vec A (\vec x - \vec x^n))_{S^n} = 0.
+    \end{equation*}
+    Stoga za svaki $j \in S^n$, definicija \eqref{5:18} implicira $z_j^{n+1} = x_j^n$, te iz \eqref{5:20} slijedi
+    \begin{equation*}
+        |x_j^n - x_j| \leq \mu_1(s-1) \norm{(\vec x - \vec x^n)_{S^n}}_{\infty} + \mu_1(s-1)\norm{\vec x_{S \backslash S^n}}_{\infty}.
+    \end{equation*}
+    Uzimaju\v{c}i maksimum po $j \in S^n$ dobivamo
+    \begin{equation*}
+        \norm{(\vec x - \vec x^n)_{S^n}}_{\infty}  \leq \frac{\mu_1(s-1)}{1 - \mu_1(s-1)} \norm{\vec x_{S \backslash S^n}}_{\infty}.
+    \end{equation*}
+    Dobiveno vratimo nazad u \eqref{5:21} i \eqref{5:22},
+    \begin{align*}
+        &|z_{j_k}^{n+1}|  \geq \big( 1 - \frac{\mu_1(s)}{1 - \mu_1(s-1)}\big) |x_{j_{n+1}}|,  \\
+        &|z_{l}^{n+1}|  \leq \frac{\mu_1(s)}{1 - \mu_1(s-1)}|x_{j_{n+1}}|,
+    \end{align*}
+    za $1 \leq k \leq n+1$ i $l \in \bar S$
+    Po\v{s}to je $\mu_1(s)/(1-\mu_1(s-1)) < 1/2$, \eqref{5:19} vrijedi i za $n$. Po principu matemati\v{c}ke indukcije slijedi tvrdnja.
+\end{proof}
+
+\chapter[Svojstvo ograni\v{c}ene izometrije][Svojstvo ograni\v{c}ene izometrije]{Svojstvo ograni\v{c}ene izometrije}
+U pro\v{s}lom poglavlju vidjeli smo da je pojam koherencije vrlo koristan kao mjera kvalitata matrice mjerenja. Pomo\'cu njega lako smo postavili i dokazali uvjete koji garantiraju rekonstrukciju rijetkih vektora raznim algoritmima. No, ocjena na koherenciju iz teorema \eqref{tm:5:7} ograni\v{c}ava analizu algoritama na male vrijednosti rijetkosti $s$. U ovom poglavlju uvesti \'{c}emo novu mjeru kvalitete matrice, \textit{svojstvo ograni\v{c}ene izometrije} (eng. \textit{restricted isometry property}) koje se ponekad zove i \textit{princip uniformne neodre\dj enosti} (eng. \textit{uniform uncertainty principle}).
+
+\section[Definicija i osnovna svojstva][Definicija i osnovna svojstva]{Definicija i osnovna svojstva}
+Za razliku od koherencije koja uzima u obzir parove stupaca matrice, svojstvo ograni\v{c}ene izometrije uzima u obzir sve $s$-torke stupaca matrice pa je stoga prikladnija mjera kvalitete.
+\begin{defn}\label{defn:6:1}
+    $s$-ta konstanta ograni\v{c}ene izometrije $\delta_s = \delta_s(\vec A)$ matrice $\vec A \in \C^{m \times N}$ je najmanja $\delta \geq 0$ takva da
+    \begin{equation}\label{6:1}
+        (1-\delta) \norm{\vec x}_2^2 \leq \norm{Ax}_2^2 \leq (1+\delta)\norm{\vec x}_2^2 
+    \end{equation}
+    za sve $s$-rijetke vektore $\vec x \in \C^N$
+\end{defn}
+
+
+
+
 
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
