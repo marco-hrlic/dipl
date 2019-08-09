@@ -1314,7 +1314,7 @@ Primjetimo da je $\ell_1$-koherencija pa stoga i koherencija invarijanta na mno\
 \end{equation*}
 Neka je na matrica $\vec A \in \C^{m \times N}$ takva da $m \geq N$. Tada je $\mu = 0$ ako i samo ako stupci matrice $\vec A$ formiraju ortonormirani sustav. U slu\v{c}aju da je matrica kvadratna, $\mu = 0$ ako i samo ako je $\vec A$ unitarna. U nastavu \'cemo prou\v{c}avati samo matrice kojima je $m < N$. U tom slu\v{c}aju vrijednost koherencije je odozdo ograni\v{c}ena, \v{s}to \'cemo kasnije i pokazati. 
 
-\begin{thm}
+\begin{thm}\label{tm:5:3}
     Neka je $\vec A \in \C^{m \times N}$ matrica sa $\ell_2$-normaliziranim stupcima i neka je $s \in [N]$. Za sve $s$-rijetke vektore $\vec x \in \C^N$ vrijedi,
     \begin{equation*}
         \big(1-\mu_1(s-1)\big) \norm{\vec x}_2^2 \leq \norm{\vec{Ax}}_2^2 \leq \big(1+\mu_1(s-1)\big) \norm{\vec x}_2^2
@@ -1477,7 +1477,7 @@ Za dokaz teorema potrebna nam je sljede\v{c}a tvrdnja,
     \end{equation*}
     ima jednostruku svojstvenu vrijednost $1+(n-1)z$ te svojstvenu vrijednost $1-z$ algebarske kratnosti $n-1$.
 \end{lem}
-\noindentj Za dokaz leme vidi TODO.
+\noindent Za dokaz leme vidi TODO.
 
 \begin{proof}[Dokaz (Teorem \ref{tm:5:10})]
     Ideja je razmatranja sa prostora $\K^m$ prebaciti na potprostor $\mathcal{S}_m$ operatora na $\K^m$. U slu\v{c}aju $\K = \R$, $\mathcal{S}_m$ je prostor simetri\v{c}nih operatora na $\R^m$, a u slu\v{c}aju $\K = \C$, $\mathcal{S}_m$ je cjeli prostor operatora na $\C^m$. Ti su prostori opremljeni Froebeniusovim skalarnim produktom
@@ -1782,8 +1782,191 @@ Za razliku od koherencije koja uzima u obzir parove stupaca matrice, svojstvo og
     \begin{equation}\label{6:1}
         (1-\delta) \norm{\vec x}_2^2 \leq \norm{Ax}_2^2 \leq (1+\delta)\norm{\vec x}_2^2 
     \end{equation}
-    za sve $s$-rijetke vektore $\vec x \in \C^N$
+    za sve $s$-rijetke vektore $\vec x \in \C^N$. Ili ekvivalentno
+    \begin{equation}\label{6:2}
+        \delta_s = \max_{S \subset [N], \card(S) \leq s} \norm{\vec A^*_S \vec A_S - \vec I}_2.
+    \end{equation}
+    Neformlano, ka\v{z}emo da matrica $\vec A$ zadovoljava svojstvo ograni\v{c}ene izometrije ako je $\delta_s$ dovoljno mali za dovoljno $s$ (kasnije \'cemo to\v{c}no precizirati).
 \end{defn}
+Uvjerimo se da su \eqref{6:1} i \eqref{6:2} ekvivalente tvrdnje. Iz \eqref{6:1} direktno slijedi
+\begin{equation*}
+    | \norm{\vec A_S \vec x}_2^2 - \norm{\vec x}_2^2| \leq \delta \norm{\vec x}_2^2 \quad \text{za sve } S \subset [N],\ \card(S) \leq s,\ \text{i za sve } \vec x \in \C^s.
+\end{equation*}
+Primjetimo, za svaki $\vec x \in \C^s$
+\begin{equation*}
+    \norm{\vec A_S \vec x}_2^2 - \norm{\vec x}_2^2 = \langle \vec A_S \vec x, \vec A_S \vec x \rangle - \langle \vec x, \vec x \rangle = \langle (\vec A_S^* \vec A_S - \vec I )\vec x, \vec x\rangle.
+\end{equation*}
+Po\v{s}to je $\vec A_S^* \vec A_S - \vec I$ hermitska, imamo
+\begin{equation*}
+    \max_{x \in \C^s \backslash \{\vec 0\}} \frac{\langle (\vec A_S^* \vec A_S - \vec I)\vec x, \vec x \rangle}{\norm{\vec x}_2^2} = \norm{\vec A_S^* \vec A_S - \vec I}_2.
+\end{equation*}
+Dakle, \eqref{6:1} je ekvivalentno sa
+\begin{equation*}
+    \max_{S \subset [N], \card(S) \leq s} \norm{\vec A^*_S \vec A_S - \vec I}_2 \leq \delta. 
+\end{equation*}
+Mogu\v{c}e je usporediti konstantu ograni\v{c}ene izometrije s koherencijom $\mu$.
+\begin{prop}\label{prop:6:2}
+    Neka je $\vec A$ sa $\ell_2$-normaliziranim stupcima $\vec a_1, \dots \vec a_N$. Tada za svaki $j \in [N]$ vrijedi
+    \begin{equation*}
+        \delta_1 = 0, \quad \delta_2 = \mu \quad \delta_s \leq \mu_1(s-1) \leq (s-1)\mu, \quad s \geq 2. 
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Po\v{s}to su stupci od $\vec A$ $\ell_2$-normalizirani vrijedi $\norm{\vec{Ae}_j}_2^2 = \norm{\vec e}_2^2$ za sve $j \in [N]$. Dakle, $\delta_1 = 0$. Neka su $\vec a_1, \dots, \vec a_N$ stupci od $\vec A$. Imamo,
+    \begin{equation}
+        \delta_2 = \max_{1 \leq i \neq j \leq N} \norm{\vec A^*_{\{i,j\}}\vec A_{\{i,j\}} - \vec I}_2, \quad \quad \vec A^*_{\{i,j\}}\vec A_{\{i,j\}} = 
+        \begin{bmatrix*}
+            1 & \langle \vec a_j, \vec a_i \rangle \\
+            \langle \vec a_j, \vec a_i \rangle  & 1
+        \end{bmatrix*}.
+    \end{equation}
+    Svojstvene vrijednosti od $\vec A^*_{\{i,j\}}\vec A_{\{i,j\}} - \vec I$ su $|\langle \vec a_i, \vec a_j \rangle |$ i $-|\langle \vec a_i, \vec a_j \rangle |$. Pa je stoga njezina operatorska norma jednaka $|\langle \vec a_i, \vec a_j \rangle |$ Uzimaju\v{c}i maksimum po $1 \leq i \neq j \leq N$ dobivamo $\delta_2 = \mu$. Nejednakost $\delta_s \leq \mu_1(s-1) \leq (s-1)\mu$ posljedica je teorema \ref{tm:5:3}.
+\end{proof}
+
+U pro\v{s}lom poglavlju pokazali smo eqzistenciju $m \times m^2$ matrica s koherencijom $1/\sqrt{m}$ to direktno implicira egzistenciju matrica istih dimenzije s konstantom ograni\v{c}ene izometrije $\delta_s < 1$ za $s \leq \sqrt{m}$.
+
+\begin{prop}\label{prop:6:3}
+    Neka su $\vec u, \vec v \in \C^N$ takvi da $\norm{\vec u}_0 \leq s$ i $\norm{\vec v}_0 \leq t$. Ako je $\supp(\vec u ) \cap \supp(\vec v) = \emptyset$ tada
+    \begin{equation}\label{6:3}
+        |\langle \vec{Au}, \vec{Av} \rangle| \leq \delta_{s+t} \norm{\vec u}_2 \norm{\vec v}_2.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    Neka je $S:=\supp(\vec u) \cup \supp(\vec v)$. Po\v{s}to su nosa\v{c}i od $\vec v$ i $\vec u $ disjunktni, imamo $\langle \vec u_S, \vec v_S \rangle = 0$. Slijedi,
+    \begin{align*}
+        |\langle \vec{Au}, \vec{Av} \rangle| &= |\langle \vec A_S \vec u_S, \vec A_S \vec v_s  \rangle - \langle \vec u_S, \vec v_S \rangle| = |\langle (\vec A^*_S \vec A_S - \vec I)\vec u_S, \vec v_S \rangle| \\[1em]
+        &\leq \norm{(\vec A^*_S \vec A_S - \vec I) \vec u_S}_2 \norm{\vec v_S}_2 \leq \norm{\vec A^*_S \vec A_S - \vec I}_2 \norm{\vec u_S}_2 \norm{\vec v_S}_2.
+    \end{align*}
+    Tvrdnja slijedi iz \eqref{6:2}, $\norm{\vec u_S}_2 = \norm{\vec u}_2$ i $\norm{\vec v_S}_2 = \norm{\vec v}_2$.
+\end{proof}
+\begin{defn}
+    $(s,t)$-ograni\v{c}ena konstanta orthogonalnosti $\theta_{s,t} = \theta_{s,t}(\vec A)$ matrice $\vec A \in \C^{m \times N}$ je najmanji $\theta \geq 0$ takva da
+    \begin{equation}\label{6:4}
+        |\langle \vec{Au}, \vec{Av} \rangle| \leq \theta \norm{\vec u}_2 \norm{\vec v}_2
+    \end{equation}
+    za sve $s$-rijetke vektore $\vec u \in \C^N$ i $t$-rijetke vektore $\vec v \in \C^N$ s disjunktnim nosa\v{c}em ili ekvivalentno, 
+    \begin{equation}\label{6:5}
+        \theta_{s, t} = \max \big\{ \norm{\vec A^*_T \vec A_S}_2,\ S \cap T = \emptyset,\ \card(S) \leq s,\ \card(T) \leq t \big\} .
+    \end{equation}
+\end{defn}
+\begin{prop}\label{prop:6:5}
+    Vrijedi, 
+    \begin{equation*}
+        \theta_{s,t} \leq \delta_{s+t} \leq \frac{1}{s+t} (s \delta_S + t\delta_t + 2 \sqrt{st} \theta_{s,t}).
+    \end{equation*}
+    Posebno, za $t = s$ imamo,
+    \begin{equation*}
+        \theta_{s,s} \leq \delta_{2s} \quad \text{i} \quad \delta_{2s} \leq \delta_s + \theta_{s,s}.
+    \end{equation*}
+\end{prop}
+\begin{proof}
+    Prva nejednakost slijedi direktno iz propozicije \ref{prop:6:3}. Poka\v{z}imo i drugu nejednakost. Neka je $\vec x \in \C^N$ $(s+t)$-rijedak vektor takav da $\norm{\vec x}_2 = 1$. Moramo pokazati da
+    \begin{equation*}
+        \big |\norm{\vec{Ax}}_2^2 - \norm{\vec x}_2^2 \big |  \leq \frac{1}{s+t} (s \delta_s + t \delta_t + s \sqrt{st} \theta_{s,t}).
+    \end{equation*}
+    Neka su $\vec u, \vec v \in \C^N$ takvi da $\vec u + \vec v = \vec x$, gdje je $\vec u$ $s$-rijedak, $\vec v$ $t$-rijedak i imaju disjunktne nosa\v{c}e. Vrijedi, 
+    \begin{equation*}
+        \norm{\vec{Ax}}_2^2 = \langle \vec A(\vec u + \vec v) , \vec A(\vec u + \vec v) \rangle = \norm{\vec{Au}}_2^2 + \norm{\vec{Av}}_2^2 + 2 \Re \langle \vec{Au}, \vec{Av} \rangle.
+    \end{equation*}
+    Uvrstimo $\norm{\vec x}_2^2 = \norm{\vec u}_2^2 + \norm{\vec v}_2^2$,
+    \begin{align*}
+        \big |\norm{\vec{Ax}}_2^2 - \norm{\vec x}_2^2 \big | &\leq \big |\norm{\vec{Au}}_2^2 - \norm{\vec u }_2^2 \big | + \big |\norm{\vec{Av}}_2^2 - \norm{\vec v}_2^2 \big | + 2 \big |\langle  \vec{Au}, \vec{Av} \rangle \big | \\
+        &\leq \delta_s \norm{\vec u }_2^2 + \delta_t \norm{\vec v }_2^2 + 2 \theta \norm{\vec u}_2^2 \norm{\vec v }_2^2 =: f(\norm{\vec u}^2_2),
+    \end{align*}
+    gdje je za $\alpha \in [0,1]$
+    \begin{equation}\label{6:6}
+        f(\alpha) := \delta_s \alpha + \delta_t(1-\alpha) + 2 \theta_{s,t} \sqrt{\alpha(1- \alpha)}.
+    \end{equation}
+    Lako se poka\v{z}e da postoji $\alpha^* \in [0,1]$ tako da je $f$ nepadaju\'ca na $[0, \alpha^*]$ i neratu\'ca na $[\alpha^*, 1]$. Ovisno o poziciji od $\alpha^*$ s obzirom na $s/(s+t)$ funkcija $f$ je ili nepadaju\'ca na $[0, s/(s+t)]$ ili nerastu\'ca na $[s/(s+t), 1]$. Dobrim odabirom vektora $\vec u$, uvijek mo\v{z}emo pretpostaviti da je $\norm{\vec u}_2^2$ u jednom od ta dva intervala. Zaista, ako se $\vec u$ sastoji od $s$ apsolutno najmanjih komponenti od $\vec x$ a $\vec v$ od $t$ apsolutno najve\'cih komponenti od $\vec x$ onda imamo
+    \begin{equation*}
+        \frac{\norm{\vec u}_2^2}{s} \leq \frac{\norm{\vec v}_2^2}{t} = \frac{1 - \norm{\vec u}_2^2}{t}, \quad \text{tako da } \norm{\vec u}_2^2 \leq \frac{s}{s+t},     
+    \end{equation*}
+    U slu\v{c}aju da je $\vec u$ sa\v{c}injen od $s$ apsolutno najve\v{c}ih komponenti od $\vec x$, tada bi vrijedilo $\norm{\vec u}_2^2 \geq s/(s+t)$. Dakle, 
+    \begin{equation*}
+        \big | \norm{\vec{Ax}}_2^2 - \norm{\vec x}_2^2 \big | \leq f(\frac{s}{s+t}) = \delta_s \frac{s}{s+t} + \delta_t \frac{t}{s+t} + 2 \theta_{s,t} \frac{\sqrt{st}}{s+t} .
+    \end{equation*}
+\end{proof}
+
+Kao kod koherencije, zanima nas koja je donja granica za $s$-tu konstantu ograni\v{c}ene izometrije matrice $\vec A \in \C^{m \times N}$.
+
+\begin{thm}
+    Neka je $\vec A \in \C^{m \time N}$ i $2 \leq s \leq N$. Tada je
+    \begin{equation}\label{6:9}
+        m \geq c \frac{s}{\delta_s^2} , 
+    \end{equation}
+    za $N \geq Cm$ i $\delta_s \leq \delta_*$, gdje konstatne $c, C$ i $\delta_*$ ovise samo o sebi me\dj usobno. Na primjer, mo\v{z}emo uzeti $c = 1/162$, $C = 30$ i $\delta_* = 2/3$.
+\end{thm}
+\begin{proof}
+    Primjetimo da tvrdnja ne vrijedi za $s = 1$ jer je $\delta_1 = 0$ ako su svi stupci od $\vec A$ imaju $\ell_2$-normu jednaku jedan. Neka je $t := \lfloor s/2 \rfloor \geq 1$ i rastavimo $\vec A$ na blokove od $m \times t$, osim mo\v{z}da zadnjeg koji mo\v{z}e imati manje stupaca,
+    \begin{equation*}
+        \vec A =
+        \begin{bmatrix*}
+            \vec A_1 & \vec A_2 & \dots \vec A_n 
+        \end{bmatrix*},
+        \quad  N \leq nt.
+    \end{equation*}
+    Iz \eqref{6:2} i \eqref{6:5} za $i,j \in [n],\ i \neq j$ imamo
+    \begin{equation*}
+        \norm{\vec A^*_i \vec A_i - \vec I}_2 \leq \delta_t \leq \delta_s, \quad \norm{\vec A^*_i \vec A_j}_2 \leq \theta_{t,t} \leq \delta_{2t} \leq \delta_s,
+    \end{equation*}
+    pa svojstvene vrijednosti od $\vec A^*_i \vec A_i$ i singularne vrijednosti od $\vec A^*_i \vec A_j$ zadovoljavaju
+    \begin{equation*}
+        1 - \delta_s \leq \lambda_k(\vec A^*_i \vec A_i) \leq 1 + \delta_s, \quad \sigma_k(\vec A^*_i \vec A_j) \leq \delta_s. 
+    \end{equation*}
+    Uvedimo oznake za matrice
+    \begin{equation*}
+        \vec H := \vec {AA}^* \in \C^{m \times m}, \quad \vec G := \vec A^* \vec A = [\vec A^*_i \vec A_j]_{1 \leq i,j \leq n} \in \C^{N \times N}. 
+    \end{equation*}
+    Imamo
+    \begin{equation}\label{6:10}
+        \tr(\vec H) = \tr(\vec G) = \sum_{i = 1}^{n} \tr(\vec A^*_i \vec A_i) = \sum_{i=1}^n \sum_{k=1}^t \lambda_k(\vec A^*_i \vec A_i) \geq nt(1-\delta_s).
+    \end{equation}
+    Nadalje, 
+    \begin{equation*}
+        \tr(\vec H)^2 = \langle \vec I_m, \vec H \rangle^2_F \leq \norm{\vec I_m}^2_F \norm{\vec H}^2_F = m \tr(\vec H^* \vec H).
+    \end{equation*}
+    Zbog svojstva cikli\v{c}nosti traga vrijedi,
+    \begin{align*}
+        \tr(\vec H^* \vec H) &= \tr(\vec{AA}^*\vec{AA}^*) = \tr(\vec A^* \vec{AA}^* \vec A) = \tr(\vec{GG}^*) \\[1em]
+        &= \sum_{i = 1}^n \tr \big(\sum_{j=1}^m \vec A^*_i \vec A_j \vec A^*_j \vec A_i \big ) \\[1em]
+        &= \sum_{1 \leq i \neq j \leq n} \sum_{k=1}^t \sigma_k(\vec A^*_i \vec A_j)^2 + \sum_{i=1}^n \sum_{k=1}^t \lambda_k(\vec A^*_i \vec A_i)^2 \\[1em] 
+        &\leq n(n-1)t \delta_s^2 + nt(1+\delta_s)^2.
+    \end{align*}
+    Dobivamo ocjenu,
+    \begin{equation}\label{6:11}
+        \tr(\vec H)^2 \leq m n t \big( (n-1)\delta_s^2 + (1+\delta_s)^2 \big) .
+    \end{equation}
+    Kombiniranjem \eqref{6:10} i \eqref{6:11} imamo
+    \begin{equation*}
+        m \geq \frac{nt(1-\delta_s)^2}{(n-1)\delta_s^2 + (1+\delta_s)^2}.  
+    \end{equation*}
+    Pretpostavimo da je $(n-1)\delta_s^2 < (1+\delta_s)^2/5$. Za $\delta_s \leq 2/3$, slijedi
+    \begin{equation*}
+        m > \frac{nt(1-\delta_s)^2}{6(1+\delta_s)^2/5}  \geq \frac{5(1-\delta_s)^2}{6(1+\delta_s)^2}N \geq \frac{1}{30}N,   
+    \end{equation*}
+    \v{s}to je kontradikcija. Dakle, mora vrijediti $(n-1)\delta_s^2 \geq (1+\delta_s)^2/5$, \v{s}to uz $\delta_s \leq 2/3$ i $s \leq 3t$ implicira
+    \begin{equation*}
+        m \geq \frac{nt(1-\delta_s)^2}{6(n-1)\delta_s^2} \geq \frac{1}{54} \frac{t}{\delta_s^2} \geq \frac{1}{162} \frac{s}{\delta_s^2}. 
+    \end{equation*}
+\end{proof}
+
+Usporedimo ocjene dobivene do sada. Imamo ocjenu odozdo
+\begin{equation}\label{6:12}
+    \delta_s \geq \sqrt{cs/m}. 
+\end{equation}
+Za $\vec A \in \C^{m \times N}$ s optimalnom koherencijom $\mu \leq c/\sqrt{m}$, propozicija \ref{prop:6:2} implicira
+\begin{equation}\label{6:13}
+    \delta_s \leq (s-1)\mu \leq cs/\sqrt{m}. 
+\end{equation}
+Primjetimo da je razmak izme\dj u \eqref{6:12} i \eqref{6:13} zna\v{c}ajan. Iz \eqref{6:13} imamo
+\begin{equation}\label{6:14}
+    m \geq c' s^2
+\end{equation}
+\v{s}to dozvoljava da $\delta_s$ bude malen, dok to drugo zathtjeva iz \eqref{6:12} da je $m \geq c's$. Nije poznato je li takav uvjet dovoljan. Poka\v{z}e se da odre\dj ene nasumi\v{c}ne matrice $\vec A \in \R^{m \times N}$ zadovoljavaju $\delta_s \leq \delta$ s velikom vjerojatno\v{s}\'cu za neki $\delta > 0$ ako je
+\begin{equation}\label{6:15}
+    m \geq C \delta^{-2}s \ln(eN/S).
+\end{equation}
+
 
 
 
