@@ -1966,6 +1966,65 @@ Primjetimo da je razmak izme\dj u \eqref{6:12} i \eqref{6:13} zna\v{c}ajan. Iz \
 \begin{equation}\label{6:15}
     m \geq C \delta^{-2}s \ln(eN/S).
 \end{equation}
+Konstrukcija deterministi\v{c}kih matrica u polinomijalnom vremenu koje zadovoljavaju $\delta_s \leq \delta$ u kontekstu \eqref{6:15} do danas otvoren je problem. Glavna zapreka je \v{s}to gotovo sve aproksimacije $\delta_s$ kombiniraju estimaciju koherencije i tvrdnju oblika propozicije \ref{prop:6:2}. To vodi na ocjene oblika \eqref{6:13} i kvadratnu ovisnost ocjene u varijabli $s$. Iznimka su radovi \cite{2010arXiv1008.4535B} i \cite{DBLP:journals/corr/Chen15n}. Bourgain et al. u \cite{2010arXiv1008.4535B} daje eksplicitnu konstrukciju deterministi\v{c}kih matrica $\vec A \in \C^{m \times N}$ s malim $\delta_s$ za $m \geq Cs^{2-\varepsilon}$ i $ s^{2-\varepsilon} \leq N \leq s^{2+\varepsilon}$ za neki $\varepsilon > 0$. Napredak je ostvaren putem novih estimacija za produkt skupova koji su suma dvaju skupa i za eksponencijalnu sumu produkta skupova s posebnom aditivnom struktorom. U \cite{DBLP:journals/corr/Chen15n} nadogra\v{d}uje se ideja iz \cite{2010arXiv1008.4535B} kori\v{s}tenjem algebarske geometrije. Nadalje u \cite{2012arXiv1205.2081T} pokazano je da izra\v{c}un $\delta_s$ $\mathfrak{NP}$-te\v{z}ak problem. Intuitivno to je jasno. Naime, svojstvo ograni\v{c}ene izometrije uzima u obizir sve mogu\v{c}e $s$-torke stupaca matrice $\vec A$.
+
+\newpage
+\section[Analiza $\ell_1$-minimizacije][Analiza $\ell_1$-minimizacije]{Analiza $\ell_1$-minimizacije}
+
+Pokazati \'cemo da $\ell_1$-minimizacija uspje\v{s}no rekonstruira sve $s$-rijetke vektore za dovoljno male konstante ograni\v{c}ene izometrije, to\v{c}nije za $\delta_{2s} < 1/3$.
+
+\begin{thm}\label{tm:6:9} 
+    Neka $2s$-ta konstanta ograni\v{c}ene izometrije matrice $\vec A \in \C^{m \times N}$ zadovljava 
+    \begin{equation}\label{6:16}
+        \delta_{2s} < \frac{1}{3} .
+    \end{equation}
+    Tada je svaki $s$-rijedak vektor $\vec x \in \C^N$ jedinstveno rje\v{s}enje problema 
+    \begin{equation*}
+        \min_{\vec z \in \C^N} \norm{\vec z}_1 \quad \text{uz uvjet } \vec{Az} = \vec{Ax}. 
+    \end{equation*}
+\end{thm}
+Za dokaz potreban je sljede\v{c}i argument.
+\begin{lem}\label{lem:6:10}
+    Neka je $\vec q > p > 0$. Ako $\vec u \in \C^s$ i $\vec v \in \C^t$ zadovoljavaju 
+    \begin{equation}\label{6:17}
+        \min_{i \in [s]} |u_i| \leq \min_{j \in [t]} |v_j|, 
+    \end{equation}
+    onda,
+    \begin{equation*}
+        \norm{\vec u}_q \leq \frac{s^{1/q}}{t^{1/p}} \norm{\vec v}_p.
+    \end{equation*}
+    Posebno za $p = 1,\  q = 2$ i $t = s$,
+    \begin{equation*}
+        \norm{\vec u}_2 \leq \frac{1}{\sqrt{s}} \norm{\vec v}_1.
+    \end{equation*}
+\end{lem}
+\begin{proof}
+    Primjetimo,
+    \begin{equation*}
+        \frac{\norm{\vec u}_q}{s^{1/q}} = \bigg[ \frac{1}{s} \sum_{i=1}^s |u_i|^q  \bigg]^{1/q} \leq \max_{i \in [s]} |u_i|, 
+    \end{equation*}
+    \begin{equation*}
+        \frac{\norm{\vec v}_p}{t^{1/p}} = \bigg[ \frac{1}{t} \sum_{j=1}^t |v_j|^p  \bigg]^{1/p} \qeq \min_{j \in [t]} |v_j|.
+    \end{equation*}
+    Sada iskoristimo \eqref{6:17} i slijedi tvrdnja.
+\end{proof}
+
+\begin{proof}[Dokaz (Teorem \ref{tm:6:9})]
+    Prema teoremu \ref{svojstvo_nul_prostora_tm} dovoljno je pokazati da vrijedi svojstvo nul-prostora reda $s$, tj.
+    \begin{equation*}
+        \norm{\vec v_S}_1 \leq \frac{1}{2} \norm{\vec v}_1     
+    \end{equation*}
+    za sve $\vec v \in \ker \vec A \backslash \{\vec 0\}$ i za sve $S \subset [N],\  \card(S) = s$. To \'ce slijediti iz op\v{c}enitije tvrdnje  
+    \begin{equation*}
+        \norm{\vec v_S}_2 \leq \frac{\rho}{2 \sqrt{s}} \norm{\vec v}_1     
+    \end{equation*}
+    za sve $\vec v \in \ker \vec A \backslash \{\vec 0\}$ i za sve $S \subset [N],\  \card(S) = s$, gdje
+    \begin{equation*}
+        \rho := \frac{2 \delta_{2s}}{1 - \delta_{2s}}  
+    \end{equation*}
+    zadovoljava $\rho < 1$ za $\delta_{2s} < 1/3$.
+
+\end{proof}
 
 
 

@@ -4,44 +4,49 @@ The top-level auxiliary file: diplomski.aux
 The style file: babamspl.bst
 Database file #1: diplomski.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 0 entries,
+Warning--empty language in 2010arXiv1008.4535B
+Warning--empty language in DBLP:journals/corr/Chen15n
+Warning--missing pages in DBLP:journals/corr/Chen15n
+Warning--empty language in 2012arXiv1205.2081T
+You've used 3 entries,
             2664 wiz_defined-function locations,
-            595 strings with 5648 characters,
-and the built_in function-call counts, 58 in all, are:
-= -- 0
-> -- 0
+            618 strings with 6306 characters,
+and the built_in function-call counts, 1489 in all, are:
+= -- 96
+> -- 48
 < -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 19
+- -- 16
+* -- 248
+:= -- 216
+add.period$ -- 3
+call.type$ -- 3
+change.case$ -- 17
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 7
+duplicate$ -- 62
+empty$ -- 135
+format.name$ -- 43
+if$ -- 263
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 23
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 3
+missing$ -- 6
+newline$ -- 33
+num.names$ -- 6
+pop$ -- 26
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 14
 quote$ -- 0
-skip$ -- 1
+skip$ -- 23
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 105
+swap$ -- 27
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 22
+type$ -- 12
+warning$ -- 4
+while$ -- 8
+width$ -- 4
+write$ -- 41
+(There were 4 warnings)

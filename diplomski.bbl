@@ -1,4 +1,4 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
   \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
   \providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
   % \MRhref is called by the amsart/book/proc definition of \MR.
@@ -19,5 +19,33 @@
   \providebibliographyfont{numeral}{}%
   \providecommand\btxprintamslanguage[1]{\ (#1)}
   \expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+
+\expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
+\bibitem {2010arXiv1008.4535B}
+\btxnamefont {Jean \btxlastnamefont {{Bourgain}}}, \btxnamefont
+  {S.\btxfnamespacelong J. \btxlastnamefont {{Dilworth}}}, \btxnamefont {Kevin
+  \btxlastnamefont {{Ford}}}, \btxnamefont {Sergei \btxlastnamefont
+  {{Konyagin}}}\btxandcomma {} \btxandlong {} \btxnamefont {Denka
+  \btxlastnamefont {{Kutzarova}}}, \btxjtitlefont {\btxifchangecase {{Explicit
+  constructions of RIP matrices and related problems}}{{Explicit constructions
+  of RIP matrices and related problems}}}, \btxjournalfont {arXiv e-prints}
+  (2010), arXiv:1008.4535.
+
+\bibitem {DBLP:journals/corr/Chen15n}
+\btxnamefont {Hao \btxlastnamefont {Chen}}, \btxjtitlefont {\btxifchangecase
+  {Explicit {RIP} matrices in compressed sensing from algebraic
+  geometry}{Explicit {RIP} Matrices in Compressed Sensing from Algebraic
+  Geometry}}, \btxjournalfont {CoRR} \btxvolumefont {abs/1505.07490} (2015),
+  {\latintext \btxurlfont{http://arxiv.org/abs/1505.07490}}.
+
+\bibitem {2012arXiv1205.2081T}
+\btxnamefont {Andreas\btxfnamespacelong M. \btxlastnamefont {{Tillmann}}}
+  \btxandlong {} \btxnamefont {Marc\btxfnamespacelong E. \btxlastnamefont
+  {{Pfetsch}}}, \btxjtitlefont {\btxifchangecase {{The Computational Complexity
+  of the Restricted Isometry Property, the Nullspace Property, and Related
+  Concepts in Compressed Sensing}}{{The Computational Complexity of the
+  Restricted Isometry Property, the Nullspace Property, and Related Concepts in
+  Compressed Sensing}}}, \btxjournalfont {arXiv e-prints} (2012),
+  arXiv:1205.2081.
 
 \end{thebibliography}
