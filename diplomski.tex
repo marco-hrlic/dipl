@@ -2023,9 +2023,174 @@ Za dokaz potreban je sljede\v{c}i argument.
         \rho := \frac{2 \delta_{2s}}{1 - \delta_{2s}}  
     \end{equation*}
     zadovoljava $\rho < 1$ za $\delta_{2s} < 1/3$.
-
+    Primjetimo da je dovoljno promatrati skup $S =: S_0$, koji sadr\v{z}i indekse $s$ apsolutno najve\'cih komponenti vektora $\vec v \in \ker \vec A$. Nadalje, $\bar S_0$ particioniramo na $\bar S_0 = S_1 \cup S_2 \cup \cdots$, tako da
+    \begin{align*}
+       &S_1: \text{skup indeksa $s$ apsolutno najve\'vih komponenti vektora $\vec v$ u $\bar S_0$}\\ 
+       &S_2: \text{skup indeksa $s$ apsolutno najve\'vih komponenti vektora $\vec v$ u $\overline{S_0 \cup S_1}$ }\\
+       &...
+    \end{align*}
+    Po\v{s}to je $\vec v \in \ker \vec A$, imamo $\vec A(\vec v_{S_0}) = \vec A(-\vec v_{S_1} - \vec v_{S_2} - \cdots)$ pa stoga
+    \begin{align}
+        \norm{\vec v_{S_0}}^2_2 &\leq \frac{1}{1- \delta_{2s}} \norm{\vec A(\vec v_{S_0})}^2_2 = \frac{1}{1-\delta_{2s}} \langle \vec A(\vec v_{S_0}), \vec A(-\vec v_{S_1}) + \vec A (- \vec v_{S_2}) + \cdots \rangle \nonumber \\
+        &= \frac{1}{1-\delta_{2s}} \sum_{k \geq 1} \langle \vec A(\vec v_{S_0}), \vec A (- \vec v_{S_k}) \rangle \label{6:18}
+    \end{align}
+    Prema propoziciji \ref{prop:6:3} tako\dj er vrijedi
+    \begin{equation}\label{6:19}
+        \langle \vec A (\vec v_{S_0}), \vec A (-\vec v_{S_k})  \leq \delta_{2s} \norm{\vec v_{S_0}}_2 \norm{\vec v_{S_k}}_2.
+    \end{equation}
+    Uvrstimo \eqref{6:19} u \eqref{6:18} te podjelimo s $\norm{\vec v_{S_0}} > 0$, 
+    \begin{equation*}
+        \norm{\vec v_{S_0}}_2 \leq \frac{\delta_{2s}}{1 - \delta_{2s}} \sum_{k \geq 1} \norm{\vec v_{S_k}}_2 = \frac{\rho}{2} \sum_{k \geq 1} \norm{\vec v_{S_k}}_2.
+    \end{equation*}
+    Za $k \geq 1$, $s$ apsolutno najve\'cih komponenti od $\vec v_{S_k}$ nisu ve\'ci od $s$ apsolutnih komponenti od $\vec v_{S_{k-1}}$. Stoga lema \ref{lem:6:10} daje
+    \begin{equation*}
+        \norm{\vec v_{S_k}}_2 \leq \frac{1}{\sqrt{s}} \norm{\vec v_{S_{k-1}}}_1.
+    \end{equation*}
+    Napokon, 
+    \begin{equation*}
+        \norm{\vec v_{S_0}}_2 \leq \frac{\rho}{2 \sqrt{s}} \sum_{k \geq 1} \norm{\vec v_{S_{k-1}}}_1 \leq \frac{\rho}{2 \sqrt{s}} \norm{\vec v}_1. 
+    \end{equation*}
 \end{proof}
 
+U prethodni teorem mogu\'ce je ukomponirati stabilnost i robusnost te dodatno oslabiti uvjet, tj. dovoljno  je tra\v{z}iti da $\delta_{2s} < \frac{4}{\sqrt{41}} \approx 0.6246$. No, svojstvo ograni\v{c}ene izometrije nosi i neke probleme kod $\ell_1$-minimizacije. Naime, pokazali smo da je $\ell_1$-minimizacija invarijanta na reskaliranje, preslagivanje te dodavanje novih mjerenja. Me\dj utim takve transformacije mogu pokvariti konstantu ograni\v{c}ene izometrije. Preciznije, preslagivanje mjerenja odgovora zamjeni matrice $\vec A \in \C^{m \times N}$ matricom $\vec{PA}$, gdje je $\vec P \in \C^{m \times m}$ matrica permutacije, i takva transformacija ne mjenja $\delta_s$. Dodavanje mjerenja odgovara dodavanju retka matrici $\vec A$, \v{s}to mo\v{z}e rezultirati pove\v{c}anjem od $\delta_s$. Zaista, neka je $\delta_s(\vec A) < 1$ i uzmimo $\delta > \delta_s(\vec A)$. Neka je $\vec{\tilde A}$ matrica $\vec A$ kojoj smo dodali redak $[0 \cdots 0\ \sqrt{1+\delta}]$. Sada za $\vec x := [0 \cdots 0\ 1]^T$ vidimo da je $\norm{\vec{Ax}}^2_2 \geq 1+\delta$. To implicira da je $\delta_1(\vec{\tidle A}) \geq \delta$ pa stoga i $\delta_s(\vec{\tilde A}) > \delta_s(\vec A)$. Skaliranje dijagonalnom matricom te skaliranje konstantom tako\dj er mogu pove\v{c}ati $\delta_s$.
+
+\section[Analiza grani\v{c}nih metoda][Analiza grani\v{c}nih metoda]{Analiza grani\v{c}nih metoda}
+Pokazati \'cemo da IHT i HTP algoritmi uspje\v{s}no rekonstruiraju rijetke vektore za matric mjerenja s malim konstantama ograni\v{c}ene izometrije.
+\begin{thm} \label{tm:6:15}
+    Neka je matrica $\vec A \in \C^{m \times N}$ takva da 
+    \begin{equation}\label{6:24}
+        \delta_{3s} < \frac{1}{2}. 
+    \end{equation}
+    Tada za svaki $s$-rijedak vektor $\vec x \in \C^N$, niz $(\vec x^n)$ definiran sa \eqref{iht} za $\vec y = \vec {Ax}$ konvergira prema $\vec x$.
+\end{thm}
+Za dokaz potrebna nam je sljede\'ca lema,
+\begin{lem}\label{lem:6:16}
+    Za $\vec u, \vec v \in \C^N$ i skup indeksa $S \subset [N]$ vrijedi,
+    \begin{align*}
+        &|\langle \vec u , (\vec I - \vec A^* \vec A)\vec v \rangle|  \leq \delta_t \norm{\vec u}_2 \norm{\vec v}_2 \quad & \text{za } \card(\supp(\vec u) \cup \supp(\vec v))\leq t\\[0.5em]
+        &\norm{((\vec I - \vec A^* \vec A)\vec v)_S}_2 \leq \delta_t \norm{\vec v}_2 \quad & \text{za } \card(S \cup \supp(\vec v)) \leq t.
+    \end{align*}
+\end{lem}
+\begin{proof}
+    Neka je $T:= \supp(\vec u) \cup \supp(\vec v)$. Imamo,
+    \begin{align*}
+        |\langle \vec u , (\vec I - \vec A^* \vec A)\vec v \rangle| &= |\langle \vec u, \vec v \rangle - \langle \vec{Au}, \vec{Av} \rangle| = |\langle \vec u_T, \vec v_T \rangle - \langle \vec A_T \vec u_T, \vec A_T, \vec v_T \rangle|\\[0.5em]
+        &=|\langle \vec u_T, (\vec I - \vec A^*_T \vec A_T)\vec v_T \rangle| \leq \norm{\vec u_T}_2 \norm{(\vec I - \vec A^*_T \vec A_T)\vec v_T}_2\\[0.5em]
+        &\leq \norm{\vec u_T}_2 \norm{\vec I - \vec A^*_T \vec A_T}_2 \norm{\vec v_T}_2 \leq \delta_t \norm{\vec u}_2 \norm{\vec v}_2.
+    \end{align*}
+    Druga nejednost slijedi iz prve i \v{c}injenice
+    \begin{equation*}
+        \norm{((\vec I - \vec A^* \vec A)\vec v)_S}_2^2 = \langle ((\vec I - \vec A^* \vec A)\vec v)_S, (\vec I - \vec A^*\vec A)\vec v \rangle \leq \delta_t \norm{((\vec I - \vec A^*\vec A)\vec v)_S}_2 \norm{\vec v}_2.
+    \end{equation*}
+\end{proof}
+
+\begin{proof}[Dokaz (Teorem \ref{tm:6:15}).]
+    Primjetimo da je dovoljno prona\'ci konstantu $0 \leq \rho \leq 1$ takvu da 
+    \begin{equation}\label{6:25}
+        \norm{\vec x^{n+1} - \vec x}_2 \leq \rho \norm{\vec x^n - \vec x}_2, \quad n \geq 0
+    \end{equation}
+    odakle induktivno imamo
+    \begin{equation*}
+        \norm{\vec x^{n} - \vec x}_2 \leq \rho^n \norm{\vec x^0 - \vec x}_2 \xrightarrow{n \rightarrow \infty} 0. 
+    \end{equation*}
+    Prema samoj definiciji, vektor $\vec x^{n+1}$ je bolja ili barem jednako dobra aproksimacija vektor
+    \begin{equation*}
+        \vec u^n := \vec x^n + \vec A^*(\vec y - \vec{Ax}^n) = \vec x^n + \vec A^* \vec A (\vec x - \vec x^n) 
+    \end{equation*}
+    od $s$-rijetkog vektora $\vec x$. Dakle, 
+    \begin{equation*}
+        \norm{\vec u^n - \vec x^{n+1}}_2^2 \leq \norm{\vec u^n - \vec x}_2^2. 
+    \end{equation*}
+    Uvrstimo $\norm{\vec u ^n - \vec x^{n+1}}_2^2 = \norm{(\vec u ^n - \vec x) - (\vec x^{n+1} - \vec x)}_2^2$ te sre\dj ivanjem dobivamo
+    \begin{equation}\label{6:26}
+        \norm{\vec x^{n+1} - \vec x}_2^2 \leq 2 \Re \langle \vec u^n - \vec x, \vec x^{n+1} - \vec x \rangle .
+    \end{equation}
+    Lema \ref{lem:6:16} daje
+    \begin{align}
+        \Re \langle \vec u^n - \vec x, \vec x^{n+1} - \vec x \rangle &= \Re \langle (\vec I - \vec A^*\vec A)(\vec x^n - \vec x), \vec x^{n+1} - \vec x \rangle \nonumber \\
+                                                                     &\leq \delta_{3s} \norm{\vec x^n - \vec x}_2 \norm{\vec x^{n+1} - \vec x}_2. \label{6:27}
+    \end{align}
+    Ako je $\norm{\vec x^{n+1} - \vec x}_2 > 0$, iz \eqref{6:26} i \eqref{6:27} slijedi
+    \begin{equation*}
+        \norm{\vec x^{n+1} - \vec x}_2 \leq 2 \delta_{3s} \norm{\vec x^n - \vec x}_2 
+    \end{equation*}
+    Stoga, tra\v{z}ena nejednost vrijedi za $ \rho  = 2 \delta_{3s} < 1$.
+\end{proof}
+Ponovno je mogu\'ce dobiti robusnost i stabilnost te ocjena se mo\v{z}e oslabiti. To je tvrdnja sljede\'ceg teorema koji vrijedi i za IHT, i za HTP algoritam.
+
+\begin{thm}\label{tm:6:18}
+    Neka je $\vec A \in \C^{m \times N}$ takva da
+    \begin{equation}\label{6:28}
+        \delta_{3s} < \frac{1}{\sqrt{3}} \approx 0.5773.
+    \end{equation}
+    Tada, za svaki $\vec x \in \C^{N},\ \vec e \in \C^m$ i $S \subset [N], \card(S) = s$, niz $(\vec x^n)$ definiran sa \eqref{iht} ili sa \eqref{htp_1}, \eqref{htp_2} za $\vec y = \vec{Ax}+ \vec e$ zadovoljava
+    \begin{equation}\label{6:29}
+        \norm{\vec x^n - \vec x_S}_2 \leq \rho^n \norm{\vec x^0 - \vec x_S}_2 + \tau \norm{\vec{Ax}_{\bar S} + \vec e}_2, 
+    \end{equation}
+    za svaki $n \geq 0$, gdje je $\rho = \sqrt{3} < 1$, $\tau \leq 2.18/(1-\rho)$ za \eqref{iht}, $\rho = \sqrt{2 \delta^2_{3s}/(1-\delta_{2s}^2)} < 1$, $\tau \leq 5.15 / (1- \rho)$ za \eqref{htp_1}, \eqref{htp_2}.
+\end{thm}
+U dokazu koristimo tvrdnju,
+\begin{lem}\label{lem:6:20}
+    Za $\vec e \in \C^m$ i $S \in [N],\ \card(S) \leq s$ vrijedi 
+    \begin{equation*}
+        \norm{(\vec A^* \vec e)_S}_2^2 \leq \sqrt{1+\delta_s}\norm{\vec e}_2.
+    \end{equation*}
+\end{lem}
+\begin{proof}
+    Vrijedi,
+    \begin{align*}
+        \norm{(\vec A^* \vec e)_S}_2^2 &= \langle \vec A^* \vec e, (\vec A^* \vec e)_S  \rangle = \langle \vec e, \vec A ((\vec A^* \vec e)_S)\rangle \leq \norm{\vec e}_2 \norm{\vec A ((\vec A^* \vec e)_S)}_2\\
+        &\leq \norm{\vec e}_2 \sqrt{1+\delta_s} \norm{(\vec A^* \vec e)_S}_2.
+    \end{align*}
+\end{proof}
+
+\begin{proof}[Dokaz (Teorem \ref{tm:6:18})]
+    Neka je $\vec x \in \C^N,\ \vec e \in \C^m,\ S \subset [N]$ takav da je $\card(S) = s$. Ako poka\v{z}emo da za svaki $n \geq 0$ vrijedi
+    \begin{equation}\label{6:30}
+        \norm{\vec x^{n+1} - \vec x_S}_2 \leq \rho \norm{\vec x^n - \vec x_S}_2 + (1-\rho)\tau \norm{\vec{Ax}_{\bar S} + \vec e}_2 
+    \end{equation}
+    tada \eqref{6:29} slijedi indukcijom. Neka je $S^{n+1} := \supp(\vec x^{n+1})$ skup indeksa $s$ apsolutno najve\'cih vrijednosti od $\vec x^n + \vec A^*(\vec y - \vec{Ax}^n)$. Stoga,
+    \begin{equation*}
+        \norm{(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n))_S}_2^2 \leq \norm{(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n))_{S^{n+1}}}_2^2
+    \end{equation*}
+    Nadalje, maknemo kontribuciju od $S \cap S^{n+1}$
+    \begin{equation*}
+        \norm{(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n))_{S \backslash S^{n+1}}}_2^2 \leq \norm{(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n))_{S^{n+1} \backslash S}}_2^2.
+    \end{equation*}
+    Desnu stranu mo\v{z}emo zapisati kao
+    \begin{equation*}
+        \norm{(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n))_{S^{n+1} \backslash S}}_2^2 = \norm{(\vec x^n - \vec x_S + \vec A^* (\vec y - \vec{Ax}^n))_{S^{n+1} \backslash S}}_2.
+    \end{equation*}
+    Lijeva strana zadovoljava,
+    \begin{align*}
+        \norm{(\vec x^n + \vec A^*(\vec y - \vec{Ax}^n))_{S \backslash S^{n+1}}}_2 = &\norm{(\vec x_S - \vec x^{n+1} + \vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S \backslash S^{n+1}}}_2\\
+        \geq &\norm{(\vec x_S - \vec x^{n+1})_{S \backslash S^{n+1}}}_2\\ - & \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec {Ax}^n))_{S \backslash S^{n+1}}}_2.
+    \end{align*}
+    Sa $S \Delta S^{n+1} = (S \backslash S^{n+1}) \cup (S^{n+1} \backslash S)$ ozna\v{c}imo simetri\v{c}nu razliku skupa $S$ i $S^{n+1}$. Slijedi,
+    \begin{align}
+        \norm{(\vec x_S - \vec x^{n+1})_{S \backslash S^{n+1}}}_2 \leq & \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S \backslash S^{n+1}}}_2 \nonumber \\
+        + & \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S^{n+1} \backslash S}}_2 \nonumber \\
+        \leq & \sqrt{2} \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S \Delta S^{n+1}}}_2.\label{6:31}
+    \end{align}
+
+    \noindent
+    Koncetrirajmo se na IHT algoritam prvo. Tada imamo,
+    \begin{equation*}
+        \vec x^{n+1} = (\vec x^n + \vec A^*(\vec y - \vec{Ax}^n))_{S^{n+1}}.
+    \end{equation*}
+    Slijedi,
+    \begin{align*}
+        \norm{\vec x^{n+1} - \vec x_S}_2^2 = & \norm{(\vec x^{n+1} - \vec x_S)_{S^{n+1}}}_2^2 + \norm{(\vec x^{n+1} - \vec x_S)_{\overline{S^{n+1}}}}_2^2\\
+        = & \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S^{n+1}}}_2^2 + \norm{(\vec x^{n+1} - \vec x_S)_{S \backslash S^{n+1}}}_2^2.
+    \end{align*}
+    Nadalje, iz \eqref{6:31} imamo
+    \begin{align*}
+        \norm{\vec x^{n+1} - \vec x_S}_2^2 \leq & \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S^{n+1}}}_2^2\\
+        +&2\norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S \Delta S^{n+1}}}_2^2 \\
+        \leq & 3 \norm{(\vec x^n - \vec x_S + \vec A^* (\vec y - \vec{Ax}^n))_{S \cup S^{n+1}}}_2^2.
+    \end{align*}
+    Neka je $\vec y = \vec{Ax} + \vec e = \vec{Ax}_S + \vec e'$ gdje je $\vec e' := \vec {Ax}_{\bar S} + \vec e$. Iz leme \ref{lem:6:16} i leme \ref{lem:6:20} slijedi,
+\end{proof}
 
 
 
