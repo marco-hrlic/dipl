@@ -76,7 +76,7 @@
 \usepackage{mathtools}
 
 \usepackage{lineno}
-\linenumbers
+%\linenumbers
 
 % Paket graphicx sluzi za manipuliranje grafikom 
 \usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
@@ -2172,8 +2172,6 @@ U dokazu koristimo tvrdnju,
         + & \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S^{n+1} \backslash S}}_2 \nonumber \\
         \leq & \sqrt{2} \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S \Delta S^{n+1}}}_2.\label{6:31}
     \end{align}
-
-    \noindent
     Koncetrirajmo se na IHT algoritam prvo. Tada imamo,
     \begin{equation*}
         \vec x^{n+1} = (\vec x^n + \vec A^*(\vec y - \vec{Ax}^n))_{S^{n+1}}.
@@ -2189,7 +2187,7 @@ U dokazu koristimo tvrdnju,
         +&2\norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{S \Delta S^{n+1}}}_2^2 \\
         \leq & 3 \norm{(\vec x^n - \vec x_S + \vec A^* (\vec y - \vec{Ax}^n))_{S \cup S^{n+1}}}_2^2.
     \end{align*}
-    Neka je $\vec y = \vec{Ax} + \vec e = \vec{Ax}_S + \vec e'$ gdje je $\vec e' := \vec {Ax}_{\bar S} + \vec e$. Iz leme \ref{lem:6:16} i leme \ref{lem:6:20} slijedi,
+    Neka je $\vec y = \vec{Ax} + \vec e = \vec{Ax}_S + \vec e'$ gdje je $\vec e' := \vec {Ax}_{\bar S} + \vec e$. Iz lema \ref{lem:6:16} i \ref{lem:6:20} slijedi,
     \begin{align*}
         \norm{\vec x^{n+1} - \vec x_S}_2 & \leq \sqrt{3} \norm{(\vec x^n - \vec x_S + \vec A^* \vec A (\vec x_S - \vec x^n) + \vec A^* \vec e')_{S \cup S^{n+1}}}_2\\ 
         & \leq \sqrt{3}\big[ \norm{ \big( (\vec I - \vec A^*\vec A)(\vec x^n - \vec x_S) \big)_{S \cup S^{n+1}}}_2 + \norm{(\vec A^*\vec e')_{S \cup S^{n+1}}}_2 \big]\\
@@ -2201,11 +2199,148 @@ U dokazu koristimo tvrdnju,
     \begin{equation*}
         \vec x^{n+1} = \argmin \big\{ \norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{n+1} \big\},
     \end{equation*}
+    Najbolja $\ell_2$ aproksimacija $\vec {Ax}^{n+1}$ vektora $\vec y \in \{\vec{Az},\ supp(\vec z) \subset S^{n+1}\}$ karakterizirana je sa
+    \begin{equation*}
+        \langle \vec y - \vec {Ax}^{n+1}, \vec{Az} \rangle = 0 
+    \end{equation*}
+    za $\vec z$ takav da $\supp(\vec z) \subset S^{n+1}$. To zna\v{c}i da je $\langle \vec A^*(\vec y - \vec{Ax}^{n+1}), \vec z \rangle = 0$ kada je $\supp(\vec z) \subset S^{n+1}$, tj. mo\v{z}emo zaklju\v{c}iti
+    \begin{equation*}
+        (\vec A^*(\vec y - \vec {Ax}^{n+1}))_{S^{n+1}} = \vec 0.
+    \end{equation*}
+    Iz toga i \eqref{6:31} slijedi
+    \begin{align*}
+        \norm{\vec x^{n+1} - \vec x_S}_2^2 & = \norm{(\vevc x^{n+1} - \vec x_S)_{S^{n+1}}}_2^2 + \norm{(\vec x^{n+1} - \vec x_S)_{S \backslash S^{n+1}}}_2^2\\[0.5em]
+        & \leq \norm{(\vec x^{n+1} - \vec x_S + \vec A^*(\vec y - \vec {Ax}^{n+1}))_{S^{n+1}}}_2^2\\[0.5em]
+        & + 2 \norm{(\vec x^{n+1} - \vec x_S + \vec A^*(\vec y - \vec {Ax}^{n+1}))_{S \Delta S^{n+1}}}_2^2\\[0.5em]
+        & \leq \big[ \norm{\big( (\vec I - \vec A^* \vec A)(\vec x^{n+1} - \vec x_S) \big)_{S^{n+1}}}_2 + \norm{(\vec A^* \vec e')_{S^{n+1}}}_2 \big]^2\\[0.5em]
+        & + 2 \big[ \norm{ \big( (\vec I - \vec A^* \vec A)(\vec x^n - \vec x_S) \big)_{S \Delta S^{n+1}} }_2 + \norm{(\vec A^* \vec e')_{S \Delta S^{n+1}}}_2 \big]^2.
+    \end{align*}
+    Sada primjenimo leme \ref{lem:6:16} i \ref{lem:6:20},
+    \begin{align*}
+    \norm{\vec x^{n+1} - \vec x_S}_2^2 & \leq [\delta_{2s} \norm{\vec x^{n+1} - \vec x_S}_2 + \sqrt{1+\delta_s} \norm{\vec e'}_2]^2\\[0.5em]
+    & + 2 [\delta_{3s} \norm{\vec x^n - \vec x_S}_2 + \sqrt{1 + \delta_{2s}} \norm{\vec e'}_2]^2.
+    \end{align*}
+    Nakon preslagivanja imamo
+    \begin{align*}
+        &2[\delta_{3s} \norm{\vec x^n - \vec x_S}_2 + \sqrt{1 + \delta_{2s}} \norm{\vec e '}_2]^2\\[0.5em]
+        &\geq(1-\delta_{2s}^2)\big( \norm{\vec x^{n+1} - \vec x_S}_2 + \frac{\sqrt{1+\delta_s}}{1+\delta_{2s}} \norm{\vec e'}_2  \big)\big( \norm{\vec x^{n+1} - \vec x_S}_2 - \frac{\sqrt{1+\delta_s}}{1-\delta_{2s}} \norm{\vec e'}_2 \big).
+    \end{align*}
+    Mo\v{z}emo pretpostaviti da je $\norm{\vec x^{n+1} - \vec x_S}_2 \geq \sqrt{1+\delta_{2s}}\norm{\vec e'}_2 / (1- \delta_{2s})$. U suprotnom \eqref{6:30} odmah vrijedi za $(1-\rho)\tau$ dan u nastavku. Dakle, druga izraz u drugoj tre\'coj zagradi je ne-negativan. Vrijedi
+    \begin{equation*}
+        2[\delta_{3s} \norm{\vec x^n - \vec x_S}_2 + \sqrt{1+\delta_{2s}}\norm{\vec e'}_2]^2 \geq (1-\delta_{2s}^2) \big( \norm{\vec x^{n+1} - \vec x_S}_2 - \frac{\sqrt{1+\delta_s}}{1-\delta_{2s}} \norm{\vec e'}_2  \big)^2.
+    \end{equation*}
+    Od tuda slijedi,
+    \begin{equation*}
+        \norm{\vec x^{n+1} - \vec x_S}_2 \leq \frac{\sqrt{2} \delta_{3s}}{\sqrt{1-\delta_{2s}^{2}}} \norm{\vec x^n - \vec x_S}_2 + \big( \frac{\sqrt{2}}{\sqrt{1-\delta_{2s}}} + \frac{\sqrt{1+\delta_s}}{1-\delta_{2s}}   \big) \norm{\vec e'}_2.
+    \end{equation*}
+    To je jednakost oblika \eqref{6:30}. Primjetimo da je $\rho := \sqrt{2}\delta_{3s}/\sqrt{1-\delta_{2s}^2} \leq \sqrt{2} \delta_{3s}/\sqrt{1-\delta_{3s}^2} < 1$ za $\delta_{3s} < 1/\sqrt{3}$ i da je $(1-\rho)\tau = \sqrt{2}/\sqrt{1-\delta_{2s}} + \sqrt{1+\delta_s}/(1-\delta_{2s}) \leq 5.15$.
 \end{proof}
+Uzimanjem limesa kada $n \rightarrow \infty$ u \eqref{6:29} imamo da $\norm{\vec x^{\sharp}  - \vec x_S}_2 \leq \tau \norm{\vec{Ax}_{\bar S} + \vec e}_2$ ako je $\vec x^{\sharp} \in \C^N$ neko gomili\v{s}te niza $(\vec x^n)$. To gomili\v{s}te sigurno postoji zbog ograni\v{c}enosti od $\norm{\vec x^n}$. Dakle, $\norm{\vec x - \vec x^{\sharp}} \leq \norm{\vec x_{\bar S}}_2 + \norm{\vec x_S - \vec x^{\sharp}}_2$ zbog nejednakosti trokuta, pa odabirom $S$ kao skupa indeksa $s$ apsolutno najve\'cih komponenti vektora $\vec x$ dobijemo
+\begin{equation}\label{6:32}
+    \norm{\vec x - \vec x^{\sharp}}_2 \leq \sigma_s(\vec x)_2 + \tau \norm{\vec{Ax}_{\bar S} + \vec e}_2.
+\end{equation}
 
+Sljede\'ca lema biti \'ce od koristi kasnije. Za dokaz vidi TODO
+\begin{lem}\label{lem:6:23}
+    Neka je $\vec A \in \C^{m \times N}$ takva da $\delta_s < 1$. Za $\kappa, \tau > 0, \xi \geq 0$ i $\vec e \in \C^m$, pretpostavimo da vektori $\vec x, \vec x' \in \C^N$ zadovoljavaju $\norm{\vec x'}_0 \leq \kappa s$ i 
+    \begin{equation*}
+        \norm{\vec x_T - \vec x'}_2 \leq \tau \norm{\vec{Ax}_{\bar T} + \vec e}_2 + \xi 
+    \end{equation*}
+    gdje je T skup indeksa od $2s$ apsolutno najve\'cih komponenti od $\vec x$. Tada za $1 \leq p \leq 2$ vrijedi
+    \begin{equation}\label{6:35}
+        \norm{\vec x - \vec x'}_p \leq \frac{1+c_{\kappa} \tau}{s^{1-1/p}}\sigma_s(\vec x)_1 + d_{\kappa} \tau s^{1/p - 1/2} \norm{\vec e}_2 + d_{\kappa} s^{1/p - 1/2} \xi, 
+    \end{equation}
+    gdje konstante $c_{\kappa}, d_{\kappa}$ ovise samo o $\kappa$.
+\end{lem}
 
+\section[Analiza greedy algoritama][Analiza greedy algoritama]{Analiza greedy algoritama}
+U ovom djelu rada pokazati \'cemo uz koje uvjete OMP i CoSaMP algoritmi uspje\v{s}no rekonstruiraju rijetke vektore. No, kod ove klase algoritama nisu dovoljni uvjeti ograni\v{c}ene izometrije. Uzmimo na primjer $1 < \eta < \sqrt{s}$ i definiramo $(s+1) \times (s+1)$ matricu
+\begin{equation}\label{6:39}
+    \vec A :=
+    \left[
+        \begin{array}{c | c}
+            \vec I & \begin{matrix*}
+                \frac{\eta}{s}\\ 
+                \vdots\\
+                \frac{\eta}{s}\\ 
+            \end{matrix*}\\
+            \hline
+            0 \cdots 0 & \sqrt{\frac{s-\eta^2}{s}}\\
+        \end{array}
+    \right]
+\end{equation}
+Lako slijedi,
+\begin{equation*}
+    \vec A^* \vec A - \vec I =
+    \left[
+        \begin{array}{c | c}
+            \vec 0 & \begin{matrix*}
+                \frac{\eta}{s}\\ 
+                \vdots\\
+                \frac{\eta}{s}\\ 
+            \end{matrix*}\\
+            \hline
+            \frac{\eta}{s}  \cdots  \frac{\eta}{s} & 0
+        \end{array}
+    \right]
+\end{equation*}
+Pa su svojstvene vrijednosti te matrice $-\eta/\sqrt{s},\ \eta/\sqrt{s}$ i $0$ kratnosti $s-1$. Stoga
+\begin{equation*}
+    \delta_{s+1} = \norm{\vec A^* \vec A - \vec I}_2 = \frac{\eta}{\sqrt{s}}. 
+\end{equation*}
+Me\dj utim $s$-rijedak vektor $\vec x = [1, \dots, 1, 0]^T$ se ne mo\v{z}e rekonstruirati iz $\vec y = \vec{Ax}$ u $s$ iteracija, po\v{s}to se u prvoj iteraciji odabere krivi indeks $s+1$. Taj problem mo\v{z}emo zaobi\'ci ve\'cim brojem iteracija ili modifikacijom algoritma tako da odbacuje krive indekse, \v{s}to zapravo CoSaMP radi.
 
+\subsection[OMP algoritam][OMP algoritam]{OMP algoritam}
+Zapravo, prou\v{c}avati \'cemo malo generalniji algoritam koji zapo\v{c}inje skupom $S^0$ i za koji je
+\begin{equation}\label{6:40}
+    \vec x^0 := \argmin\{\norm{\vec y - \vec{Az}},\ \supp(\vec z) \subset S^0\},
+\end{equation}
+te iteracije su oblika,
+\begin{align}
+    &S^{n+1} = S^n \cup L_1(\vec A^*(\vec y - \vec{Ax}^n)), \tag{$OMP'_1$}\label{omp'_1}\\[0.5em]
+    &x^{n+1} = \argmin\{\norm{\vec y - \vec{Az}_2,\ \supp(\vec z) \subset S^{n+1}}\}. \tag{$OMP'_2$}\label{omp'_2}
+\end{align}
+Standarni OMP algoritam odgovara odabiru $S^0 = \emptyset$ i $\vec x^0 = \vec 0$. Sljede\'ca propozicija klju\v{c}an je alat za analizu OMP algoritma, dokaz \'cemo dati kasnije.
+\begin{prop}\label{prop:6:24}
+    Neka je $\vec A \in \C^{m \times N}$, i neka je $\vec y = \vec{Ax} + \vec e$ za neki $s$-rijedak $\vec x \in \C^N$ takav da $S = \supp(\vec x)$ te $\vec e \in \C^m$. Nadalje, neka je $(\vec x^n)$ niz definiran sa \eqref{omp'_1}, \eqref{omp'_2}. Sa $s^0$ ozna\v{c}imo kardinalitet skupa $S^0$ i neka je $s' = \card(S \backslash S^0)$. Ako je $\delta_{s+s^0+12s'} < \frac{1}{6}$, tada postoji konstana $C > 0$ koja ovisi samo o $\delta_{s+s^0+12s'}$ takva da
+    \begin{equation*}
+        \norm{\vec y - \vec{Ax}^{\bar n}}_2 \leq C \norm{\vec e}_2,\quad \quad \bar n = 12s'.
+    \end{equation*}
+\end{prop}
+Primjetimo da za $\vec e = \vec 0$ i $S^0 = \emptyset$, prethodna propozicija implicira egzaktnu rekonstrukciju putem \eqref{omp'_1} i \eqref{omp'_2} u $12s$ iteracija. 
 
+\begin{thm}
+    Pretpostavimo da je $\vec A \in \C^{m \times N}$ takva da je 
+    \begin{equation*}
+        \delta_{13s} < \frac{1}{6}. 
+    \end{equation*}
+    Tada postoji konstana $C>0$ koja ovisi samo o $\delta_{13s}$ takva da za sve $\vec x \in \C^N$ i $\vec e \in \C^m$, niz $(\vec x^n)$ definiran sa \eqref{omp'_1}, \eqref{omp'_2} za $\vec y = \vec{Ax}$ zadovljava
+    \begin{equation*}
+        \norm{\vec y - \vec{Ax}^{12s}}_2 \leq C \norm{\vec{Ax}_{\bar S} + \vec e}_2
+    \end{equation*}
+    za svaki $S \subset [N],\ \card(S) = s$. Nadalje, ako je $\delta_{26s} < 1/6$, tada postoje konstante $C,D>0$ koje ovise samo o $\delta_{26s}$ takve da za svaki $\vec x \in \C^N$ i $\vec e \in \C^m$, niz $(\vec x^n)$ zadovoljava
+    \begin{equation*}
+        \norm{\vec x - \vec x^{24s}}_p \leq \frac{C}{s^{1-1/p}} \sigma_s(\vec x)_1 + Ds^{1/p - 1/2} \norm{\vec e}_2  
+    \end{equation*}
+    za $1 \leq p \leq 2$.
+\end{thm}
+\begin{proof}
+    Uzmimo $S \subset [N]$ takav da $\card(S)=s$. Vektor $\vec y$ mo\v{z}emo zapisati kao $\vec y = \vec{Ax}_S + \vec e'$ gdje je $\vec e' := \vec{Ax}_{\bar S} + \vec e$. Primjenimo propoziciju \ref{prop:6:24} za $S^0 = \emptyset$, 
+    \begin{equation*}
+        \norm{\vec y- \vec{Ax}^{12s}}_2 \leq C \norm{\vec e'}_2 = C \norm{\vec{Ax}_{\bar S} + \vec e}_2 
+    \end{equation*}
+    za neku konstantu $C>0$ koja ovisi samo o $\delta_{12s} < 1/6$. Iz 
+    \begin{align*}
+        \norm{\vec y - \vec{Ax}^{24s}}_2 & = \norm{\vec A(\vec x_T - \vec x^{24s}) + \vec{Ax}_{\bar T} + \vec e}_2\\[0.5em]
+        & \geq \norm{\vec A(\vec x_T - \vec{x}^{24s})}_2 - \norm{\vec{Ax}_{\bar T} + \vec e}_2\\
+        & \geq \sqrt{1 - \delta_{2s}} \norm{\vec x^{24s} - \vec x_T}_2 - \norm{\vec{Ax}_{\bar T} + \vec e}_2,
+    \end{align*}
+    slijedi
+    \begin{equation*}
+        \norm{\vec x^{24s} - \vec x_T}_2 \leq \frac{C'+1}{\sqrt{1 - \delta_{26s}}} \norm{\vec{Ax}_{\bar T} + \vec e}_2. 
+    \end{equation*}
+    Lema \ref{lem:6:23} sa $\xi = 0$ daje tvrdnju.
+\end{proof}
 
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
