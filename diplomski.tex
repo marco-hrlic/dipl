@@ -76,7 +76,7 @@
 \usepackage{mathtools}
 
 \usepackage{lineno}
-%\linenumbers
+\linenumbers
 
 % Paket graphicx sluzi za manipuliranje grafikom 
 \usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
@@ -2190,6 +2190,17 @@ U dokazu koristimo tvrdnju,
         \leq & 3 \norm{(\vec x^n - \vec x_S + \vec A^* (\vec y - \vec{Ax}^n))_{S \cup S^{n+1}}}_2^2.
     \end{align*}
     Neka je $\vec y = \vec{Ax} + \vec e = \vec{Ax}_S + \vec e'$ gdje je $\vec e' := \vec {Ax}_{\bar S} + \vec e$. Iz leme \ref{lem:6:16} i leme \ref{lem:6:20} slijedi,
+    \begin{align*}
+        \norm{\vec x^{n+1} - \vec x_S}_2 & \leq \sqrt{3} \norm{(\vec x^n - \vec x_S + \vec A^* \vec A (\vec x_S - \vec x^n) + \vec A^* \vec e')_{S \cup S^{n+1}}}_2\\ 
+        & \leq \sqrt{3}\big[ \norm{ \big( (\vec I - \vec A^*\vec A)(\vec x^n - \vec x_S) \big)_{S \cup S^{n+1}}}_2 + \norm{(\vec A^*\vec e')_{S \cup S^{n+1}}}_2 \big]\\
+        & \leq \big[ \delta_{3s}\norm{\vec x^n - \vec x_S}_2 + \sqrt{1+\delta_{2s}}\norm{\vec e'}_2 \big].
+    \end{align*}
+    To je nejednost za IHT koja se tra\v{z}i u \eqref{6:30}. Od ovude lako vidimo da je $\rho = \sqrt{3}\delta_{3s} < 1$ za $\delta_{3s} < 1/\sqrt{3}$ i da $(1-\rho)\tau = \sqrt{3}\sqrt{1+\delta_{2s}} \leq \sqrt{3 + \sqrt{3}} \leq 2.18$.\\
+    \indent
+    Prije\dj imo sada na HTP algoritam. Tada imamo
+    \begin{equation*}
+        \vec x^{n+1} = \argmin \big\{ \norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S^{n+1} \big\},
+    \end{equation*}
 \end{proof}
 
 
