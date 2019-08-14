@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex diplomski"] 1565703097 "diplomski.aux" "diplomski.bbl" "diplomski" 1565704012
+["bibtex diplomski"] 1565784976 "diplomski.aux" "diplomski.bbl" "diplomski" 1565784976
   "/usr/share/texlive/texmf-dist/bibtex/bst/babelbib/babamspl.bst" 1480098433 25151 40676cbcefccd5c15b0204cf2f46b45f ""
-  "diplomski.aux" 1565703099 16275 8a707ea22a3b8417c61b0c4591d43031 "pdflatex"
+  "diplomski.aux" 1565784740 17135 1bf314786ce7a0fa29819aefe0953b09 "pdflatex"
   "diplomski.bib" 1565428393 2210 449133f9b51008ecf91cdbd135c0cf4b ""
   (generated)
   "diplomski.blg"
   "diplomski.bbl"
-["pdflatex"] 1565703098 "diplomski.tex" "diplomski.pdf" "diplomski" 1565704012
+["pdflatex"] 1565784976 "diplomski.tex" "diplomski.pdf" "diplomski" 1565784976
   "/home/marco/.texlive2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1563912899 2395959 73148c3950a4f1e899c0f190dd16db9a ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1480098668 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1480098668 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -248,15 +248,15 @@
   "/usr/share/texlive/texmf-dist/tex/plain/ifetex/ifetex.tex" 1522621847 1178 13842cd1b714a921af7920503db5625a ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1553009075 33523 3a2c32bd77384f8f4508d61b4be83582 ""
   "croatian.bdf" 1563904501 8722 9fd99406a46c5bd3d4507acd144c2e3c ""
-  "diplomski.aux" 1565703099 16275 8a707ea22a3b8417c61b0c4591d43031 "pdflatex"
-  "diplomski.bbl" 1565703097 2557 3aea386888d25d632844046986b79f7d "bibtex diplomski"
-  "diplomski.out" 1565703099 1736 8957559f0027c49a9e754df0363f4309 "pdflatex"
+  "diplomski.aux" 1565784740 17135 1bf314786ce7a0fa29819aefe0953b09 "pdflatex"
+  "diplomski.bbl" 1565784976 2557 3aea386888d25d632844046986b79f7d "bibtex diplomski"
+  "diplomski.out" 1565784740 1736 b49079bd5090772267964ac16a96e158 "pdflatex"
   "diplomski.sty" 1564590479 4500 fa9bc13c925d53ced749f9516c1fb25d ""
-  "diplomski.tex" 1565704012 178871 5b8b08f9d7bc959dffd4a0e3303e1847 ""
-  "diplomski.toc" 1565703099 2721 91184f005dd1ae383f3d945a8676f706 "pdflatex"
+  "diplomski.tex" 1565784975 192637 8b84798e368916ad21d21a797ac3cecb ""
+  "diplomski.toc" 1565784740 2783 60dddf9bbb83578f8d58b614a1ccd05d "pdflatex"
   (generated)
-  "diplomski.pdf"
-  "diplomski.log"
-  "diplomski.toc"
   "diplomski.aux"
+  "diplomski.log"
   "diplomski.out"
+  "diplomski.toc"
+  "diplomski.pdf"

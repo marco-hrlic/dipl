@@ -30,7 +30,8 @@
 \contentsline {section}{\numberline {5.3}Analiza grani\v {c}nih metoda}{65}{section.5.3}
 \contentsline {section}{\numberline {5.4}Analiza greedy algoritama}{70}{section.5.4}
 \contentsline {subsection}{OMP algoritam}{71}{section*.39}
-\contentsline {chapter}{Bibliografija}{73}{chapter*.44}
+\contentsline {subsection}{CoSaMP algoritam}{77}{section*.44}
+\contentsline {chapter}{Bibliografija}{79}{chapter*.51}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}
 \babel@toc {croatian}{}

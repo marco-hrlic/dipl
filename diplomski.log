@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  13 AUG 2019 15:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  14 AUG 2019 14:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2237,7 +2237,119 @@ Overfull \hbox (18.7907pt too wide) in paragraph at lines 2235--2237
 L/lmm/m/it/12 ^^N[]=[] <
  []
 
-[70] [71] (./diplomski.bbl [72]
+[70] [71] [72]
+! Missing } inserted.
+<inserted text> 
+                }
+l.2353     \end{align*}
+                       
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+! Missing { inserted.
+<inserted text> 
+                {
+l.2353     \end{align*}
+                       
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.2353     \end{align*}
+                       
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+! Missing \endgroup inserted.
+<inserted text> 
+                \endgroup 
+l.2353     \end{align*}
+                       
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2353     \end{align*}
+                       
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2353     \end{align*}
+                       
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: Something's wrong--perhaps a missing \item.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2353     \end{align*}
+                       
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+! Misplaced \omit.
+<recently read> \omit 
+                      
+l.2353     \end{align*}
+                       
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+! Missing { inserted.
+<inserted text> 
+                {
+l.2353     \end{align*}
+                       
+I've put in what seems to be necessary to fix
+the current column of the current alignment.
+Try to go on, since this might almost work.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [73]
+[74] [75]
+! Undefined control sequence.
+<argument> ...rline {S^0}})_{(S \backslash S^0)\T 
+                                                  ^{L-1}}
+l.2477 ...ine{S^0}})_{(S \backslash S^0)\T^{L-1}}}
+                                                  _2.
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [76]
+[77] (./diplomski.bbl [78]
 babelbib: Using the BibTeX style's default font for `name'.
 babelbib: Using the BibTeX style's default font for `lastname'.
 babelbib: Using the BibTeX style's default font for `title'.
@@ -2252,41 +2364,41 @@ babelbib: Using the BibTeX style's default font for `numeral'.
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 39.
 (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [73
+)) [79
 
-] [74
+] [80
 
-] [75] [76
+] [81] [82
 
 ]
-[77] [78
+[83] [84
 
 ]
 
 Class memoir Warning: The material used in the headers is too large
 (14.89201pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 2369.
+(in both cases you will find help in the memoir manual). on input line 2542.
 
-[79]
+[85]
 \tf@toc=\write8
 \openout8 = `diplomski.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2369.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2369.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2542.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2542.
  (./diplomski.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2369.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2369.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2542.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2542.
 
 Package rerunfilecheck Info: File `diplomski.out' has not changed.
-(rerunfilecheck)             Checksum: 8957559F0027C49A9E754DF0363F4309;1736.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2369.
+(rerunfilecheck)             Checksum: B49079BD5090772267964AC16A96E158;1736.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2542.
  ) 
 Here is how much of TeX's memory you used:
- 37821 strings out of 494021
- 720203 string characters out of 6162400
- 860237 words of memory out of 5000000
- 40639 multiletter control sequences out of 15000+600000
+ 37852 strings out of 494021
+ 720491 string characters out of 6162400
+ 860769 words of memory out of 5000000
+ 40651 multiletter control sequences out of 15000+600000
  657272 words of font info for 118 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  67i,24n,101p,1313b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2311,10 +2423,10 @@ m/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
 ive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on diplomski.pdf (84 pages, 574732 bytes).
+Output written on diplomski.pdf (90 pages, 595648 bytes).
 PDF statistics:
- 1155 PDF objects out of 1200 (max. 8388607)
- 1014 compressed objects within 11 object streams
- 338 named destinations out of 1000 (max. 500000)
+ 1211 PDF objects out of 1440 (max. 8388607)
+ 1064 compressed objects within 11 object streams
+ 357 named destinations out of 1000 (max. 500000)
  373 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -692,7 +692,7 @@ Upoznati \'cemo se sa dva iterativna greedy algoritma koji se \v{c}esto koriste 
 Numeri\v{c}ki najskuplja operacija ovog algoritma je \eqref{omp_2}. Situacije se mo\v{z}e popraviti kori\v{s}tenjem $QR$ dekompozicije matrice $\vec{A}_{S_n}$. Tada se mogu iskoristiti efikasni algoritmi za a\v{z}uriranje $QR$ dekompozicije kada se u matricu doda novi stupac. Nadalje, za dodatna ubrzanja mogu se iskoristiti i algoritmi za brzo matrica-vektor mno\v{z}enje bazirani na brzoj Fourierovoj transformaciji (vidi TODO).
 \newline\indent
 Indeks $j_{n+1}$ bira se tako da se reducira $\ell_2$-norma reziduala $\vec{y} - \vec{Ax}^n$ \v{s}to je vi\v{s}e mogu\'ce. Sljede\'ca lema opravdava za\v{s}to je smisleno $j$ odabrati takav da maksimizira vrijednost $|{(\vec{A}^*(\vec{y}-\vec A \vec x^n))_j}|$.
-\begin{lem}
+\begin{lem}\label{lem:3:3}
     Neka je $\vec A \in \C^{m \times N}$ sa $\ell_2$-normaliziranim stupcima. Ako su $S \subset [N]$, $\vec v \in \C^N$ sa nosa\v{c}em na $S$, $j \in [N]$, te ako vrijedi
     \begin{equation*}
         \vec w := \argmin_{\vec z \in \C^N} \{ \norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subset S \cup \{j\} \},
@@ -2341,6 +2341,179 @@ Primjetimo da za $\vec e = \vec 0$ i $S^0 = \emptyset$, prethodna propozicija im
     \end{equation*}
     Lema \ref{lem:6:23} sa $\xi = 0$ daje tvrdnju.
 \end{proof}
+
+Za dokaz propozicije \ref{prop:6:24} trebati \'ce nam sljede\'ca lema.
+
+\begin{lem}\label{lem:6:26}
+    Neka je $(\vec x^n)$ niz definiran sa \eqref{omp'_1}, \eqref{omp'_2} sa $\vec y = \vec{Ax} + \vec e$ za neki $s$-rijedak vektor $\vec x \in \C^N$ i za neki $\vec e \in \C^m$. Tada, za $n \geq 0$, $T \subset [N]$ koji nije sadr\v{z}an u $S^n$ i $\vec z  \in \C^N$s nosa\v{c}em na T,
+    \begin{align*}
+        \norm{\vec y &- \vec{Ax}^{n+1}}_2^2\\
+        &\leq \norm{\vec y - \vec{Ax}^n}_2^2 - \frac{\norm{\vec A(\vec z - \vec x^n)}_2^2}{\norm{\vec z_{T \backslash S^n}}^2_1} \max \{0, \norm{\vec y - \vec{Ax}^n}_2^2 - \norm{\vec y - \vec{Az}}_2^2 \}\\
+        &\leq \norm{\vec y - \vec{Ax}^n}_2^2 - \frac{1 - \delta}{\card(T \backslash S^n)} \max \{0, \norm{\vec y - \vec{Ax}^n}_2^2 - \norm{\vec y - \vec{Az}}_2^2 \},
+    \end{align*}
+    gdje je $\delta := \delta_{\card(T \cup S^n)}$.
+\end{lem}
+
+\begin{proof}
+    Druga nejednost slijedi iz prve koriste\'ci
+    \begin{align*}
+        \norm{\vec A(\vec x^n - \vec z)}_2^2 &\geq (1-\delta)\norm{\vec x^n - \vec z}_2^2 \geq (1-\delta)\norm{(\vec x^n - \vec x)_{T \backslash S^n}}_2^2,\\[0.5em]
+        \norm{\vec z_{T \backslash S^n}}_1^2 &\leq \card(T \backslash S^n) \norm{\vec z_{T \backslash S^n}}_2^2 = \card(T \backslash S^n) \norm{(\vec x^n - \vec z)_{T \backslash S^n}}_2^2.
+    \end{align*}
+    Iz leme \ref{lem:3:3} vidimo da se $\ell_2$ norma reziduala smanjuje za barem $|(\vec A^*(\vec y - \vec {Ax}^n))_{j^{n+1}}|^2$, gdje smo $j^{n+1}$ izabrali kao indeks najve\'ce komponente vektora $\vec A^*(\vec y - \vec{Ax}^n)$. Stoga prva nejednakost slijedi iz
+    \begin{equation}\label{6:41}
+        |(\vec A^*(\vec y - \vec{Ax}^n))_{j^{n+1}}|^2 \geq \frac{\norm{\vec A (\vec z - \vec x^n)}_2^2}{\norm{\vec z_{T \backslash S^n}}_1^2} (\norm{\vec y - \vec{Ax}^n}_2^2 - \norm{\vec y - \vec{Az}}_2^2)
+    \end{equation}
+    za $\norm{\vec y - \vec{Ax}^n}_2^2 \geq \norm{\vec y  - \vec{Az}}_2^2$. Iz leme \ref{lem:3:4} imamo da je $(\vec A^*(\vec y - \vec{Ax}^n))_{S^n} = \vec 0$, stoga
+    \begin{align}
+        \Re \langle \vec A(\vec z &- \vec x^n),  \vec y - \vec{Ax}^n \rangle \nonumber \\[0.5em]
+        & = \Re \langle \vec z - \vec x^n, \vec A^*(\vec y - \vec{Ax}^n)\rangle = \Re \langle \vec z - \vec x^n, (\vec A^*(\vec y - \vec{Ax}^n))_{\overline{S^n}}\rangle \nonumber \\[0.5em]
+        & = \Re \langle (\vec z - \vec x^n)_{T \backslash S^n} , (\vec A^*(\vec y - \vec{Ax}^n))_{T \backslash S^n}\rangle \nonumber \\[0.5em]
+        & \leq \norm{(\vec z - \vec x^n)_{T \backslash S^n}}_1 \norm{\vec A^*(\vec y - \vec {Ax}^n)}_{infty} \nonumber \\[0.5em]
+        & = \norm{\vec z_{T \backslash S^n}}_1 |(\vec A^*(\vec y - \vec {Ax}^n))_{j^{n+1}}|. \label{6:42}
+    \end{align}
+    Nadalje, 
+    \begin{align}
+        2 \Re \langle \vec A(\vec z &- \vec x^n), \vec y - \vec{Ax}^n \rangle \nonumber \\[0.5em]
+        & = \norm{\vec A(\vec z - \vec x^n)}_2^2 + \norm{\vec y - \vec{Ax}^n}_2^2 - \norm{\vec A(\vec z - \vec x^n) - (\vec y - \vec{Ax}^n)}_2^2 \nonumber \\[0.5em]
+        & = \norm{\vec A(\vec z - \vec x^n)}_2^2 + (\norm{\vec y - \vec{Ax}^n}_2^2 - \norm{\vec y - \vec{Az}}_2^2) \nonumber \\[0.5em]
+        & \geq \norm{\vec A (\vec z - \vec x^n)}_2 \sqrt{\norm{\vec y - \vec{Ax}^n}_2^2 - \norm{\vec y - \vec{Az}}_2^2}, \label{6:43}
+    \end{align}
+    gdje zadnja nejednakost slijedi iz aritmeti\v{c}ko geometrijske nejednakosti. Kvadriramo \eqref{6:42}, \eqref{6:43} te komobiniranjem dobivamo
+    \begin{equation*}
+        \norm{\vec A(\vec z - \vec x^n)}_2^2 (\norm{\vec y - \vec {Ax}^n}_2^2 - \norm{\vec y - \vec{Az}}_2^2) \leq \norm{\vec z_{T \backslash S^n}}_1^2 |(\vec A^*(\vec y - \vec {Ax}^n))_{j^{n+1}}|^2.
+    \end{equation*}
+\end{proof}
+
+\begin{proof}[Dokaz (Propozicija \ref{prop:6:24})]
+    Tvrdnju dokazujemo indukcijom po $\card(S \backslash S^0)$. Ako je taj broj nula, tj. $S \subset S^0$ onda prema definicija od $\vec x^0$ imamo
+    \begin{equation*}
+        \norm{\vec y - \vec{Ax}^0}_2 \leq \norm{\vec y - \vec{Ax}}_2 = \norm{\vec e}_2, 
+    \end{equation*}
+    pa tvrdnja vrijedi za $C=1$. Pretpostavimo da tvrdnja vrijedi za sve $S$ i $S^0$ takve da $\card(S \backslash S^0) \leq s'-1,\ s' \geq 1$. \v{Z}elimo pokazati da tvrdnja vrijedi za $s' = \card(S \backslash S^0)$. Neka je $T^0 = \emptyset$ i 
+    \begin{equation*}
+        T^l = \{\text{indeksi $ 2^{l-1}$ apsolutno najve\'cih komponeneti vektora }\vec x_{\overline{S^0}}\}. 
+    \end{equation*}
+    Primjetimo da su ti skupovi podskupovi od $S \backslash S^0$. Nadalje, definirajmo
+    \begin{equation*}
+        \tilde{\vec x}^l := \vec x_{\overline{S^0 \cup T^l}}, \quad l \geq 0.
+    \end{equation*}
+    Primjetimo da posljedni $T^l$, tj. $T^{\lceil \log_2(s')\rceil + 1}$ jednak cjelom skupu $S \backslash S^0$, pa stoga $\tilde{\vec x}^l = \vec 0$. Neka je $\mu > 0$ konstanta, koju \'cemo kasnije odabrati. Po\v{s}to je $\norm{\tilde{\vec x}^{l-1}}_2^2 \geq \mu \norm{\tilde{\vec x}^l} = 0$ za zadnji indeks, mo\v{z}emo izabrati $1 \leq L \leq \lceil \log_2(s')\rceil + 1$ takav da
+    \begin{equation*}
+        \norm{\tilde{\vec x}^{L-1}}_2^2 \geq \mu \norm{\tilde{\vec x}^L}_2^2. 
+    \end{equation*}
+    To implicira (mogu\'ce prazan) niz nejednakosti
+    \begin{equation*}
+        \norm{\tilde{\vec x}^0}_2^2 < \mu \norm{\tilde{\vec x}^1}_2^2, \dots \norm{\tilde{\vec x}^{L-2}}_2^2 < \mu \norm{\tilde{\vec x}^{L-1}}_2^2.
+    \end{equation*}
+    Za svaki $l \in [L]$, primjenimo lemu \ref{lem:6:26} na vektor $\vec z = \vec x - \tilde{\vec x}^l$, koji ima nosa\v{c} $S^0 \cup T^l$. Uzimaju\'ci u obzir da $(S^0 \cup T^l) \cup S^n \subset S \cup ^n$ i da $(S^0 \cup T^l) \backslash S^n \subset (S^0 \cup T^l) \backslash S^0 = T^l$, te oduzimaju\'ci $\norm{\vec y - \vec{Az}}_2^2 = \norm{\vec A \tilde{\vec x}^l + \vec e}_2^2$ dobivamo
+    \begin{align*}
+        \max \{0,&\ \norm{\vec y - \vec{Ax}^{n+1}}_2^2 - \norm{\vec{A}\tilde{\vec x}^l + \vec e}_2^2 \}\\[0.5em]
+        & \leq \bigg(1- \frac{1-\delta_{s+n}}{\card(T^l)} \bigg) \max \{0,\ \norm{\vec y - \vec{Ax}^n} - \norm{\vec{A}\tilde{\vec x}^l + \vec e}_2^2\}\\[0.5em]
+        & \leq \exp \bigg( -\frac{1-\delta_{s+n}}{\card(T^l)} \bigg) \max \{0,\ \norm{\vec y - \vec{Ax}^n} - \norm{\vec{A}\tilde{\vec x}^l + \vec e}_2^2\}.
+    \end{align*}
+    Za svaki $K \geq 0$ i za $n,k \geq 0$ takve da $n+k \leq K$, imamo
+    \begin{align*}
+        \max \{ 0,&\ \norm{\vec y - \vec{Ax}^{n+k}}_2^2 - \norm{\vec A \tilde{\vec x}^l + \vec e}\}\\[0.5em]
+        & \leq \exp \bigg( - \frac{k(1-\delta_{s+K})}{\card(T^l)} \bigg) \max \{ 0,\ \norm{\vec y - \vec{Ax}^{n}}_2^2 - \norm{\vec A \tilde{\vec x}^l + \vec e}\}.
+    \end{align*}
+    Separiraju\'ci slu\v{c}ajeve u maksimumu na desnoj strani lako vidimo
+    \begin{equation*}
+        \norm{\vec y - \vec{Ax}^{n+k}}_2^2 \leq \exp \bigg( -\frac{k(1-\delta_{s+K})}{\card(T^l)} \bigg) \norm{\vec y - \vec{Ax}^n}_2^2 + \norm{\vec A \tilde{\vec x}^l + \vec e}_2^2.
+    \end{equation*}
+    Za $\kappa \geq 0$, koji \'cemo kasnije odabrati, uzastopnom primjenom prethodne nejednakosti za
+    \begin{equation*}
+        \kappa_1 := \kappa \card(T^1),\dots,\ \kappa_L := \kappa \card(T^l),\ K:=k_1+ \cdots k_L,\ \nu := \exp(\kappa(1-\delta_{s+K}))
+    \end{equation*}
+    slijedi
+    \begin{align*}
+        \norm{\vec y - \vec{Ax}^{k_1}}_2^2 & \leq \frac{1}{\nu} \norm{\vec y - \vec {Ax}^{0}}_2^2 + \norm{\vec{A}\tilde{\vec x}^{1} + \vec e}_2^2,\\[0.5em]
+        \norm{\vec y - \vec{Ax}^{k_1+k_2}}_2^2 & \leq \frac{1}{\nu} \norm{\vec y - \vec {Ax}^{k_1}}_2^2 + \norm{\vec{A}\tilde{\vec x}^{2} + \vec e}_2^2,\\[0.5em]
+        & \vdots\\[0.5em]
+        \norm{\vec y - \vec{Ax}^{k_1+\cdots+k_L}}_2^2 & \leq \frac{1}{\nu} \norm{\vec y - \vec {Ax}^{k_1+\cdots+k_{L-1}}}_2^2 + \norm{\vec{A}\tilde{\vec x}^{L} + \vec e}_2^2.
+    \end{align*}
+    Kombiniranjem tih nejednakosti dobivamo
+    \begin{equation*}
+        \norm{\vec y - \vec{Ax}^K}_2^2 \leq \frac{\vec y - \vec{Ax}^0}{\nu^L}+\frac{\norm{\vec A \tilde{\vec x}^{1}+ \vec e}}{\nu^{L-1}}+\cdots+\frac{\norm{\vec A \tilde{\vec x}^{L-1} + \vec e}}{\nu}+ \norm{\vec A \tilde{\vec x}^l + \vec e}_2^2.
+    \end{equation*}
+    \newpage
+    \noindent
+    Uva\v{z}imo da $\vec x - \tilde{\vec x}^0$ ima nosa\v{c} u $S^0 \cup T^0 = S^0$, definicija \eqref{6:40} implicira da je $\norm{\vec y - \vec {Ax}^0}_2^2 \leq \norm{\vec y - \vec A(\vec x - \tilde{\vec x}^0)}_2^2 = \norm{\vec A \tilde{\vec x}^0 + \vec e}_2^2$. Stoga,
+    \begin{equation*}
+        \norm{\vec y - \vec {Ax}^K}_2^2 \leq \sum_{l=0}^L \frac{\norm{\vec A \tilde{\vec x}^l + \vec e}_2^2}{\nu^{L-l}} \leq \sum_{l=0}^L \frac{2(\norm{\vec A \tilde{\vec x}^l}_2^2 - \norm{\vec e}_2^2)}{\nu^{L-l}}  
+    \end{equation*}
+    Primjetimo da za $l \leq L - 1$ i za $l = L$ vrijedi
+    \begin{equation*}
+        \norm{\vec A \tilde{\vec x}^l}_2^2 \leq (1+\delta_s)\norm{\tilde{\vec x}^l}_2^2 \leq (1+\delta_s)\mu^{L-1-l} \norm{\tilde{\vec x}^{L-1}}_2^2.
+    \end{equation*}
+    Zbog toga, imamo
+    \begin{align*}
+        \norm{\vec y - \vec{Ax}^K}_2^2 & \leq \frac{2(1+\delta_s)\norm{\tilde{\vec x}^{L-1}}}{\mu}\sum_{l=0}^L \bigg( \frac{\mu}{\nu} \bigg)^{L-l}+2 \norm{\vec e}_2^2 \sum_{l=0}^L \frac{1}{\nu^{L-l}}\\
+        &\leq \frac{2(1+\delta_s)\norm{\tilde{\vec x}^{L-1}}_2^2}{\mu(1-\mu/\nu)}+ \frac{2\norm{\vec e}_2^2}{1-\nu}. 
+    \end{align*}
+    Uzmimo $\mu/\nu/2$ tako da $\mu(1-\mu/\nu)$ poprima maksimum $\nu/4$. Za $\alpha := \sqrt{8(1+\delta_s)/\nu}$ i $\beta := \sqrt{2/(1-\nu)}$,
+    \begin{equation}\label{6:44}
+        \norm{\vec y - \vec{Ax}^K}_2 \leq \alpha \norm{\tilde{\vec x}^{L-1}}_2 + \beta \norm{\vec e}_2.
+    \end{equation}
+    Nadalje, za $\gamma := \sqrt{1 - \delta_{s + s^0 + K}}$ imamo
+    \begin{align*}
+    \norm{\vec y - \vec{Ax}^K}_2 &= \norm{\vec A(\vec x - \vec x^K) + \vec e}_2 \geq \norm{\vec A(\vec x - \vec x^K)}_2 - \norm{\vec e}_2\\[0.5em]
+        & \geq \gamma \norm{\vec x -  \vec x^K}_2 - \norm{\vec e}_2 \geq \gamma \norm{\vec x_{\overline{S^K}}} - \norm{\vec e}_2.
+    \end{align*}
+    Zaklju\v{c}ujemo
+    \begin{equation}\label{6:45}
+        \norm{\vec x_{\overline{S^K}}}_2 \leq \frac{\alpha}{\gamma} \norm{\tilde{\vec x}^{L-1}}_2 + \frac{\beta + 1}{\gamma} \norm{\vec e}_2.   
+    \end{equation}
+    Odaberimo sada $\kappa = 3$ tako da vrijedi
+    \begin{equation*}
+        \frac{\alpha}{\gamma} = \sqrt{\frac{8(1+\delta_s)}{(1-\delta_{s+s^0+K}) \exp(\kappa(1-\delta_{s+K}))}}  \leq 0.92 < 1,
+    \end{equation*}
+    po\v{s}to $\delta_s \leq \delta_{s+K} \leq \delta_{s+s^0+K} \leq \delta_{s+s^0+12s'} < 1/6$. Tu smo iskoristili \v{c}injenicu da je $L \leq \lceil \log_2(s') \rceil + 1$ da bi dobili
+    \begin{equation*}
+        K = \kappa(1+\cdots+2^{L-2} + \card(T^L)) < \kappa(2^{L-1}+s')\leq 3 \kappa s' = 9 s'.
+    \end{equation*}
+    Stoga u slu\v{c}aju da $((\beta+1)/\gamma)\norm{\vec e}_2 < (1- \alpha/\gamma) \norm{\tilde{\vec x}^{L-1}}_2$, iz \eqref{6:45} slijedi
+    \begin{equation*}
+        \norm{\vec x_{\overline{S^K}}}_2 < \norm{\tilde{\vec x}^{L-1}}_2 \quad \text{tj.} \quad \norm{(\vec x_{\overline{S^0}})_{S \backslash S^K}}_2 < \norm{(\vec x_{\overline{S^0}})_{(S \backslash S^0)\T^{L-1}}}_2.
+    \end{equation*}
+    Po\v{s}to $T^{L-1}$ sadr\v{z}i indekse $2^{L-2}$ apsolutno najve\'cih komponeneti od $\vec x_{\overline{S^0}}$, imamo
+    \begin{equation*}
+    \card(S \backslash S^k)< \card((S \backslash S^0) \backslash T^{L-1}) = s' - 2^{L-2}.
+    \end{equation*}
+    Primjetimo da izvrsavanje algoritma nakon $K$ iteracija odgovara zapo\v{c}injanju algoritma gdje $S^0$ zamjenimo sa $S^K$. Imamo da je $K \leq \kappa (1+\cdots+2^{L-2}+2^{L-1}) < 3 \cdot 2^L$, pa vrijedi
+    \begin{equation*}
+        s + \card(S^K)+12 \card(S \backslash S^K) \leq s + s^0 + K + 12(s' - 2^{L-2}) \leq s+ s^0 + 12s'
+    \end{equation*}
+    a od tuda slijedi $\card(S \backslash S^K) < s'$. Sada primjenimo pretpostavku indukcije
+    \begin{equation*}
+        \norm{\vec y - \vec{Ax}^{K+n}}_2 \leq C \norm{\vec e}_2, \quad \text{za } n=12\card(S \backslash S^K).
+    \end{equation*}
+    Dakle, broj potrebnih iteracija zadovoljava $K+n \leq 12s'$.\\
+    U slu\v{c}aju da je $((\beta + 1)/\gamma)\norm{\vec e}_2 \geq (1-\alpha/\gamma)\norm{\tilde{\vec x}^{L-1}}_2$, \eqref{6:44} daje
+    \begin{equation*}
+        \norm{\vec y - \vec{Ax}^K}_2 \leq \frac{\alpha(\beta+1)}{\gamma - \alpha} \norm{\vec e}_2 + \beta \norm{\vec e}_2 =: C \norm{\vec e}_2,
+    \end{equation*}
+    gdje konstanta $C \geq 1$ ovisi samo o $\delta_{s+s^0+12s'}$. Pokazali smo da tvrdnja vrijedi za $s' = \card(S \backslash S^0)$.
+\end{proof}
+
+\subsection[CoSaMP algoritam][CoSaMP algoritam]{CoSaMP algoritam}
+Prisjetimo se, CoSaMP zapo\v{c}inje $s$-rijetkim vektorom $\vec x^0 \in \C^N$ (uglavnom $\vec x^0 = \vec 0$) i generira niz $(\vec x^n)$ induktivno definiran sa
+\begin{align}
+    U^{n+1} & = \supp(\vec x^n) \cup L_{2s}(\vec A^*(\vec y - \vec {Ax}^n)),\tag{$CoSaMP_1$}\label{cosamp_1'}\\[0.5em]
+    \vec u^{n+1} &= \argmin \{\norm{\vec y - \vec {Az}}_2,\ \supp(\vec z) \subset U^{n+1}\},\tag{$CoSaMP_2$}\label{cosamp_2'}\\[0.5em]
+    \vec x^{n+1} &= H_s(\vec u ^{n+1}).\tag{$CoSaMP_3$}\label{cosamp_3'}
+\end{align}
+\begin{thm}
+    Neka je $\vec A \in \C^{m \times N}$ takva da
+    \begin{equation}\label{6:46}
+        \delta_{4s} < \frac{\sqrt{\sqrt{11/3}-1}}{2} \approx 0.4782.  
+    \end{equation}
+    Tada, za $\vec x \in \C^N,\ \vec e \in \C^m$ i $S \subset [N],\ \card(S)=s$, niz $(\vec x^n)$ definiran sa \eqref{cosamp_1'}, \eqref{cosamp_2'}, \eqref{cosamp_3'} za $\vec y = \vec{Ax} + \vec e$ zadovoljava
+    \begin{equation}\label{6:47}
+        \norm{\vec x^n - \vec x_S}_2 \leq \rho^n \norm{\vec x^0 - \vec x_S}_2 + \tau \norm{\vec{Ax}_{\bar S} + \vec e}_2,
+    \end{equation}
+    gdje $0<\rho<1$ i $\tau > 0$ ovise samo o $\delta_{4s}$.
+\end{thm}
 
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
