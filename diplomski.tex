@@ -2240,7 +2240,23 @@ Uzimanjem limesa kada $n \rightarrow \infty$ u \eqref{6:29} imamo da $\norm{\vec
     \norm{\vec x - \vec x^{\sharp}}_2 \leq \sigma_s(\vec x)_2 + \tau \norm{\vec{Ax}_{\bar S} + \vec e}_2.
 \end{equation}
 
-Sljede\'ca lema biti \'ce od koristi kasnije. Za dokaz vidi TODO
+\noindent
+Naredni teorem daje ocjene aproksimacija,
+\begin{thm}\label{tm:6:21}
+    Neka je $\vec A \in \C^{m \times N}$ takva da $\delta_{3s} < 1/\sqrt{3}$. Tada za svaki $\vec x \in \C^N$ i $\vec e \in \C^m$, niz $(\vec x^n)$ definiran sa \eqref{iht} ili sa \eqref{htp_1}, \eqref{htp_2} sa $\vec y = \vec{Ax} + \vec e,\ \vec x^0 = \vec 0$ i $2s$ umjesto $s$, za svaki $n \geq 0$ zadovoljava
+    \begin{align*}
+        & \norm{\vec x - \vec x^n}_1 \leq C \sigma_s(\vec x)_1 + D \sqrt{s} \norm{\vec e}_2 + 2 \rho^n \sqrt{s} \norm{\vec x}_2,\\[0.5em]
+        & \norm{\vec x - \vec x^n}_2 \leq \frac{C}{\sqrt{s}}  \sigma_s(\vec x)_1 + D \norm{\vec e}_2 + 2 \rho^n \norm{\vec x}_2,
+    \end{align*}
+    gdje konstante $C, D > 0$ i $0<\rho < 1$ ovise samo o $\delta_{6s}$. Posebno, ako je $\vec x^{\sharp} \in \C^N$ gomili\v{s}te niza $(\vec x^n)$, onda
+    \begin{align*}
+        & \norm{\vec x - \vec x^{\sharp}}_1 \leq C \sigma_s(\vec x)_1 + D \sqrt{s} \norm{\vec e}_2, \\[0.5em]
+        & \norm{\vec x - \vec x^{\sharp}}_2 \leq \frac{C}{\sqrt{s}}  \sigma_s(\vec x)_1 + D \norm{\vec e}_2 .
+    \end{align*}
+\end{thm}
+
+\noindent
+Za dokaz potrebna nam je lema,
 \begin{lem}\label{lem:6:23}
     Neka je $\vec A \in \C^{m \times N}$ takva da $\delta_s < 1$. Za $\kappa, \tau > 0, \xi \geq 0$ i $\vec e \in \C^m$, pretpostavimo da vektori $\vec x, \vec x' \in \C^N$ zadovoljavaju $\norm{\vec x'}_0 \leq \kappa s$ i 
     \begin{equation*}
@@ -2252,6 +2268,50 @@ Sljede\'ca lema biti \'ce od koristi kasnije. Za dokaz vidi TODO
     \end{equation}
     gdje konstante $c_{\kappa}, d_{\kappa}$ ovise samo o $\kappa$.
 \end{lem}
+
+\begin{proof}
+    Iz \v{c}injenice da je vektor $\vec x_T - \vec x'$ $(2+\kappa)s$-rijedak slijedi,
+    \begin{align}
+        \norm{\vec x - \vec x'}_p & \leq \norm{\vec x_{\bar T}}_p + \norm{\vec x_T - \vec x'}_p \leq \norm{\vec x_{\bar T}}_p + ((2+ \kappa)s)^{1/p-1/2} \norm{\vec x_T - \vec x'}_2 \nonumber  \\[0.5em]
+        & \leq \norm{\vec x_{\bar T}}_p + \sqrt{2+ \kappa}s^{1/p - 1/2}(\tau \norm{\vec{Ax}_{\bar T} + \vec e}_2 + \xi). \label{6:36}
+    \end{align}
+    Neka je $S \subset T$ skup indeksa $s$ najve\'cih komponenti vektora $\vec x$. Prema propoziciji \ref{osnovna_ocjena_lp_greske}
+    \begin{equation}\label{6:37}
+        \norm{\vec x_{\bar T}}_p = \sigma_s(\vec x_{\bar S})_p \leq \frac{1}{s^{1-1/p}} \norm{\vec x_{\bar S}}_1 = \frac{1}{s^{1 - 1/p}} \sigma_s(\vec x)_1.  
+    \end{equation}
+    Particionirajmo $\bar T$ kao $\bar T = S_2 \cup S_3 \cup \dots$, gdje
+    \begin{align*}
+        S_2:& \text{ skup indeksa $s$ apsolutno najve\'cih komponenti od $\vec x$ u $\bar T$},\\[0.5em]
+        S_3:& \text{ skup indeksa $s$ apsolutno najve\'cih komponenti od $\vec x$ u $\overline{T \cup S_2}$},\\[0.5em]
+        \vdots
+    \end{align*}
+    Dakle,
+    \begin{align*}
+        \norm{\vec{Ax}_{\bar T} + \vec e}_2 & \leq \sum_{k \geq 2} \norm{\vec{Ax}_{S_k}}_2 + \norm{\vec e}_2 \leq \sum_{k \geq 2} \sqrt{1+\delta_s} \norm{\vec x_{S_k}}_2 + \norm{\vec e}_2 \\[0.5em]
+        & \leq \sqrt{2} \sum_{k \geq 2} \norm{\vec x_{S_k}}_2 + \norm{\vec e}_2.
+    \end{align*}
+    Iz leme \ref{lem:6:10} imamo
+    \begin{equation*}
+        \sum_{k \geq 2} \norm{\vec x_{S_k}}_2 \leq \frac{1}{s^{1/2}} \norm{\vec x_{\bar S}}_1 = \frac{1}{s^{1/2}} \sigma_s(\vec x)_1.  
+    \end{equation*}
+    Stoga,
+    \begin{equation}\label{6:38}
+        \norm{\vec{Ax}_{\bar T} + \vec e}_2 \leq \frac{\sqrt{2}}{s^{1/2}} \sigma_s(\vec x)_1 + \norm{\vec e}_2. 
+    \end{equation}
+    Kombiranjem \eqref{6:36}, \eqref{6:37} i \eqref{6:38} dobivamo \eqref{6:35} sa $c_{\kappa} = \sqrt{4+2 \kappa}$ i $d_{\kappa} = \sqrt{2 + \kappa}$.
+\end{proof}
+
+\begin{proof}[Dokaz (Teorem \ref{tm:6:21}).]
+    Za dani $\vec x \in C^N$ i $\vec e \in \C^m$, pod pretpostavkama teorema, teorem \re{tm:6:18} implicira da postoje $0<\rho<1$ i $\tau > 0$ koji ovise samo o $\delta_{6s}$, takvi da, za svaki $n \geq 0$ vrijedi 
+    \begin{equation*}
+        \norm{\vec x_T - \vec x^n}_2 \leq \tau \norm{\vec{Ax}_{\bar T} + \vec e}_2 + \rho^n \norm{\vec x_T}_2,
+    \end{equation*}
+    gdje je $T$ skup indeksa $2s$ apsolutno najve\'cih komponenti od $\vec x$. Prema lemi \ref{lem:6:23} sa $\vec x' = \vec x^n$ i $\xi = \rho^n \norm{\vec x_T}_2$ imamo da za svaki $1 \leq p \leq 2$ vrijedi,
+    \begin{equation*}
+        \norm{\vec x - \vec x^n}_p \leq \frac{C}{s^{1-1/p}} \sigma_s(\vec x)_1 + D s^{1/p - 1/2} \norm{\vec e}_2 + 2 \rho^n s^{1/p - 1/2} \norm{\vec x}_2, 
+    \end{equation*}
+    gdje $C,D > 0$ ovise samo o $\tau$, pa stoga samo o $\delta_{6s}$. Tra\v{z}ene ocjene su poseban slu\v{c}aj za $p=1$ i $p=2$.
+\end{proof}
 
 \section[Analiza greedy algoritama][Analiza greedy algoritama]{Analiza greedy algoritama}
 U ovom djelu rada pokazati \'cemo uz koje uvjete OMP i CoSaMP algoritmi uspje\v{s}no rekonstruiraju rijetke vektore. No, kod ove klase algoritama nisu dovoljni uvjeti ograni\v{c}ene izometrije. Uzmimo na primjer $1 < \eta < \sqrt{s}$ i definiramo $(s+1) \times (s+1)$ matricu
@@ -2503,7 +2563,7 @@ Prisjetimo se, CoSaMP zapo\v{c}inje $s$-rijetkim vektorom $\vec x^0 \in \C^N$ (u
     \vec u^{n+1} &= \argmin \{\norm{\vec y - \vec {Az}}_2,\ \supp(\vec z) \subset U^{n+1}\},\tag{$CoSaMP_2$}\label{cosamp_2'}\\[0.5em]
     \vec x^{n+1} &= H_s(\vec u ^{n+1}).\tag{$CoSaMP_3$}\label{cosamp_3'}
 \end{align}
-\begin{thm}
+\begin{thm}\label{tm:6:27}
     Neka je $\vec A \in \C^{m \times N}$ takva da
     \begin{equation}\label{6:46}
         \delta_{4s} < \frac{\sqrt{\sqrt{11/3}-1}}{2} \approx 0.4782.  
@@ -2514,6 +2574,132 @@ Prisjetimo se, CoSaMP zapo\v{c}inje $s$-rijetkim vektorom $\vec x^0 \in \C^N$ (u
     \end{equation}
     gdje $0<\rho<1$ i $\tau > 0$ ovise samo o $\delta_{4s}$.
 \end{thm}
+
+Primjetimo da \eqref{6:47} implicira ograni\v{c}enost niza $(\vec x^n)$ pa stoga imamo egzistenciju gomili\v{s}ta.
+
+\begin{thm}\label{tm:6:28}
+    Neka je $\vec A \in \C^{m \times N}$ takva da   
+    \begin{equation*}
+        \delta_{8s} < 0.4782. 
+    \end{equation*}
+    Tada za $\vec x \in \C^N$ i $\vec e \in \C^m$, niz $(\vec x^n)$ definiran sa \eqref{cosamp_1'}, \eqref{cosamp_2'}, \eqref{cosamp_3'} za $\vec y = \vec{Ax}+\vec e,\ \vec x^0 = \vec 0$ i $2s$ umjesto $s$, vrijedi
+    \begin{align*}
+        \norm{\vec x - \vec x^n}_1 &\leq C \sigma_s(\vec x)_1 + D \sqrt{s}\norm{\vec e}_2 + 2 \rho^n \sqrt{s} \norm{\vec x}_2, \\[0.5em]
+        \norm{\vec x - \vec x^n}_2 &\leq \frac{C}{\sqrt{s}} \sigma_s(\vec x)_2 + D \norm{\vec e}_2 + 2 \rho^n \norm{\vec x}_2,
+    \end{align*}
+    za svaki $n \leq 0$, gdje konstante $C,D >0 $ i $0 < \rho < 1$ ovise samo o $\delta_{8s}$. Posebno, ako je $\vec x^{\sharp} \in \C^N$ gomili\v{s}te niza $(\vec x^n)$, onda
+    \begin{align*}
+        \norm{\vec x - \vec x^{\sharp}}_1 &\leq C \sigma_s(\vec x)_1 +D \sqrt{s} \norm{\vec e}_2, \\[0.5em]  
+        \norm{\vec x - \vec x^{\sharp}}_2 & \leq \frac{C}{\sqrt{s}} \sigma_s(\vec x)_1 + D \norm{\vec e}_2. 
+    \end{align*}
+\end{thm}
+
+Teorem \ref{tm:6:28} slijedi iz teorema \ref{tm:6:27} koriste\'ci lemu \ref{lem:6:23} na isti na\v{c}in kao \v{s}to teorem \ref{tm:6:21} slijedi iz teorma \ref{tm:6:18}. Stoga pokazati \'cemo samo teorem \ref{tm:6:27}.
+
+\begin{proof}[Dokaz (Teorem \ref{tm:6:27}).]
+    Kao u dokazu teorema \eqref{tm:6:18} za $n \geq 0$ \v{z}elimo pokazati
+    \begin{equation}\label{6:48}
+        \norm{\vec x^{n+1} - \vec x_S}_2 \leq \rho \norm{\vec x^n - \vec x_S}_2 + (1-\rho)\tau \norm{\vec{Ax}_{\bar S} + \vec e}_2 
+    \end{equation}
+    za $0< \rho < 1$ i $\tau > 0 $ koje \'cemo kasnije odrediti. Tvrdnja \eqref{6:47} tada sljedi induktivnim argumentom. Da bi pokazali nejednakost \eqref{6:48} prou\v{c}iti \'cemo svaki koram CoSaMP algoritma. Zbog jednostavnosti zanemariti \'cemo \v{c}lan sa $\vec{Ax}_{\bar S} + \vec e$. \eqref{cosamp_1'} daje ocjenu za $\norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2$ u terminima $\norm{\vec x^n - \vec x_S}_2$, \eqref{cosamp_2'} daje ocjenu za $\norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2$ u terminima $\norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2$ i \eqref{cosamp_3'} daje ocjenu za $\norm{\vec x^{n+1}  - \vec x_S}_2$ u terminima $\norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2$ i $\norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2$. Kombiniranjem dobivenih ocjena, izvesti \'cemo ocjenu za $\norm{\vec x^{n+1} - \vec x_S}_2$ u terminima $\norm{\vec x^n - \vec x_S}_2$.\\
+    \indent
+    Zapo\v{c}nimo sa \eqref{cosamp_3'}. Primjetimo da je $\vec x^{n+1}$ bolja (ili barem jednako dobra) aprokimacija vektora $\vec u^{n+1}$ od $\vec x_{S \cap U^{n+1}}$. Ozna\v{c}imo $S^{n+1}= \supp(\vec x^{n+1})$, $S^{n+1} \subset U^{n+1}$. Vrijedi,
+    \begin{align*}
+        \norm{(\vec x_S - \vec x^{n+1})_{U^{n+1}}}_2 &= \norm{\vec x_{S \cap U^{n+1}} - \vec x^{n+1}}_2\\[0.5em]
+        & \leq \norm{\vec u^{n+1} - \vec x^{n+1}}_2 + \norm{\vec u^{n+1} - \vec x_{S \cap U^{n+1}}}_2\\[0.5em]
+        & \leq 2 \norm{\vec u^{n+1} - \vec x_{S \cap U^{n+1}}}_2 = 2 \norm{(\vec x_S - \vec u ^{n+1})_{U^{n+1}}}_2.
+    \end{align*}
+    Nadalje, iz $(\vec x^{n+1})_{\overline{U^{n+1}}} = \vec 0$ i $(\vec u^{n+1})_{\overline{U^{n+1}}} = \vec 0$ slijedi
+    \begin{align}
+        \norm{\vec x_S - \vec x^{n+1}}_2^2 & = \norm{(\vec x_S - \vec x^{n+1})_{\overline{U^{n+1}}}}_2^2 + \norm{(\vec x_S - \vec x^{n+1})_{U^{n+1}}}_2^2 \nonumber \\[0.5em]
+        & \leq \norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2^2 + 4\ \norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2^2. \label{6:49}
+    \end{align}
+    Iz \eqref{cosamp_2'} imamo da je vektor $\vec {Au}^{n+1}$ karakteriziran sa
+    \begin{equation*}
+        \langle \vec y - \vec {Au}^{n+1}, \vec{Az}\rangle  = 0 \quad \text{za } \supp(\vec z) \subset U^{n+1}.
+    \end{equation}
+    To je ekvivalentno sa $ \langle \vec A^*(\vec y - \vec{Au}^{n+1}), \vec z \rangle = 0$, tj. $(\vec A^*(\vec y - \vec{Au}^{n+1}))_{U^{n+1}} = \vec 0$, za $\supp(\vec z) \subset U^{n+1}$. Po\v{s}to je $\vec y = \vec{Ax}_S + \vec e'$ gdje je $\vec e' := \vec{Ax}_{\bar S} + \vec e$, imamo
+    \begin{equation*}
+        (\vec A^* \vec A(\vec x_S - \vec u^{n+1}))_{U^{n+1}} = - (\vec A^* \vec e')_{U^{n+1}}.
+    \end{equation*}
+    Slijedi,
+    \begin{align*}
+        \norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2 &\leq \norm{\big( (\vec I - \vec A^* \vec A)(\vec x_S - \vec u^{n+1}) \big)_{U^{n+1}}}_2 + \norm{(\vec A^* \vec e')_{U^{n+1}}}_2 \\[0.5em]
+        & \leq \delta_{4s}\norm{\vec x_S - \vec u^{n+1}}_2 + \norm{(\vec A^*\vec e')_{U^{n+1}}}_2,
+    \end{align*}
+    gdje je zadnja nejednakost posljedica leme \ref{lem:6:16}. \\
+    Mo\v{z}emo pretpostaviti da je $\norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2 > \norm{(\vec A^* \vec e')_{U^{n+1}}}_2/(1-\delta_{4s})$ jer u suprtnom \eqref{6:50} iz nastavka slijedi direktno. Dakle, iz $\norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2 > \norm{(\vec A^* \vec e')_{U^{n+1}}}_2$ slijedi
+    \begin{align*}
+        [\norm{(\vec x_S - \vec u^{n+1}_{U^{n+1}})}_2 &- \norm{(\vec A^* \vec e')_{U^{n+1}}}_2] \\[0.5em]
+        & \leq \delta_{4s}^2 \norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2^2 + \delta_{4s}^2 \norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2^2.
+    \end{align*}
+    Iskoristimo $a^2 - b^2 = (a+b)(a-b)$
+    \begin{align*}
+        \delta_{4s}^2 \norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2 &\geq (1-\delta_{4s}^2)\\[0.5em]
+        & \cdot \big( \norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2 - \frac{1}{1+\delta_{4s}} \norm{(\vec A^* \vec e')_{U^{n+1}}}_2  \big)\\[0.5em]
+        & \cdot \big( \norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2 - \frac{1}{1-\delta_{4s}} \norm{(\vec A^* \vec e')_{U^{n+1}}}_2  \big).
+    \end{align*}
+    Srednji \v{c}lan na desnoj strani mo\v{z}emo ograni\v{c}iti odozgo predzadnjim \v{c}lanom da bi dobili
+    \begin{equation*}
+        \frac{\delta_{4s}^2}{1-\delta_{4s}^2} \norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2^2 \geq \big( \norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2 - \frac{1}{1-\delta_{4s}} \norm{(\vec A^* \vec e')_{U^{n+1}}}_2  \big)^2. 
+    \end{equation*}
+    Uzimanjem korijena i preslagivanje imamo
+    \begin{align}
+        \norm{(\vec x_S - \vec u^{n+1})_{U^{n+1}}}_2^2 & \leq \frac{\delta_{4s}}{\sqrt{1-\delta_{4s}}}  \norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2 \nonumber \\[0.5em]
+        & + \frac{1}{1-\delta_{4s}} \norm{(\vec A^* \vec e')_{U^{n+1}}}_2.\label{6:50} 
+    \end{align}
+    Nadalje, kao posljedica od \eqref{cosamp_1'}, ako $S^n$ ozna\v{c}uje nosa\v{c} od $\vec x^n$ i ako je $T^{n+1}$ skup indeksa $2s$ apsolutno najve\'cih komponenti od $\vec A^*(\vec y - \vec{Ax}^n)$, imamo
+    \begin{equation*}
+        \norm{(\vec A^*(\vec y - \vec {Ax}^n))_{S \cup S^n}}_2^2 \leq \norm{(\vec A^*(\vec y - \vec{Ax}^n))_{T^{n+1}}}_2^2.
+    \end{equation*}
+    Eliminirami kontribuciju od $(S \cup S^n) \cap T^{n+1}$,
+    \begin{equation*}
+        \norm{(\vec A^*(\vec y - \vec{Ax}^n))_{(S \cup S^n) \backslash T^{n+1}}}_2 \leq \norm{(\vec A^*(\vec y - \vec {Ax}^n))_{T^{n+1} \backslash (S \cup S^n)}}_2.
+    \end{equation*}
+    Desnu stranu mo\v{z}emo zapisati kao
+    \begin{equation*}
+        \norm{(\vec A^*(\vec y - \vec {Ax}^n))_{T^{n+1} \backslash (S \cup S^n)}}_2 = \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec {Ax}^n))_{T^{n+1} \backslash (S \cup S^n)}}_2.
+    \end{equation*}
+    Za lijevu stranu imamo,
+    \begin{align*}
+        \norm{(\vec A^*(\vec y - \vec{Ax}^n))_{(S \cup S^n) \backslash T^{n+1}}}_2 & \geq \norm{(\vec x_S - \vec x^n)_{\overline{T^{n+1}}}}_2\\[0.5em]
+        & - \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec {Ax}^n))_{(S \cup S^n) \backslash T^{n+1}}}_2.
+    \end{align*}
+    Dakle,
+    \begin{align*}
+        \norm{(\vec x_S - \vec x^n)_{\overline{T^{n+1}}}}_2 & \leq \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{(S \cup S^n) \backslash T^{n+1}}}_2\\[0.5em]
+        & + \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{T^{n+1} \backslash (S \cup S^n)}}_2\\[0.5em]
+        & \leq \sqrt{2} \norm{(\vec x^n - \vec x_S + \vec A^*(\vec y - \vec{Ax}^n))_{T^{n+1} \Delta (S \cup S^n)}}_2\\[0.5em]
+        & \leq \sqrt{2} \norm{((\vec I - \vec A^* \vec A)(\vec x^n - \vec x_S))_{T^{n+1} \Delta (S \cup S^n)}}_2\\[0.5em]
+        & + \sqrt{2} \norm{(\vec A^* \vec e')_{(S \cup S^n) \Delta T^{n+1}}}_2,
+    \end{align*}
+    gdje je $\vec y = \vec{Ax}_S + \vec e'$. Po\v{s}to prema \eqref{cosamp_1'} $T^{n+1} \subset U^{n+1}$ i $S^n \subset U^{n+1}$ prema \eqref{cosamp_2'} ,lijeva strana gornje nejedenakosti mo\v{z}e se ocjeniti kao
+    \begin{equation*}
+        \norm{(\vec x_S - \vec x^n)_{\overline{T^{n+1}}}}_2 \geq \norm{(\vec x_S - \vec x^n)_{\overline{U^{n+1}}}}_2 = \norm{(\vec x_S)_{\overline{U^{n+1}}}}_2 = \norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2.
+    \end{equation*}
+    Desnu stranu mo\v{z}emo ocjeniti odozgo koriste\'ci lemu \ref{lem:6:16},
+    \begin{align}
+        \norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2 & \leq \sqrt{2} \delta_{4s} \norm{\vec x^n - \vec x_S}_2 \nonumber \\[0.5em]
+            & + \sqrt{2}\norm{(\vec A^*\vec e')_{(S \cup S^n) \Delta T^{n+1}}}_2.\label{6:51}
+    \end{align}
+    Kombiniranjem \eqref{6:49}, \eqref{6:50} i nejedenakosti $a^2 + (b+c)^2 \leq (\sqrt{a^2 + b^2} + c)^2$ imamo
+    \begin{align*}
+        \norm{\vec x_S - \vec x^{n+1}}_2^2 & \leq \norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2^2\\[0.5em]
+        + & \bigg( \frac{\delta_{4s}}{\sqrt{1-\delta_{4s}^2}}\norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2 + \frac{1}{1-\delta_{4s}} \norm{(\vec A^* \vec e')_{U^{n+1}}}_2   \bigg)^2\\[0.5em]
+        \leq & \bigg( \frac{1+3 \delta_{4s}^2}{\sqrt{1-\delta_{4s}^2}}\norm{(\vec x_S - \vec u^{n+1})_{\overline{U^{n+1}}}}_2 + \frac{2}{1-\delta_{4s}} \norm{(\vec A^* \vec e')_{U^{n+1}}}_2   \bigg)^2.
+    \end{align*}
+    Uva\v{z}imo sada \eqref{6:51}
+    \begin{align*}
+        \norm{\vec x_S - \vec x^{n+1}}_2 & \leq \sqrt{\frac{2\delta_{4s}^2 (1+3 \delta_{4s}^2)}{1 - \delta_{4s}^2}} \norm{\vec x^n - \vec x_S}_2\\[0.5em]
+        & + \sqrt{\frac{2(1+3 \delta_{4s}^2)}{1- \delta_{4s}^2}} \norm{(\vec A^* \vec e')_{(S \cup S^n) \Delta T^{n+1}}}_2  + \frac{2}{1-\delta_{4s}} \norm{(\vec A^* \vec e')_{U^{n+1}}}_2. 
+    \end{align*}
+    Prema lemi \ref{lem:6:20} nejednakost \eqref{6:48} vrijedi za
+    \begin{equation}
+        \rho = \sqrt{\frac{2\delta_{4s}^2 (1+3 \delta_{4s}^2)}{1 - \delta_{4s}^2}}, \quad (1-\rho)\tau = \sqrt{\frac{2(1+3 \delta_{4s}^2)}{1- \delta_{4s}^2}} + \frac{2 \sqrt{1+ \delta_{4s}}}{1-\delta_{4s}}. 
+    \end{equation}
+    Konstanta $\rho$ je manja od $1$ ako i samo je $6 \delta_{4s}^4 + 3 \delta_{4s}_2 - 1 < 0$. To se dogodi onda kada je $\delta_{4s}^2 < (\sqrt{11/3} - 1)/4$.
+
+\end{proof}
 
 % KRAJ
 % Na kraju diplomkog rada stavlja se  bibliografija
