@@ -7,46 +7,48 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty language in 2010arXiv1008.4535B
 Warning--empty language in DBLP:journals/corr/Chen15n
 Warning--missing pages in DBLP:journals/corr/Chen15n
+Warning--empty language in foucart13
+Warning--missing publisher in foucart13
 Warning--empty language in 2012arXiv1205.2081T
-You've used 3 entries,
+You've used 4 entries,
             2664 wiz_defined-function locations,
-            618 strings with 6306 characters,
-and the built_in function-call counts, 1489 in all, are:
-= -- 96
-> -- 48
+            623 strings with 6426 characters,
+and the built_in function-call counts, 1849 in all, are:
+= -- 115
+> -- 61
 < -- 0
-+ -- 19
-- -- 16
-* -- 248
-:= -- 216
-add.period$ -- 3
-call.type$ -- 3
-change.case$ -- 17
++ -- 25
+- -- 20
+* -- 309
+:= -- 269
+add.period$ -- 4
+call.type$ -- 4
+change.case$ -- 22
 chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 62
-empty$ -- 135
-format.name$ -- 43
-if$ -- 263
+cite$ -- 10
+duplicate$ -- 82
+empty$ -- 171
+format.name$ -- 55
+if$ -- 328
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 6
-newline$ -- 33
-num.names$ -- 6
-pop$ -- 26
+int.to.str$ -- 4
+missing$ -- 9
+newline$ -- 36
+num.names$ -- 8
+pop$ -- 37
 preamble$ -- 1
-purify$ -- 14
+purify$ -- 18
 quote$ -- 0
-skip$ -- 23
+skip$ -- 33
 stack$ -- 0
-substring$ -- 105
-swap$ -- 27
+substring$ -- 111
+swap$ -- 35
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
-warning$ -- 4
-while$ -- 8
-width$ -- 4
-write$ -- 41
-(There were 4 warnings)
+type$ -- 14
+warning$ -- 6
+while$ -- 10
+width$ -- 5
+write$ -- 47
+(There were 6 warnings)

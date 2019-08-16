@@ -121,7 +121,23 @@
 
 % Diplomski rad treba poceti s uvodnim poglavljem  
 \begin{intro}
-...
+    Prikupljanje korisnih informacija iz mjerenja \v{c}esti je problem u primjeni. Ilustrativan primjer je proces uzorkovanje radio valova u kontekstu telekomunikacijskih tehnologija. Radio valove mo\v{z}emo shvatiti kao odre\dj ene promjene elektromagnetnog polja. Niz takvih fluktuacija koje nose neku informaciju zovemo \textit{signal}. Signal putuje do antenskog sustava koji (uglavnom) periodi\v{c}ki uzima uzorke, tj. vr\v{s}i mjerenja nad elektromagnetnim poljem. Najjednostvniji matemati\v{c}ki model ovakvog procesa je linearni problem uzorkovanja. Neka $\vec x \in \C^N$ reprezentira informaciju, tj. signal koji nose radio valovi. Antentenski sustav modeliramo kao matricu mjerenja $\vec A \in \C^{m \times N}$ a o\v{c}itana informacija neka je $\vec y \in \C^m$. Veza izme\dj u $\vec x$ i $\vec y$ dana je sa
+    \begin{equation}\label{1.1}
+        \vec{Ax} = \vec{y}. 
+    \end{equation}
+    Jasno je da bi rekonstruirali informaciju $\vec x$ potrebno je rje\v{s}iti sustav linearnih jednad\v{z}bi \eqref{1.1}. Nadalje, prirodno je zahtjevati da je $m \geq N$, tj. ako je signal $\vec x$ duljine $N$, onda je za o\v{c}ekivati da moramo uzeti barem $N$ uzoraka ako \v{z}elimo taj signal uspje\v{s}no rekonstruirati. Ako je $m < N$, klasi\v{c}na teorija linearne algebre nam ka\v{z}e da ako postoji barem jedno rje\v{s}enje tada postoji beskona\v{c}no mnogo rje\v{s}enja. O\v{c}ito da takav sustav nije od prakti\v{c}ne koristi. Nadalje, postoji jo\v{s} restrikcija na najmanji broj potrebnih mjerenja. To je takozvani Nyquist-Shannonov teorem koji ka\v{z}e da frekvencija uzorkovanja vremenski neprekidnog signala mora biti dvostruko ve\'ca od najve\'ce frekvencije koju taj signal sadr\v{z}i ukoliko \v{z}elimo uspje\v{s}nu rekonstrukciju. \\
+    \indent
+    Uz odre\dj ene dodatne uvjete mogu\'ce je posti\'ci uspje\v{s}nu rekonstrukciju signala i u situaciji kada je broj mjerenja $m$ puno manji od $N$, \v{c}ak manji od broja mjerenja koji proizlazi iz Nyquist-Shannonovog teorema. Nadalje, postoje i efikasni prakti\v{c}ni algoritmi za rekonstrukciju. Uvjet koji to omogu\'{c}uje je \textit{sa\v{z}etost} ili \textit{rijetkost}. Za signal ka\v{z}emo da je rijedak ako je ve\'cina njegovih komponenti nula. Takva je pretpostavka opravdana. Naime, empirijski znamo da su veliki broj signala u primjeni kompresibilni, a takve signale mo\v{z}emo dobro aprokimirati rijetkim signalima. Uzmimo za primjer slike pohranjene u JPEG formatu. Slika se prebaci u wavelet bazu u kojoj zadr\v{z}imo samo najve\'ce koeficijente dok ostale postavimo na nulu.\\
+    \indent
+    Intuitivno je jasno da nema potrebe za uzimanjem svih $N$ uzoraka ako je signal rijedak, tj. ve\'cina uzoraka \'ce biti nula. Problem le\v{z}i u \v{c}injenici da ne znamo koji su elementi signala nula a koji ne, te to uvodi nelinearnost u problem. To lako vidimo po\v{s}to skup $s$-rijetkih vektora (najvi\v{s}e $s$ ne-nul komponenti) ne formira linearan skup. Naime, zbroj dva $s$-rijetka vektora je generalno $2s$-rijedak vektor. Pokazati \'cemo da je metoda koja se prirodno name\'ce NP-te\v{z}ak problem. \\
+    \indent
+    Dva osnovna pitanja sa\v{z}etog uzorkovanja na koja \'cemo poku\v{s}ati dati odgovoriti u ovom radu su:
+    \begin{enumerate}
+        \item Kako odabrati matricu mjerenja $\vec A \in \C^{m \times N}$? 
+        \item Kako rekonstruirati vektor $\vec x$ iz mjerenja $ \vec y = \vec{Ax}$?
+    \end{enumerate}
+    Ispostavlja se da je konstrukcija eksplicitnih matrica mjerenja $\vec A$ zahtjevan problem, koji jo\v{s} uvijek nije razrije\v{s}en. Napredak je ostvaren upotrebom teorije nasumi\v{c}nih matrica i teorije vjerojatnosti. Mi se ne\'cemo baviti takvim stohasti\v{c}kim konstrukcijama, ve\'c \'cemo istra\v{z}iti koja su to svojstva matrice mjerenja dovoljna za uspje\v{s}nu rekonstrukciju. Nadalje, prou\v{c}iti \'cemo nekoliko najpopularnijih algoritama rekonstrukcije koji se koriste u sa\v{z}etom uzorkovanju. Zapo\v{c}eti \'cemo s osnovnom teorijom rijetkih vektora, pokazati \'cemo NP-slo\v{z}enost prirodne rekostrukcijske metode, dati pregleda ostalih prakti\v{c}nih algoritama rekonstrukcije te pregled uvjeta koji garantiraju rekonstrukciju. Sadr\v{z}aj ovog rada prati knjigu \textit{A Mathematical Introduction to Compressive Sensing} \cite{foucart13}.
+
 \end{intro}
 
 \chapter[Rijetka rje\v{s}enja][Rijetka rje\v{s}enja]{Rijetka rje\v{s}enja}\label{chapter_rijetka_rijesenja}	

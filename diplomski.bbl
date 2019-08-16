@@ -38,6 +38,13 @@
   Geometry}}, \btxjournalfont {CoRR} \btxvolumefont {abs/1505.07490} (2015),
   {\latintext \btxurlfont{http://arxiv.org/abs/1505.07490}}.
 
+\bibitem {foucart13}
+\btxnamefont {Simon \btxlastnamefont {Foucart}} \btxandlong {} \btxnamefont
+  {Holger \btxlastnamefont {Rauhut}}, \btxpublisherfont {\btxtitlefont
+  {\btxifchangecase {A mathematical introduction to compressive sensing}{A
+  Mathematical Introduction to Compressive Sensing}}}, 2013,
+  \mbox{\btxISBN~\btxISBNfont {9780817649487 0817649484}}.
+
 \bibitem {2012arXiv1205.2081T}
 \btxnamefont {Andreas\btxfnamespacelong M. \btxlastnamefont {{Tillmann}}}
   \btxandlong {} \btxnamefont {Marc\btxfnamespacelong E. \btxlastnamefont

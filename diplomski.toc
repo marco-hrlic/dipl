@@ -1,6 +1,6 @@
 \babel@toc {croatian}{}
 \contentsline {chapter}{Sadr\v {z}aj}{iv}{section*.1}
-\contentsline {chapter}{Uvod}{1}{chapter*.2}
+\contentsline {chapter}{Uvod}{2}{Item.2}
 \contentsline {chapter}{\chapternumberline {1}Rijetka rje\v {s}enja}{3}{chapter.1}
 \contentsline {section}{\numberline {1.1}Rijetsko i sa\v {z}etost vektora}{3}{section.1.1}
 \contentsline {section}{\numberline {1.2}Minimalni broj mjerenja}{10}{section.1.2}
