@@ -3,52 +3,59 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: diplomski.aux
 The style file: babamspl.bst
 Database file #1: diplomski.bib
+A bad cross reference---entry "Karp72"
+refers to entry "conf/coco/1972", which doesn't exist
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty language in 2010arXiv1008.4535B
 Warning--empty language in DBLP:journals/corr/Chen15n
 Warning--missing pages in DBLP:journals/corr/Chen15n
+Warning--empty language in chong2013introduction
 Warning--empty language in foucart13
 Warning--missing publisher in foucart13
+Warning--empty language in garey1979computers
+Warning--empty language in gerschgorin31
+Warning--empty language in Karp72
+Warning--empty language in penrose_1955
 Warning--empty language in 2012arXiv1205.2081T
-You've used 4 entries,
+You've used 9 entries,
             2664 wiz_defined-function locations,
-            623 strings with 6426 characters,
-and the built_in function-call counts, 1849 in all, are:
-= -- 115
-> -- 61
+            665 strings with 7515 characters,
+and the built_in function-call counts, 3906 in all, are:
+= -- 259
+> -- 116
 < -- 0
-+ -- 25
-- -- 20
-* -- 309
-:= -- 269
-add.period$ -- 4
-call.type$ -- 4
-change.case$ -- 22
++ -- 48
+- -- 36
+* -- 637
+:= -- 565
+add.period$ -- 9
+call.type$ -- 9
+change.case$ -- 45
 chr.to.int$ -- 0
-cite$ -- 10
-duplicate$ -- 82
-empty$ -- 171
-format.name$ -- 55
-if$ -- 328
+cite$ -- 20
+duplicate$ -- 190
+empty$ -- 380
+format.name$ -- 110
+if$ -- 729
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 9
-newline$ -- 36
-num.names$ -- 8
-pop$ -- 37
+int.to.str$ -- 9
+missing$ -- 21
+newline$ -- 51
+num.names$ -- 20
+pop$ -- 72
 preamble$ -- 1
-purify$ -- 18
+purify$ -- 35
 quote$ -- 0
-skip$ -- 33
+skip$ -- 86
 stack$ -- 0
-substring$ -- 111
-swap$ -- 35
+substring$ -- 213
+swap$ -- 78
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 14
-warning$ -- 6
-while$ -- 10
-width$ -- 5
-write$ -- 47
-(There were 6 warnings)
+type$ -- 30
+warning$ -- 11
+while$ -- 26
+width$ -- 10
+write$ -- 90
+(There was 1 error message)

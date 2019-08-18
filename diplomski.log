@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  16 AUG 2019 14:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  18 AUG 2019 12:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2042,36 +2042,36 @@ ML/lmm/m/it/12 ; \OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12 ; [] ; \OT1/lmr/bx/n/12 a
 [41
 
 ]
-Overfull \hbox (12.47902pt too wide) in paragraph at lines 1326--1328
+Overfull \hbox (16.00412pt too wide) in paragraph at lines 1326--1328
 [][]\OML/lmm/m/it/12 ; [] ; [][]$ \T1/lmr/m/n/12 te za-do-vo-lja-vaju $\OMS/lms
 y/m/n/12 h[][]\OML/lmm/m/it/12 ; [][]\OMS/lmsy/m/n/12 i \OT1/lmr/m/n/12 = \OMS/
 lmsy/m/n/12 h\OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12 ; \OT1/lmr/bx/n/12 a[]\OMS/lm
-sy/m/n/12 i$\T1/lmr/m/n/12 . Na-da-lje zbog Cauchy-Schwarzove
+sy/m/n/12 i$\T1/lmr/m/n/12 . Na-da-lje, zbog Cauchy-Schwarzove
  []
-
-! Undefined control sequence.
-<argument> \ve 
-               a_j
-l.1345 ...e, po\v{s}to imamo da je $\norm{\ve a_j}
-                                                  _2 = 1$ za sve $j \in [N]$...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 [42] [43]
 Underfull \vbox (badness 5908) has occurred while \output is active []
 
  [44]
 [45]
-Underfull \vbox (badness 1062) has occurred while \output is active []
+! Misplaced alignment tab character &.
+l.1474         &
+                N \leq
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+
+Underfull \vbox (badness 3271) has occurred while \output is active []
 
  [46]
 Underfull \vbox (badness 3302) has occurred while \output is active []
 
  [47]
-Overfull \hbox (8.92783pt too wide) in paragraph at lines 1554--1555
+Overfull \hbox (8.92783pt too wide) in paragraph at lines 1556--1557
 []\T1/lmr/m/n/12 Neka je $\OT1/lmr/m/n/12 (\OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12
  ; [] \OT1/lmr/bx/n/12 a[]\OT1/lmr/m/n/12 )$ \T1/lmr/m/n/12 sus-tav od $\OML/lm
 m/m/it/12 N \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 m\OT1/lmr/m/n/12 (\OML/lmm/m/it/
@@ -2082,31 +2082,31 @@ m/m/it/12 N \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 m\OT1/lmr/m/n/12 (\OML/lmm/m/it/
 [48] [49] [50] [51]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1666.
+(hyperref)                removing `math shift' on input line 1668.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\ell' on input line 1666.
+(hyperref)                removing `\ell' on input line 1668.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1666.
+(hyperref)                removing `subscript' on input line 1668.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1666.
+(hyperref)                removing `math shift' on input line 1668.
 
 [52]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 1706.
+(hyperref)                removing `\textasciicaron' on input line 1708.
 
 [53]
 ! Undefined control sequence.
 <argument> ...||\langle \vec a_i, \vec a_l \rangl 
                                                   | \leq \mu _1(s) \max _{i ...
-l.1725     \end{align*}
+l.1727     \end{align*}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2117,7 +2117,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...||\langle \vec a_i, \vec a_l \rangl 
                                                   | \leq \mu _1(s) \max _{i ...
-l.1725     \end{align*}
+l.1727     \end{align*}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2133,7 +2133,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 1791.
+(hyperref)                removing `\textasciicaron' on input line 1793.
 
 
 Underfull \vbox (badness 1888) has occurred while \output is active []
@@ -2145,7 +2145,7 @@ Underfull \vbox (badness 1888) has occurred while \output is active []
 ! Missing number, treated as zero.
 <to be read again> 
                    N
-l.1909     Neka je $\vec A \in \C^{m \time N
+l.1911     Neka je $\vec A \in \C^{m \time N
                                             }$ i $2 \leq s \leq N$. Tada je
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -2158,22 +2158,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [62]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1988.
+(hyperref)                removing `math shift' on input line 1990.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\ell' on input line 1988.
+(hyperref)                removing `\ell' on input line 1990.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1988.
+(hyperref)                removing `subscript' on input line 1990.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1988.
+(hyperref)                removing `math shift' on input line 1990.
 
 ! Undefined control sequence.
-l.2023 ... \sum_{j=1}^t |v_j|^p  \bigg]^{1/p} \qeq
+l.2025 ... \sum_{j=1}^t |v_j|^p  \bigg]^{1/p} \qeq
                                                    \min_{j \in [t]} |v_j|.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2188,7 +2188,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ! Undefined control sequence.
 <argument> \tidle 
                   A
-l.2071 ...implicira da je $\delta_1(\vec{\tidle A}
+l.2073 ...implicira da je $\delta_1(\vec{\tidle A}
                                                   ) \geq \delta$ pa stoga i ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2199,7 +2199,7 @@ and I'll forget about whatever was undefined.
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 2073.
+(hyperref)                removing `\textasciicaron' on input line 2075.
 
 [65] [66] [67]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2208,7 +2208,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ! Undefined control sequence.
 <argument> (\vevc 
                   x^{n+1} - \vec x_S)_{S^{n+1}}
-l.2233     \end{align*}
+l.2235     \end{align*}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2219,7 +2219,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> (\vevc 
                   x^{n+1} - \vec x_S)_{S^{n+1}}
-l.2233     \end{align*}
+l.2235     \end{align*}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2231,7 +2231,7 @@ and I'll forget about whatever was undefined.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [69]
-Overfull \hbox (18.7907pt too wide) in paragraph at lines 2251--2253
+Overfull \hbox (18.7907pt too wide) in paragraph at lines 2253--2255
 \T1/lmr/m/n/12 To je jed-na-kost oblika []. Pri-mje-timo da je $\OML/lmm/m/it/1
 2 ^^Z \OT1/lmr/m/n/12 := []\OML/lmm/m/it/12 ^^N[]=[] \OMS/lmsy/m/n/12 ^^T []\OM
 L/lmm/m/it/12 ^^N[]=[] <
@@ -2242,7 +2242,7 @@ Underfull \vbox (badness 5592) has occurred while \output is active []
 
  [71]
 ! Undefined control sequence.
-l.2321 ..., pod pretpostavkama teorema, teorem \re
+l.2323 ..., pod pretpostavkama teorema, teorem \re
                                                   {tm:6:18} implicira da pos...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2254,7 +2254,7 @@ and I'll forget about whatever was undefined.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -2263,7 +2263,7 @@ Try to go on, since this might almost work.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -2272,7 +2272,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -2281,7 +2281,7 @@ Try to go on, since this might almost work.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -2296,7 +2296,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2308,7 +2308,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2320,7 +2320,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2328,7 +2328,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Misplaced \omit.
 <recently read> \omit 
                       
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -2336,7 +2336,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.2429     \end{align*}
+l.2431     \end{align*}
                        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -2350,7 +2350,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ! Undefined control sequence.
 <argument> ...rline {S^0}})_{(S \backslash S^0)\T 
                                                   ^{L-1}}
-l.2553 ...ine{S^0}})_{(S \backslash S^0)\T^{L-1}}}
+l.2555 ...ine{S^0}})_{(S \backslash S^0)\T^{L-1}}}
                                                   _2.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2363,7 +2363,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [78]
 [79]
-Overfull \hbox (10.89194pt too wide) in paragraph at lines 2600--2602
+Overfull \hbox (10.89194pt too wide) in paragraph at lines 2602--2604
 \T1/lmr/m/it/12 Tada za $\OT1/lmr/bx/n/12 x \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 C[
 ]$ \T1/lmr/m/it/12 i $\OT1/lmr/bx/n/12 e \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 C[]$\
 T1/lmr/m/it/12 , niz $\OT1/lmr/m/n/12 (\OT1/lmr/bx/n/12 x[]\OT1/lmr/m/n/12 )$ \
@@ -2372,20 +2372,20 @@ T1/lmr/m/it/12 de-fi-ni-ran sa [], [], []
 
 [80]
 
-! LaTeX Error: \begin{equation*} on input line 2634 ended by \end{equation}.
+! LaTeX Error: \begin{equation*} on input line 2636 ended by \end{equation}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2636     \end{equation}
+l.2638     \end{equation}
                          
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Overfull \hbox (0.56647pt too wide) in paragraph at lines 2645--2648
+Overfull \hbox (0.56647pt too wide) in paragraph at lines 2647--2650
 \T1/lmr/m/n/12 nom [] iz nas-tavka sli-jedi di-rek-tno. Dakle, iz $\OMS/lmsy/m/
 n/12 k[]k[] \OML/lmm/m/it/12 > \OMS/lmsy/m/n/12 k[]k[]$
  []
@@ -2401,7 +2401,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [83]
 ! Double subscript.
-l.2716 ...amo je $6 \delta_{4s}^4 + 3 \delta_{4s}_
+l.2718 ...amo je $6 \delta_{4s}^4 + 3 \delta_{4s}_
                                                   2 - 1 < 0$. To se dogodi o...
 I treat `x_1_2' essentially like `x_1{}_2'.
 
@@ -2420,41 +2420,62 @@ babelbib: Using the BibTeX style's default font for `numeral'.
 LaTeX Font Info:    Try loading font information for T1+lmtt on input line 39.
 (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [85
+)
+! Undefined control sequence.
+l.63   \btxeditionnumshort
+                           {first edition}{.}, \btxpublisherfont {W. H. Free...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-] [86
 
-] [87] [88
+Underfull \hbox (badness 10000) in paragraph at lines 57--66
+\T1/lmtt/m/n/12 Computers-[]Intractability-[]NP-[]Completeness-[]Mathematical-[
+]Sciences / dp /
+ []
 
-]
-[89] [90
+
+Underfull \hbox (badness 2277) in paragraph at lines 75--85
+\T1/lmr/m/n/12 of Com-pu-ter Com-pu-ta-ti-ons (Raymond E. Mil-ler i Ja-mes W. T
+hat-c-her,
+ []
+
+[85
+
+]) [86] [87
+
+] [88
+
+] [89] [90
 
 ]
 
 Class memoir Warning: The material used in the headers is too large
 (14.89201pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 2744.
+(in both cases you will find help in the memoir manual). on input line 2746.
 
 [91]
 \tf@toc=\write8
 \openout8 = `diplomski.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2744.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2744.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2746.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2746.
  (./diplomski.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2744.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2744.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2746.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2746.
 
 Package rerunfilecheck Info: File `diplomski.out' has not changed.
 (rerunfilecheck)             Checksum: B05BA8C2E9CB984B6412DCE072C9CC21;1732.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2744.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2746.
  ) 
 Here is how much of TeX's memory you used:
- 37888 strings out of 494021
- 720840 string characters out of 6162400
- 861366 words of memory out of 5000000
- 40667 multiletter control sequences out of 15000+600000
+ 37896 strings out of 494021
+ 721006 string characters out of 6162400
+ 861546 words of memory out of 5000000
+ 40670 multiletter control sequences out of 15000+600000
  657272 words of font info for 118 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  67i,24n,101p,1313b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2479,10 +2500,10 @@ m/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
 ive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on diplomski.pdf (96 pages, 620190 bytes).
+Output written on diplomski.pdf (96 pages, 628971 bytes).
 PDF statistics:
- 1298 PDF objects out of 1440 (max. 8388607)
- 1144 compressed objects within 12 object streams
- 377 named destinations out of 1000 (max. 500000)
+ 1322 PDF objects out of 1440 (max. 8388607)
+ 1168 compressed objects within 12 object streams
+ 382 named destinations out of 1000 (max. 500000)
  373 words of extra memory for PDF output out of 10000 (max. 10000000)
 

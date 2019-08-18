@@ -38,12 +38,56 @@
   Geometry}}, \btxjournalfont {CoRR} \btxvolumefont {abs/1505.07490} (2015),
   {\latintext \btxurlfont{http://arxiv.org/abs/1505.07490}}.
 
+\bibitem {chong2013introduction}
+\btxnamefont {E.K.P. \btxlastnamefont {Chong}} \btxandlong {} \btxnamefont
+  {S.H. \btxlastnamefont {Zak}}, \btxtitlefont {\btxifchangecase {An
+  introduction to optimization}{An Introduction to Optimization}}, Wiley Series
+  in Discrete Mathematics and Optimization, \btxpublisherfont {Wiley}, 2013,
+  \mbox{\btxISBN~\btxISBNfont {9781118515150}}, {\latintext
+  \btxurlfont{https://books.google.hr/books?id=iD5s0iKXHP8C}}.
+
 \bibitem {foucart13}
 \btxnamefont {Simon \btxlastnamefont {Foucart}} \btxandlong {} \btxnamefont
   {Holger \btxlastnamefont {Rauhut}}, \btxpublisherfont {\btxtitlefont
   {\btxifchangecase {A mathematical introduction to compressive sensing}{A
   Mathematical Introduction to Compressive Sensing}}}, 2013,
   \mbox{\btxISBN~\btxISBNfont {9780817649487 0817649484}}.
+
+\bibitem {garey1979computers}
+\btxnamefont {M.\btxfnamespacelong R. \btxlastnamefont {Garey}} \btxandlong {}
+  \btxnamefont {D.\btxfnamespacelong S. \btxlastnamefont {Johnson}},
+  \btxtitlefont {\btxifchangecase {Computers and intractability: A guide to the
+  theory of np-completeness (series of books in the mathematical
+  sciences)}{Computers and Intractability: A Guide to the Theory of
+  NP-Completeness (Series of Books in the Mathematical Sciences)}},
+  \btxeditionnumshort {first edition}{.}, \btxpublisherfont {W. H. Freeman},
+  1979, \mbox{\btxISBN~\btxISBNfont {0716710455}}, {\latintext
+  \btxurlfont{http://www.amazon.com/Computers-Intractability-NP-Completeness-Mathematical-Sciences/dp/0716710455}}.
+
+\bibitem {gerschgorin31}
+\btxnamefont {S.~\btxlastnamefont {Gerschgorin}}, \btxjtitlefont
+  {\btxifchangecase {Uber die abgrenzung der eigenwerte einer matrix}{Uber die
+  Abgrenzung der Eigenwerte einer Matrix}}, \btxjournalfont {Izvestija Akademii
+  Nauk SSSR, Serija Matematika} \btxvolumefont {7} (1931), \btxnumbershort
+  {.}~3, 749--754.
+
+\bibitem {Karp72}
+\btxnamefont {Richard\btxfnamespacelong M. \btxlastnamefont {Karp}},
+  \btxtitlefont {\btxifchangecase {Reducibility among combinatorial
+  problems.}{Reducibility Among Combinatorial Problems.}}, Complexity of
+  Computer Computations\ (\btxnamefont {Raymond\btxfnamespacelong E.
+  \btxlastnamefont {Miller}} \btxandlong {} \btxnamefont
+  {James\btxfnamespacelong W. \btxlastnamefont {Thatcher}}, \btxeditorsshort
+  {.}), The IBM Research Symposia Series, \btxpublisherfont {Plenum Press, New
+  York}, 1972, \btxpagesshort {.}~85--103, \mbox{\btxISBN~\btxISBNfont
+  {0-306-30707-3}}, {\latintext
+  \btxurlfont{http://dblp.uni-trier.de/db/conf/coco/cocc1972.html#Karp72}}.
+
+\bibitem {penrose_1955}
+\btxnamefont {R.~\btxlastnamefont {Penrose}}, \btxjtitlefont {\btxifchangecase
+  {A generalized inverse for matrices}{A generalized inverse for matrices}},
+  \btxjournalfont {Mathematical Proceedings of the Cambridge Philosophical
+  Society} \btxvolumefont {51} (1955), \btxnumbershort {.}~3, 406–413.
 
 \bibitem {2012arXiv1205.2081T}
 \btxnamefont {Andreas\btxfnamespacelong M. \btxlastnamefont {{Tillmann}}}
