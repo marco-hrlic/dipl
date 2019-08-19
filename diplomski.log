@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  19 AUG 2019 13:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  19 AUG 2019 14:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2423,21 +2423,17 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2745.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2745.
 
 Package rerunfilecheck Info: File `diplomski.out' has not changed.
-(rerunfilecheck)             Checksum: B05BA8C2E9CB984B6412DCE072C9CC21;1732.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(rerunfilecheck)             Checksum: 5CD98A8B3ABD7C2F0EA4755F5F6DC6B8;1733.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2745.
  ) 
 Here is how much of TeX's memory you used:
  37906 strings out of 494021
  721113 string characters out of 6162400
- 861697 words of memory out of 5000000
+ 861702 words of memory out of 5000000
  40675 multiletter control sequences out of 15000+600000
  657272 words of font info for 118 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 67i,24n,101p,3826b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,24n,101p,3827b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texli
 ve/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts
 /enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/l
@@ -2459,7 +2455,7 @@ m/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
 ive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on diplomski.pdf (96 pages, 633907 bytes).
+Output written on diplomski.pdf (96 pages, 633972 bytes).
 PDF statistics:
  1338 PDF objects out of 1440 (max. 8388607)
  1184 compressed objects within 12 object streams
