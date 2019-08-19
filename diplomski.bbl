@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
   \providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
   \providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
   % \MRhref is called by the amsart/book/proc definition of \MR.
@@ -30,6 +30,14 @@
   constructions of RIP matrices and related problems}}{{Explicit constructions
   of RIP matrices and related problems}}}, \btxjournalfont {arXiv e-prints}
   (2010), arXiv:1008.4535.
+
+\bibitem {CandesTao}
+\btxnamefont {Emmanuel \btxlastnamefont {{Candes}}} \btxandlong {} \btxnamefont
+  {Terence \btxlastnamefont {{Tao}}}, \btxjtitlefont {\btxifchangecase {{Near
+  Optimal Signal Recovery From Random Projections: Universal Encoding
+  Strategies?}}{{Near Optimal Signal Recovery From Random Projections:
+  Universal Encoding Strategies?}}}, \btxjournalfont {arXiv Mathematics
+  e-prints} (2004), math/0410542.
 
 \bibitem {DBLP:journals/corr/Chen15n}
 \btxnamefont {Hao \btxlastnamefont {Chen}}, \btxjtitlefont {\btxifchangecase
@@ -89,6 +97,28 @@
   \btxjournalfont {Mathematical Proceedings of the Cambridge Philosophical
   Society} \btxvolumefont {51} (1955), \btxnumbershort {.}~3, 406–413.
 
+\bibitem {primjene}
+\btxnamefont {M.~\btxlastnamefont {{Rani}}}, \btxnamefont {S.\btxfnamespacelong
+  B. \btxlastnamefont {{Dhok}}}\btxandcomma {} \btxandlong {} \btxnamefont
+  {R.\btxfnamespacelong B. \btxlastnamefont {{Deshmukh}}}, \btxjtitlefont
+  {\btxifchangecase {A systematic review of compressive sensing: Concepts,
+  implementations and applications}{A Systematic Review of Compressive Sensing:
+  Concepts, Implementations and Applications}}, \btxjournalfont {IEEE Access}
+  \btxvolumefont {6} (2018), 4875--4894, \mbox{\btxISSN~\btxISSNfont
+  {2169-3536}}.
+
+\bibitem {shannon1949}
+\btxnamefont {C.\btxfnamespacelong E. \btxlastnamefont {Shannon}},
+  \btxjtitlefont {\btxifchangecase {Communication in the presence of
+  noise}{Communication in the Presence of Noise}}, \btxjournalfont {Proc.
+  Institute of Radio Engineers} \btxvolumefont {37} (1949), \btxnumbershort
+  {.}~1, 10--21.
+
+\bibitem {tao}
+\btxnamefont {Terence \btxlastnamefont {Tao}}, \btxtitlefont {\btxifchangecase
+  {Terence tao blog}{Terence Tao Blog}}, {\latintext
+  \btxurlfont{https://terrytao.wordpress.com/2007/04/13/compressed-sensing-and-single-pixel-cameras/}}.
+
 \bibitem {2012arXiv1205.2081T}
 \btxnamefont {Andreas\btxfnamespacelong M. \btxlastnamefont {{Tillmann}}}
   \btxandlong {} \btxnamefont {Marc\btxfnamespacelong E. \btxlastnamefont
@@ -98,5 +128,12 @@
   Restricted Isometry Property, the Nullspace Property, and Related Concepts in
   Compressed Sensing}}}, \btxjournalfont {arXiv e-prints} (2012),
   arXiv:1205.2081.
+
+\bibitem {radar}
+\btxnamefont {Kumar \btxlastnamefont {{Vijay Mishra}}} \btxandlong {}
+  \btxnamefont {Yonina\btxfnamespacelong C. \btxlastnamefont {{Eldar}}},
+  \btxjtitlefont {\btxifchangecase {{Sub-Nyquist Radar: Principles and
+  Prototypes}}{{Sub-Nyquist Radar: Principles and Prototypes}}},
+  \btxjournalfont {arXiv e-prints} (2018), arXiv:1803.01819.
 
 \end{thebibliography}

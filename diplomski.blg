@@ -7,6 +7,7 @@ A bad cross reference---entry "Karp72"
 refers to entry "conf/coco/1972", which doesn't exist
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty language in 2010arXiv1008.4535B
+Warning--empty language in CandesTao
 Warning--empty language in DBLP:journals/corr/Chen15n
 Warning--missing pages in DBLP:journals/corr/Chen15n
 Warning--empty language in chong2013introduction
@@ -16,46 +17,50 @@ Warning--empty language in garey1979computers
 Warning--empty language in gerschgorin31
 Warning--empty language in Karp72
 Warning--empty language in penrose_1955
+Warning--empty language in primjene
+Warning--empty language in shannon1949
+Warning--empty language in tao
 Warning--empty language in 2012arXiv1205.2081T
-You've used 9 entries,
+Warning--empty language in radar
+You've used 14 entries,
             2664 wiz_defined-function locations,
-            665 strings with 7515 characters,
-and the built_in function-call counts, 3906 in all, are:
-= -- 259
-> -- 116
+            696 strings with 8213 characters,
+and the built_in function-call counts, 6006 in all, are:
+= -- 408
+> -- 174
 < -- 0
-+ -- 48
-- -- 36
-* -- 637
-:= -- 565
-add.period$ -- 9
-call.type$ -- 9
-change.case$ -- 45
++ -- 72
+- -- 54
+* -- 970
+:= -- 869
+add.period$ -- 14
+call.type$ -- 14
+change.case$ -- 69
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 190
-empty$ -- 380
-format.name$ -- 110
-if$ -- 729
+cite$ -- 30
+duplicate$ -- 285
+empty$ -- 592
+format.name$ -- 164
+if$ -- 1129
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 21
-newline$ -- 51
-num.names$ -- 20
-pop$ -- 72
+int.to.str$ -- 14
+missing$ -- 30
+newline$ -- 66
+num.names$ -- 30
+pop$ -- 114
 preamble$ -- 1
-purify$ -- 35
+purify$ -- 54
 quote$ -- 0
-skip$ -- 86
+skip$ -- 128
 stack$ -- 0
-substring$ -- 213
-swap$ -- 78
+substring$ -- 369
+swap$ -- 112
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 30
-warning$ -- 11
-while$ -- 26
-width$ -- 10
-write$ -- 90
+type$ -- 50
+warning$ -- 16
+while$ -- 41
+width$ -- 16
+write$ -- 121
 (There was 1 error message)
