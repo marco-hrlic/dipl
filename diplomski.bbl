@@ -119,6 +119,13 @@
   {Terence tao blog}{Terence Tao Blog}}, {\latintext
   \btxurlfont{https://terrytao.wordpress.com/2007/04/13/compressed-sensing-and-single-pixel-cameras/}}.
 
+\bibitem {tibshirani96regression}
+\btxnamefont {R.~\btxlastnamefont {Tibshirani}}, \btxjtitlefont
+  {\btxifchangecase {Regression shrinkage and selection via the
+  lasso}{Regression Shrinkage and Selection via the Lasso}}, \btxjournalfont
+  {Journal of the Royal Statistical Society (Series B)} \btxvolumefont {58}
+  (1996), 267--288.
+
 \bibitem {2012arXiv1205.2081T}
 \btxnamefont {Andreas\btxfnamespacelong M. \btxlastnamefont {{Tillmann}}}
   \btxandlong {} \btxnamefont {Marc\btxfnamespacelong E. \btxlastnamefont

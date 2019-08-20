@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  19 AUG 2019 14:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  20 AUG 2019 15:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1628,71 +1628,71 @@ l.586     \end{equation*}
 tifier (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.610 \begin{equation}
+l.611 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.610 \begin{equation}
+l.611 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.610 \begin{equation}
+l.611 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.610 \begin{equation}
+l.611 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.625 \begin{equation}
+l.626 \begin{equation}
                       \label{problem_minimizacije_l1_kvadraticni}pdfTeX warning
  (ext4): destination with the same identifier (name{equation.2.1.1}) has been a
 lready used, duplicate ignored
 <to be read again> 
                    \relax 
-l.625 \begin{equation}
+l.626 \begin{equation}
                       \label{problem_minimizacije_l1_kvadraticni}pdfTeX warning
  (ext4): destination with the same identifier (name{equation.2.1.1}) has been a
 lready used, duplicate ignored
 <to be read again> 
                    \relax 
-l.625 \begin{equation}
+l.626 \begin{equation}
                       \label{problem_minimizacije_l1_kvadraticni}pdfTeX warning
  (ext4): destination with the same identifier (name{equation.2.1.1}) has been a
 lready used, duplicate ignored
 <to be read again> 
                    \relax 
-l.625 \begin{equation}
+l.626 \begin{equation}
                       \label{problem_minimizacije_l1_kvadraticni}pdfTeX warning
  (ext4): destination with the same identifier (name{equation.2.1.1}) has been a
 lready used, duplicate ignored
 <to be read again> 
                    \relax 
-l.637 \begin{equation}
+l.638 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.637 \begin{equation}
+l.638 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.637 \begin{equation}
+l.638 \begin{equation}
                       pdfTeX warning (ext4): destination with the same identifi
 er (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.637 \begin{equation}
+l.638 \begin{equation}
                       
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.657 ...}no ograni\v{c}ena $\ell_1$-minimizacija}
+l.658 ...}no ograni\v{c}ena $\ell_1$-minimizacija}
                                                   
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1704,7 +1704,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.657 ...}no ograni\v{c}ena $\ell_1$-minimizacija}
+l.658 ...}no ograni\v{c}ena $\ell_1$-minimizacija}
                                                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1714,51 +1714,51 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.2.1.
 1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.660         \begin{equation}
+l.661         \begin{equation}
                               pdfTeX warning (ext4): destination with the same 
 identifier (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.660         \begin{equation}
+l.661         \begin{equation}
                               pdfTeX warning (ext4): destination with the same 
 identifier (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.660         \begin{equation}
+l.661         \begin{equation}
                               pdfTeX warning (ext4): destination with the same 
 identifier (name{equation.2.1.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.660         \begin{equation}
+l.661         \begin{equation}
                                [19]pdfTeX warning (ext4): destination with the 
 same identifier (name{equation.2.1.1}) has been already used, duplicate ignored
 
 <to be read again> 
                    \relax 
-l.666 \begin{equation}
+l.667 \begin{equation}
                       \label{problem_minimizacije_l1_sum}pdfTeX warning (ext4):
  destination with the same identifier (name{equation.2.1.1}) has been already u
 sed, duplicate ignored
 <to be read again> 
                    \relax 
-l.666 \begin{equation}
+l.667 \begin{equation}
                       \label{problem_minimizacije_l1_sum}pdfTeX warning (ext4):
  destination with the same identifier (name{equation.2.1.1}) has been already u
 sed, duplicate ignored
 <to be read again> 
                    \relax 
-l.666 \begin{equation}
+l.667 \begin{equation}
                       \label{problem_minimizacije_l1_sum}pdfTeX warning (ext4):
  destination with the same identifier (name{equation.2.1.1}) has been already u
 sed, duplicate ignored
 <to be read again> 
                    \relax 
-l.666 \begin{equation}
+l.667 \begin{equation}
                       \label{problem_minimizacije_l1_sum} [20]
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.696 \begin{alg}{OMP}
+l.697 \begin{alg}{OMP}
                       
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1770,7 +1770,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.696 \begin{alg}{OMP}
+l.697 \begin{alg}{OMP}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1780,7 +1780,7 @@ or  <return>  to continue without it.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.719     \end{equation*}
+l.720     \end{equation*}
                          
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1792,7 +1792,7 @@ my insertion and my current dilemma will both disappear.
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.782 \begin{alg}{CoSaMP}
+l.783 \begin{alg}{CoSaMP}
                          
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1804,7 +1804,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.782 \begin{alg}{CoSaMP}
+l.783 \begin{alg}{CoSaMP}
                          
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1813,12 +1813,12 @@ or  <return>  to continue without it.
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 796.
+(hyperref)                removing `\textasciicaron' on input line 797.
 
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.799 \begin{alg}{BT}
+l.800 \begin{alg}{BT}
                      
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1830,7 +1830,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.799 \begin{alg}{BT}
+l.800 \begin{alg}{BT}
                      
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1843,7 +1843,7 @@ Underfull \vbox (badness 2726) has occurred while \output is active []
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.822 \begin{alg}{IHT}
+l.823 \begin{alg}{IHT}
                       
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1855,7 +1855,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.822 \begin{alg}{IHT}
+l.823 \begin{alg}{IHT}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1868,7 +1868,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
-l.834 \begin{alg}{HTP}
+l.835 \begin{alg}{HTP}
                       
 I expect to see \noalign only after the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -1880,7 +1880,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.834 \begin{alg}{HTP}
+l.835 \begin{alg}{HTP}
                       
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
@@ -1888,26 +1888,26 @@ or  <return>  to continue without it.
 
 [26]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <24.88> on input line 849.
+(Font)              <24.88> on input line 850.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 849.
+(hyperref)                removing `math shift' on input line 850.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\ell' on input line 849.
+(hyperref)                removing `\ell' on input line 850.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 849.
+(hyperref)                removing `subscript' on input line 850.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 849.
+(hyperref)                removing `math shift' on input line 850.
 
 
-Overfull \hbox (1.14764pt too wide) in paragraph at lines 865--866
+Overfull \hbox (1.14764pt too wide) in paragraph at lines 866--867
 [][]\T1/lmr/bx/n/12 Definicija 3.1.1. []\T1/lmr/m/it/12 Za ma-tricu $\OT1/lmr/b
 x/n/12 A \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 K[]$ \T1/lmr/m/it/12 ka-ºemo da za-do
 -vo-ljava svoj-stvo nul-prostora
@@ -1920,9 +1920,9 @@ pdfTeX warning (ext4): destination with the same identifier (name{equation.3.0.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.874 \begin{equation}
+l.875 \begin{equation}
                       \label{svojstvo_nul_prostora_form_1}] [28]
-Underfull \hbox (badness 10000) in paragraph at lines 916--922
+Underfull \hbox (badness 10000) in paragraph at lines 917--923
 
  []
 
@@ -1938,7 +1938,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1000 
+l.1001 
        ] [32]
 Underfull \vbox (badness 2903) has occurred while \output is active []
 
@@ -1946,7 +1946,7 @@ Underfull \vbox (badness 2903) has occurred while \output is active []
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1091 \end{equation}
+l.1092 \end{equation}
                      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -1954,7 +1954,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 \maketag@@@ #1->\hbox {\m@th \normalfont #1}
                                             
-l.1091 \end{equation}
+l.1092 \end{equation}
                      
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1965,7 +1965,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1091 \end{equation}
+l.1092 \end{equation}
                      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1976,7 +1976,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.1091 \end{equation}
+l.1092 \end{equation}
                      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1987,7 +1987,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.1091 \end{equation}
+l.1092 \end{equation}
                      
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1998,7 +1998,7 @@ my insertion and my current dilemma will both disappear.
 ! Display math should end with $$.
 <to be read again> 
                    \endgroup 
-l.1091 \end{equation}
+l.1092 \end{equation}
                      
 The `$' that I just saw supposedly matches a previous `$$'.
 So I shall assume that you typed `$$' both times.
@@ -2008,9 +2008,9 @@ So I shall assume that you typed `$$' both times.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1110 \begin{thm}\label
+l.1111 \begin{thm}\label
                         {tm:4:20}] [35]
-Overfull \hbox (1.21344pt too wide) in paragraph at lines 1160--1161
+Overfull \hbox (1.21344pt too wide) in paragraph at lines 1161--1162
 [][]\T1/lmr/bx/n/12 Teorem 3.3.5. []\T1/lmr/m/it/12 Neka ma-trica $\OT1/lmr/bx/
 n/12 A \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 C[]$ \T1/lmr/m/it/12 za-do-vo-ljava $\O
 ML/lmm/m/it/12 `[]$\T1/lmr/m/it/12 -robusno svoj-stvo nul-prostora
@@ -2019,10 +2019,10 @@ ML/lmm/m/it/12 `[]$\T1/lmr/m/it/12 -robusno svoj-stvo nul-prostora
 [36]
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\dj' on input line 1198.
+(hyperref)                removing `\dj' on input line 1199.
 
 [37] [38] [39] [40]
-Overfull \hbox (32.5526pt too wide) in paragraph at lines 1306--1307
+Overfull \hbox (32.5526pt too wide) in paragraph at lines 1307--1308
 [][]\T1/lmr/bx/n/12 Definicija 4.1.1. []\T1/lmr/m/it/12 Neka je $\OT1/lmr/bx/n/
 12 A \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 C[]$ \T1/lmr/m/it/12 ma-trica sa $\OML/lm
 m/m/it/12 `[]$\T1/lmr/m/it/12 -normaliziranim stup-cima $\OT1/lmr/bx/n/12 a[]\O
@@ -2031,7 +2031,7 @@ ML/lmm/m/it/12 ; \OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12 ; [] ; \OT1/lmr/bx/n/12 a
  []
 
 
-Overfull \hbox (32.5526pt too wide) in paragraph at lines 1314--1315
+Overfull \hbox (32.5526pt too wide) in paragraph at lines 1315--1316
 [][]\T1/lmr/bx/n/12 Definicija 4.1.2. []\T1/lmr/m/it/12 Neka je ma-trica $\OT1/
 lmr/bx/n/12 A \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 C[]$ \T1/lmr/m/it/12 sa $\OML/lm
 m/m/it/12 `[]$\T1/lmr/m/it/12 -normaliziranim stup-cima $\OT1/lmr/bx/n/12 a[]\O
@@ -2042,7 +2042,7 @@ ML/lmm/m/it/12 ; \OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12 ; [] ; \OT1/lmr/bx/n/12 a
 [41
 
 ]
-Overfull \hbox (16.00412pt too wide) in paragraph at lines 1326--1328
+Overfull \hbox (16.00412pt too wide) in paragraph at lines 1327--1329
 [][]\OML/lmm/m/it/12 ; [] ; [][]$ \T1/lmr/m/n/12 te za-do-vo-lja-vaju $\OMS/lms
 y/m/n/12 h[][]\OML/lmm/m/it/12 ; [][]\OMS/lmsy/m/n/12 i \OT1/lmr/m/n/12 = \OMS/
 lmsy/m/n/12 h\OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12 ; \OT1/lmr/bx/n/12 a[]\OMS/lm
@@ -2055,7 +2055,7 @@ Underfull \vbox (badness 5908) has occurred while \output is active []
  [44]
 [45]
 ! Misplaced alignment tab character &.
-l.1474         &
+l.1475         &
                 N \leq
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -2071,7 +2071,7 @@ Underfull \vbox (badness 3271) has occurred while \output is active []
 Underfull \vbox (badness 3302) has occurred while \output is active []
 
  [47]
-Overfull \hbox (8.92783pt too wide) in paragraph at lines 1555--1556
+Overfull \hbox (8.92783pt too wide) in paragraph at lines 1556--1557
 []\T1/lmr/m/n/12 Neka je $\OT1/lmr/m/n/12 (\OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12
  ; [] \OT1/lmr/bx/n/12 a[]\OT1/lmr/m/n/12 )$ \T1/lmr/m/n/12 sus-tav od $\OML/lm
 m/m/it/12 N \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 m\OT1/lmr/m/n/12 (\OML/lmm/m/it/
@@ -2082,31 +2082,31 @@ m/m/it/12 N \OT1/lmr/m/n/12 = \OML/lmm/m/it/12 m\OT1/lmr/m/n/12 (\OML/lmm/m/it/
 [48] [49] [50] [51]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1667.
+(hyperref)                removing `math shift' on input line 1668.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\ell' on input line 1667.
+(hyperref)                removing `\ell' on input line 1668.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1667.
+(hyperref)                removing `subscript' on input line 1668.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1667.
+(hyperref)                removing `math shift' on input line 1668.
 
 [52]
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 1707.
+(hyperref)                removing `\textasciicaron' on input line 1708.
 
 [53]
 ! Undefined control sequence.
 <argument> ...||\langle \vec a_i, \vec a_l \rangl 
                                                   | \leq \mu _1(s) \max _{i ...
-l.1726     \end{align*}
+l.1727     \end{align*}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2117,7 +2117,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> ...||\langle \vec a_i, \vec a_l \rangl 
                                                   | \leq \mu _1(s) \max _{i ...
-l.1726     \end{align*}
+l.1727     \end{align*}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2133,7 +2133,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 1792.
+(hyperref)                removing `\textasciicaron' on input line 1793.
 
 
 Underfull \vbox (badness 1888) has occurred while \output is active []
@@ -2148,19 +2148,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [62]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1989.
+(hyperref)                removing `math shift' on input line 1990.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\ell' on input line 1989.
+(hyperref)                removing `\ell' on input line 1990.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1989.
+(hyperref)                removing `subscript' on input line 1990.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1989.
+(hyperref)                removing `math shift' on input line 1990.
 
 [63]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2169,7 +2169,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ! Undefined control sequence.
 <argument> \tidle 
                   A
-l.2072 ...implicira da je $\delta_1(\vec{\tidle A}
+l.2073 ...implicira da je $\delta_1(\vec{\tidle A}
                                                   ) \geq \delta$ pa stoga i ...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2180,7 +2180,7 @@ and I'll forget about whatever was undefined.
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 2074.
+(hyperref)                removing `\textasciicaron' on input line 2075.
 
 [65] [66] [67]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2189,7 +2189,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ! Undefined control sequence.
 <argument> (\vevc 
                   x^{n+1} - \vec x_S)_{S^{n+1}}
-l.2234     \end{align*}
+l.2235     \end{align*}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2200,7 +2200,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <argument> (\vevc 
                   x^{n+1} - \vec x_S)_{S^{n+1}}
-l.2234     \end{align*}
+l.2235     \end{align*}
                        
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2212,7 +2212,7 @@ and I'll forget about whatever was undefined.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [69]
-Overfull \hbox (18.7907pt too wide) in paragraph at lines 2252--2254
+Overfull \hbox (18.7907pt too wide) in paragraph at lines 2253--2255
 \T1/lmr/m/n/12 To je jed-na-kost oblika []. Pri-mje-timo da je $\OML/lmm/m/it/1
 2 ^^Z \OT1/lmr/m/n/12 := []\OML/lmm/m/it/12 ^^N[]=[] \OMS/lmsy/m/n/12 ^^T []\OM
 L/lmm/m/it/12 ^^N[]=[] <
@@ -2226,7 +2226,7 @@ Underfull \vbox (badness 5592) has occurred while \output is active []
 ! Missing } inserted.
 <inserted text> 
                 }
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -2235,7 +2235,7 @@ Try to go on, since this might almost work.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -2244,7 +2244,7 @@ Try to go on, since this might almost work.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -2253,7 +2253,7 @@ Try to go on, since this might almost work.
 ! Missing \endgroup inserted.
 <inserted text> 
                 \endgroup 
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -2268,7 +2268,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2280,7 +2280,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2292,7 +2292,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -2300,7 +2300,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Misplaced \omit.
 <recently read> \omit 
                       
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 I expect to see \omit only after tab marks or the \cr of
 an alignment. Proceed, and I'll ignore this case.
@@ -2308,7 +2308,7 @@ an alignment. Proceed, and I'll ignore this case.
 ! Missing { inserted.
 <inserted text> 
                 {
-l.2430     \end{align*}
+l.2431     \end{align*}
                        
 I've put in what seems to be necessary to fix
 the current column of the current alignment.
@@ -2324,7 +2324,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 ! Undefined control sequence.
 <argument> ...rline {S^0}})_{(S \backslash S^0)\T 
                                                   ^{L-1}}
-l.2553 ...ine{S^0}})_{(S \backslash S^0)\T^{L-1}}}
+l.2554 ...ine{S^0}})_{(S \backslash S^0)\T^{L-1}}}
                                                   _2.
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2336,7 +2336,7 @@ and I'll forget about whatever was undefined.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [78]
-Overfull \hbox (10.89194pt too wide) in paragraph at lines 2600--2602
+Overfull \hbox (10.89194pt too wide) in paragraph at lines 2601--2603
 \T1/lmr/m/it/12 Tada za $\OT1/lmr/bx/n/12 x \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 C[
 ]$ \T1/lmr/m/it/12 i $\OT1/lmr/bx/n/12 e \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 C[]$\
 T1/lmr/m/it/12 , niz $\OT1/lmr/m/n/12 (\OT1/lmr/bx/n/12 x[]\OT1/lmr/m/n/12 )$ \
@@ -2344,7 +2344,7 @@ T1/lmr/m/it/12 de-fi-ni-ran sa [], [], []
  []
 
 [79] [80]
-Overfull \hbox (0.56647pt too wide) in paragraph at lines 2645--2648
+Overfull \hbox (0.56647pt too wide) in paragraph at lines 2646--2649
 \T1/lmr/m/n/12 nom [] iz nas-tavka sli-jedi di-rek-tno. Dakle, iz $\OMS/lmsy/m/
 n/12 k[]k[] \OML/lmm/m/it/12 > \OMS/lmsy/m/n/12 k[]k[]$
  []
@@ -2410,27 +2410,27 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Class memoir Warning: The material used in the headers is too large
 (14.89201pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 2745.
+(in both cases you will find help in the memoir manual). on input line 2746.
 
 [91]
 \tf@toc=\write8
 \openout8 = `diplomski.toc'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2745.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2745.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2746.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2746.
  (./diplomski.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2745.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2745.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2746.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2746.
 
 Package rerunfilecheck Info: File `diplomski.out' has not changed.
 (rerunfilecheck)             Checksum: 5CD98A8B3ABD7C2F0EA4755F5F6DC6B8;1733.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2745.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2746.
  ) 
 Here is how much of TeX's memory you used:
- 37906 strings out of 494021
- 721113 string characters out of 6162400
- 861702 words of memory out of 5000000
- 40675 multiletter control sequences out of 15000+600000
+ 37908 strings out of 494021
+ 721164 string characters out of 6162400
+ 861747 words of memory out of 5000000
+ 40676 multiletter control sequences out of 15000+600000
  657272 words of font info for 118 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  67i,24n,101p,3827b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2455,10 +2455,10 @@ m/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
 ive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on diplomski.pdf (96 pages, 633972 bytes).
+Output written on diplomski.pdf (96 pages, 634430 bytes).
 PDF statistics:
- 1338 PDF objects out of 1440 (max. 8388607)
- 1184 compressed objects within 12 object streams
- 387 named destinations out of 1000 (max. 500000)
+ 1340 PDF objects out of 1440 (max. 8388607)
+ 1186 compressed objects within 12 object streams
+ 388 named destinations out of 1000 (max. 500000)
  373 words of extra memory for PDF output out of 10000 (max. 10000000)
 

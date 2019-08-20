@@ -158,7 +158,7 @@ $$\|\vec{x}\|_p^p := \sum_{j=1}^N|x_j|^p \xrightarrow{p\rightarrow 0} \sum_{j=1}
 Gdje smo koristili da je $\mathbf{1}_{\{x_j \neq 0\}} = 1$  ako je $x_j \neq 0$ te $\mathbf{1}_{\{x_j \neq 0\}} = 0$  ako je $x_j = 0$. Drugim rije\v{c}ima, $\|\vec{x}\|_0$ je limes $p$-te potencije $\ell_p$-kvazinorme vektora $\vec{x}$ kada $p$ te\v{z}i k nuli. Kvazinorma definira se jednako kao standardna $\ell_p$-norma, jedino \v{s}to nejednakost trokuta oslabimo, tj. 
 $$\|\vec{x}+\vec{y}\|\leq C(\|\vec{x}\|+\|\vec{y}\|)$$ 
 za neku konstantu $C \geq 1$.
-Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $x$, iako  ona nije niti norma niti kvazinorma. U samoj praksi, te\v{s}ko je tra\v{z}iti rijetkost vektora, pa je stoga prirodno zahtijevati slabiji uvjet \textit{kompresibilnosti}.  
+Funkciju $\|\cdot\|_0$ \v{c}esto nazivamo $\ell_0$-norma vektora $\vec x$, iako  ona nije niti norma niti kvazinorma. U samoj praksi, te\v{s}ko je tra\v{z}iti rijetkost vektora, pa je stoga prirodno zahtijevati slabiji uvjet \textit{kompresibilnosti}.  
 \begin{defn}\label{greska_naj_s_aprox}
     $\ell_p$-gre\v{s}ku najbolje $s$-rijetke aproksimacije vektora $\vec{x}\in\C^{N}$ definiramo sa 
     $$\sigma_s(\vec{x})_p := \inf\big\{\|\vec{x}-\vec{z}\|_p,\ \vec{z} \in \C^{N} \ \text{je s-rijedak}\big\}$$
@@ -434,9 +434,9 @@ To zna\v{c}i da je potrebno barem $2s$ mjerenja da bi rekonstruirali svaki $s$-r
     \begin{equation*}
         \det(\vec{A}_S) = \prod_{k < l} (t_{j_l} - t_{j_k})>0.
     \end{equation*}
-    To zna\v{c}i da je matrica $\vec A$ invertibilna, pa posebno i injektivna. Tada je zadovoljena tvrdnja $(c)$ teorema \eqref{rekonstrukcija_tm1}, pa je po istom teoremu zadovoljena i tvrdnja $(a)$, tj. svaki $s$-rijedak vektor $\vec x \in \C^N$ zadovoljava $\vec{Az}=\vec{Ax}$. Stoga je taj vektor mogu\'ce jedinstveno rekonstruirati putem minimizacije \eqref{problem_minimizacije}.
+    To zna\v{c}i da je matrica $\vec A$ invertibilna, pa posebno i injektivna. Tada je zadovoljena tvrdnja $(c)$ teorema \ref{rekonstrukcija_tm1}, pa je po istom teoremu zadovoljena i tvrdnja $(a)$, tj. svaki $s$-rijedak vektor $\vec x \in \C^N$ zadovoljava $\vec{Az}=\vec{Ax}$. Stoga je taj vektor mogu\'ce jedinstveno rekonstruirati putem minimizacije \eqref{problem_minimizacije}.
 \end{proof}
-\indent Zapravo, mnogo matrica zadovoljava uvjet $(c)$ iz teorema \eqref{rekonstrukcija_tm1}. Na primjer, potencije od $t_1,\dots,t_N$ u \eqref{vandermont_matrica} ne moraju biti uzastopne. Nadalje, brojevi $t_1,\dots,t_N$ ne moraju biti pozitivni, niti realni sve dok vrijedi $\det(\vec A_S) \neq 0$. Posebno, mo\v{z}emo uzeti $t_l = e^{2\pi i (l-1)/N}$ za $l \in [N]$ te argumentom iz pro\v{s}log teorema vidimo da parcijalna Fourierova matrica
+\indent Zapravo, mnogo matrica zadovoljava uvjet $(c)$ iz teorema \ref{rekonstrukcija_tm1}. Na primjer, potencije od $t_1,\dots,t_N$ u \eqref{vandermont_matrica} ne moraju biti uzastopne. Nadalje, brojevi $t_1,\dots,t_N$ ne moraju biti pozitivni, niti realni sve dok vrijedi $\det(\vec A_S) \neq 0$. Posebno, mo\v{z}emo uzeti $t_l = e^{2\pi i (l-1)/N}$ za $l \in [N]$ te argumentom iz pro\v{s}log teorema vidimo da parcijalna Fourierova matrica
 \begin{equation*}
    \vec A = 
    \begin{bmatrix*}
@@ -483,7 +483,7 @@ Za svaki $N \geq s + 1$ i za dani $s$-rijedak vektor $\vec x \in \C^N$, postoji 
 \end{proof}
 
 \section[NP-slo\v{z}enost $\mathbf{\ell_0}$-minimizacije][NP-slo\v{z}enost $\ell_0$-minimizacije]{NP-slo\v{z}enost $\ell_0$-minimizacije}
-Kao \v{s}to smo najavili, pokazati \'cemo da je u praksi neisplativno rje\v{s}avati problem $\ell_0$-minimizacije u svrhu rekonstrukcije vektora $\vec x$ iz mjerenja $\vec y = \vec{Ax}$. Prisjetimo se, problem koji rje\v{s}avamo je oblika, 
+Kao \v{s}to smo najavili, pokazati \'cemo da je u praksi neisplativo rje\v{s}avati problem $\ell_0$-minimizacije u svrhu rekonstrukcije vektora $\vec x$ iz mjerenja $\vec y = \vec{Ax}$. Prisjetimo se, problem koji rje\v{s}avamo je oblika, 
 \begin{equation*}
     \min_{\vec z \in \C^N} \norm{\vec z}_0 \quad \text{uz uvjet } \vec{Az}=\vec y. 
 \end{equation*}
@@ -496,7 +496,7 @@ NP-te\v{z}ak.\\
 \begin{itemize}
     \item $\mathfrak{P}$: Svi problemi odlu\v{c}ivanja za koje postoji algoritam polinomijalnog vremena koji daje rje\v{s}enje.
     \item $\mathfrak{NP}$: Svi problemi odlu\v{c}ivanja za koje postoji algoritam polinomijalnog vremena koji provjerava to\v{c}nost rje\v{s}enja.
-    \item $\mathfrak{NP}$-te\v{s}ki: Svi problemi (ne nu\v{z}no problemi odre\dj ivanja) za koje se algoritam za rje\v{s}enje mo\v{z}e u polinomijalnom vremenu transformirati u algoritam rje\v{s}enja za bilo koji $\mathfrak{NP}$ problem.
+    \item $\mathfrak{NP}$-te\v{s}ki: Svi problemi (ne nu\v{z}no problemi odlu\v{c}ivanja) za koje se algoritam za rje\v{s}enje mo\v{z}e u polinomijalnom vremenu transformirati u algoritam rje\v{s}enja za bilo koji $\mathfrak{NP}$ problem.
     \item $\mathfrak{NP}$-potpuni: Svi problemi koji su istovremeno $\mathfrak{NP}$ i $\mathfrak{NP}$-te\v{s}ki.
 \end{itemize}
 Pitanje je li $\mathfrak{P}$ strogo sadr\v{z}ano u  $\mathfrak{NP}$ do dan danas nije odgovoreno. No, vjeruje se da postoje problemi za koje ne postoji algoritam rje\v{s}enja polinomijalnog vremena, ali postoji algoritam koji \'ce provjeriti to\v{c}nost rje\v{s}enja u polinomijalnom vremenu.
@@ -520,7 +520,7 @@ Za danu kolekciju $\{\mathcal{C}_i;\ i \in [N]\}$ tro\v{c}lanih podskupova od $[
     \begin{equation*}
         \vec A = [\vec a_1\ \vec a_2\ \cdots \ \vec a_N], \qquad \vec y = [1,1, \dots, 1]^T.
     \end{equation*}
-    Po\v{s}to je $N \leq {m \choose 3}$, to mo\v{z}emo napraviti u polinomijalnom vremenu. Ako $\vec z \in \C^N$ zadovoljava $\norm{\vec{Az}-\vec y}_2 \leq \eta$, tada su svih $m$ komponenti od $\vec{Az}$ udaljeljene od $1$ za najvi\v{s}e $\eta$, pa su te komponente razli\v{c}ite od nula, jer smo $\eta$ uzeli manji od $1$. Dakle, vrijedi $\norm{\vec{Az}}_0 = m$. Ali po\v{s}to svaki od vektora $\vec a_i$ ima to\v{c}no tri ne-nul komponente, vektor $\vec{Az}=\sum_{j=1}^N z_j \vec a_j$ ima najvi\v{s}e $r \norm{\vec z}_0$ ne-nul elemenata, tj. $\norm{\vec{Az}}_0 \leq 3 \norm{\vec{z}}_0$. Dakle, za svaki vektor $\vec z \in \C^N$ koji zadovoljava $\norm{\vec{Az}-\vec y}_2 \leq \eta$ vrijedi $\norm{\vec z}_0 \geq m/3$. Neka je sada $\vec x \in \C^N$ rje\v{s}enje $\ell_0$-minimizacije \eqref{problem_minimizacije_generalni}. Imamo dva slu\v{c}aj za normu vektora $\vec x$:
+    Po\v{s}to je $N \leq {m \choose 3}$, to mo\v{z}emo napraviti u polinomijalnom vremenu. Ako $\vec z \in \C^N$ zadovoljava $\norm{\vec{Az}-\vec y}_2 \leq \eta$, tada su svih $m$ komponenti od $\vec{Az}$ udaljeljene od $1$ za najvi\v{s}e $\eta$, pa su te komponente razli\v{c}ite od nula, jer smo $\eta$ uzeli manji od $1$. Dakle, vrijedi $\norm{\vec{Az}}_0 = m$. Ali po\v{s}to svaki od vektora $\vec a_i$ ima to\v{c}no tri ne-nul komponente, vektor $\vec{Az}=\sum_{j=1}^N z_j \vec a_j$ ima najvi\v{s}e $3 \norm{\vec z}_0$ ne-nul elemenata, tj. $\norm{\vec{Az}}_0 \leq 3 \norm{\vec{z}}_0$. Dakle, za svaki vektor $\vec z \in \C^N$ koji zadovoljava $\norm{\vec{Az}-\vec y}_2 \leq \eta$ vrijedi $\norm{\vec z}_0 \geq m/3$. Neka je sada $\vec x \in \C^N$ rje\v{s}enje $\ell_0$-minimizacije \eqref{problem_minimizacije_generalni}. Imamo dva slu\v{c}aj za normu vektora $\vec x$:
     \begin{enumerate}
         \item Ako je $\norm{\vec{x}}_0 = m/3$ tada je $\{\mathcal{C}_j;\ j \in \supp(\vec x)\}$ egzaktni pokriva\v{c} skupa $[m]$ jer ina\v{c}e bi neke od $m$ komponenti od $\vec{Ax}$ bile jednake od nula.
         \item Ako je $\norm{\vec{x}}_0 > m/3$ tada ne mo\v{z}e postojati egzaktni pokriva\v{c} $\{\mathcal{C}_j;\ j \in J\}$ jer bi u suprotnom vektor $\vec z \in \C^N$ definiran tako da je $z_j = 1$ ako je $j \in J$ i $z_j = 0$ ako je $j \not \in J$, zadovoljavao $\vec{Az}=\vec y$ i $\norm{\vec z}_0=m/3$, \v{s}to je kontradikcija s minimalnosti vektora $\vec x$.
@@ -606,7 +606,8 @@ U realnom slu\v{c}aju, \eqref{problem_minimizacije_l1} mo\v{z}emo reinterpretira
         \end{cases}
     \end{equation*}
 \end{multicols}
-za svaki $j \in [N]$. Tada je problem \eqref{problem_minimizacije_l1} ekvivaltan problemu
+\noindent
+za svaki $j \in [N]$. Tada je problem \eqref{problem_minimizacije_l1} ekvivalentan problemu
 \begin{equation}
     \min_{\vec z^+,\vec z^- \\ \in \R^N} \sum_{j=1}^{N}(z_j^+ + z_j^-) \quad \text{uz uvjet }
     \begin{bmatrix*}
@@ -666,7 +667,7 @@ Rje\v{s}enje $\vec x^{\sharp}$ povezano je s rje\v{s}enjem problema $\ell_1$-min
 \begin{equation}\label{problem_minimizacije_l1_sum}
     \min_{\vec z \in \C^N} \lambda\norm{\vec z}_1 + \norm{\vec{Az}-\vec y}_2^2
 \end{equation}
-za neki $\lambda \geq 0$. Tako\dj er povezano je s rje\v{s}enjem \textit{LASSO} problema, za neki $\tau \geq 0$,
+za neki $\lambda \geq 0$. Tako\dj er povezano je s rje\v{s}enjem \textit{LASSO} problema (vidi \cite{tibshirani96regression}), za neki $\tau \geq 0$,
 \begin{equation}\label{lasso}
     \min_{\vec z \in \C^N} \norm{\vec{Az}-\vec y}_2\quad \text{uz uvjet } \norm{\vec z}_1\leq \tau
 \end{equation}
@@ -767,7 +768,7 @@ Prirodan uvjet zaustavljanja OMP-a je kada se postigne $\norm{\vec{y} - \vec{Ax}
 \end{prop}
 % TODO nije mi bas jasno ovo
 \begin{proof}
-    Pretpostavimo da OMP algoritam rekonstruira sve vektore sa nosa\v{c}em na skupu $S$ u najvi\v{s}e $s = \card(S)$ iteracija. Neka su $\vec v, \vec w$ sa nosa\v{c}em na $S$, takvi da je $\vec{Av}=\vec{Aw}$. Zbog pretpostavke, $\vec v$ i $\vec w$ moraju biti jednaki, a to zna\v{c}i da je matrica $\vec A_S$ injektivna. Nadalje, ako je $\vec y = \vec{Ax}$ za neki $\vec x \in \C^N$ sa $\supp(\vec x)=S$, indeks $l \in \bar S$ ne mo\v{z}e biti izabran u prvoj iteraciji, po\v{s}to indeks izabran u prvoj iteraciji ostaje uvijek u nosa\v{c}u, a po pretpostavci OMP rekonstruira $\vec x$ iz $\vec y = \vec{Ax}$ u to\v{c}no $s$ iteracija. Dakle za $n=0$ iz \eqref{omp_1} imamo da je $\max_{j \in S}|(\vec A^*y)_j| > |(\vec A^*y)_l|$ za svaki $l \in \bar{S}$, pa stoga vrijedi $\max_{j \in S}|(\vec A^*y)_j| > \max_{l \in \bar{S}}|(\vec A^*y)_l|$ za sve ne-nul $\vec y \in \{\vec{Az},\ \supp(\vec z) \subset S\}$. \\
+    Pretpostavimo da OMP algoritam rekonstruira sve vektore s nosa\v{c}em na skupu $S$ u najvi\v{s}e $s = \card(S)$ iteracija. Neka su $\vec v, \vec w$ sa nosa\v{c}em na $S$, takvi da je $\vec{Av}=\vec{Aw}$. Zbog pretpostavke, $\vec v$ i $\vec w$ moraju biti jednaki, a to zna\v{c}i da je matrica $\vec A_S$ injektivna. Nadalje, ako je $\vec y = \vec{Ax}$ za neki $\vec x \in \C^N$ sa $\supp(\vec x)=S$, indeks $l \in \bar S$ ne mo\v{z}e biti izabran u prvoj iteraciji, po\v{s}to indeks izabran u prvoj iteraciji ostaje uvijek u nosa\v{c}u, a po pretpostavci OMP rekonstruira $\vec x$ iz $\vec y = \vec{Ax}$ u to\v{c}no $s$ iteracija. Dakle za $n=0$ iz \eqref{omp_1} imamo da je $\max_{j \in S}|(\vec A^*y)_j| > |(\vec A^*y)_l|$ za svaki $l \in \bar{S}$, pa stoga vrijedi $\max_{j \in S}|(\vec A^*y)_j| > \max_{l \in \bar{S}}|(\vec A^*y)_l|$ za sve ne-nul $\vec y \in \{\vec{Az},\ \supp(\vec z) \subset S\}$. \\
     \indent
     Obratno, pretpostavimo da je $\vec{Ax}^1 \neq y,\dots,\vec{Ax}^{s-1} \neq y$ jer u suprotnom nemamo \v{s}to dokazivati. Pokazati \'cemo da $S^n \subset S,\ \card(S^n)=n$ za $0 \leq n \leq s$. To \'ce implicirati $S^s = S$. Nadalje, \eqref{omp_2} daje $\vec{Ax}^s = \vec y$ a iz injektivnosti od $\vec{A}_S$ slijedi $\vec x_s = \vec{x}$. Dakle, neka je $0 \leq n \leq s-1$. Ako je $S^n \subset S$, to povla\v{c}i da je $\vec r^n := \vec y - \vec{Ax}^n \in \{\vec{Az},\ \supp(\vec z) \subset S\}$, pa prema \eqref{uvjet_rekon_omp} indeks $j_{n+1}$ le\v{z}i u S, pa $S^{n+1} = S \cup \{j_{n+1}\} \subset S$. Ovo induktivno pokazuje da je $S^n$ podskup od $S$ za svaki $0 \leq n \leq s$. Nadalje, neka je $1 \leq n \leq s-1$. Lema \eqref{lem:3:4} daje $(\vec{A}^* \vec r^n)_{S^n} = \vec 0$. Stoga, iz \eqref{omp_1} vidimo da indeks $j_{n+1}$ ne le\v{z}i u $S^{n}$, jer bi u protivnom $\vec A^* \vec r^n = \vec 0$, a po \eqref{uvjet_rekon_omp} $\vec r^n = \vec 0$. Dakle, $\card(S^n)=n$.
 \end{proof}
@@ -889,7 +890,7 @@ Sljede\'ci teorem govori o vezi svojstva nul-prostora i egzaktne rekonstrukcije 
 \begin{proof}
     Neka je skup indeksa $S$ fiksan. Pretpostavimo da je svaki vektor $\vec x \in \K^N$ s nosa\v{c}em na $S$ jedinstveni minimizator od $\norm{\vec z}_1$ takav da $\vec {Az} = \vec {Ax}$. Stoga za svaki $\vec v \in \ker \vec A \backslash \{\vec 0\}$, vektor $\vec v_S$ je jedinstveni minimizator od $\norm{\vec z}_1$ takav da $\vec{Az} = \vec{Av}_S$. Ali imamo $\vec A (-\vec v_{\bar S}) = \vec A \vec v_S$ i $-\vec v_{\bar S} \neq \vec v_S$ jer je $\vec v \neq \vec 0$ i $ \vec 0 = \vec{Av} = \vec A (\vec v_S + \vec v_{\bar S})$. Dakle, mora vrijediti $\norm{\vec v_S}_1 < \norm{\vec v_{\bar S}}_1$.\\
 \indent
-Obratno, pretpostavimo da $\vec A$ zadovoljava svojstvo nul-prostora za skup $S$. Tada za vektor $\vec x \in \K^N$ sa nosa\v{c}em na $S$ i za $\vec z \in \K^N$, $\vec z \neq \vec x$ takvi da $\vec{Az}=\vec{Ax}$, ozna\v{c}imo vektor $\vec v := \vec x - \vec z \in \ker \vec A \backslash \{\vec 0\}$. Imamo,
+Obratno, pretpostavimo da $\vec A$ zadovoljava svojstvo nul-prostora za skup $S$. Tada za vektor $\vec x \in \K^N$ s nosa\v{c}em na $S$ i za $\vec z \in \K^N$, $\vec z \neq \vec x$ takvi da $\vec{Az}=\vec{Ax}$, ozna\v{c}imo vektor $\vec v := \vec x - \vec z \in \ker \vec A \backslash \{\vec 0\}$. Imamo,
 \begin{equation*}
     \norm{\vec x} \leq \norm{\vec x - \vec z_S}_1 + \norm{\vec z_S}_1 = \norm{\vec v_S}_1 + \norm{\vec z_S}_1 < \norm{\vec v_{\bar S}}_1 + \norm{\vec z_S}_1 = \norm{- \vec z_{\bar S}}_1 + \norm{\vec z_S}_1 = \norm{\vec z}_1
 \end{equation*}
@@ -903,7 +904,7 @@ Variranjem skupa $S$, sljede\'ci rezultat sljedi direktno iz prethodnog teorema.
     Za matricu $\vec A \in \K^{m \times N}$, svaki $s$-rijedak vektor $\vec x \in \K^N$ je jedinstveno rje\v{s}enje problema \eqref{problem_minimizacije_l1} uz $\vec y = \vec{Ax}$ ako i samo ako $\vec A$ zadovoljava svojstvo nul-prostora reda $s$.
 \end{thm}
 
-Primjetimo da prethodni teorem tvrdi da za svaki $\vec y = \vec{Ax}$, gdje je $\vec x$ $s$-rijedak, $\ell_1$-minimizacija \eqref{problem_minimizacije_l1} zapravo rje\v{s}ava problem $\ell_0$-minimizacije \eqref{problem_minimizacije} kada vrijedi svojstvo nul-prostora reda $s$. Zaista, pretpostavimo da se svaki $s$-rijedak vektor $\vec{x}$ mo\v{z}e rekonstruirati $\ell_1$-minimizacijom iz $\vec y = \vec{Ax}$. Neka je $\vec z$ minimizator $\ell_0$ problema \eqref{problem_minimizacije} sa $\vec y = \vec{Ax}$, tada je $\norm{\vec z}_0 \leq \norm{\vec x}_0$ pa je $\vec z$ tako\dj er $s$-rijedak. No, svaki $s$-rijedak vektor je jedinstveni $\ell_1$-minimizator, slijedi da je $\vec x = \vec z$.
+Primjetimo da prethodni teorem tvrdi da za svaki $\vec y = \vec{Ax}$, gdje je $\vec x$ $s$-rijedak, $\ell_1$-minimizacija \eqref{problem_minimizacije_l1} zapravo rje\v{s}ava problem $\ell_0$-minimizacije \eqref{problem_minimizacije} kada vrijedi svojstvo nul-prostora reda $s$. Zaista, pretpostavimo da se svaki $s$-rijedak vektor $\vec{x}$ mo\v{z}e rekonstruirati $\ell_1$-minimizacijom iz $\vec y = \vec{Ax}$. Neka je $\vec z$ minimizator $\ell_0$ problema \eqref{problem_minimizacije} sa $\vec y = \vec{Ax}$, tada je $\norm{\vec z}_0 \leq \norm{\vec x}_0$ pa je $\vec z$ tako\dj er $s$-rijedak. No, po prethodnom teoremu, svaki $s$-rijedak vektor je jedinstveni $\ell_1$-minimizator. Slijedi da je $\vec x = \vec z$.
 \newline \indent
 Za algoritam rekonstrukcije po\v{z}eljno je da zadr\v{z}i mogu\'cnost rekonstrukcije ako su neka od mjerenja reskaliraju, permutiraju ili dodaju nova. $\ell_1$-minimizacija ima takvo svojstvo. Formalno, gore opisane promjene zapravo predstavljaju zamjenu matrice $\vec A$ matricama $\vec{\hat A}$ i $\vec{\tilde A}$
 \begin{align*}
@@ -988,7 +989,7 @@ Sada mo\v{z}emo dokazivati da rekonstrukcija $\ell_q$-minimizacijom implicira re
         \sum_{j \in S} |v_j|^p < \sum_{l \in \bar S}|v_l|^p,
     \end{equation}
     ako je $\vec v \in \ker \vec A \backslash \{\vec 0\}$, $S$ skup indeksa od $s$ apsolutno najve\'cih komponeneti od $\vec v$ i ako ista nejednakost vrijedi za $q$.
-    Dakle, pretpostavimo da \eqref{svojstvo_nul_prostora_tm_3_nejed} vrijedi za q. Tada je nu\v{z}no $\vec v_{\bar S} \neq \vec 0$ po\v{s}to je $S$ skup indeksa od $s$ apsolutno najve\'cih komponeneti ne-nul vektora $\vec v$. Stoga \eqref{svojstvo_nul_prostora_tm_3_nejed} mo\v{z}emo napisati u obliku
+    Dakle, pretpostavimo da \eqref{svojstvo_nul_prostora_tm_3_nejed} vrijedi za $q$. Tada je nu\v{z}no $\vec v_{\bar S} \neq \vec 0$ po\v{s}to je $S$ skup indeksa od $s$ apsolutno najve\'cih komponeneti ne-nul vektora $\vec v$. Stoga \eqref{svojstvo_nul_prostora_tm_3_nejed} mo\v{z}emo napisati u obliku
     \begin{equation}\label{svojstvo_nul_prostora_tm_3_nejed_2}
         \sum_{j \in S} \frac{1}{\sum_{l \in \bar S}(|v_l|/|v_j|)^p} < 1.  
     \end{equation}
