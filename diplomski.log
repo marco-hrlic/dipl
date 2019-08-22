@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  21 AUG 2019 10:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  22 AUG 2019 11:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2427,10 +2427,10 @@ Package rerunfilecheck Info: File `diplomski.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2746.
  ) 
 Here is how much of TeX's memory you used:
- 37908 strings out of 494021
- 721164 string characters out of 6162400
+ 37907 strings out of 494021
+ 721157 string characters out of 6162400
  861747 words of memory out of 5000000
- 40676 multiletter control sequences out of 15000+600000
+ 40675 multiletter control sequences out of 15000+600000
  657272 words of font info for 118 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
  67i,24n,101p,3824b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2455,7 +2455,7 @@ m/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
 ive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on diplomski.pdf (96 pages, 634445 bytes).
+Output written on diplomski.pdf (96 pages, 634309 bytes).
 PDF statistics:
  1342 PDF objects out of 1440 (max. 8388607)
  1188 compressed objects within 12 object streams
