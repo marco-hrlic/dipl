@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  22 AUG 2019 11:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.7.23)  23 AUG 2019 14:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1508,12 +1508,9 @@ either increase the head height or redesign the header
 
 ] [2] [3
 
-] [4] [5]
-Underfull \vbox (badness 7963) has occurred while \output is active []
+] [4] [5] [6] [7] [8] [9] [10] [11]pdfTeX warning (ext4): destination with the 
+same identifier (name{equation.1.2.6}) has been already used, duplicate ignored
 
- [6]
-[7] [8] [9] [10] [11]pdfTeX warning (ext4): destination with the same identifie
-r (name{equation.1.2.6}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.424     \begin{equation}
@@ -1939,10 +1936,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.1001 
-       ] [32]
-Underfull \vbox (badness 2903) has occurred while \output is active []
-
- [33]
+       ] [32] [33]
 ! Missing $ inserted.
 <inserted text> 
                 $
@@ -2008,8 +2002,8 @@ So I shall assume that you typed `$$' both times.
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1111 \begin{thm}\label
-                        {tm:4:20}] [35]
+l.1117 \end{thm}
+                ] [35]
 Overfull \hbox (1.21344pt too wide) in paragraph at lines 1161--1162
 [][]\T1/lmr/bx/n/12 Teorem 3.3.5. []\T1/lmr/m/it/12 Neka ma-trica $\OT1/lmr/bx/
 n/12 A \OMS/lmsy/m/n/12 2 \U/msb/m/n/12 C[]$ \T1/lmr/m/it/12 za-do-vo-ljava $\O
@@ -2041,15 +2035,7 @@ ML/lmm/m/it/12 ; \OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12 ; [] ; \OT1/lmr/bx/n/12 a
 
 [41
 
-]
-Overfull \hbox (16.00412pt too wide) in paragraph at lines 1327--1329
-[][]\OML/lmm/m/it/12 ; [] ; [][]$ \T1/lmr/m/n/12 te za-do-vo-lja-vaju $\OMS/lms
-y/m/n/12 h[][]\OML/lmm/m/it/12 ; [][]\OMS/lmsy/m/n/12 i \OT1/lmr/m/n/12 = \OMS/
-lmsy/m/n/12 h\OT1/lmr/bx/n/12 a[]\OML/lmm/m/it/12 ; \OT1/lmr/bx/n/12 a[]\OMS/lm
-sy/m/n/12 i$\T1/lmr/m/n/12 . Na-da-lje, zbog Cauchy-Schwarzove
- []
-
-[42] [43]
+] [42] [43]
 Underfull \vbox (badness 5908) has occurred while \output is active []
 
  [44]
@@ -2212,10 +2198,10 @@ and I'll forget about whatever was undefined.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [69]
-Overfull \hbox (18.7907pt too wide) in paragraph at lines 2253--2255
-\T1/lmr/m/n/12 To je jed-na-kost oblika []. Pri-mje-timo da je $\OML/lmm/m/it/1
-2 ^^Z \OT1/lmr/m/n/12 := []\OML/lmm/m/it/12 ^^N[]=[] \OMS/lmsy/m/n/12 ^^T []\OM
-L/lmm/m/it/12 ^^N[]=[] <
+Overfull \hbox (22.05469pt too wide) in paragraph at lines 2253--2255
+\T1/lmr/m/n/12 To je jed-na-kost oblika []. Pri-mi-je-timo da je $\OML/lmm/m/it
+/12 ^^Z \OT1/lmr/m/n/12 := []\OML/lmm/m/it/12 ^^N[]=[] \OMS/lmsy/m/n/12 ^^T []\
+OML/lmm/m/it/12 ^^N[]=[] <
  []
 
 [70]
@@ -2429,11 +2415,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2746.
 Here is how much of TeX's memory you used:
  37907 strings out of 494021
  721157 string characters out of 6162400
- 861747 words of memory out of 5000000
+ 862744 words of memory out of 5000000
  40675 multiletter control sequences out of 15000+600000
  657272 words of font info for 118 fonts, out of 8000000 for 9000
  350 hyphenation exceptions out of 8191
- 67i,24n,101p,3824b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 67i,24n,101p,3822b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texli
 ve/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texlive/texmf-dist/fonts
 /enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/l
@@ -2455,7 +2441,7 @@ m/lmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
 ive/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/symbols/msbm10.pfb>
-Output written on diplomski.pdf (96 pages, 634309 bytes).
+Output written on diplomski.pdf (96 pages, 634663 bytes).
 PDF statistics:
  1342 PDF objects out of 1440 (max. 8388607)
  1188 compressed objects within 12 object streams
