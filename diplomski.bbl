@@ -22,25 +22,25 @@
 
 \expandafter\btxselectlanguage\expandafter {\btxfallbacklanguage}
 \bibitem {2010arXiv1008.4535B}
-\btxnamefont {Jean \btxlastnamefont {{Bourgain}}}, \btxnamefont
-  {S.\btxfnamespacelong J. \btxlastnamefont {{Dilworth}}}, \btxnamefont {Kevin
-  \btxlastnamefont {{Ford}}}, \btxnamefont {Sergei \btxlastnamefont
-  {{Konyagin}}}\btxandcomma {} \btxandlong {} \btxnamefont {Denka
-  \btxlastnamefont {{Kutzarova}}}, \btxjtitlefont {\btxifchangecase {{Explicit
-  constructions of RIP matrices and related problems}}{{Explicit constructions
-  of RIP matrices and related problems}}}, \btxjournalfont {arXiv e-prints}
-  (2010), arXiv:1008.4535.
+\btxnamefont {J.~\btxlastnamefont {{Bourgain}}}, \btxnamefont
+  {S.\btxfnamespacelong J. \btxlastnamefont {{Dilworth}}}, \btxnamefont
+  {K.~\btxlastnamefont {{Ford}}}, \btxnamefont {S.~\btxlastnamefont
+  {{Konyagin}}}\btxandcomma {} \btxandlong {} \btxnamefont {D.~\btxlastnamefont
+  {{Kutzarova}}}, \btxjtitlefont {\btxifchangecase {{Explicit constructions of
+  RIP matrices and related problems}}{{Explicit constructions of RIP matrices
+  and related problems}}}, \btxjournalfont {arXiv e-prints} (2010),
+  arXiv:1008.4535.
 
 \bibitem {CandesTao}
-\btxnamefont {Emmanuel \btxlastnamefont {{Candes}}} \btxandlong {} \btxnamefont
-  {Terence \btxlastnamefont {{Tao}}}, \btxjtitlefont {\btxifchangecase {{Near
+\btxnamefont {E.~\btxlastnamefont {{Candes}}} \btxandlong {} \btxnamefont
+  {T.~\btxlastnamefont {{Tao}}}, \btxjtitlefont {\btxifchangecase {{Near
   Optimal Signal Recovery From Random Projections: Universal Encoding
   Strategies?}}{{Near Optimal Signal Recovery From Random Projections:
   Universal Encoding Strategies?}}}, \btxjournalfont {arXiv Mathematics
   e-prints} (2004), math/0410542.
 
 \bibitem {DBLP:journals/corr/Chen15n}
-\btxnamefont {Hao \btxlastnamefont {Chen}}, \btxjtitlefont {\btxifchangecase
+\btxnamefont {H.~\btxlastnamefont {Chen}}, \btxjtitlefont {\btxifchangecase
   {Explicit {RIP} matrices in compressed sensing from algebraic
   geometry}{Explicit {RIP} Matrices in Compressed Sensing from Algebraic
   Geometry}}, \btxjournalfont {CoRR} \btxvolumefont {abs/1505.07490} (2015),
@@ -55,8 +55,8 @@
   \btxurlfont{https://books.google.hr/books?id=iD5s0iKXHP8C}}.
 
 \bibitem {foucart13}
-\btxnamefont {Simon \btxlastnamefont {Foucart}} \btxandlong {} \btxnamefont
-  {Holger \btxlastnamefont {Rauhut}}, \btxpublisherfont {\btxtitlefont
+\btxnamefont {S.~\btxlastnamefont {Foucart}} \btxandlong {} \btxnamefont
+  {H~\btxlastnamefont {Rauhut}}, \btxpublisherfont {\btxtitlefont
   {\btxifchangecase {A mathematical introduction to compressive sensing}{A
   Mathematical Introduction to Compressive Sensing}}}, 2013,
   \mbox{\btxISBN~\btxISBNfont {9780817649487 0817649484}}.
@@ -80,15 +80,14 @@
   {.}~3, 749--754.
 
 \bibitem {Karp72}
-\btxnamefont {Richard\btxfnamespacelong M. \btxlastnamefont {Karp}},
-  \btxtitlefont {\btxifchangecase {Reducibility among combinatorial
-  problems.}{Reducibility Among Combinatorial Problems.}}, Complexity of
-  Computer Computations\ (\btxnamefont {Raymond\btxfnamespacelong E.
-  \btxlastnamefont {Miller}} \btxandlong {} \btxnamefont
-  {James\btxfnamespacelong W. \btxlastnamefont {Thatcher}}, \btxeditorsshort
-  {.}), The IBM Research Symposia Series, \btxpublisherfont {Plenum Press, New
-  York}, 1972, \btxpagesshort {.}~85--103, \mbox{\btxISBN~\btxISBNfont
-  {0-306-30707-3}}, {\latintext
+\btxnamefont {R.\btxfnamespacelong M. \btxlastnamefont {Karp}}, \btxtitlefont
+  {\btxifchangecase {Reducibility among combinatorial problems.}{Reducibility
+  Among Combinatorial Problems.}}, Complexity of Computer Computations\
+  (\btxnamefont {Raymond\btxfnamespacelong E. \btxlastnamefont {Miller}}
+  \btxandlong {} \btxnamefont {James\btxfnamespacelong W. \btxlastnamefont
+  {Thatcher}}, \btxeditorsshort {.}), The IBM Research Symposia Series,
+  \btxpublisherfont {Plenum Press, New York}, 1972, \btxpagesshort {.}~85--103,
+  \mbox{\btxISBN~\btxISBNfont {0-306-30707-3}}, {\latintext
   \btxurlfont{http://dblp.uni-trier.de/db/conf/coco/cocc1972.html#Karp72}}.
 
 \bibitem {penrose_1955}
@@ -127,8 +126,8 @@
   (1996), 267--288.
 
 \bibitem {2012arXiv1205.2081T}
-\btxnamefont {Andreas\btxfnamespacelong M. \btxlastnamefont {{Tillmann}}}
-  \btxandlong {} \btxnamefont {Marc\btxfnamespacelong E. \btxlastnamefont
+\btxnamefont {A.\btxfnamespacelong M. \btxlastnamefont {{Tillmann}}}
+  \btxandlong {} \btxnamefont {M.\btxfnamespacelong E. \btxlastnamefont
   {{Pfetsch}}}, \btxjtitlefont {\btxifchangecase {{The Computational Complexity
   of the Restricted Isometry Property, the Nullspace Property, and Related
   Concepts in Compressed Sensing}}{{The Computational Complexity of the
@@ -137,9 +136,9 @@
   arXiv:1205.2081.
 
 \bibitem {radar}
-\btxnamefont {Kumar \btxlastnamefont {{Vijay Mishra}}} \btxandlong {}
-  \btxnamefont {Yonina\btxfnamespacelong C. \btxlastnamefont {{Eldar}}},
-  \btxjtitlefont {\btxifchangecase {{Sub-Nyquist Radar: Principles and
+\btxnamefont {K.~\btxlastnamefont {{Vijay Mishra}}} \btxandlong {} \btxnamefont
+  {Y.\btxfnamespacelong C. \btxlastnamefont {{Eldar}}}, \btxjtitlefont
+  {\btxifchangecase {{Sub-Nyquist Radar: Principles and
   Prototypes}}{{Sub-Nyquist Radar: Principles and Prototypes}}},
   \btxjournalfont {arXiv e-prints} (2018), arXiv:1803.01819.
 
