@@ -114,7 +114,7 @@
   {.}~1, 10--21.
 
 \bibitem {tao}
-\btxnamefont {Terence \btxlastnamefont {Tao}}, \btxtitlefont {\btxifchangecase
+\btxnamefont {T.~\btxlastnamefont {Tao}}, \btxtitlefont {\btxifchangecase
   {Terence tao blog}{Terence Tao Blog}}, {\latintext
   \btxurlfont{https://terrytao.wordpress.com/2007/04/13/compressed-sensing-and-single-pixel-cameras/}}.
 
