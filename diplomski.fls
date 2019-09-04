@@ -348,10 +348,10 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm
 INPUT diplomski.toc
 INPUT diplomski.toc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmro12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/rm-lmbx8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/rm-lmbx6.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmro12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmr6.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/lm/ec-lmri8.tfm
