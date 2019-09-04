@@ -122,7 +122,7 @@
 
 % Diplomski rad treba poceti s uvodnim poglavljem  
 \begin{intro}
-    Prikupljanje korisnih informacija iz mjerenja \v{c}esti je problem u primjeni. Ilustrativan primjer je proces uzorkovanja radio valova u kontekstu telekomunikacijskih tehnologija. Radio valove mo\v{z}emo shvatiti kao odre\dj ene promjene elektromagnetnog polja. Niz takvih fluktuacija koje nose neku informaciju zove se \textit{signal}. Signal putuje do antenskog sustava koji (uglavnom) periodi\v{c}ki uzima uzorke, tj. vr\v{s}i mjerenja nad elektromagnetnim poljem. Najjednostvniji matemati\v{c}ki model ovakvog procesa je linearni problem uzorkovanja. Neka $\vec x \in \C^N$ reprezentira informaciju, tj. signal koji nose radio valovi. Antenski sustav modeliramo kao matricu mjerenja $\vec A \in \C^{m \times N}$ a o\v{c}itana informacija neka je $\vec y \in \C^m$. Veza izme\dj u $\vec x$ i $\vec y$ dana je sa
+    Prikupljanje korisnih informacija iz mjerenja \v{c}esti je problem u primjeni. Ilustrativan primjer je proces uzorkovanja radio valova u kontekstu telekomunikacijskih tehnologija. Radio valove mo\v{z}emo shvatiti kao odre\dj ene promjene elektromagnetnog polja. Niz takvih fluktuacija koje nose neku informaciju zove se \textit{signal}. Signal putuje do antenskog sustava koji (uglavnom) periodi\v{c}ki uzima uzorke, tj. vr\v{s}i mjerenja nad elektromagnetnim poljem. Najjednostvniji matemati\v{c}ki model ovakvog procesa je linearni problem uzorkovanja. Neka $\vec x \in \C^N$ reprezentira informaciju, tj. signal kojeg nose radio valovi. Antenski sustav modeliramo kao matricu mjerenja $\vec A \in \C^{m \times N}$ a o\v{c}itana informacija neka je $\vec y \in \C^m$. Veza izme\dj u $\vec x$ i $\vec y$ dana je sa
     \begin{equation}\label{1.1}
         \vec{Ax} = \vec{y}. 
     \end{equation}
@@ -130,9 +130,9 @@
     \indent
     Uz odre\dj ene dodatne uvjete mogu\'ce je posti\'ci uspje\v{s}nu rekonstrukciju signala i u situaciji kada je broj mjerenja $m$ puno manji od $N$, \v{c}ak manji od broja mjerenja koji proizlazi iz Nyquist-Shannonovog teorema (vidi \cite{radar}). Nadalje, postoje i efikasni prakti\v{c}ni algoritmi za rekonstrukciju. Uvjet koji to omogu\'{c}uje je \textit{sa\v{z}etost} ili \textit{rijetkost}. Za signal ka\v{z}emo da je rijedak ako je ve\'cina njegovih komponenti nula. Takva je pretpostavka opravdana. Naime, empirijski znamo da su veliki broj signala u primjeni kompresibilni, a takve signale mo\v{z}emo dobro aprokimirati rijetkim signalima. Uzmimo za primjer slike pohranjene u JPEG formatu. Slika se prebaci u wavelet bazu u kojoj zadr\v{z}imo samo najve\'ce koeficijente dok ostale postavimo na nulu.\\
     \indent
-    Intuitivno je jasno da nema potrebe za uzimanjem svih $N$ uzoraka ako je signal rijedak, tj. ve\'cina uzoraka \'ce biti nula. Problem le\v{z}i u \v{c}injenici da ne znamo koji su elementi signala nula a koji ne, te to uvodi nelinearnost u problem. To lako vidimo po\v{s}to skup $s$-rijetkih vektora (najvi\v{s}e $s$ ne-nul komponenti) ne formira linearan skup. Naime, zbroj dva $s$-rijetka vektora je generalno $2s$-rijedak vektor. Pokazati \'cemo da je metoda za rekonstrukciju koja se prirodno name\'ce NP-te\v{z}ak problem. \\
+    Intuitivno je jasno da nema potrebe za uzimanjem svih $N$ uzoraka ako je signal rijedak, tj. ve\'cina uzoraka \'ce biti nula. Problem le\v{z}i u \v{c}injenici da ne znamo koji su elementi signala nula, a koji ne, te to uvodi nelinearnost u problem. To lako vidimo po\v{s}to skup $s$-rijetkih vektora (najvi\v{s}e $s$ ne-nul komponenti) ne formira linearan skup. Naime, zbroj dva $s$-rijetka vektora je generalno $2s$-rijedak vektor. Pokazati \'cemo da je metoda za rekonstrukciju koja se prirodno name\'ce NP-te\v{z}ak problem. \\
     \indent
-    Dva osnovna pitanja sa\v{z}etog uzorkovanja na koja \'cemo poku\v{s}ati dati odgovoriti u ovom radu su:
+    Dva osnovna pitanja sa\v{z}etog uzorkovanja na koja \'cemo poku\v{s}ati dati odgovor u ovom radu su:
     \begin{enumerate}
         \item Kako odabrati matricu mjerenja $\vec A \in \C^{m \times N}$? 
         \item Kako rekonstruirati vektor $\vec x$ iz mjerenja $ \vec y = \vec{Ax}$?
@@ -406,7 +406,7 @@ Neka je $\vec{A} \in \C^{m \times N}$ i $S \subseteq [N]$, s $\vec A_S$ ozna\v{c
                 \end{cases}
             \end{equation*}
             Dakle, imamo $\vec x \neq \vec 0$, $\norm{\vec x}_0 \leq 2s$ i vrijedi $\vec{Ax}=0$, tj. $\vec x \in \ker \vec A$. Kontradikcija s $(b)$.
-        \item[]$(c)\implies(d)$. Odaberimo $2s$  stupaca od $\vec A$. Skup indeksa tih stupaca ozna\v{c}imo sa $S$. Prema $(c)$, matrica $\vec A_S$ je injektivna, a to zna\v{c}i da su njeni stupci linearno nezavisni, pa su stoga i $2s$ odabranih stupaca matrice $\vec A$ linearno nezavisni.
+        \item[]$(c)\implies(d)$. Odaberimo $2s$  stupaca od $\vec A$. Skup indeksa tih stupaca ozna\v{c}imo sa $S$. Prema $(c)$, matrica $\vec A_S$ je injektivna, a to zna\v{c}i da su njezni stupci linearno nezavisni, pa su stoga i $2s$ odabranih stupaca matrice $\vec A$ linearno nezavisni.
         \item[]$(d)\implies(b)$. Pretpostavimo da jezgra od $\vec A$ sadr\v{z}i $2s$-rijedak ne-nul vektor $\vec x \in \C^N$. Neka je $S$ skup indeksa ne-nul elemenata vektora $\vec x$. To zna\v{c}i da je $\vec A_S \vec x_S = 0$, i $\vec x_S \neq \vec 0$. Dakle $\vec A_S$ nije injektivna, pa stoga i skup stupaca od $\vec A$ indeksiranih sa $S$ nije linearno nezavisan, \v{s}to je kontradikcija s $(d)$.
 \end{itemize}
 \end{proof}
@@ -694,7 +694,7 @@ To upravo tvrdi naredna propozicija.
 \end{proof}
 
 \section[Greedy metode][Greedy metode]{Greedy metode}
-Upoznat \'cemo se s dva iterativna greedy algoritma koji se \v{c}esto koriste u kontekstu sa\v{z}etog uzorkovanja. Prvo algoritam koji \'cemo prou\v{c}iti zove se \textit{OMP} (skra\'cenica od eng. \textit{orthogonal matching pursuit}).
+Upoznat \'cemo se s dva iterativna greedy algoritma koji se \v{c}esto koriste u kontekstu sa\v{z}etog uzorkovanja. Prvo algoritam koji \'cemo prou\v{c}it zove se \textit{OMP} (skra\'cenica od eng. \textit{orthogonal matching pursuit}).
 \begin{alg}{OMP}
     \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$. \\
     \textit{Inicijalizacija:} $S^0 = \emptyset$, $\vec x^0 = \vec 0$ \\
@@ -1370,7 +1370,7 @@ Neka je na matrica $\vec A \in \C^{m \times N}$ takva da $m \geq N$. Tada je $\m
 \end{proof}
 
 \section[Matrice male koherencije][Matrice male koherencije]{Matrice male koherencije}
-Sada \'cemo prou\v{c}iti ocjene odozdo na koherenciju i na $\ell_1$-koherenciju matrice $\vec A \in \K^{m \times N}$ takve da je $m < N$ i gdje je $\K = \R$ ili $\K = \C$.
+Sada \'cemo prou\v{c}it ocjene odozdo na koherenciju i na $\ell_1$-koherenciju matrice $\vec A \in \K^{m \times N}$ takve da je $m < N$ i gdje je $\K = \R$ ili $\K = \C$.
 \begin{defn}
     Za sustav $\ell_2$-normaliziranih vektora $(\vec a_1, \dots, \vec a_N)$ iz $\K^m$ ka\v{z}emo da je ekviangularan ako postoji konstanta $c \leq 0$ takva da
     \begin{equation*}
