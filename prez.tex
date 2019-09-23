@@ -1,0 +1,599 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usefonttheme{professionalfonts}
+
+%\usepackage{utopia} %font utopia imported
+%\usepackage[utf8]{inputenc}  % ukoliko se koristi XeLaTeX onda je \usepackage{xunicode}\usepackage{xltxtra}
+
+\usepackage[T1]{fontenc}
+%\usepackage{newtxtext,newtxmath}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage[pdftex]{graphicx} % ukoliko se koristi XeLaTeX onda je \usepackage[xetex]{graphicx}
+\usepackage[most]{tcolorbox}
+
+\usetheme{boxes}
+\usecolortheme{seagull}
+
+%------------------------------------------------------------
+%This block of code defines the information to appear in the
+%Title page
+\title[Naslov] %optional
+{Sa\v{z}eto uzorkovanje}
+
+\subtitle{Diplomski rad}
+
+\author[Marco, Hrli\'c] % (optional)
+{Marco Hrli\'c}
+
+\institute[VFU] % (optional)
+{
+    Prirodoslovno matemati\v{c}ki fakultet\\
+    Sveu\v{c}ili\v{s}te u Zagrebu
+}
+
+\date[datum] % (optional)
+{Rujan 2019.}
+
+\newtheorem{thm}{Teorem}[section]
+\newtheorem{lem}[thm]{Lema}
+\newtheorem{cor}[thm]{Korolar}
+\newtheorem{defn}[thm]{Definicija}
+\newtheorem{rem}[thm]{Napomena}
+\newtheorem{prop}[thm]{Propozicija}
+\newtheorem{exa}[thm]{Primjer}
+\newtheorem{conj}[thm]{Slutnja}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+%\newcommand{\vect}[1]{\boldsymbol{\mathrm{#1}}}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\renewcommand{\vec}{\vect}
+\newcommand{\card}{\text{\normalfont{card}}}
+\newcommand{\supp}{\text{\normalfont{supp}}}
+\newcommand{\norm}[1]{\|{#1}\|}
+\newcommand{\norms}[1]{\left\lVert#1\right\rVert}
+\newcommand{\rank}{\text\normalfont{r}}
+%\newcommand{\argmin}{\text{\normalfont{arg}}\min}
+%\newcommand{\argmax}{\text{\normalfont{arg}}\max}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\newcommand{\sgn}{\text{\normalfont{sgn}}}
+\renewcommand{\Re}{\text{\normalfont{Re}}}
+\renewcommand{\Im}{\text{\normalfont{Im}}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\tr}{tr}
+
+%\logo{\includegraphics[height=1.5cm]{lion-logo.jpg}}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+%------------------------------------------------------------
+%The next block of commands puts the table of contents at the 
+%beginning of each section and highlights the current section:
+
+%\AtBeginSection[]
+%{
+%  \begin{frame}
+%    \frametitle{Table of Contents}
+%    \tableofcontents[currentsection]
+%  \end{frame}
+%}
+%------------------------------------------------------------
+
+\newenvironment{alg}[1]
+{
+    \bigskip
+    \begin{tcolorbox}[arc=0mm,boxrule=1.2pt,colframe=black,colback=white,detach title, before upper={\medskip\begin{center}\textbf{#1}\end{center}\hline\newline\medskip},frame hidden]
+    \medskip
+}
+{
+    \medskip
+\end{tcolorbox}
+}
+
+
+\begin{document}
+
+%The next statement creates the title page.
+\frame{\titlepage}
+
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+%\begin{frame}
+%    \frametitle{Sadr\v{z}aj}
+%\tableofcontents
+%\end{frame}
+%---------------------------------------------------------
+
+
+\section{Uvod}
+
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+\frametitle{Uvod}
+\begin{itemize}
+    \item \textbf{Osnovni zadatak}: Efikasno prikupljanje i rekonstrukcija korisnih informacija iz mjerenja.
+    \item \textbf{Uzorkovanje}: Proces prikupljanja informacija.
+    \item Radio valovi u kontekstu telekomunikacijskih tehnologija.
+\end{itemize}
+\vfill
+\includegraphics[scale=0.1]{./a2pdf.pdf}
+\hfill
+\includegraphics[scale=0.1]{./a2pdf.pdf}
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+        \item Prvi toranj \v{s}alje informaciju $\vec x \in \R^{N}$. 
+        \item Radio signal koji prenosi $\vec x$ putuje kanalom.
+    \item Drugi toranj uzima uzorke, tj. vr\v{s}i (uglavnom) periodi\v{c}ka mjerenje nad elektromagnetnim poljem, te formira mjerenje $\vec y \in \R^m$.
+    \end{itemize}
+    \vfill
+    Uzorkovanje druge antene mo\v{z}emo opisati na linearan na\v{c}in, tj.
+    \begin{equation*}
+        \vec y = \vec{Ax}, 
+    \end{equation*}
+    za neku $\vec A \in \R^{m \times N}$ (\textit{matrica mjerenja}).
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+        \item Za rekonstrukciju informacije $\vec x$ moramo rje\v{s}iti linearni sustav.
+        \item \textbf{Prirodan uvjet}: $m \geq N$.
+        \item \textbf{Dovoljan uvjet}: 
+            \vfill
+            \begin{thm}[Nyquist–Shannon]
+                Ako funkcija $x(t)$ ne sadr\v{z}i frekvencije ve\'ce od $B$ Hertza, onda je za rekonstrukciju ($\text{\normalfont{sinc}}$ interpolacijom) dovoljno je uzimati uzorke svakih $1/(2B)$ sekundi.
+            \end{theorem}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+        \item Empirijski znamo da su mnogi signali u primjeni makar pribli\v{z}no \textbf{rijetki}. 
+\begin{defn}
+    Nosa\v{c} vektora $\vec{x} \in \C^{N}$ je skup indeksa njegovih ne-nul elemenata, tj.
+    $$\supp(\vec{x}):=\{j\in[N]:x_j \neq 0 \}.$$
+\end{defn}
+\item Za vektor $\vec{x}\in\C^{N}$ ka\v{z}emo da je $s$-rijedak ako vrijedi $$\|\vec{x}\|_0 := \card(\supp(\vec{x})) \leq s.$$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+        \item \textbf{Kompresibilni/sa\v{z}eti vektori} $\leftarrow$ pribli\v{z}no rijetki.
+    \begin{align*}
+        \sigma_s(\vec{x})_p &:= \inf\big\{\|\vec{x}-\vec{z}\|_p,\ \vec{z} \in \C^{N} \ \text{je $s$-rijedak}\big\}.\\
+        \|\vec{x}\|_{p, \infty}&:=\inf\bigg\{ M \geq 0: \card (\{j\in [N]: |x_j|\geq t \})\\
+        &\leq \frac{M^P}{t^p},\ \forall t>0    \bigg\}.\\
+            &\\
+        &\sigma_s(\vec{x})_q \leq \frac{d_{p,q}}{s^{1/p-1/q}}\|\vec{x}\|_{p, \infty}
+    \end{align*}
+\item Uz dodatnu pretpostavku o rijetkosti vektora $\vec x$, uspje\v{s}na rekonstrukcija je mogu\'ca za $m << N$, te postoje efikasni algoritmi za rje\v{s}enje.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Minimalni broj mjerenja}
+    Za danu rijetkost $s$, matricu $\vec A \in \C^{m \times N}$ i $s$-rijedak vektor $\vec x \in \C^N$ ekvivalentno je: \\
+    \begin{enumerate}
+            \bigskip
+        \item Vektor $\vec{x}$ je jedinstveno $s$-rijetko rje\v{s}enje sustava $\vec{A}\vec{z}=\vec{y}$ gdje je $\vec{y} = \vec{Ax}$, tj. $\{\vec{z} \in \C^N : \vec{A}\vec{z}= \vec{A}\vec{x},\ \norm{\vec{z}}_0 \leq s\} = \{\vec{x}\}.$
+            \bigskip
+        \item Vektor $\vec{x}$ je jedinstveno rje\v{s}enje problema minimizacije
+            \begin{equation}\label{problem_minimizacije}
+                \min\limits_{\vec{z} \in \C^N} \norm{\vec{z}}_0\quad \text{uz uvjet}\ \vec{Az} = \vec y \tag{$P_{0}$}.
+            \end{equation}
+    \end{enumerate}
+    
+\end{frame}
+
+\begin{frame}
+
+\begin{thm} \label{rekonstrukcija_tm1}
+    Neka je $\vec A \in \C^{m \times N}$. Ekvivalentno je:
+    \begin{enumerate}
+        \item Postoji samo jedan $s$-rijedak vektor $\vec x \in \C^N$ koji zadovoljava $\vec{Ax} = \vec{Az}$, tj. ako je $\vec{Ax}=\vec{Az}$ i ako su $\vec x$, $\vec z$ oba $s$-rijetki tada je $\vec x = \vec z$.
+        \item Jezgra od $\vec A$ ne sadr\v{z}i niti jedan $2s$-rijedak vektor osim nul-vektora, tj. $\ker \vec A \cap \{\vec z \in \C^N: \norm{\vec z}_0 \leq 2s\} = \{\vec 0\}$.
+        \item Za svaki $S \subseteq [N]$ takav da je $\card(S) \leq 2s$, podmatrica $\vec A_S$ je injektivna kao preslikavanje s $\C^S$ u $\C^m$.
+        \item Svaki skup od $2s$ stupaca matrice $\vec A$ je linearno nezavisan skup.
+    \end{enumerate}
+\end{thm}
+\end{frame}
+
+\begin{frame}
+        Pretpostavimo da je rekonstrukcija mogu\'ca \\
+        \bigskip
+        $\implies$ vrijedi $(1)$ iz prethodnog teorema\\ 
+        $\implies$ vrijedi $(4)$, tj. 
+        \bigskip
+        \begin{equation*}
+        r(\vec A) \geq 2s.
+        \end{equation*}
+        \bigskip
+        Dakle, imamo
+        \bigskip
+        \begin{equation*}
+        m \geq 2s.
+        \end{equation*}
+        \bigskip
+
+\end{frame}
+
+\begin{frame}
+\begin{thm}
+    Za svaki $N \geq 2s$, postoji matrica mjerenja $\vec A \in \C^{2s \times N}$ takva da se svaki $s$-rijedak vektor $\vec x \in \C^N$ mo\v{z}e rekonstruirati iz vektora mjerenja $\vec y = \vec{Ax} \in \C^m$ kao rje\v{s}enje problema minimizacije \eqref{problem_minimizacije}.
+\end{thm}
+    \begin{equation*}
+        \vec A = 
+        \begin{bmatrix}
+            1 & 1 & \cdots & 1 \\ 
+            t_1 & t_2 & \cdots & t_N \\
+            \vdots & \vdots & \cdots & \vdots \\
+            t_1^{2s-1} & t_2^{2s-1} & \cdots & t_N^{2s-1} \\
+        \end{bmatrix},\  \text{za $t_N>\cdots > t_2 > t_1 > 0$}.
+    \end{equation*}
+    \vfill
+\end{frame}
+
+\begin{frame}
+    \frametitle{NP-slo\v{z}enost $\ell_0$-minimizacije} 
+    \begin{itemize}
+        \item \textbf{Op\'{c}enitiji problem}:
+    \begin{equation}
+    \min_{\vec z \in \C^N}\ \norm{\vec z}_0 \quad \text{uz uvjet }\norm{\vec{Az}- \vec{y}}_2 \leq \eta \tag{$P_{0, \eta}$}\label{problem_minimizacije_generalni}
+    \end{equation}
+\item \textbf{Klase problema odlu\v{c}ivanja}:
+        \begin{enumerate}
+            \item $\mathfrak{P}$: Svi problemi odlu\v{c}ivanja za koje postoji algoritam polinomijalnog vremena koji daje rje\v{s}enje.
+            \item $\mathfrak{NP}$: Svi problemi odlu\v{c}ivanja za koje postoji algoritam polinomijalnog vremena koji provjerava to\v{c}nost rje\v{s}enja.
+            \item $\mathfrak{NP}$-te\v{s}ki: Svi problemi (ne nu\v{z}no problemi odlu\v{c}ivanja) za koje se algoritam za rje\v{s}enje mo\v{z}e u polinomijalnom vremenu transformirati u algoritam rje\v{s}enja za bilo koji $\mathfrak{NP}$ problem.
+            \item $\mathfrak{NP}$-potpuni: Svi problemi koji su istovremeno $\mathfrak{NP}$ i $\mathfrak{NP}$-te\v{s}ki.
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Egzaktni pokriva\v{c} tro\v{c}lanim skupovima}
+    Za danu kolekciju $\{\mathcal{C}_i;\ i \in [N]\}$ tro\v{c}lanih podskupova od $[m]$, postoji li egzaktni pokriva\v{c} skupa $[m]$, tj. postoji li $J \subseteq [N]$ takav da je $\cup_{j \in J}\mathcal{C}_j=[m]$, gdje je $\mathcal{C}_j \cap \mathcal{C}_k = \emptyset$ za sve me\dj usobno razli\v{c}ite $j,k \in J$? 
+    \bigskip
+    \begin{itemize}
+        \item Poznato je da je taj problem $\mathfrak{NP}$-potpun.
+    \end{itemize}
+\begin{thm}
+    Za svaki $\eta \geq 0,\ \vec A \in \C^{m \times N}$ i $\vec y \in \C^m$, problem minimizacije \eqref{problem_minimizacije_generalni} je $\mathfrak{NP}$-potpun.
+\end{thm}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Osnovni algoritmi sa\v{z}etog uzorkovanja} 
+    Gruba podijela na:
+    \begin{itemize}
+        \bigskip
+        \item Optimizacijske metode
+        \bigskip
+        \item Greedy metode
+        \bigskip
+        \item Grani\v{c}ne metode
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Optimizacijske metode}
+    Op\'ceniti problem optimizacije je oblika
+    \begin{equation*}
+        \min_{\vec x \in \R^N} F_0(\vec x)\quad\text{uz uvjet }F_i(\vec x) \leq b_i,\ i \in [n]
+    \end{equation*}
+    gdje $F_0:\R^N \rightarrow \R$ zovemo \textit{funkcija cilja}, a funkcije $F_1, \dots, F_n: \R^N \rightarrow \R$ zovu se \textit{funkcije ograni\v{c}enja}.
+
+    \vfill
+    \begin{itemize}
+        \item \textbf{Konveksna relaksacija problema $(P_0)$}:
+    
+        \begin{equation}
+            \min \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y.\tag{$P_{1}$}\label{problem_minimizacije_l1}
+        \end{equation}
+    
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{alg}{$\ell_1$-minimizacija (\textit{Basis Pursuit})}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$. \\
+    \textit{Problem:}
+        \begin{equation}
+            \vec x^{\sharp} = \argmin \norm{\vec z}_1 \quad \text{uz uvjet }\vec{Az}=\vec y\tag{$\ell_1-min$}\label{algoritam_l1_minimizacija}
+        \end{equation} \\
+        \textit{Izlaz:} vektor $\vec x^{\sharp}$
+\end{alg}
+\end{frame}
+
+\begin{frame}
+\begin{thm}
+    Neka je $\vec A \in \R^{m \times N}$ matrica mjerenja sa stupcima $\vec a_1, \dots, \vec a_N$. Ako je $\vec x^{\sharp}$ minimizator od
+    \begin{equation*}
+        \min_{\vec z \in \R^N} \norm{\vec z}_1\quad \text{uz uvjet } \vec{Az}=\vec y,
+    \end{equation*}
+    tada je skup $\{\vec a_j,\ j \in \supp(\vec x^{\sharp})\}$ linearno nezavisan i vrijedi
+    \begin{equation*}
+        \norm{\vec{x}^{\sharp}}_0 = \card(\supp(\vec x^{\sharp})) \leq m. 
+    \end{equation*}
+\end{thm}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Greedy metode}
+    \begin{alg}{OMP (\textit{Orthogonal matching pursuit})}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$. \\
+    \textit{Inicijalizacija:} $S^0 = \emptyset$, $\vec x^0 = \vec 0$ \\
+    \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
+        \begin{align*}
+            &S^{n+1} = S^n \cup \{j_{n+1}\},\quad j_{n+1} := \argmax\limits_{j \in [N]}\{|(\vec A^*(\vec y - \vec{Ax}^n))_j|\},
+        \\
+            &\vec x^{n+1} = \argmin\limits_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subseteq S^{n+1}\}.
+        \end{align*} \\
+        \textit{Izlaz:} $\bar{n}$-rijedak vektor $\vec x^{\sharp}=\vec{x}^{\bar{n}}$.
+\end{alg}
+\end{frame}
+
+\begin{frame}
+Indeks $j_{n+1}$ bira se tako da se reducira $\ell_2$-norma reziduala $\vec{y} - \vec{Ax}^n$ \v{s}to je vi\v{s}e mogu\'ce. Sljede\'ca lema opravdava za\v{s}to je smisleno $j$ odabrati takav da maksimizira vrijednost $|{(\vec{A}^*(\vec{y}-\vec A \vec x^n))_j}|$.
+\begin{lem}
+    Neka je $\vec A \in \C^{m \times N}$ s $\ell_2$-normaliziranim stupcima. Ako su $S \subseteq [N]$, $\vec v \in \C^N$ s nosa\v{c}em na $S$, $j \in [N]$, te ako vrijedi
+    \begin{equation*}
+        \vec w := \argmin_{\vec z \in \C^N} \{ \norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subseteq S \cup \{j\} \},
+    \end{equation*}
+    tada
+    \begin{equation*}
+        \norm{\vec y - \vec{Aw}}_2^2 \leq \norm{\vec y - \vec{Av}}_2^2 - |(\vec{A}^*(\vec y - \vec{Av}))_j|^2.
+    \end{equation*}
+\end{lem}
+
+\end{frame}
+
+\begin{frame}
+    \textbf{Nu\v{z}ni i dovoljni uvjeti za rekonstrukciju:}
+\begin{prop}\label{prop:3:5}
+    Neka je $\vec A \in \C^{m \times N}$. Svaki ne-nul vektor $\vec x \in \C^N$ s nosa\v{c}em na skupu $S$, kardinaliteta $s$ mo\v{z}e se rekonstruirati iz $\vec y = \vec{Ax}$ u najvi\v{s}e $s$ iteracija OMP algoritma ako i samo ako je matrica $\vec A_S$ injektivna i 
+    \begin{equation}\label{uvjet_rekon_omp}
+        \max_{j \in S}|(\vec A^* \vec r)_j| > \max_{l \in \bar{S}}|(\vec A^* \vec r)_l|
+    \end{equation}
+    za sve ne-nul $\vec r \in \{\vec{Az},\ \supp(\vec z) \subseteq S\}$.
+\end{prop}
+\end{frame}
+
+\begin{frame}
+    \begin{alg}{CoSaMP (\textit{Compressive sensing matching pursuit})}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
+    \textit{Inicijalizacija:} $s$-rijedak vektor $\vec x^0$ (npr. $\vec x^0 = \vec 0$).\\
+    \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
+        \begin{align*}
+            U^{n+1} & = \supp(\vec x^n)\cup L_{2s}(\vec A^*(\vec y - \vec{Ax}^n))\\
+            \vec u^{n+1} & = \argmin_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subseteq U^{n+1}\} \\
+            \vec x^{n+1} & = H_s(\vec u^{n+1})
+        \end{align*}
+        \textit{Izlaz:} $\bar{n}$-rijedak vektor $\vec x^{\sharp}=\vec{x}^{\bar{n}}$.
+\end{alg}
+\begin{align*}
+    &L_s(\vec z) := \text{skup indeksa $s$ najve\'cih komponenti vekora } \vec z \in \C^N \\
+    &H_s(\vec z) := \vec z_{L_s(\vec z)}.
+\end{align*}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Grani\v{c}ne metode} 
+    \begin{alg}{BT (\textit{Basic thresholding})}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
+    \textit{Problem:}
+        \begin{align*}
+            S^{\sharp} &= L_s(\vec A^* \vec y),\tag{$BT_1$}\label{bt_1}\\
+            \vec x^{\sharp} &= \argmin_{\vec z \in \C^N}\{\norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subseteq S^{\sharp}\}.\tag{$BT_2$}\label{bt_2}\\
+        \end{align*}
+        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}$.
+\end{alg}
+\end{frame}
+
+\begin{frame}
+\begin{prop}\label{prop:3:7}
+    BT algoritam rekonstruira vektor $\vec x \in \C^N$ s nosa\v{c}em na $S$, iz $\vec y = \vec{Ax}$ ako i samo ako
+    \begin{equation*}
+        \min_{j \in S}|(\vec A^* \vec y)_j| > \max_{l \in \bar{S}} |(\vec A^* \vec y)_l| .
+    \end{equation*}
+\end{prop}
+\end{frame}
+
+\begin{frame}
+    \begin{alg}{IHT (\textit{Iterative hard thresholding})}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
+    \textit{Inicijalizacija:} $s$-rijedak vektor $\vec x^0$ (npr. $\vec x^0 = \vec 0$).\\
+    \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
+        \begin{equation}
+            x^{n+1} = H_s(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n).\tag{$IHT$}\label{iht}\\
+        \end{equation}
+        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}=\vec x^{\bar n}$.
+\end{alg}
+Algoritam rje\v{s}ava kvadratni sustav $\vec A^* \vec A \vec z= \vec A^* \vec y$ umjesto $\vec{Az}=\vec y$.
+\end{frame}
+
+\begin{frame}
+\begin{alg}{HTP}
+    \textit{Ulaz:} Matrica mjerenja $\vec A$, vektor mjerenja $\vec y$, rijetkost $s$ \\
+    \textit{Inicijalizacija:} $s$-rijedak vektor $\vec x^0$ (npr. $\vec x^0 = \vec 0$).\\
+    \textit{Iteracija:} Zaustavi kada $n = \bar{n}$:
+        \begin{align*}
+            S^{n+1} &= L_s(\vec x^n + \vec A^* (\vec y - \vec{Ax}^n),\tag{$HTP_1$}\label{htp_1}\\
+            \vec x^{n+1} &= \argmin_{\vec z \in \C^N}\{ \norm{\vec y - \vec{Az}}_2,\ \supp(\vec z) \subseteq S^{n+1} \}.\tag{$HTP_2$}\label{htp_2}
+        \end{align*}
+        \textit{Izlaz:} $s$-rijedak vektor $\vec x^{\sharp}=\vec x^{\bar n}$.
+\end{alg}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Svojstvo nul-prostora ($\ell_1$-minimizacija)} 
+\begin{defn}
+    Za matricu $\vec A \in \K^{m \times N}$ ka\v{z}emo da zadovoljava \textit{svojstvo nul-prostora} za skup $S \subseteq [N]$ ako vrijedi
+    \begin{equation}\label{svojstvo_nul_prostora}
+        \norm{\vec v_S}_1 < \norm{\vec v_{\bar{S}}}_1  \quad \text{za svaki }\vec v \in \ker \vec A \backslash \{\vec 0\}.
+    \end{equation}
+    Nadalje, ka\v{z}emo da $\vec A$ zadovoljava svojstvo nul-prostora reda $s$ ako zadovoljava gornju nejednakost za svaki $S \subseteq [N]$ takav da je $\card(S) \leq s$.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+        \textbf{Nu\v{z}ni i dovoljni uvjeti za rekonstrukciju $\ell_1$-minimizacijom:}
+\begin{thm}
+    Za matricu $\vec A \in \K^{m \times N}$, svaki $s$-rijedak vektor $\vec x \in \K^N$ je jedinstveno rje\v{s}enje problema \eqref{problem_minimizacije_l1} uz $\vec y = \vec{Ax}$ ako i samo ako $\vec A$ zadovoljava svojstvo nul-prostora reda $s$.
+\end{thm}
+    
+\end{frame}
+
+\begin{frame}
+    \textbf{Gre\v{s}ka mjerenja i defekti rijetkosti}:
+\begin{equation}\label{problem_minimizacije_l1_kvadraticni}
+    \min_{\vec z \in \C^N} \norm{\vec z}_1 \quad \text{uz uvjet } \norm{\vec{Az} - \vec y} \leq \eta \tag{P_{1, \eta}}
+\end{equation}
+\begin{defn}
+    Za matricu $\vec A \in \C^{m \times N}$ ka\v{z}emo da zadovoljava \textit{robusno svojstvo nul-prostora} s konstantama $0<\rho<1$ i $\tau > 0$ za skup $S \subseteq [N]$ ako 
+    \begin{equation*}\label{robusnost_defn_nejed}
+        \norm{\vec v_S}_1 \leq \rho \norm{\vec v_{\bar S}}_1 + \tau \norm{\vec{Av}} \quad \text{za sve } \vec v \in \C^N.
+    \end{equation*}
+    Nadalje, ka\v{z}emo da $\vec A$ zadovoljava robusno svojstvo nul-prostora s konstantama $0<\rho<1$ i $\tau > 0$ reda $s$ ako zadovoljava gornje svojstvo za svaki $S \subseteq [N]$ takav da $\card(S) \leq s$.
+\end{defn}
+\end{frame}
+
+\begin{frame}
+
+\begin{thm}
+    Neka matrica $\vec A \in \C^{m \times N}$ zadovoljava robusno svojstvo nul-prostora reda $s$ sa konstantama $0<\rho<1$ i $\tau > 0$. Tada za svaki vektor $\vec x \in \C^N$, rje\v{s}enje problema \eqref{problem_minimizacije_l1_kvadraticni} za $\vec y = \vec{Ax}+\vec{e}$ i $\norm{\vec e} \leq \eta$ aproksimira vektor $\vec x$ s gre\v{s}kom
+    \begin{equation*}
+        \norm{\vec x - \vec x^{\sharp}}_1 \leq \frac{2(1+\rho)}{(1-\rho)} \sigma_s(\vec x)_1 + \frac{4 \tau}{1-\rho}\eta 
+    \end{equation*}
+\end{thm}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Koherencija}
+    \begin{itemize}
+        \item Uspje\v{s}nost rekonstrukcije ovisi o odre\dj enim kvalitetama matrice $\vec A$.
+    \end{itemize}
+\begin{defn}
+    Neka je $\vec A \in \C^{m \times N}$ matrica s $\ell_2$-normaliziranim stupcima $\vec a_1, \vec a_2, \dots, \vec a_N$, tj. $\norm{\vec a_i}_2 = 1$ za sve $i \in [N]$. Koherenciju $\mu = \mu(\vec A)$ matrice $\vec A$ definiramo kao
+    \begin{equation*}
+        \mu := \max_{1 \leq i \neq j \leq N} |\langle \vec a_i, \vec a_j \rangle| .
+    \end{equation*}
+    Za $s \in [N-1]$, funkcija $\ell_1$-koherencije $\mu_1$ matrice $\vec A$ je definirana kao
+        \begin{equation*}
+            \mu_1(s) := \max_{i \in [N]} \max \big\{ \sum_{j \in S} |\langle \vec a_i, \vec a_j \rangle|,\ S \subseteq [N],\ \card(S) = s,\ i \not \in S   \big\} .
+        \end{equation*}
+
+\end{defn}
+\end{frame}
+
+\begin{frame}
+\textbf{Dovoljni uvjeti na koherencije za uspje\v{s}nu rekonstrukciju}:
+        \medskip
+\begin{itemize}
+    \item $\ell_1$-minimizacija: $\mu_1(s) + \mu_1(s-1) < 1$.
+        \medskip
+    \item OMP algoritam: $\mu_1(s) + \mu_1(s-1) < 1$.
+        \medskip
+    \item BT algoritam: $\mu_1(s) + \mu_1(s-1) < \frac{\min_{i \in S}|x_i|}{\max_{i \in S}|x_i|}$.
+        \medskip
+    \item IHT algoritam: $\mu_1(s) + \mu_1(s-1) < \frac{\min_{i \in S}|x_i|}{\max_{i \in S}|x_i|}$.
+        \medskip
+    \item HTP algoritam: $2 \mu_1(s) + \mu_1(s-1) < 1$
+\end{itemize}
+
+        \bigskip
+\textbf{Vrijedi ocjena: } $m \geq C s^2$.
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Svojstvo restriktivne izometri\v{c}nosti}
+\begin{defn}\label{defn:6:1}
+    $s$-ta konstanta restriktivne izometri\v{c}nosti $\delta_s = \delta_s(\vec A)$ matrice $\vec A \in \C^{m \times N}$ je najmanji $\delta \geq 0$ takva da
+    \begin{equation*}\label{6:1}
+        (1-\delta) \norm{\vec x}_2^2 \leq \norm{\vec{Ax}}_2^2 \leq (1+\delta)\norm{\vec x}_2^2 
+    \end{equation*}
+    za sve $s$-rijetke vektore $\vec x \in \C^N$. Ili ekvivalentno
+    \begin{equation*}\label{6:2}
+        \delta_s = \max_{S \subseteq [N], \card(S) \leq s} \norm{\vec A^*_S \vec A_S - \vec I}_2.
+    \end{equation*}
+    Neformalno, ka\v{z}emo da matrica $\vec A$ zadovoljava svojstvo restriktivne izometri\v{c}nosti ako je $\delta_s$ dovoljno mali za $s$ dovoljno velik.
+\end{defn}
+    
+\end{frame}
+
+\begin{frame}
+Mogu\'ce je usporediti konstantu restriktivne izometri\v{c}nosti s koherencijom $\mu$.
+\begin{prop}\label{prop:6:2}
+    Neka je $\vec A$ s $\ell_2$-normaliziranim stupcima $\vec a_1, \dots \vec a_N$. Tada za svaki $j \in [N]$ vrijedi
+    \begin{equation*}
+        \delta_1 = 0, \quad \delta_2 = \mu \quad \delta_s \leq \mu_1(s-1) \leq (s-1)\mu, \quad s \geq 2. 
+    \end{equation*}
+\end{prop}
+\begin{thm}
+    Neka je $\vec A \in \C^{m \times N}$ i $2 \leq s \leq N$. Tada je
+    \begin{equation}\label{6:9}
+        m \geq c \frac{s}{\delta_s^2} , 
+    \end{equation}
+    za $N \geq Cm$ i $\delta_s \leq \delta_*$, gdje konstante $c, C$ i $\delta_*$ ovise samo o sebi me\dj usobno. Na primjer, mo\v{z}emo uzeti $c = 1/162$, $C = 30$ i $\delta_* = 2/3$.
+\end{thm}
+\end{frame}
+
+\begin{frame}
+    \textbf{Dovoljni uvjeti na konstantu restriktivne izometri\v{c}nosti za uspje\v{s}nu rekonstrukciju}:
+        \medskip
+\begin{itemize}
+    \item{$\ell_1$-minimizacija}: $\delta_{2s} < \frac{4}{\sqrt{41}}$.
+        \medskip
+    \item{OMP algoritam}: $\delta_{13s} < \frac{1}{6}$.
+        \medskip
+    \item{CoSaMP algoritam}: $\delta_{8s} < 0.4782$.
+        \medskip
+    \item{IHT algoritam}: $\delta_{3s} < \frac{1}{\sqrt{3}}$. 
+        \medskip
+    \item{HTP algoritam}: $\delta_{3s} < \frac{1}{\sqrt{3}}$.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+    \textbf{Konstrukcija matrica male konstante restriktivne izometri\v{c}nosti:}
+    \bigskip
+    \begin{itemize}
+        \item \textbf{Deterministi\v{c}ka konstrukcija} $\leftarrow$ otvoren problem. \\
+            Gotovo sve aproksimacije za $\delta_s$ koriste ocjene za koherenciju.
+            \bigskip
+        \item \textbf{Stohasti\v{c}ka konstrukcija} (prirodan nastavak teorije): Odre\dj ene klase slu\v{c}ajnih matrica zadovoljavaju svojstvo restriktivne izometri\v{c}nosti s velikom vjerojatno\v{s}\'cu i vrijedi ocjena $m \geq C \delta^{-2}s \ln(eN/S)$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Sa\v{z}etak}
+    \begin{itemize}
+        \item Proces uzorkovanja u primjeni.
+        \item Rekonstrukcija informacije (vektora $\vec x \in \C^N$) iz mjerenja $\vec y = \vec{Ax} \in \C^m$.
+        \item Ukoliko je vektor $\vec x$ kompresibilan, nije nu\v{z}no uzeti $m \geq N$ uzoraka.
+        \item Op\'cenito rekonstrukcija je mogu\'ca za $m \geq 2s$, ako je $\vec x$ $s$-rijedak.
+        \item Prirodna strategija rekonstrukcije $\ell_0$-minimizacijom (NP-te\v{z}ak problem).
+        \item Efikasni algoritmi za rekonstrukciju, \v{c}ija analiza ovisi o mjerama kvalitete matrice $\vec A$. (Koherencija i svojstvo restriktivne izometri\v{c}nosti)
+        \item Stohasti\v{c}ka teorija.
+    \end{itemize}
+\end{frame}
+
+\end{document}
